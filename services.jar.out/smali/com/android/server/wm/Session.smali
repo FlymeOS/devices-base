@@ -1219,9 +1219,9 @@
     :try_start_2
     invoke-virtual {v3, v4, v6}, Landroid/view/SurfaceControl;->setPosition(FF)V
 
-    .line 335
     invoke-static/range {p3 .. p6}, Lcom/android/server/wm/InjectorWMS;->setInitXandY(FFFF)V
 
+    .line 335
     const/high16 v4, 0x3f800000    # 1.0f
 
     invoke-virtual {v3, v4}, Landroid/view/SurfaceControl;->setAlpha(F)V

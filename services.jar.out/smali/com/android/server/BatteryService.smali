@@ -286,6 +286,7 @@
 
     .line 167
     :cond_0
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/BatteryService$MzInjector;->registerBootCompleted(Lcom/android/server/BatteryService;)V
 
     return-void
@@ -2888,7 +2889,11 @@
     .prologue
     sget-boolean v0, Lcom/android/server/BatteryService$MzInjector;->mEnableScreen:Z
 
-    if-eqz v0, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     .line 260
     iget-object v0, p0, Lcom/android/server/BatteryService;->mBatteryProps:Landroid/os/BatteryProperties;
@@ -2918,7 +2923,6 @@
 
     .line 273
     :cond_0
-    :cond_flyme_0
     return-void
 .end method
 
@@ -2928,10 +2932,12 @@
     .prologue
     sget-boolean v0, Lcom/android/server/BatteryService$MzInjector;->mEnableScreen:Z
 
-    if-eqz v0, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
 
-    
-    
+    return-void
+
+    :cond_flyme_0
+
     .line 279
     iget-object v0, p0, Lcom/android/server/BatteryService;->mBatteryProps:Landroid/os/BatteryProperties;
 
@@ -2954,7 +2960,6 @@
 
     .line 292
     :cond_0
-    :cond_flyme_0
     return-void
 .end method
 

@@ -166,7 +166,7 @@ override_property += \
 # Defines whether produces an image zipfile suitable for use with 'fastboot update'.
 # Default: false
 #-----------------------------------------------------------------------------
-PRODUCE_IMAGES_FOR_FASTBOOT := true
+#PRODUCE_IMAGES_FOR_FASTBOOT := true
 
 ##############################################################################
 # Defines whether generates a block-based OTA, system.img.dat in DAT format will be produced.

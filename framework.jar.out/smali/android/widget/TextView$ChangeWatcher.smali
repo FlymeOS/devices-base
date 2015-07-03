@@ -259,11 +259,11 @@
 
     invoke-virtual {v0, p1, p2, p3, p4}, Landroid/widget/TextView;->handleTextChanged(Ljava/lang/CharSequence;III)V
 
+    .line 9442
     iget-object v0, p0, Landroid/widget/TextView$ChangeWatcher;->this$0:Landroid/widget/TextView;
 
     invoke-static {v0, p1, p2, p3, p4}, Landroid/widget/TextView$FlymeInjector;->mzOnTextChanged(Landroid/widget/TextView;Ljava/lang/CharSequence;III)V
 
-    .line 9442
     iget-object v0, p0, Landroid/widget/TextView$ChangeWatcher;->this$0:Landroid/widget/TextView;
 
     # getter for: Landroid/widget/TextView;->mContext:Landroid/content/Context;

@@ -2294,6 +2294,7 @@
     .end local v2    # "scrollY":I
     .end local v3    # "width":I
     :cond_3
+
     invoke-static/range {p0 .. p1}, Landroid/widget/ScrollView$FlymeInjector;->mzDraw(Landroid/widget/ScrollView;Landroid/graphics/Canvas;)V
 
     return-void
@@ -3416,7 +3417,9 @@
 
     :cond_flyme_0
 
-    invoke-virtual {p0, v3}, Landroid/widget/ScrollView;->springBackDelay(I)V
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, v0}, Landroid/widget/ScrollView;->springBackDelay(I)V
 
     goto :goto_1
 

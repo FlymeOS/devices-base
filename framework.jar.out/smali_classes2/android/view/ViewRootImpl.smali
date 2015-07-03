@@ -7841,8 +7841,9 @@
 
     if-nez v4, :cond_flyme_0
 
-    .line 1753
     :goto_flyme_0
+
+    .line 1753
     and-int/lit8 v4, v52, 0x1
 
     if-eqz v4, :cond_63

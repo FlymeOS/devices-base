@@ -935,6 +935,7 @@
     .line 1179
     .end local v1    # "intent":Landroid/content/Intent;
     :cond_2
+
     invoke-virtual/range {p0 .. p2}, Lcom/android/server/BluetoothManagerService;->mzChangeBluetoothName(II)V
 
     return-void
@@ -2826,7 +2827,13 @@
 
     move-result v3
 
-    if-eqz v3, :cond_flyme_0
+    if-nez v3, :cond_flyme_0
+
+    const/4 v2, 0x0
+
+    return v2
+
+    :cond_flyme_0
 
     .line 450
     iget-object v3, p0, Lcom/android/server/BluetoothManagerService;->mReceiver:Landroid/content/BroadcastReceiver;
@@ -2878,12 +2885,6 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v2
-
-    :cond_flyme_0
-
-    const/4 v2, 0x0
-
-    return v2
 .end method
 
 .method doBind(Landroid/content/Intent;Landroid/content/ServiceConnection;ILandroid/os/UserHandle;)Z

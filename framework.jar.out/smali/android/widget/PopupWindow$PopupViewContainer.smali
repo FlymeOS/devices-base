@@ -252,7 +252,13 @@
 
     move-result v3
 
-    if-eqz v3, :cond_flyme_0
+    if-nez v3, :cond_flyme_0
+
+    const/4 v2, 0x1
+
+    return v2
+
+    :cond_flyme_0
 
     const/4 v2, 0x1
 
@@ -329,12 +335,6 @@
     move-result v2
 
     goto :goto_0
-
-    :cond_flyme_0
-
-    const/4 v2, 0x1
-
-    return v2
 .end method
 
 .method public sendAccessibilityEvent(I)V

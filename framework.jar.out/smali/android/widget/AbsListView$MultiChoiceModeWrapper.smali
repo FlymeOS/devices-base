@@ -185,7 +185,11 @@
 
     move-result v0
 
-    if-eqz v0, :cond_flyme_0
+    if-nez v0, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     .line 6204
     iget-object v0, p0, Landroid/widget/AbsListView$MultiChoiceModeWrapper;->this$0:Landroid/widget/AbsListView;
@@ -201,7 +205,6 @@
 
     .line 6207
     :cond_0
-    :cond_flyme_0
     return-void
 .end method
 

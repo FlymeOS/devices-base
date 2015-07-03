@@ -16464,10 +16464,13 @@
 
     invoke-static/range {p1 .. p2}, Lcom/android/server/pm/InjectorPMS;->removeActiveAdminX(Ljava/lang/String;I)V
 
+    const/4 v3, 0x0
+
+    return v3
+
     .line 10722
     :cond_0
     :goto_0
-    :goto_flyme_0
     return v3
 
     .line 10709
@@ -16537,11 +16540,14 @@
     goto :goto_0
 
     :cond_flyme_0
+
     aget v5, v2, v1
 
     invoke-static {p1, v5}, Lcom/android/server/pm/InjectorPMS;->removeActiveAdminX(Ljava/lang/String;I)V
 
-    goto :goto_flyme_0
+    const/4 v3, 0x0
+
+    return v3
 .end method
 
 .method private static isPrivilegedApp(Landroid/content/pm/PackageParser$Package;)Z

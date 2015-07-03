@@ -107,7 +107,11 @@
 
     move-result v3
 
-    if-eqz v3, :cond_flyme_0
+    if-nez v3, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     invoke-virtual {p0}, Landroid/widget/AbsListView$CheckForKeyLongPress;->sameWindow()Z
 
@@ -147,7 +151,6 @@
     .end local v1    # "index":I
     .end local v2    # "v":Landroid/view/View;
     :cond_1
-    :cond_flyme_0
     :goto_0
     return-void
 

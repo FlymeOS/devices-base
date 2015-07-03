@@ -4259,7 +4259,9 @@
     sput-object v0, Landroid/R$styleable;->AndroidManifestAction:[I
 
     .line 17236
-    const/16 v0, 0x28
+    const/16 v0, 0x27
+
+    add-int/lit8 v0, v0, 0x1
 
     new-array v0, v0, [I
 

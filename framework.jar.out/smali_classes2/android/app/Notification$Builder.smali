@@ -330,6 +330,7 @@
     .end local v4    # "styleClass":Ljava/lang/Class;, "Ljava/lang/Class<+Landroid/app/Notification$Style;>;"
     :cond_0
     :goto_0
+
     invoke-static/range {p0 .. p0}, Landroid/app/Notification$FlymeInject;->initNotificationBuilderExt(Landroid/app/Notification$Builder;)V
 
     return-void
@@ -4148,6 +4149,7 @@
 
     .line 3092
     :cond_4
+
     invoke-static {p0, v0}, Landroid/app/Notification$FlymeInject;->buildUnstyledFlyme(Landroid/app/Notification$Builder;Landroid/app/Notification;)V
 
     return-object v0

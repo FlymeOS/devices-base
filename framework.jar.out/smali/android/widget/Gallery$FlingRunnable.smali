@@ -95,6 +95,7 @@
 
     .line 1479
     :cond_0
+
     invoke-direct/range {p0 .. p1}, Landroid/widget/Gallery$FlingRunnable;->mzEndFling(Z)V
 
     return-void

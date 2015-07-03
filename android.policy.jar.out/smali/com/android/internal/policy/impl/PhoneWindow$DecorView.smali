@@ -1781,7 +1781,13 @@
 
     move-result v6
 
-    if-nez v6, :cond_flyme_0
+    if-eqz v6, :cond_flyme_0
+
+    const/4 v5, 0x1
+
+    return v5
+
+    :cond_flyme_0
 
     if-nez v2, :cond_0
 
@@ -1830,11 +1836,6 @@
     move-result v5
 
     goto :goto_1
-
-    :cond_flyme_0
-    const/4 v5, 0x1
-
-    return v5
 .end method
 
 .method public dispatchKeyShortcutEvent(Landroid/view/KeyEvent;)Z
@@ -4300,7 +4301,13 @@
 
     move-result v2
 
-    if-eqz v2, :cond_flyme_0
+    if-nez v2, :cond_flyme_0
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_flyme_0
 
     .line 2299
     if-ne v0, v1, :cond_0
@@ -4322,11 +4329,6 @@
     move-result v1
 
     goto :goto_0
-
-    :cond_flyme_0
-    const/4 v1, 0x1
-
-    return v1
 .end method
 
 .method public superDispatchKeyShortcutEvent(Landroid/view/KeyEvent;)Z

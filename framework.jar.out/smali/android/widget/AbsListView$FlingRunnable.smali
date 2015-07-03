@@ -287,6 +287,7 @@
 
     .line 4447
     :cond_0
+
     invoke-direct/range {p0 .. p0}, Landroid/widget/AbsListView$FlingRunnable;->mzEndFling()V
 
     return-void
@@ -1029,9 +1030,8 @@
 
     invoke-virtual {v0, p0}, Landroid/widget/AbsListView;->postOnAnimation(Ljava/lang/Runnable;)V
 
-    .line 4377
     :cond_flyme_0
-
+    .line 4377
     iget-object v0, p0, Landroid/widget/AbsListView$FlingRunnable;->this$0:Landroid/widget/AbsListView;
 
     # getter for: Landroid/widget/AbsListView;->mFlingStrictSpan:Landroid/os/StrictMode$Span;
@@ -1055,6 +1055,7 @@
 
     .line 4380
     :cond_0
+
     invoke-direct/range {p0 .. p0}, Landroid/widget/AbsListView$FlingRunnable;->mzStart()V
 
     return-void

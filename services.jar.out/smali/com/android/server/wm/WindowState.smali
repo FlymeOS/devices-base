@@ -907,6 +907,9 @@
     .line 467
     .end local v7    # "e":Landroid/os/RemoteException;
     :goto_8
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowState$Injector;->newInstanceWindowStateExt(Lcom/android/server/wm/WindowState;)V
+
     return-void
 
     .line 393
@@ -1265,8 +1268,6 @@
     invoke-direct {v11, v10, p0, v12}, Lcom/android/server/input/InputWindowHandle;-><init>(Lcom/android/server/input/InputApplicationHandle;Ljava/lang/Object;I)V
 
     iput-object v11, p0, Lcom/android/server/wm/WindowState;->mInputWindowHandle:Lcom/android/server/input/InputWindowHandle;
-
-    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowState$Injector;->newInstanceWindowStateExt(Lcom/android/server/wm/WindowState;)V
 
     goto/16 :goto_8
 
@@ -1786,9 +1787,9 @@
 
     invoke-static {v1, v0, v4}, Landroid/view/Gravity;->applyDisplay(ILandroid/graphics/Rect;Landroid/graphics/Rect;)V
 
-    .line 582
     invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowState$Injector;->computeFrameLw(Lcom/android/server/wm/WindowState;)V
 
+    .line 582
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/android/server/wm/WindowState;->mContentFrame:Landroid/graphics/Rect;

@@ -81,7 +81,13 @@
 
     move-result v3
 
-    if-eqz v3, :cond_flyme_0
+    if-nez v3, :cond_flyme_0
+
+    const/4 v3, 0x0
+
+    return v3
+
+    :cond_flyme_0
 
     if-nez v0, :cond_1
 
@@ -187,12 +193,6 @@
     invoke-virtual {v3, v4}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     goto :goto_0
-
-    :cond_flyme_0
-
-    const/4 v3, 0x0
-
-    return v3
 .end method
 
 .method private mzOnTouch(Landroid/view/MotionEvent;)Z

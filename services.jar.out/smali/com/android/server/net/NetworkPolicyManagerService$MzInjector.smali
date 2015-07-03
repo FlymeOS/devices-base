@@ -260,7 +260,7 @@
     const/4 v9, 0x0
 
     .line 2436
-    invoke-static {p1}, Lcom/android/server/net/NetworkPolicyManagerService;->isUidValidForRules(I)Z
+    invoke-virtual {p0, p1}, Lcom/android/server/net/NetworkPolicyManagerService;->mzInvokeMethodIsUidValidForRules(I)Z
 
     move-result v10
 

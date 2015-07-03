@@ -542,7 +542,11 @@
 
     move-result v1
 
-    if-nez v1, :cond_flyme_0
+    if-eqz v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     new-instance v1, Lcom/android/internal/app/WindowDecorActionBar;
 
@@ -580,10 +584,6 @@
     invoke-virtual {v1, v2}, Landroid/view/Window;->setDefaultLogo(I)V
 
     goto :goto_0
-
-    :cond_flyme_0
-
-    return-void
 .end method
 
 .method private isTopOfTask()Z
@@ -10615,4 +10615,3 @@
     .line 6291
     return-void
 .end method
-

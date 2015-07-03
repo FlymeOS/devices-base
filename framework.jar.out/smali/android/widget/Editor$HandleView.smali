@@ -1042,7 +1042,6 @@
 
     .line 3376
     :cond_0
-    :cond_flyme_0
     :goto_0
     return-void
 
@@ -1067,7 +1066,11 @@
 
     move-result v4
 
-    if-nez v4, :cond_flyme_0
+    if-eqz v4, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     if-eqz v2, :cond_3
 

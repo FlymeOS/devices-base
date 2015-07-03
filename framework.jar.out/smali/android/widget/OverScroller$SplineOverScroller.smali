@@ -2160,9 +2160,7 @@
 
     invoke-direct {v0, v2, v3}, Landroid/widget/OverScroller$SplineOverScroller;->mzQuintic(J)I
 
-    move-result v18
-
-    move/from16 v0, v18
+    move-result v0
 
     int-to-double v6, v0
 

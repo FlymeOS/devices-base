@@ -12437,6 +12437,7 @@
 
     .line 1111
     :cond_1
+
     invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/impl/PhoneWindowManager$FlymeInjector;->initExtFlymeFields(Lcom/android/internal/policy/impl/PhoneWindowManager;Landroid/content/Context;)V
 
     return-void
@@ -14504,6 +14505,7 @@
     goto/16 :goto_1
 
     :cond_flyme_1
+
     move-object/from16 v0, p0
 
     move-object/from16 v1, p2
@@ -14519,6 +14521,7 @@
     return-wide v6
 
     :cond_flyme_2
+
     const-wide/16 v6, 0x0
 
     return-wide v6

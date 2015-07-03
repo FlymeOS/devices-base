@@ -518,6 +518,7 @@
     .end local v0    # "container":Landroid/os/Bundle;
     .end local v1    # "preferenceScreen":Landroid/preference/PreferenceScreen;
     :cond_1
+
     invoke-direct/range {p0 .. p0}, Landroid/preference/PreferenceFragment;->mzResetListViewPaddingTop()V
 
     return-void
