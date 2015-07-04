@@ -134,10 +134,10 @@ override_property += \
 
 
 # The property decide your ID on the backend server which statistical data for your device.
-# The default value is FlymeRomer.
-# You should configure the property according to your ID, ie, replace "FlymeRomer" with your ID.
-#override_property += \
-#    ro.flyme.romer=FlymeRomer
+# The default value is Flyme.
+# You should configure the property according to your ID, ie, replace "Flyme" with your ID.
+override_property += \
+    ro.flyme.romer=Flyme
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
