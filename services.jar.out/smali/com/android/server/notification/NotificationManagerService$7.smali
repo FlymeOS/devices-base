@@ -437,7 +437,7 @@
 
     iget-object v2, p0, Lcom/android/server/notification/NotificationManagerService$7;->val$notification:Landroid/app/Notification;
 
-    invoke-virtual {v1, v2, v0, v13}, Lcom/android/server/notification/NotificationManagerService;->hookEnqueueNotification(Landroid/app/Notification;Landroid/service/notification/StatusBarNotification;Lcom/android/server/notification/NotificationRecord;)V
+    invoke-virtual {v1, v2, v11, v0, v13}, Lcom/android/server/notification/NotificationManagerService;->hookEnqueueNotification(Landroid/app/Notification;Lcom/android/server/notification/NotificationRecord;Landroid/service/notification/StatusBarNotification;Lcom/android/server/notification/NotificationRecord;)V
 
     .line 1826
     monitor-exit v14
