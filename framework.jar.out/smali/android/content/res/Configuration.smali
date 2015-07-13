@@ -2882,12 +2882,12 @@
     .line 1059
     or-int/lit16 v0, v0, 0x1000
 
+    .line 1062
+    :cond_12
     invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInject;->diff(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
 
     move-result v0
 
-    .line 1062
-    :cond_12
     return v0
 .end method
 
