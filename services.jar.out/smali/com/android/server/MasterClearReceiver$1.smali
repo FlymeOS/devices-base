@@ -15,8 +15,6 @@
 
 
 # instance fields
-.field final synthetic val$intent:Landroid/content/Intent;
-
 .field final synthetic this$0:Lcom/android/server/MasterClearReceiver;
 
 .field final synthetic val$context:Landroid/content/Context;
@@ -60,9 +58,7 @@
 
     iget-object v3, p0, Lcom/android/server/MasterClearReceiver$1;->val$reason:Ljava/lang/String;
 
-    iget-object v2, p0, Lcom/android/server/MasterClearReceiver$1;->val$intent:Landroid/content/Intent;
-
-    invoke-static {v1, v2}, Landroid/os/RecoverySystem;->mzRebootWipeUserData(Landroid/content/Context;Landroid/content/Intent;)V
+    invoke-static {v1, v2, v3}, Landroid/os/RecoverySystem;->rebootWipeUserData(Landroid/content/Context;ZLjava/lang/String;)V
 
     .line 50
     const-string v1, "MasterClear"

@@ -452,14 +452,14 @@
 
     if-ne v7, v8, :cond_1
 
-    .line 2644
+    .line 2645
     :cond_0
     :goto_0
     return v5
 
     .line 2634
     :cond_1
-    const/4 v7, 0x3
+    const/4 v7, 0x4
 
     new-array v0, v7, [Ljava/lang/String;
 
@@ -477,7 +477,13 @@
 
     aput-object v8, v0, v7
 
-    .line 2639
+    const/4 v7, 0x3
+
+    const-string v8, "com.glsc2"
+
+    aput-object v8, v0, v7
+
+    .line 2640
     .local v0, "APPS_INCOMPATIBLE_MZ":[Ljava/lang/String;
     move-object v1, v0
 
@@ -493,7 +499,7 @@
 
     aget-object v4, v1, v2
 
-    .line 2640
+    .line 2641
     .local v4, "s":Ljava/lang/String;
     iget-object v7, p0, Landroid/view/inputmethod/EditorInfo;->packageName:Ljava/lang/String;
 
@@ -503,7 +509,7 @@
 
     if-nez v7, :cond_0
 
-    .line 2639
+    .line 2640
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_1
@@ -512,7 +518,7 @@
     :cond_2
     move v5, v6
 
-    .line 2644
+    .line 2645
     goto :goto_0
 .end method
 

@@ -92,7 +92,7 @@
     .line 7695
     iput v9, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mFilterColorWarning:I
 
-    .line 7819
+    .line 7823
     const/4 v6, -0x1
 
     iput v6, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mState:I
@@ -103,13 +103,13 @@
     .line 7706
     if-nez p2, :cond_0
 
-    .line 7758
+    .line 7762
     :goto_0
     return-void
 
     .line 7707
     :cond_0
-    if-eqz p3, :cond_4
+    if-eqz p3, :cond_5
 
     .line 7708
     invoke-virtual {p1}, Landroid/widget/AbsListView;->getResources()Landroid/content/res/Resources;
@@ -243,7 +243,7 @@
 
     move-result v7
 
-    if-le v6, v7, :cond_3
+    if-le v6, v7, :cond_4
 
     .line 7736
     new-array v2, v11, [I
@@ -321,13 +321,24 @@
     :cond_2
     iget-object v6, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mHightLightNormal:Landroid/graphics/drawable/Drawable;
 
+    if-eqz v6, :cond_3
+
+    .line 7754
+    iget-object v6, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mHightLightNormal:Landroid/graphics/drawable/Drawable;
+
     iget v7, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mWidth:I
 
     iget v8, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mHeight:I
 
     invoke-virtual {v6, v9, v9, v7, v8}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 7754
+    .line 7756
+    :cond_3
+    iget-object v6, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mHightLightWarning:Landroid/graphics/drawable/Drawable;
+
+    if-eqz v6, :cond_4
+
+    .line 7757
     iget-object v6, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mHightLightWarning:Landroid/graphics/drawable/Drawable;
 
     iget v7, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mWidth:I
@@ -336,16 +347,16 @@
 
     invoke-virtual {v6, v9, v9, v7, v8}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
 
-    .line 7757
+    .line 7761
     .end local v0    # "dragLocation":[I
     .end local v2    # "listLocation":[I
-    :cond_3
+    :cond_4
     invoke-direct {p0}, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->createBitmapCache()V
 
     goto/16 :goto_0
 
     .line 7725
-    :cond_4
+    :cond_5
     invoke-virtual {p2}, Landroid/view/View;->getWidth()I
 
     move-result v6
@@ -385,7 +396,7 @@
 
     iput v6, p0, Landroid/widget/AbsListView$ListViewDragShadowBuilder;->mFilterColorWarning:I
 
-    goto :goto_1
+    goto/16 :goto_1
 .end method
 
 .method private createBitmapCache()V
