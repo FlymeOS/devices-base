@@ -3511,3 +3511,13 @@
 
     return-object v0
 .end method
+
+.method mzGetFieldService()Lcom/android/server/media/MediaSessionService;
+    .locals 1
+
+    .prologue
+    .line 829
+    iget-object v0, p0, Lcom/android/server/media/MediaSessionRecord;->mService:Lcom/android/server/media/MediaSessionService;
+
+    return-object v0
+.end method
