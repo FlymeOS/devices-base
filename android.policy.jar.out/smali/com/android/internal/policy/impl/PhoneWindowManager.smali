@@ -187,6 +187,8 @@
 
 .field mzPwm:Lcom/android/internal/policy/impl/MzPhoneWindowManager;
 
+.field mMzKeyguardSecure:Z
+
 .field mAccelerometerDefault:Z
 
 .field mAccessibilityManager:Landroid/view/accessibility/AccessibilityManager;
@@ -6004,7 +6006,7 @@
     .line 3803
     .local v2, "dismissKeyguard":Z
     :goto_3
-    invoke-virtual {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->isKeyguardSecure()Z
+    invoke-static {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$FlymeInjector;->mzGetKeyguardSecure(Lcom/android/internal/policy/impl/PhoneWindowManager;)Z
 
     move-result v4
 
@@ -8036,6 +8038,8 @@
 
     .line 3760
     iput-object v2, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mWinShowWhenLocked:Landroid/view/WindowManagerPolicy$WindowState;
+
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$FlymeInjector;->mzSetKeyguardSecure(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
 
     .line 3761
     return-void
@@ -10651,7 +10655,7 @@
 
     if-eqz v7, :cond_11
 
-    invoke-virtual {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->isKeyguardSecure()Z
+    invoke-static {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$FlymeInjector;->mzGetKeyguardSecure(Lcom/android/internal/policy/impl/PhoneWindowManager;)Z
 
     move-result v7
 

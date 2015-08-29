@@ -479,7 +479,7 @@
     .line 6629
     .local v0, "dismissKeyguard":Z
     :goto_0
-    invoke-virtual {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->isKeyguardSecure()Z
+    invoke-static {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$FlymeInjector;->mzGetKeyguardSecure(Lcom/android/internal/policy/impl/PhoneWindowManager;)Z
 
     move-result v2
 
@@ -1112,4 +1112,31 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method static mzGetKeyguardSecure(Lcom/android/internal/policy/impl/PhoneWindowManager;)Z
+    .locals 1
+    .param p0, "pwm"    # Lcom/android/internal/policy/impl/PhoneWindowManager;
+
+    .prologue
+    .line 6776
+    iget-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mMzKeyguardSecure:Z
+
+    return v0
+.end method
+
+.method static mzSetKeyguardSecure(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
+    .locals 1
+    .param p0, "pwm"    # Lcom/android/internal/policy/impl/PhoneWindowManager;
+
+    .prologue
+    .line 6772
+    invoke-virtual {p0}, Lcom/android/internal/policy/impl/PhoneWindowManager;->isKeyguardSecure()Z
+
+    move-result v0
+
+    iput-boolean v0, p0, Lcom/android/internal/policy/impl/PhoneWindowManager;->mMzKeyguardSecure:Z
+
+    .line 6773
+    return-void
 .end method
