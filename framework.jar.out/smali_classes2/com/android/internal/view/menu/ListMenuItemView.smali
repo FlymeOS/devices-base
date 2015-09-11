@@ -959,18 +959,22 @@
     .line 328
     iget-object v0, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mTitleView:Landroid/widget/TextView;
 
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mTitleView:Landroid/widget/TextView;
+
     invoke-virtual {v0}, Landroid/widget/TextView;->getTextColors()Landroid/content/res/ColorStateList;
 
     move-result-object v0
 
     iput-object v0, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mMzTextColor:Landroid/content/res/ColorStateList;
 
-    .line 329
+    .line 332
+    :cond_0
     iget-object v0, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mShortcutView:Landroid/widget/TextView;
 
-    if-nez v0, :cond_0
+    if-nez v0, :cond_1
 
-    .line 330
     sget v0, Lcom/flyme/internal/R$id;->shortcut:I
 
     invoke-virtual {p0, v0}, Lcom/android/internal/view/menu/ListMenuItemView;->findViewById(I)Landroid/view/View;
@@ -981,8 +985,7 @@
 
     iput-object v0, p0, Lcom/android/internal/view/menu/ListMenuItemView;->mShortcutView:Landroid/widget/TextView;
 
-    .line 332
-    :cond_0
+    :cond_1
     return-void
 .end method
 
