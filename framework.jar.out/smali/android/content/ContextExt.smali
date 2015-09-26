@@ -14,6 +14,8 @@
 
 .field public static final FLYME_STATUS_BAR_SERVICE:Ljava/lang/String; = "flyme_statusbar"
 
+.field public static final FLYME_THEME_SERVICE:Ljava/lang/String; = "flyme_theme_service"
+
 .field public static final FLYME_WALLPAPER_SERVICE:Ljava/lang/String; = "flyme_wallpaper"
 
 .field public static final GESTURE_SERVICE:Ljava/lang/String; = "gesture_manager"
@@ -34,7 +36,6 @@
     .locals 0
 
     .prologue
-    .line 2
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
