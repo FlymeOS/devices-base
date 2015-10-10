@@ -2668,6 +2668,8 @@
     :cond_1c
     if-nez v54, :cond_1d
 
+    goto :goto_flyme_0
+
     .line 901
     :try_start_37
     const-string v4, "SystemServer"
@@ -2704,6 +2706,7 @@
     .restart local v34    # "atlas":Lcom/android/server/AssetAtlasService;
     :cond_1d
     :goto_26
+    :goto_flyme_0
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/SystemServer;->mPackageManager:Landroid/content/pm/PackageManager;
