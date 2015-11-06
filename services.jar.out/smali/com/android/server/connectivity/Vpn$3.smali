@@ -233,16 +233,3 @@
 
     throw v0
 .end method
-
-.method public interfaceLinkStateChanged(Ljava/lang/String;Z)V
-    .locals 0
-    .param p1, "iface"    # Ljava/lang/String;
-    .param p2, "up"    # Z
-
-    .prologue
-    .line 724
-    invoke-virtual {p0, p1, p2}, Lcom/android/server/connectivity/Vpn$3;->interfaceStatusChanged(Ljava/lang/String;Z)V
-
-    .line 725
-    return-void
-.end method
