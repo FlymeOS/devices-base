@@ -17,6 +17,8 @@
 
 
 # static fields
+.field public static final STATE_ALERTING:I = 0x7
+
 .field public static final CAPABILITY_DISCONNECT_FROM_CONFERENCE:I = 0x2000
 
 .field public static final CAPABILITY_GENERIC_CONFERENCE:I = 0x4000
@@ -459,6 +461,8 @@
 
     .line 242
     :cond_b
+    invoke-static {p0, v0}, Landroid/telecom/Connection;->mzAddCapabilitiesToString(ILjava/lang/StringBuilder;)V
+
     const v1, 0x8000
 
     invoke-static {p0, v1}, Landroid/telecom/Connection;->can(II)Z

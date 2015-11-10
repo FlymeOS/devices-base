@@ -4669,6 +4669,8 @@
     .line 23514
     const/16 v0, 0x27
 
+    add-int/lit8 v0, v0, 0x1
+
     new-array v0, v0, [I
 
     fill-array-data v0, :array_e
@@ -6992,6 +6994,7 @@
         0x1010476
         0x10104b2
         0x11600af
+        #android:attr@needAccessControl#t
     .end array-data
 
     .line 24736

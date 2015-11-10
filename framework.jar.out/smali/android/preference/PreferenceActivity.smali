@@ -355,7 +355,7 @@
 
     .line 1220
     .local v1, "transaction":Landroid/app/FragmentTransaction;
-    const/16 v2, 0x1003
+    const/4 v2, 0x0
 
     invoke-virtual {v1, v2}, Landroid/app/FragmentTransaction;->setTransition(I)Landroid/app/FragmentTransaction;
 
@@ -2091,6 +2091,8 @@
     .end local v16    # "initialTitleStr":Ljava/lang/CharSequence;
     :cond_2
     :goto_3
+    invoke-direct/range {p0 .. p0}, Landroid/preference/PreferenceActivity;->mzSetScrollPanelVisibility()V
+
     invoke-virtual/range {p0 .. p0}, Landroid/preference/PreferenceActivity;->getIntent()Landroid/content/Intent;
 
     move-result-object v17
@@ -3843,4 +3845,242 @@
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
+.end method
+
+.method protected getCurrentHeader()Landroid/preference/PreferenceActivity$Header;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/preference/PreferenceActivity;->mCurHeader:Landroid/preference/PreferenceActivity$Header;
+
+    return-object v0
+.end method
+
+.method public setActionBarToTop(Z)V
+    .locals 11
+    .param p1, "toTop"    # Z
+
+    .prologue
+    const/4 v8, 0x1
+
+    const/4 v10, 0x0
+
+    invoke-super {p0, p1}, Landroid/app/ListActivity;->setActionBarToTop(Z)V
+
+    invoke-virtual {p0}, Landroid/preference/PreferenceActivity;->getListView()Landroid/widget/ListView;
+
+    move-result-object v4
+
+    .local v4, "prefsListView":Landroid/widget/ListView;
+    if-nez v4, :cond_0
+
+    :goto_0
+    return-void
+
+    :cond_0
+    invoke-virtual {p0}, Landroid/preference/PreferenceActivity;->getPreferenceScreen()Landroid/preference/PreferenceScreen;
+
+    move-result-object v3
+
+    .local v3, "preferenceScreen":Landroid/preference/PreferenceScreen;
+    invoke-virtual {v4}, Landroid/widget/ListView;->getPaddingTop()I
+
+    move-result v1
+
+    .local v1, "marginToActionBar":I
+    if-eqz v3, :cond_1
+
+    invoke-virtual {v3}, Landroid/preference/PreferenceScreen;->getPreferenceCount()I
+
+    move-result v6
+
+    if-lt v6, v8, :cond_1
+
+    invoke-virtual {v3, v10}, Landroid/preference/PreferenceScreen;->getPreference(I)Landroid/preference/Preference;
+
+    move-result-object v2
+
+    .local v2, "preference":Landroid/preference/Preference;
+    if-eqz v2, :cond_2
+
+    instance-of v6, v2, Landroid/preference/PreferenceCategory;
+
+    if-eqz v6, :cond_2
+
+    invoke-virtual {p0}, Landroid/preference/PreferenceActivity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v6
+
+    sget v7, Lcom/flyme/internal/R$dimen;->mz_preferencefragment_category_margin_top:I
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v6
+
+    add-int/2addr v1, v6
+
+    .end local v2    # "preference":Landroid/preference/Preference;
+    :cond_1
+    :goto_1
+    if-eqz p1, :cond_3
+
+    invoke-virtual {p0}, Landroid/preference/PreferenceActivity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v6
+
+    sget v7, Lcom/flyme/internal/R$dimen;->mz_action_bar_default_height:I
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v0
+
+    .local v0, "actionBarHight":I
+    invoke-virtual {p0}, Landroid/preference/PreferenceActivity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v6
+
+    const-string v7, "status_bar_height"
+
+    invoke-static {v8, v7}, Lcom/meizu/util/InternalResUtils;->getInternalResId(ILjava/lang/String;)I
+
+    move-result v7
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v5
+
+    .local v5, "statusBarHeight":I
+    invoke-virtual {v4}, Landroid/widget/ListView;->getPaddingLeft()I
+
+    move-result v6
+
+    add-int v7, v0, v5
+
+    add-int/2addr v7, v1
+
+    invoke-virtual {v4}, Landroid/widget/ListView;->getPaddingRight()I
+
+    move-result v8
+
+    invoke-virtual {v4}, Landroid/widget/ListView;->getPaddingBottom()I
+
+    move-result v9
+
+    invoke-virtual {v4, v6, v7, v8, v9}, Landroid/widget/ListView;->setPadding(IIII)V
+
+    invoke-virtual {v4, v10}, Landroid/widget/ListView;->setClipToPadding(Z)V
+
+    goto :goto_0
+
+    .end local v0    # "actionBarHight":I
+    .end local v5    # "statusBarHeight":I
+    .restart local v2    # "preference":Landroid/preference/Preference;
+    :cond_2
+    if-eqz v2, :cond_1
+
+    instance-of v6, v2, Landroid/preference/Preference;
+
+    if-eqz v6, :cond_1
+
+    invoke-virtual {p0}, Landroid/preference/PreferenceActivity;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v6
+
+    sget v7, Lcom/flyme/internal/R$dimen;->mz_preferencefragment_margin_top:I
+
+    invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
+
+    move-result v6
+
+    add-int/2addr v1, v6
+
+    goto :goto_1
+
+    .end local v2    # "preference":Landroid/preference/Preference;
+    :cond_3
+    invoke-virtual {v4}, Landroid/widget/ListView;->getPaddingLeft()I
+
+    move-result v6
+
+    invoke-virtual {v4}, Landroid/widget/ListView;->getPaddingRight()I
+
+    move-result v7
+
+    invoke-virtual {v4}, Landroid/widget/ListView;->getPaddingBottom()I
+
+    move-result v8
+
+    invoke-virtual {v4, v6, v1, v7, v8}, Landroid/widget/ListView;->setPadding(IIII)V
+
+    goto :goto_0
+.end method
+
+.method protected setListFooter(Landroid/widget/FrameLayout;)V
+    .locals 0
+    .param p1, "listfooter"    # Landroid/widget/FrameLayout;
+
+    .prologue
+    iput-object p1, p0, Landroid/preference/PreferenceActivity;->mListFooter:Landroid/widget/FrameLayout;
+
+    return-void
+.end method
+
+.method protected setPrefsContainer(Landroid/view/ViewGroup;)V
+    .locals 0
+    .param p1, "prefsContainer"    # Landroid/view/ViewGroup;
+
+    .prologue
+    iput-object p1, p0, Landroid/preference/PreferenceActivity;->mPrefsContainer:Landroid/view/ViewGroup;
+
+    invoke-direct {p0}, Landroid/preference/PreferenceActivity;->mzSetScrollPanelVisibility()V
+
+    return-void
+.end method
+
+.method private mzSetScrollPanelVisibility()V
+    .locals 3
+
+    .prologue
+    iget-object v1, p0, Landroid/preference/PreferenceActivity;->mPrefsContainer:Landroid/view/ViewGroup;
+
+    if-eqz v1, :cond_0
+
+    iget-object v1, p0, Landroid/preference/PreferenceActivity;->mPrefsContainer:Landroid/view/ViewGroup;
+
+    invoke-virtual {v1}, Landroid/view/ViewGroup;->getParent()Landroid/view/ViewParent;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/view/ViewGroup;
+
+    .local v0, "v":Landroid/view/ViewGroup;
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/Class;->getName()Ljava/lang/String;
+
+    move-result-object v1
+
+    const-string v2, "com.meizu.widget.ScrollPane"
+
+    invoke-virtual {v1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    iget-object v1, p0, Landroid/preference/PreferenceActivity;->mPrefsContainer:Landroid/view/ViewGroup;
+
+    invoke-virtual {v1}, Landroid/view/ViewGroup;->getVisibility()I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->setVisibility(I)V
+
+    .end local v0    # "v":Landroid/view/ViewGroup;
+    :cond_0
+    return-void
 .end method

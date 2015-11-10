@@ -15,6 +15,8 @@
 
 
 # static fields
+.field public static final MEIZU_KEYGUARD_LOCK:Ljava/lang/String; = "meizu_keyguard_lock"
+
 .field public static final ACCESSIBILITY_CAPTIONING_BACKGROUND_COLOR:Ljava/lang/String; = "accessibility_captioning_background_color"
 
 .field public static final ACCESSIBILITY_CAPTIONING_EDGE_COLOR:Ljava/lang/String; = "accessibility_captioning_edge_color"
@@ -1375,6 +1377,8 @@
     .line 4848
     const/16 v0, 0x29
 
+    add-int/lit8 v0, v0, 0x1
+
     new-array v0, v0, [Ljava/lang/String;
 
     const-string v1, "bugreport_in_power_menu"
@@ -1610,6 +1614,12 @@
     const/16 v1, 0x28
 
     const-string/jumbo v2, "sleep_timeout"
+
+    aput-object v2, v0, v1
+
+    add-int/lit8 v1, v1, 0x1
+
+    const-string v2, "meizu_keyguard_lock"
 
     aput-object v2, v0, v1
 

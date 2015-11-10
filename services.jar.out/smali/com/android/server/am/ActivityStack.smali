@@ -808,7 +808,7 @@
     .line 1058
     iget-object v1, p0, Lcom/android/server/am/ActivityStack;->mStackSupervisor:Lcom/android/server/am/ActivityStackSupervisor;
 
-    invoke-virtual {v1}, Lcom/android/server/am/ActivityStackSupervisor;->notifyActivityDrawnForKeyguard()V
+    invoke-virtual {v1}, Lcom/android/server/am/ActivityStackSupervisor;->mzNotifyActivityDrawnForKeyguard()V
 
     .line 1062
     :cond_1

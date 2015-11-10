@@ -22,6 +22,10 @@
 
 
 # instance fields
+.field mDoFling:Z
+
+.field mMzOverScrollMode:I
+
 .field private final mCheckFlywheel:Ljava/lang/Runnable;
 
 .field private mLastFlingY:I
@@ -58,6 +62,8 @@
     invoke-direct {v0, v1}, Landroid/widget/OverScroller;-><init>(Landroid/content/Context;)V
 
     iput-object v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mScroller:Landroid/widget/OverScroller;
+
+    invoke-direct/range {p0 .. p0}, Landroid/widget/AbsListView$FlingRunnable;->initExtFlymeFields()V
 
     .line 4386
     return-void
@@ -281,6 +287,9 @@
 
     .line 4474
     :cond_0
+
+    invoke-direct/range {p0 .. p0}, Landroid/widget/AbsListView$FlingRunnable;->mzEndFling()V
+
     return-void
 .end method
 
@@ -296,6 +305,8 @@
     const-wide/16 v2, 0x28
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/widget/AbsListView;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    invoke-direct/range {p0 .. p0}, Landroid/widget/AbsListView$FlingRunnable;->mzEndFling2()V
 
     .line 4478
     return-void
@@ -337,6 +348,8 @@
 
     .line 4493
     :pswitch_2
+    invoke-direct/range {p0 .. p0}, Landroid/widget/AbsListView$FlingRunnable;->mzSetFieldDoFling()V
+
     move-object/from16 v0, p0
 
     iget-object v2, v0, Landroid/widget/AbsListView$FlingRunnable;->this$0:Landroid/widget/AbsListView;
@@ -1008,11 +1021,16 @@
 
     iput v1, v0, Landroid/widget/AbsListView;->mTouchMode:I
 
+    iget-boolean v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mDoFling:Z
+
+    if-nez v0, :cond_flyme_0
+
     .line 4395
     iget-object v0, p0, Landroid/widget/AbsListView$FlingRunnable;->this$0:Landroid/widget/AbsListView;
 
     invoke-virtual {v0, p0}, Landroid/widget/AbsListView;->postOnAnimation(Ljava/lang/Runnable;)V
 
+    :cond_flyme_0
     .line 4404
     iget-object v0, p0, Landroid/widget/AbsListView$FlingRunnable;->this$0:Landroid/widget/AbsListView;
 
@@ -1037,6 +1055,9 @@
 
     .line 4407
     :cond_0
+
+    invoke-direct/range {p0 .. p0}, Landroid/widget/AbsListView$FlingRunnable;->mzStart()V
+
     return-void
 
     .end local v2    # "initialY":I
@@ -1249,4 +1270,99 @@
     invoke-virtual {v0, v1}, Landroid/widget/AbsListView;->reportScrollStateChange(I)V
 
     goto :goto_0
+.end method
+
+.method private initExtFlymeFields()V
+    .locals 1
+
+    .prologue
+    const/4 v0, -0x1
+
+    iput v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mMzOverScrollMode:I
+
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mDoFling:Z
+
+    return-void
+.end method
+
+.method private mzEndFling()V
+    .locals 2
+
+    .prologue
+    iget v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mMzOverScrollMode:I
+
+    if-ltz v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/AbsListView$FlingRunnable;->this$0:Landroid/widget/AbsListView;
+
+    iget v1, p0, Landroid/widget/AbsListView$FlingRunnable;->mMzOverScrollMode:I
+
+    invoke-virtual {v0, v1}, Landroid/widget/AbsListView;->setOverScrollMode(I)V
+
+    const/4 v0, -0x1
+
+    iput v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mMzOverScrollMode:I
+
+    :cond_0
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mDoFling:Z
+
+    return-void
+.end method
+
+.method private mzEndFling2()V
+    .locals 2
+
+    .prologue
+    iget v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mMzOverScrollMode:I
+
+    if-ltz v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/AbsListView$FlingRunnable;->this$0:Landroid/widget/AbsListView;
+
+    iget v1, p0, Landroid/widget/AbsListView$FlingRunnable;->mMzOverScrollMode:I
+
+    invoke-virtual {v0, v1}, Landroid/widget/AbsListView;->setOverScrollMode(I)V
+
+    const/4 v0, -0x1
+
+    iput v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mMzOverScrollMode:I
+
+    :cond_0
+    return-void
+.end method
+
+.method private mzSetFieldDoFling()V
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mDoFling:Z
+
+    return-void
+.end method
+
+.method private mzStart()V
+    .locals 2
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/AbsListView$FlingRunnable;->this$0:Landroid/widget/AbsListView;
+
+    invoke-virtual {v0}, Landroid/widget/AbsListView;->getOverScrollMode()I
+
+    move-result v0
+
+    iput v0, p0, Landroid/widget/AbsListView$FlingRunnable;->mMzOverScrollMode:I
+
+    iget-object v0, p0, Landroid/widget/AbsListView$FlingRunnable;->this$0:Landroid/widget/AbsListView;
+
+    const/4 v1, 0x2
+
+    invoke-virtual {v0, v1}, Landroid/widget/AbsListView;->setOverScrollMode(I)V
+
+    return-void
 .end method
