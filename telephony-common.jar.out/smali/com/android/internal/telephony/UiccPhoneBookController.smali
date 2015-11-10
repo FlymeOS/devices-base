@@ -603,3 +603,217 @@
 
     goto :goto_0
 .end method
+
+.method public updateAdnRecordsWithContentValuesInEfBySearch(ILandroid/content/ContentValues;Ljava/lang/String;)Z
+    .locals 1
+    .param p1, "efid"    # I
+    .param p2, "values"    # Landroid/content/ContentValues;
+    .param p3, "pin2"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 137
+    invoke-direct {p0}, Lcom/android/internal/telephony/UiccPhoneBookController;->getDefaultSubscription()I
+
+    move-result v0
+
+    invoke-virtual {p0, v0, p1, p2, p3}, Lcom/android/internal/telephony/UiccPhoneBookController;->updateAdnRecordsWithContentValuesInEfBySearchUsingSubId(IILandroid/content/ContentValues;Ljava/lang/String;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public updateAdnRecordsWithContentValuesInEfBySearchUsingSubId(IILandroid/content/ContentValues;Ljava/lang/String;)Z
+    .locals 4
+    .param p1, "subId"    # I
+    .param p2, "efid"    # I
+    .param p3, "values"    # Landroid/content/ContentValues;
+    .param p4, "pin2"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 146
+    invoke-direct {p0, p1}, Lcom/android/internal/telephony/UiccPhoneBookController;->getIccPhoneBookInterfaceManagerProxy(I)Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;
+
+    move-result-object v0
+
+    .line 148
+    .local v0, "iccPbkIntMgrProxy":Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;
+    if-eqz v0, :cond_0
+
+    .line 149
+    invoke-virtual {v0, p2, p3, p4}, Lcom/android/internal/telephony/IccPhoneBookInterfaceManagerProxy;->updateAdnRecordsWithContentValuesInEfBySearch(ILandroid/content/ContentValues;Ljava/lang/String;)Z
+
+    move-result v1
+
+    .line 154
+    :goto_0
+    return v1
+
+    .line 152
+    :cond_0
+    const-string v1, "UiccPhoneBookController"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "updateAdnRecordsWithContentValuesInEfBySearchUsingSubId iccPbkIntMgrProxy is null for Subscription:"
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2}, Landroid/telephony/Rlog;->e(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 154
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
+.method public getAdnRecordsInEfForSubscriber(JI)Ljava/util/List;
+    .locals 1
+    .param p1, "subId"    # J
+    .param p3, "efid"    # I
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(JI)",
+            "Ljava/util/List",
+            "<",
+            "Lcom/android/internal/telephony/uicc/AdnRecord;",
+            ">;"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 155
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0, p3}, Lcom/android/internal/telephony/UiccPhoneBookController;->getAdnRecordsInEfForSubscriber(II)Ljava/util/List;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getAdnRecordsSizeForSubscriber(JI)[I
+    .locals 1
+    .param p1, "subId"    # J
+    .param p3, "efid"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 131
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0, p3}, Lcom/android/internal/telephony/UiccPhoneBookController;->getAdnRecordsSizeForSubscriber(II)[I
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public updateAdnRecordsInEfByIndexForSubscriber(JILjava/lang/String;Ljava/lang/String;ILjava/lang/String;)Z
+    .locals 7
+    .param p1, "subId"    # J
+    .param p3, "efid"    # I
+    .param p4, "newTag"    # Ljava/lang/String;
+    .param p5, "newPhoneNumber"    # Ljava/lang/String;
+    .param p6, "index"    # I
+    .param p7, "pin2"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 107
+    long-to-int v1, p1
+
+    move-object v0, p0
+
+    move v2, p3
+
+    move-object v3, p4
+
+    move-object v4, p5
+
+    move v5, p6
+
+    move-object v6, p7
+
+    invoke-virtual/range {v0 .. v6}, Lcom/android/internal/telephony/UiccPhoneBookController;->updateAdnRecordsInEfByIndexForSubscriber(IILjava/lang/String;Ljava/lang/String;ILjava/lang/String;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public updateAdnRecordsInEfBySearchForSubscriber(JILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    .locals 9
+    .param p1, "subId"    # J
+    .param p3, "efid"    # I
+    .param p4, "oldTag"    # Ljava/lang/String;
+    .param p5, "oldPhoneNumber"    # Ljava/lang/String;
+    .param p6, "newTag"    # Ljava/lang/String;
+    .param p7, "newPhoneNumber"    # Ljava/lang/String;
+    .param p8, "pin2"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 76
+    long-to-int v1, p1
+
+    move-object v0, p0
+
+    move v2, p3
+
+    move-object v3, p4
+
+    move-object v4, p5
+
+    move-object v5, p6
+
+    move-object/from16 v6, p7
+
+    move-object/from16 v7, p8
+
+    invoke-virtual/range {v0 .. v7}, Lcom/android/internal/telephony/UiccPhoneBookController;->updateAdnRecordsInEfBySearchForSubscriber(IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+
+    move-result v0
+
+    return v0
+.end method

@@ -329,3 +329,28 @@
     .line 494
     return-void
 .end method
+
+.method public constructor <init>(J)V
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-direct {p0, v0}, Landroid/telephony/PhoneStateListener;-><init>(I)V
+
+    return-void
+.end method
+
+.method public constructor <init>(JLandroid/os/Looper;)V
+    .locals 1
+    .param p1, "subId"    # J
+    .param p3, "looper"    # Landroid/os/Looper;
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-direct {p0, v0, p3}, Landroid/telephony/PhoneStateListener;-><init>(ILandroid/os/Looper;)V
+
+    return-void
+.end method

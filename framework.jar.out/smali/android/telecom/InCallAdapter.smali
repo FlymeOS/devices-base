@@ -439,3 +439,16 @@
 
     goto :goto_0
 .end method
+
+.method public phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;)V
+    .locals 1
+    .param p1, "callId"    # Ljava/lang/String;
+    .param p2, "accountHandle"    # Landroid/telecom/PhoneAccountHandle;
+
+    .prologue
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, p1, p2, v0}, Landroid/telecom/InCallAdapter;->phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;Z)V
+
+    return-void
+.end method

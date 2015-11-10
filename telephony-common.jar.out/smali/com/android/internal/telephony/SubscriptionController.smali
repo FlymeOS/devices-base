@@ -7560,3 +7560,143 @@
     .line 1449
     return-void
 .end method
+
+.method public getPhoneId(J)I
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/SubscriptionController;->getPhoneId(I)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getSlotId(J)I
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/SubscriptionController;->getSlotId(I)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public setDataRoaming(IJ)I
+    .locals 2
+    .param p1, "roaming"    # I
+    .param p2, "subId"    # J
+
+    .prologue
+    long-to-int v0, p2
+
+    invoke-virtual {p0, p1, v0}, Lcom/android/internal/telephony/SubscriptionController;->setDataRoaming(II)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public setDefaultDataSubId(J)V
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/SubscriptionController;->setDefaultDataSubId(I)V
+
+    return-void
+.end method
+
+.method public setDefaultSmsSubId(J)V
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/SubscriptionController;->setDefaultSmsSubId(I)V
+
+    return-void
+.end method
+
+.method public setDefaultVoiceSubId(J)V
+    .locals 1
+    .param p1, "subId"    # J
+
+    .prologue
+    long-to-int v0, p1
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/SubscriptionController;->setDefaultVoiceSubId(I)V
+
+    return-void
+.end method
+
+.method public setDisplayName(Ljava/lang/String;J)I
+    .locals 2
+    .param p1, "displayName"    # Ljava/lang/String;
+    .param p2, "subId"    # J
+
+    .prologue
+    long-to-int v0, p2
+
+    invoke-virtual {p0, p1, v0}, Lcom/android/internal/telephony/SubscriptionController;->setDisplayName(Ljava/lang/String;I)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public setDisplayNameUsingSrc(Ljava/lang/String;JJ)I
+    .locals 2
+    .param p1, "displayName"    # Ljava/lang/String;
+    .param p2, "subId"    # J
+    .param p4, "nameSource"    # J
+
+    .prologue
+    long-to-int v0, p2
+
+    invoke-virtual {p0, p1, v0, p4, p5}, Lcom/android/internal/telephony/SubscriptionController;->setDisplayNameUsingSrc(Ljava/lang/String;IJ)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public setDisplayNumber(Ljava/lang/String;J)I
+    .locals 2
+    .param p1, "number"    # Ljava/lang/String;
+    .param p2, "subId"    # J
+
+    .prologue
+    long-to-int v0, p2
+
+    invoke-virtual {p0, p1, v0}, Lcom/android/internal/telephony/SubscriptionController;->setDisplayNumber(Ljava/lang/String;I)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public setMccMnc(Ljava/lang/String;J)I
+    .locals 2
+    .param p1, "mccMnc"    # Ljava/lang/String;
+    .param p2, "subId"    # J
+
+    .prologue
+    long-to-int v0, p2
+
+    invoke-virtual {p0, p1, v0}, Lcom/android/internal/telephony/SubscriptionController;->setMccMnc(Ljava/lang/String;I)I
+
+    move-result v0
+
+    return v0
+.end method

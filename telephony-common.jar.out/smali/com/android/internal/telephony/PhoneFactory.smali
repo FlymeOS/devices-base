@@ -1901,3 +1901,17 @@
 
     goto :goto_0
 .end method
+
+.method public static setDataSubscription(J)V
+    .locals 2
+    .param p0, "subId"    # J
+
+    .prologue
+    .line 526
+    long-to-int v0, p0
+
+    invoke-static {v0}, Lcom/android/internal/telephony/PhoneFactory;->setDataSubscription(I)V
+
+    .line 527
+    return-void
+.end method
