@@ -1,0 +1,8 @@
+.method public phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;Z)V
+    .locals 0
+
+    .prologue
+    invoke-virtual/range {p0 .. p2}, Lcom/android/server/telecom/InCallAdapter;->phoneAccountSelected(Ljava/lang/String;Landroid/telecom/PhoneAccountHandle;)V
+
+    return-void
+.end method

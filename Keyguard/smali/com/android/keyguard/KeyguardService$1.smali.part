@@ -1,0 +1,17 @@
+.method public addStateMonitorCallback(Lcom/android/internal/policy/IKeyguardStateCallback;)V
+    .locals 0
+    .param p1, "callback"    # Lcom/android/internal/policy/IKeyguardStateCallback;
+
+    .prologue
+    return-void
+.end method
+
+.method public setOccluded(Z)V
+    .locals 0
+    .param p1, "isOccluded"    # Z
+
+    .prologue
+    invoke-virtual {p0, p1}, Lcom/android/keyguard/KeyguardService$1;->setOccluded(Z)I
+
+    return-void
+.end method
