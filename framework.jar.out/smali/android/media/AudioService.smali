@@ -17346,3 +17346,12 @@
         :pswitch_0
     .end packed-switch
 .end method
+
+.method public static getDefaultStreamVolume()[I
+    .locals 1
+
+    .prologue
+    sget-object v0, Landroid/media/AudioService;->DEFAULT_STREAM_VOLUME:[I
+
+    return-object v0
+.end method

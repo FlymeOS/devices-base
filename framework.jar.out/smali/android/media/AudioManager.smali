@@ -14,6 +14,8 @@
 
 
 # static fields
+.field public static DEFAULT_STREAM_VOLUME:[I = null
+
 .field public static final ACTION_ANALOG_AUDIO_DOCK_PLUG:Ljava/lang/String; = "android.media.action.ANALOG_AUDIO_DOCK_PLUG"
 
 .field public static final ACTION_AUDIO_BECOMING_NOISY:Ljava/lang/String; = "android.media.AUDIO_BECOMING_NOISY"
@@ -546,6 +548,12 @@
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Landroid/media/AudioManager;->sAudioPatchesCached:Ljava/util/ArrayList;
+
+    invoke-static {}, Landroid/media/AudioService;->getDefaultStreamVolume()[I
+
+    move-result-object v0
+
+    sput-object v0, Landroid/media/AudioManager;->DEFAULT_STREAM_VOLUME:[I
 
     return-void
 .end method
