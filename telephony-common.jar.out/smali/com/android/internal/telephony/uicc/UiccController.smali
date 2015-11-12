@@ -1704,3 +1704,30 @@
 
     throw v0
 .end method
+
+.method public getUiccCard()Lcom/android/internal/telephony/uicc/UiccCard;
+    .locals 2
+
+    .prologue
+    invoke-static {}, Lcom/android/internal/telephony/SubscriptionController;->getInstance()Lcom/android/internal/telephony/SubscriptionController;
+
+    move-result-object v0
+
+    invoke-static {}, Lcom/android/internal/telephony/SubscriptionController;->getInstance()Lcom/android/internal/telephony/SubscriptionController;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Lcom/android/internal/telephony/SubscriptionController;->getDefaultSubId()I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Lcom/android/internal/telephony/SubscriptionController;->getPhoneId(I)I
+
+    move-result v0
+
+    invoke-virtual {p0, v0}, Lcom/android/internal/telephony/uicc/UiccController;->getUiccCard(I)Lcom/android/internal/telephony/uicc/UiccCard;
+
+    move-result-object v0
+
+    return-object v0
+.end method

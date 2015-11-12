@@ -923,15 +923,17 @@
 
     move-object/from16 v0, p1
 
-    invoke-interface {v0, v1}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
+    #invoke-interface {v0, v1}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
 
-    move-result v1
+    #move-result v1
 
-    move-object/from16 v0, p1
+    #move-object/from16 v0, p1
 
-    invoke-interface {v0, v1}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+    #invoke-interface {v0, v1}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
-    move-result-object v6
+    #move-result-object v6
+
+    const-string v6, ""
 
     .line 258
     .local v6, "carrierName":Ljava/lang/String;
@@ -1907,9 +1909,11 @@
 
     const/4 v5, 0x0
 
-    invoke-virtual {v2, v3, v1, v4, v5}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    #invoke-virtual {v2, v3, v1, v4, v5}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
-    move-result v0
+    #move-result v0
+
+    const/4 v0, 0x0
 
     .line 774
     .local v0, "result":I
@@ -2799,7 +2803,7 @@
 
     move-object/from16 v0, v20
 
-    invoke-virtual {v0, v3, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
+    #invoke-virtual {v0, v3, v4}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 620
     sget-object v3, Landroid/telephony/SubscriptionManager;->CONTENT_URI:Landroid/net/Uri;

@@ -1,0 +1,8 @@
+.method getFieldOriginalConnection()Lcom/android/internal/telephony/Connection;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/services/telephony/TelephonyConnection;->mOriginalConnection:Lcom/android/internal/telephony/Connection;
+
+    return-object v0
+.end method
