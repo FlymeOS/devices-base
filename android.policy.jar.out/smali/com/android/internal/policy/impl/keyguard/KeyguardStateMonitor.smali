@@ -8,6 +8,8 @@
 
 
 # instance fields
+.field private mMzKeyguardService:Lcom/android/internal/policy/IKeyguardService;
+
 .field private volatile mInputRestricted:Z
 
 .field private volatile mIsShowing:Z
@@ -51,6 +53,9 @@
 
     .line 54
     :goto_0
+
+    invoke-direct {p0, p2}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->initFlymeExtFields(Lcom/android/internal/policy/IKeyguardService;)V
+
     return-void
 
     .line 51
@@ -167,4 +172,148 @@
 
     .line 80
     return-void
+.end method
+
+.method private initFlymeExtFields(Lcom/android/internal/policy/IKeyguardService;)V
+    .locals 0
+    .param p1, "service"    # Lcom/android/internal/policy/IKeyguardService;
+
+    .prologue
+    .line 60
+    iput-object p1, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->mMzKeyguardService:Lcom/android/internal/policy/IKeyguardService;
+
+    .line 61
+    return-void
+.end method
+
+.method public isInputRestrictedExtended()Z
+    .locals 3
+
+    .prologue
+    .line 91
+    :try_start_0
+    new-instance v1, Lcom/android/internal/policy/MzExtIKeyguardServiceProxy;
+
+    invoke-direct {v1}, Lcom/android/internal/policy/MzExtIKeyguardServiceProxy;-><init>()V
+
+    iget-object v2, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->mMzKeyguardService:Lcom/android/internal/policy/IKeyguardService;
+
+    invoke-interface {v2}, Lcom/android/internal/policy/IKeyguardService;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Lcom/android/internal/policy/MzExtIKeyguardServiceProxy;->isInputRestricted(Landroid/os/IBinder;)Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    .line 95
+    :goto_0
+    return v1
+
+    .line 92
+    :catch_0
+    move-exception v0
+
+    .line 93
+    .local v0, "e":Landroid/os/RemoteException;
+    const-string v1, "KeyguardStateMonitor"
+
+    const-string v2, "Remote Exception"
+
+    invoke-static {v1, v2, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 95
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
+.method public isSecureExtended()Z
+    .locals 3
+
+    .prologue
+    .line 78
+    :try_start_0
+    new-instance v1, Lcom/android/internal/policy/MzExtIKeyguardServiceProxy;
+
+    invoke-direct {v1}, Lcom/android/internal/policy/MzExtIKeyguardServiceProxy;-><init>()V
+
+    iget-object v2, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->mMzKeyguardService:Lcom/android/internal/policy/IKeyguardService;
+
+    invoke-interface {v2}, Lcom/android/internal/policy/IKeyguardService;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Lcom/android/internal/policy/MzExtIKeyguardServiceProxy;->isSecure(Landroid/os/IBinder;)Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    .line 82
+    :goto_0
+    return v1
+
+    .line 79
+    :catch_0
+    move-exception v0
+
+    .line 80
+    .local v0, "e":Landroid/os/RemoteException;
+    const-string v1, "KeyguardStateMonitor"
+
+    const-string v2, "Remote Exception"
+
+    invoke-static {v1, v2, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 82
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
+.method public isShowingExtended()Z
+    .locals 3
+
+    .prologue
+    .line 65
+    :try_start_0
+    new-instance v1, Lcom/android/internal/policy/MzExtIKeyguardServiceProxy;
+
+    invoke-direct {v1}, Lcom/android/internal/policy/MzExtIKeyguardServiceProxy;-><init>()V
+
+    iget-object v2, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->mMzKeyguardService:Lcom/android/internal/policy/IKeyguardService;
+
+    invoke-interface {v2}, Lcom/android/internal/policy/IKeyguardService;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Lcom/android/internal/policy/MzExtIKeyguardServiceProxy;->isShowing(Landroid/os/IBinder;)Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    .line 69
+    :goto_0
+    return v1
+
+    .line 66
+    :catch_0
+    move-exception v0
+
+    .line 67
+    .local v0, "e":Landroid/os/RemoteException;
+    const-string v1, "KeyguardStateMonitor"
+
+    const-string v2, "Remote Exception"
+
+    invoke-static {v1, v2, v0}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 69
+    const/4 v1, 0x0
+
+    goto :goto_0
 .end method

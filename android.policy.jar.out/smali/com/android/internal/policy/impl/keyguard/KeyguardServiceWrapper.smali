@@ -161,7 +161,7 @@
     .line 204
     iget-object v0, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mKeyguardStateMonitor:Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;
 
-    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->isInputRestricted()Z
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->isInputRestrictedExtended()Z
 
     move-result v0
 
@@ -175,7 +175,7 @@
     .line 200
     iget-object v0, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mKeyguardStateMonitor:Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;
 
-    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->isSecure()Z
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->isSecureExtended()Z
 
     move-result v0
 
@@ -189,7 +189,7 @@
     .line 196
     iget-object v0, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mKeyguardStateMonitor:Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;
 
-    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->isShowing()Z
+    invoke-virtual {v0}, Lcom/android/internal/policy/impl/keyguard/KeyguardStateMonitor;->isShowingExtended()Z
 
     move-result v0
 

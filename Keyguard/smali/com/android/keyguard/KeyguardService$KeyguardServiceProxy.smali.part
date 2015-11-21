@@ -11,7 +11,7 @@
     .param p1, "isOccluded"    # Z
 
     .prologue
-    invoke-virtual {p0, p1}, Lcom/android/keyguard/KeyguardService$1;->setOccluded(Z)I
+    invoke-virtual {p0, p1}, Lcom/android/keyguard/KeyguardService$KeyguardServiceProxy;->setOccluded(Z)I
 
     return-void
 .end method
