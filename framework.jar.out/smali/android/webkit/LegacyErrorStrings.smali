@@ -23,7 +23,7 @@
     .param p0, "errorCode"    # I
 
     .prologue
-    const v0, 0x10400d4
+    const v0, #android:string@httpError#t
 
     .line 46
     packed-switch p0, :pswitch_data_0
@@ -58,91 +58,91 @@
 
     .line 48
     :pswitch_1
-    const v0, 0x10400d3
+    const v0, #android:string@httpErrorOk#t
 
     goto :goto_0
 
     .line 54
     :pswitch_2
-    const v0, 0x10400d5
+    const v0, #android:string@httpErrorLookup#t
 
     goto :goto_0
 
     .line 57
     :pswitch_3
-    const v0, 0x10400d6
+    const v0, #android:string@httpErrorUnsupportedAuthScheme#t
 
     goto :goto_0
 
     .line 60
     :pswitch_4
-    const v0, 0x10400d7
+    const v0, #android:string@httpErrorAuth#t
 
     goto :goto_0
 
     .line 63
     :pswitch_5
-    const v0, 0x10400d8
+    const v0, #android:string@httpErrorProxyAuth#t
 
     goto :goto_0
 
     .line 66
     :pswitch_6
-    const v0, 0x10400d9
+    const v0, #android:string@httpErrorConnect#t
 
     goto :goto_0
 
     .line 69
     :pswitch_7
-    const v0, 0x10400da
+    const v0, #android:string@httpErrorIO#t
 
     goto :goto_0
 
     .line 72
     :pswitch_8
-    const v0, 0x10400db
+    const v0, #android:string@httpErrorTimeout#t
 
     goto :goto_0
 
     .line 75
     :pswitch_9
-    const v0, 0x10400dc
+    const v0, #android:string@httpErrorRedirectLoop#t
 
     goto :goto_0
 
     .line 78
     :pswitch_a
-    const v0, 0x1040008
+    const v0, #android:string@httpErrorUnsupportedScheme#t
 
     goto :goto_0
 
     .line 81
     :pswitch_b
-    const v0, 0x10400dd
+    const v0, #android:string@httpErrorFailedSslHandshake#t
 
     goto :goto_0
 
     .line 84
     :pswitch_c
-    const v0, 0x1040007
+    const v0, #android:string@httpErrorBadUrl#t
 
     goto :goto_0
 
     .line 87
     :pswitch_d
-    const v0, 0x10400de
+    const v0, #android:string@httpErrorFile#t
 
     goto :goto_0
 
     .line 90
     :pswitch_e
-    const v0, 0x10400df
+    const v0, #android:string@httpErrorFileNotFound#t
 
     goto :goto_0
 
     .line 93
     :pswitch_f
-    const v0, 0x10400e0
+    const v0, #android:string@httpErrorTooManyRequests#t
 
     goto :goto_0
 

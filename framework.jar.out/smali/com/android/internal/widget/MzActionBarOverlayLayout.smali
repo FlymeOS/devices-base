@@ -120,8 +120,8 @@
 
     :array_0
     .array-data 4
-        0x10102eb
-        0x1010059
+        #android:attr@actionBarSize#t
+        #android:attr@windowContentOverlay#t
     .end array-data
 .end method
 
@@ -2488,7 +2488,7 @@
 
     if-nez v0, :cond_0
 
-    const v0, 0x1020002
+    const v0, #android:id@content#t
 
     invoke-virtual {p0, v0}, Lcom/android/internal/widget/MzActionBarOverlayLayout;->findViewById(I)Landroid/view/View;
 
@@ -2496,7 +2496,7 @@
 
     iput-object v0, p0, Lcom/android/internal/widget/MzActionBarOverlayLayout;->mContent:Landroid/view/View;
 
-    const v0, 0x1020379
+    const v0, #android:id@action_bar_container#t
 
     invoke-virtual {p0, v0}, Lcom/android/internal/widget/MzActionBarOverlayLayout;->findViewById(I)Landroid/view/View;
 
@@ -2506,7 +2506,7 @@
 
     iput-object v0, p0, Lcom/android/internal/widget/MzActionBarOverlayLayout;->mActionBarTop:Lcom/android/internal/widget/MzActionBarContainer;
 
-    const v0, 0x102037a
+    const v0, #android:id@action_bar#t
 
     invoke-virtual {p0, v0}, Lcom/android/internal/widget/MzActionBarOverlayLayout;->findViewById(I)Landroid/view/View;
 
@@ -2518,7 +2518,7 @@
 
     iput-object v0, p0, Lcom/android/internal/widget/MzActionBarOverlayLayout;->mDecorToolbar:Lcom/android/internal/widget/DecorToolbar;
 
-    const v0, 0x102037c
+    const v0, #android:id@split_action_bar#t
 
     invoke-virtual {p0, v0}, Lcom/android/internal/widget/MzActionBarOverlayLayout;->findViewById(I)Landroid/view/View;
 
@@ -2990,7 +2990,7 @@
 
     move-result-object v6
 
-    const v7, 0x1120005
+    const v7, #android:bool@split_action_bar_is_narrow#t
 
     invoke-virtual {v6, v7}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -3101,7 +3101,7 @@
 
     invoke-interface {v5, v3}, Lcom/android/internal/widget/DecorToolbar;->setSplitWhenNarrow(Z)V
 
-    const v5, 0x102037b
+    const v5, #android:id@action_context_bar#t
 
     invoke-virtual {p0, v5}, Lcom/android/internal/widget/MzActionBarOverlayLayout;->findViewById(I)Landroid/view/View;
 

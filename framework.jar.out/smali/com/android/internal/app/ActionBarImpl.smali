@@ -267,7 +267,7 @@
 
     if-nez v1, :cond_0
 
-    const v3, 0x1020002
+    const v3, #android:id@content#t
 
     invoke-virtual {v0, v3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -765,7 +765,7 @@
     :goto_0
     iget-object v3, p0, Lcom/android/internal/app/ActionBarImpl;->mContext:Landroid/content/Context;
 
-    const v4, 0x10c0006
+    const v4, #android:interpolator@accelerate_decelerate#t
 
     invoke-static {v3, v4}, Landroid/view/animation/AnimationUtils;->loadInterpolator(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
 
@@ -943,7 +943,7 @@
     :cond_2
     iget-object v3, p0, Lcom/android/internal/app/ActionBarImpl;->mContext:Landroid/content/Context;
 
-    const v4, 0x10c0006
+    const v4, #android:interpolator@accelerate_decelerate#t
 
     invoke-static {v3, v4}, Landroid/view/animation/AnimationUtils;->loadInterpolator(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
 
@@ -1431,7 +1431,7 @@
 
     const/4 v7, 0x0
 
-    const v5, 0x1020378
+    const v5, #android:id@decor_content_parent#t
 
     invoke-virtual {p1, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1450,7 +1450,7 @@
     invoke-virtual {v5, p0}, Lcom/android/internal/widget/MzActionBarOverlayLayout;->setActionBarVisibilityCallback(Lcom/android/internal/widget/MzActionBarOverlayLayout$ActionBarVisibilityCallback;)V
 
     :cond_0
-    const v5, 0x102037a
+    const v5, #android:id@action_bar#t
 
     invoke-virtual {p1, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1460,7 +1460,7 @@
 
     iput-object v5, p0, Lcom/android/internal/app/ActionBarImpl;->mDecorToolbar:Lcom/android/internal/widget/MzDecorToolbar;
 
-    const v5, 0x102037b
+    const v5, #android:id@action_context_bar#t
 
     invoke-virtual {p1, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1470,7 +1470,7 @@
 
     iput-object v5, p0, Lcom/android/internal/app/ActionBarImpl;->mContextView:Lcom/android/internal/widget/MzActionBarContextView;
 
-    const v5, 0x1020379
+    const v5, #android:id@action_bar_container#t
 
     invoke-virtual {p1, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1480,7 +1480,7 @@
 
     iput-object v5, p0, Lcom/android/internal/app/ActionBarImpl;->mContainerView:Lcom/android/internal/widget/MzActionBarContainer;
 
-    const v5, 0x102037c
+    const v5, #android:id@split_action_bar#t
 
     invoke-virtual {p1, v5}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
@@ -1616,7 +1616,7 @@
 
     sget-object v9, Landroid/R$styleable;->ActionBar:[I
 
-    const v10, 0x10102ce
+    const v10, #android:attr@actionBarStyle#t
 
     invoke-virtual {v5, v8, v9, v10, v7}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
@@ -3041,7 +3041,7 @@
     move-result-object v0
 
     .local v0, "currentTheme":Landroid/content/res/Resources$Theme;
-    const v3, 0x1010397
+    const v3, #android:attr@actionBarWidgetTheme#t
 
     const/4 v4, 0x1
 

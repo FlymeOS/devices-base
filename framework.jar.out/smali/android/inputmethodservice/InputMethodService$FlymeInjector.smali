@@ -448,7 +448,7 @@
     .line 2631
     iget v7, p0, Landroid/view/inputmethod/EditorInfo;->fieldId:I
 
-    const v8, 0x1020003
+    const v8, #android:id@edit#t
 
     if-ne v7, v8, :cond_1
 
