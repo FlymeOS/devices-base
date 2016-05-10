@@ -8,6 +8,8 @@
     value = {
         Landroid/app/WallpaperManager$1;,
         Landroid/app/WallpaperManager$Globals;,
+        Landroid/app/WallpaperManager$FlymeInjector;,
+        Landroid/app/WallpaperManager$FLYME_WALLPAPER_TYPE;,
         Landroid/app/WallpaperManager$FastBitmapDrawable;
     }
 .end annotation
@@ -475,7 +477,7 @@
     .line 1089
     iget-object v0, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
-    invoke-static {v0}, Landroid/app/WallpaperManager;->openDefaultWallpaper(Landroid/content/Context;)Ljava/io/InputStream;
+    invoke-static {v0}, Landroid/app/WallpaperManager$FlymeInjector;->flymeOpenDefaultWallpaper(Landroid/content/Context;)Ljava/io/InputStream;
 
     move-result-object v0
 
@@ -657,7 +659,7 @@
 
     iget-object v5, v0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
-    invoke-static {v5}, Landroid/app/WallpaperManager;->openDefaultWallpaper(Landroid/content/Context;)Ljava/io/InputStream;
+    invoke-static {v5}, Landroid/app/WallpaperManager$FlymeInjector;->flymeOpenDefaultWallpaper(Landroid/content/Context;)Ljava/io/InputStream;
 
     move-result-object v5
 
@@ -768,7 +770,7 @@
 
     iget-object v5, v0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
-    invoke-static {v5}, Landroid/app/WallpaperManager;->openDefaultWallpaper(Landroid/content/Context;)Ljava/io/InputStream;
+    invoke-static {v5}, Landroid/app/WallpaperManager$FlymeInjector;->flymeOpenDefaultWallpaper(Landroid/content/Context;)Ljava/io/InputStream;
 
     move-result-object v5
 
@@ -1006,7 +1008,7 @@
 
     iget-object v5, v0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
-    invoke-static {v5}, Landroid/app/WallpaperManager;->openDefaultWallpaper(Landroid/content/Context;)Ljava/io/InputStream;
+    invoke-static {v5}, Landroid/app/WallpaperManager$FlymeInjector;->flymeOpenDefaultWallpaper(Landroid/content/Context;)Ljava/io/InputStream;
 
     move-result-object v5
 
@@ -2552,4 +2554,274 @@
     move-exception v3
 
     goto :goto_2
+.end method
+
+.method public static getFlymeDefWallpaper(Landroid/content/Context;Landroid/app/WallpaperManager$FLYME_WALLPAPER_TYPE;)Ljava/io/InputStream;
+    .locals 4
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "type"    # Landroid/app/WallpaperManager$FLYME_WALLPAPER_TYPE;
+
+    .prologue
+    .line 1182
+    invoke-static {p0}, Landroid/app/WallpaperManager$FlymeInjector;->initColorValue(Landroid/content/Context;)V
+
+    .line 1183
+    const/4 v1, 0x0
+
+    .line 1184
+    .local v1, "is":Ljava/io/InputStream;
+    sget-object v2, Landroid/app/WallpaperManager$FLYME_WALLPAPER_TYPE;->LAUNCHER:Landroid/app/WallpaperManager$FLYME_WALLPAPER_TYPE;
+
+    if-ne p1, v2, :cond_1
+
+    .line 1185
+    sget-object v2, Landroid/app/WallpaperManager$FlymeInjector;->mFlymeWallpaperPath:Ljava/lang/String;
+
+    invoke-static {v2}, Landroid/app/WallpaperManager$FlymeInjector;->checkWallpaperPath(Ljava/lang/String;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 1187
+    :try_start_0
+    new-instance v1, Ljava/io/FileInputStream;
+
+    .end local v1    # "is":Ljava/io/InputStream;
+    new-instance v2, Ljava/io/File;
+
+    sget-object v3, Landroid/app/WallpaperManager$FlymeInjector;->mFlymeWallpaperPath:Ljava/lang/String;
+
+    invoke-direct {v2, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-direct {v1, v2}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+    :try_end_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 1212
+    .restart local v1    # "is":Ljava/io/InputStream;
+    :goto_0
+    return-object v1
+
+    .line 1188
+    .end local v1    # "is":Ljava/io/InputStream;
+    :catch_0
+    move-exception v0
+
+    .line 1189
+    .local v0, "e":Ljava/io/FileNotFoundException;
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    sget v3, Lcom/flyme/internal/R$drawable;->default_wallpaper:I
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;
+
+    move-result-object v1
+
+    .line 1190
+    .restart local v1    # "is":Ljava/io/InputStream;
+    goto :goto_0
+
+    .line 1192
+    .end local v0    # "e":Ljava/io/FileNotFoundException;
+    :cond_0
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    sget v3, Lcom/flyme/internal/R$drawable;->default_wallpaper:I
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;
+
+    move-result-object v1
+
+    goto :goto_0
+
+    .line 1194
+    :cond_1
+    sget-object v2, Landroid/app/WallpaperManager$FLYME_WALLPAPER_TYPE;->LOCK:Landroid/app/WallpaperManager$FLYME_WALLPAPER_TYPE;
+
+    if-ne p1, v2, :cond_4
+
+    .line 1195
+    sget-object v2, Landroid/app/WallpaperManager$FlymeInjector;->mFlymeLockWallpaperPath:Ljava/lang/String;
+
+    invoke-static {v2}, Landroid/app/WallpaperManager$FlymeInjector;->checkWallpaperPath(Ljava/lang/String;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_3
+
+    .line 1197
+    :try_start_1
+    const-string v2, "/custom/meizu/wallpaper/default_lock_wallpaper.png"
+
+    invoke-static {v2}, Landroid/app/WallpaperManager$FlymeInjector;->checkWallpaperPath(Ljava/lang/String;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeThemeUtils;->isUseCustomSystem()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_2
+
+    .line 1198
+    new-instance v1, Ljava/io/FileInputStream;
+
+    .end local v1    # "is":Ljava/io/InputStream;
+    new-instance v2, Ljava/io/File;
+
+    const-string v3, "/custom/meizu/wallpaper/default_lock_wallpaper.png"
+
+    invoke-direct {v2, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-direct {v1, v2}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+
+    .restart local v1    # "is":Ljava/io/InputStream;
+    goto :goto_0
+
+    .line 1200
+    :cond_2
+    new-instance v1, Ljava/io/FileInputStream;
+
+    .end local v1    # "is":Ljava/io/InputStream;
+    new-instance v2, Ljava/io/File;
+
+    sget-object v3, Landroid/app/WallpaperManager$FlymeInjector;->mFlymeLockWallpaperPath:Ljava/lang/String;
+
+    invoke-direct {v2, v3}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-direct {v1, v2}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+    :try_end_1
+    .catch Ljava/io/FileNotFoundException; {:try_start_1 .. :try_end_1} :catch_1
+
+    .restart local v1    # "is":Ljava/io/InputStream;
+    goto :goto_0
+
+    .line 1202
+    .end local v1    # "is":Ljava/io/InputStream;
+    :catch_1
+    move-exception v0
+
+    .line 1203
+    .restart local v0    # "e":Ljava/io/FileNotFoundException;
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    sget v3, Lcom/flyme/internal/R$drawable;->default_lock_wallpaper:I
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;
+
+    move-result-object v1
+
+    .line 1204
+    .restart local v1    # "is":Ljava/io/InputStream;
+    goto :goto_0
+
+    .line 1206
+    .end local v0    # "e":Ljava/io/FileNotFoundException;
+    :cond_3
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    sget v3, Lcom/flyme/internal/R$drawable;->default_lock_wallpaper:I
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;
+
+    move-result-object v1
+
+    goto :goto_0
+
+    .line 1209
+    :cond_4
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    sget v3, Lcom/flyme/internal/R$drawable;->default_wallpaper:I
+
+    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->openRawResource(I)Ljava/io/InputStream;
+
+    move-result-object v1
+
+    goto :goto_0
+.end method
+
+.method public getDrawableOfLockWallpaper()Landroid/graphics/drawable/Drawable;
+    .locals 1
+
+    .prologue
+    .line 1154
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getFastDrawableOfLockWallpaper()Landroid/graphics/drawable/Drawable;
+    .locals 1
+
+    .prologue
+    .line 1164
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getLockWallpaperBitmap()Landroid/graphics/Bitmap;
+    .locals 1
+
+    .prologue
+    .line 1159
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public setBitmapToLockWallpaper(Landroid/graphics/Bitmap;)V
+    .locals 0
+    .param p1, "bitmap"    # Landroid/graphics/Bitmap;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    .prologue
+    .line 1173
+    return-void
+.end method
+
+.method public setResourceToLockWallpaper(I)V
+    .locals 0
+    .param p1, "resid"    # I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    .prologue
+    .line 1169
+    return-void
+.end method
+
+.method public setStreamToLockWallpaper(Ljava/io/InputStream;)V
+    .locals 0
+    .param p1, "data"    # Ljava/io/InputStream;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    .prologue
+    .line 1177
+    return-void
 .end method

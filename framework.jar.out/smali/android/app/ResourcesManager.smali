@@ -252,6 +252,8 @@
     :cond_4
     invoke-static {p1, v1, p2}, Landroid/content/res/Resources;->updateSystemConfiguration(Landroid/content/res/Configuration;Landroid/util/DisplayMetrics;Landroid/content/res/CompatibilityInfo;)V
 
+    invoke-direct {p0, v0}, Landroid/app/ResourcesManager;->flymeFreeCaches(I)V
+
     .line 281
     invoke-static {}, Landroid/app/ApplicationPackageManager;->configurationChanged()V
 
@@ -1182,4 +1184,42 @@
     move-object v14, v7
 
     goto/16 :goto_1
+.end method
+
+.method private flymeFreeCaches(I)V
+    .locals 1
+    .param p1, "changes"    # I
+
+    .prologue
+    .line 333
+    and-int/lit16 v0, p1, 0x4000
+
+    if-eqz v0, :cond_0
+
+    .line 336
+    invoke-static {}, Landroid/graphics/Canvas;->freeCaches()V
+
+    .line 338
+    invoke-static {}, Landroid/graphics/Canvas;->freeTextLayoutCaches()V
+
+    .line 340
+    :cond_0
+    const v0, 0x8000
+
+    and-int/2addr v0, p1
+
+    if-eqz v0, :cond_1
+
+    .line 343
+    invoke-static {}, Landroid/graphics/Canvas;->freeCaches()V
+
+    .line 345
+    invoke-static {}, Landroid/graphics/Canvas;->freeTextLayoutCaches()V
+
+    .line 347
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->cleanflymeTypeface()V
+
+    .line 349
+    :cond_1
+    return-void
 .end method

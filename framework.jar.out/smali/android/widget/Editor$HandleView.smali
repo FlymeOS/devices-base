@@ -522,6 +522,10 @@
 
     move-result v0
 
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->isFlymePositionVisible()Z
+
+    move-result v0
+
     goto :goto_0
 .end method
 
@@ -852,11 +856,15 @@
     .line 3456
     iput-boolean v10, p0, Landroid/widget/Editor$HandleView;->mIsDragging:Z
 
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->flymeHideOptionWrapper()V
+
     goto :goto_0
 
     .line 3461
     .end local v4    # "positionListener":Landroid/widget/Editor$PositionListener;
     :pswitch_1
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->flymeHideOptionWrapper()V
+
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getRawX()F
 
     move-result v6
@@ -980,6 +988,8 @@
     .line 3486
     iput-boolean v9, p0, Landroid/widget/Editor$HandleView;->mIsDragging:Z
 
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->flymeShowOptionWrapper()V
+
     goto/16 :goto_0
 
     .line 3490
@@ -1049,6 +1059,16 @@
 
     .line 3359
     :cond_2
+    invoke-direct/range {p0 .. p1}, Landroid/widget/Editor$HandleView;->flymePositionAtCursorOffset(I)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     if-eqz v2, :cond_3
 
     .line 3360
@@ -1105,6 +1125,8 @@
     move-result v4
 
     iput v4, p0, Landroid/widget/Editor$HandleView;->mPositionY:I
+
+    invoke-direct/range {p0 .. p1}, Landroid/widget/Editor$HandleView;->flymeSetPositionY(I)V
 
     .line 3370
     iget v4, p0, Landroid/widget/Editor$HandleView;->mPositionX:I
@@ -1310,6 +1332,8 @@
     :goto_0
     iput-object v2, p0, Landroid/widget/Editor$HandleView;->mDrawable:Landroid/graphics/drawable/Drawable;
 
+    invoke-virtual/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->postInvalidate()V
+
     .line 3215
     iget-object v2, p0, Landroid/widget/Editor$HandleView;->mDrawable:Landroid/graphics/drawable/Drawable;
 
@@ -1449,6 +1473,8 @@
 
     invoke-virtual {v2, v0, v1, v4, v4}, Landroid/widget/PopupWindow;->update(IIII)V
 
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->flymeSendShowMessage()V
+
     .line 3409
     .end local v0    # "positionX":I
     .end local v1    # "positionY":I
@@ -1475,6 +1501,8 @@
 
     invoke-virtual {v2, v3, v5, v0, v1}, Landroid/widget/PopupWindow;->showAtLocation(Landroid/view/View;III)V
 
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->flymeSendShowMessage()V
+
     goto :goto_0
 
     .line 3404
@@ -1490,8 +1518,316 @@
     .line 3405
     invoke-virtual {p0}, Landroid/widget/Editor$HandleView;->dismiss()V
 
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->flymeSendHideMessage()V
+
     goto :goto_0
 .end method
 
 .method protected abstract updateSelection(I)V
+.end method
+
+.method private flymeHideOptionWrapper()V
+    .locals 1
+
+    .prologue
+    .line 3847
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mSelectionActionMode:Landroid/view/ActionMode;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mOptionWrapper:Landroid/widget/Editor$OptionWrapper;
+
+    if-eqz v0, :cond_0
+
+    .line 3848
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mOptionWrapper:Landroid/widget/Editor$OptionWrapper;
+
+    invoke-virtual {v0}, Landroid/widget/Editor$OptionWrapper;->hide()Z
+
+    .line 3850
+    :cond_0
+    return-void
+.end method
+
+.method private flymePositionAtCursorOffset(I)Z
+    .locals 4
+    .param p1, "offset"    # I
+
+    .prologue
+    .line 3801
+    iget-boolean v0, p0, Landroid/widget/Editor$HandleView;->mIsDragging:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    invoke-virtual {v0}, Landroid/widget/Editor;->flymeGetFieldTextView()Landroid/widget/TextView;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->isOffsetOutOfVisible(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 3803
+    invoke-static {}, Landroid/view/animation/AnimationUtils;->currentAnimationTimeMillis()J
+
+    move-result-wide v0
+
+    iget-object v2, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-wide v2, v2, Landroid/widget/Editor;->mLastScrollTime:J
+
+    sub-long/2addr v0, v2
+
+    const-wide/16 v2, 0xc8
+
+    cmp-long v0, v0, v2
+
+    if-gez v0, :cond_0
+
+    .line 3804
+    const/4 v0, 0x1
+
+    .line 3808
+    :goto_0
+    return v0
+
+    .line 3807
+    :cond_0
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    invoke-static {}, Landroid/view/animation/AnimationUtils;->currentAnimationTimeMillis()J
+
+    move-result-wide v2
+
+    iput-wide v2, v0, Landroid/widget/Editor;->mLastScrollTime:J
+
+    .line 3808
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method private flymeSendEmptyMessage(I)V
+    .locals 1
+    .param p1, "option"    # I
+
+    .prologue
+    .line 3832
+    const/16 v0, 0x2712
+
+    if-ne p1, v0, :cond_1
+
+    .line 3833
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mSelectionActionMode:Landroid/view/ActionMode;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mOptionWrapper:Landroid/widget/Editor$OptionWrapper;
+
+    if-eqz v0, :cond_0
+
+    .line 3834
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mOptionWrapper:Landroid/widget/Editor$OptionWrapper;
+
+    invoke-virtual {v0}, Landroid/widget/Editor$OptionWrapper;->show()Z
+
+    .line 3841
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 3836
+    :cond_1
+    const/16 v0, 0x2711
+
+    if-ne p1, v0, :cond_0
+
+    .line 3837
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mSelectionActionMode:Landroid/view/ActionMode;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mOptionWrapper:Landroid/widget/Editor$OptionWrapper;
+
+    if-eqz v0, :cond_0
+
+    .line 3838
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mOptionWrapper:Landroid/widget/Editor$OptionWrapper;
+
+    invoke-virtual {v0}, Landroid/widget/Editor$OptionWrapper;->hide()Z
+
+    goto :goto_0
+.end method
+
+.method private flymeSendHideMessage()V
+    .locals 1
+
+    .prologue
+    .line 3824
+    const/16 v0, 0x2711
+
+    invoke-direct {p0, v0}, Landroid/widget/Editor$HandleView;->flymeSendEmptyMessage(I)V
+
+    .line 3825
+    return-void
+.end method
+
+.method private flymeSendShowMessage()V
+    .locals 1
+
+    .prologue
+    .line 3816
+    const/16 v0, 0x2712
+
+    invoke-direct {p0, v0}, Landroid/widget/Editor$HandleView;->flymeSendEmptyMessage(I)V
+
+    .line 3817
+    return-void
+.end method
+
+.method private flymeSetPositionY(I)V
+    .locals 4
+    .param p1, "offset"    # I
+
+    .prologue
+    .line 3625
+    iget-object v2, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    invoke-virtual {v2}, Landroid/widget/Editor;->flymeGetFieldTextView()Landroid/widget/TextView;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/widget/TextView;->getLayout()Landroid/text/Layout;
+
+    move-result-object v0
+
+    .line 3626
+    .local v0, "layout":Landroid/text/Layout;
+    invoke-virtual {v0, p1}, Landroid/text/Layout;->getLineForOffset(I)I
+
+    move-result v1
+
+    .line 3627
+    .local v1, "line":I
+    iget-object v2, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    invoke-virtual {v2}, Landroid/widget/Editor;->flymeGetFieldTextView()Landroid/widget/TextView;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/widget/TextView;->getLineCount()I
+
+    move-result v2
+
+    add-int/lit8 v2, v2, -0x1
+
+    if-ge v1, v2, :cond_0
+
+    .line 3628
+    iget v2, p0, Landroid/widget/Editor$HandleView;->mPositionY:I
+
+    int-to-float v2, v2
+
+    iget-object v3, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    invoke-virtual {v3}, Landroid/widget/Editor;->flymeGetFieldTextView()Landroid/widget/TextView;
+
+    move-result-object v3
+
+    invoke-virtual {v3}, Landroid/widget/TextView;->getLineSpacingExtra()F
+
+    move-result v3
+
+    sub-float/2addr v2, v3
+
+    float-to-int v2, v2
+
+    iput v2, p0, Landroid/widget/Editor$HandleView;->mPositionY:I
+
+    .line 3630
+    :cond_0
+    return-void
+.end method
+
+.method private flymeShowOptionWrapper()V
+    .locals 1
+
+    .prologue
+    .line 3856
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mSelectionActionMode:Landroid/view/ActionMode;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mOptionWrapper:Landroid/widget/Editor$OptionWrapper;
+
+    if-eqz v0, :cond_0
+
+    .line 3857
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget-object v0, v0, Landroid/widget/Editor;->mOptionWrapper:Landroid/widget/Editor$OptionWrapper;
+
+    invoke-virtual {v0}, Landroid/widget/Editor$OptionWrapper;->show()Z
+
+    .line 3859
+    :cond_0
+    return-void
+.end method
+
+.method private isFlymePositionVisible()Z
+    .locals 3
+
+    .prologue
+    .line 3574
+    iget-object v0, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
+
+    iget v1, p0, Landroid/widget/Editor$HandleView;->mPositionX:I
+
+    iget v2, p0, Landroid/widget/Editor$HandleView;->mHotspotX:I
+
+    add-int/2addr v1, v2
+
+    invoke-direct {p0}, Landroid/widget/Editor$HandleView;->getHorizontalOffset()I
+
+    move-result v2
+
+    add-int/2addr v1, v2
+
+    int-to-float v1, v1
+
+    iget v2, p0, Landroid/widget/Editor$HandleView;->mPositionY:I
+
+    int-to-float v2, v2
+
+    invoke-virtual {v0, v1, v2}, Landroid/widget/Editor;->flymeInvokeMethodIsPositionVisible(FF)Z
+
+    move-result v0
+
+    return v0
 .end method

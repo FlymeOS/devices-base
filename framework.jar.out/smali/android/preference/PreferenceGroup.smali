@@ -647,6 +647,8 @@
 
     invoke-virtual {p1, p0, v0}, Landroid/preference/Preference;->onParentChanged(Landroid/preference/Preference;Z)V
 
+    invoke-direct/range {p0 .. p1}, Landroid/preference/PreferenceGroup;->flymeSetPreferenceEnabled(Landroid/preference/Preference;)V
+
     .line 218
     const/4 v0, 0x1
 
@@ -792,4 +794,64 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     throw v0
+.end method
+
+.method private flymeSetPreferenceEnabled(Landroid/preference/Preference;)V
+    .locals 1
+    .param p1, "preference"    # Landroid/preference/Preference;
+
+    .prologue
+    .line 337
+    invoke-super {p0}, Landroid/preference/Preference;->isEnabled()Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 338
+    const/4 v0, 0x0
+
+    invoke-virtual {p1, v0}, Landroid/preference/Preference;->setEnabled(Z)V
+
+    .line 340
+    :cond_0
+    return-void
+.end method
+
+.method public setEnabled(Z)V
+    .locals 3
+    .param p1, "enabled"    # Z
+
+    .prologue
+    .line 346
+    invoke-super {p0, p1}, Landroid/preference/Preference;->setEnabled(Z)V
+
+    .line 349
+    invoke-virtual {p0}, Landroid/preference/PreferenceGroup;->getPreferenceCount()I
+
+    move-result v1
+
+    .line 350
+    .local v1, "preferenceCount":I
+    const/4 v0, 0x0
+
+    .local v0, "i":I
+    :goto_0
+    if-ge v0, v1, :cond_0
+
+    .line 351
+    invoke-virtual {p0, v0}, Landroid/preference/PreferenceGroup;->getPreference(I)Landroid/preference/Preference;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p1}, Landroid/preference/Preference;->setEnabled(Z)V
+
+    .line 350
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    .line 353
+    :cond_0
+    return-void
 .end method

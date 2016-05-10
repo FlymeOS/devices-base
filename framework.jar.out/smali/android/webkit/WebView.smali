@@ -16,6 +16,9 @@
         Landroid/webkit/WebView$PrivateAccess;,
         Landroid/webkit/WebView$HitTestResult;,
         Landroid/webkit/WebView$PictureListener;,
+        Landroid/webkit/WebView$ReaderTitleAndNumCallBack;,
+        Landroid/webkit/WebView$ReaderCallBack;,
+        Landroid/webkit/WebView$ReaderModeListener;,
         Landroid/webkit/WebView$FindListener;,
         Landroid/webkit/WebView$WebViewTransport;
     }
@@ -23,6 +26,8 @@
 
 
 # static fields
+.field public static final SCHEME_DATE:Ljava/lang/String; = "date:"
+
 .field public static final DATA_REDUCTION_PROXY_SETTING_CHANGED:Ljava/lang/String; = "android.webkit.DATA_REDUCTION_PROXY_SETTING_CHANGED"
 
 .field private static final LOGTAG:Ljava/lang/String; = "WebView"
@@ -3693,4 +3698,164 @@
     move-result v0
 
     return v0
+.end method
+
+.method public getTitleHeight()I
+    .locals 1
+
+    .prologue
+    .line 629
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public getWebChromeClient()Landroid/webkit/WebChromeClient;
+    .locals 1
+
+    .prologue
+    .line 2596
+    invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
+
+    .line 2597
+    iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
+
+    invoke-interface {v0}, Landroid/webkit/WebViewProvider;->getWebChromeClient()Landroid/webkit/WebChromeClient;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public readerWholeHtmlSendMessage()V
+    .locals 1
+
+    .prologue
+    .line 2613
+    invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
+
+    .line 2614
+    iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
+
+    invoke-interface {v0}, Landroid/webkit/WebViewProvider;->readerWholeHtmlSendMessage()V
+
+    .line 2615
+    return-void
+.end method
+
+.method public savePage()Z
+    .locals 1
+
+    .prologue
+    .line 1003
+    invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
+
+    .line 1004
+    iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
+
+    invoke-interface {v0}, Landroid/webkit/WebViewProvider;->savePage()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public selectLink()V
+    .locals 1
+
+    .prologue
+    .line 2606
+    invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
+
+    .line 2607
+    iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
+
+    invoke-interface {v0}, Landroid/webkit/WebViewProvider;->selectLink()V
+
+    .line 2608
+    return-void
+.end method
+
+.method public setLoadReaderPageCallBack(Landroid/webkit/WebView$ReaderCallBack;)V
+    .locals 1
+    .param p1, "l"    # Landroid/webkit/WebView$ReaderCallBack;
+
+    .prologue
+    .line 2564
+    invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
+
+    .line 2565
+    iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
+
+    invoke-interface {v0, p1}, Landroid/webkit/WebViewProvider;->setLoadReaderPageCallBack(Landroid/webkit/WebView$ReaderCallBack;)V
+
+    .line 2566
+    return-void
+.end method
+
+.method public setReaderModel()V
+    .locals 1
+
+    .prologue
+    .line 2619
+    invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
+
+    .line 2620
+    iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
+
+    invoke-interface {v0}, Landroid/webkit/WebViewProvider;->setReaderModel()V
+
+    .line 2621
+    return-void
+.end method
+
+.method public setReaderPageListener(Landroid/webkit/WebView$ReaderModeListener;)V
+    .locals 1
+    .param p1, "l"    # Landroid/webkit/WebView$ReaderModeListener;
+
+    .prologue
+    .line 2573
+    invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
+
+    .line 2574
+    iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
+
+    invoke-interface {v0, p1}, Landroid/webkit/WebViewProvider;->setReaderPageListener(Landroid/webkit/WebView$ReaderModeListener;)V
+
+    .line 2575
+    return-void
+.end method
+
+.method public setReaderTitleAndNumFunction(Landroid/webkit/WebView$ReaderTitleAndNumCallBack;)V
+    .locals 1
+    .param p1, "callback"    # Landroid/webkit/WebView$ReaderTitleAndNumCallBack;
+
+    .prologue
+    .line 2590
+    invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
+
+    .line 2591
+    iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
+
+    invoke-interface {v0, p1}, Landroid/webkit/WebViewProvider;->setReaderTitleAndNumFunction(Landroid/webkit/WebView$ReaderTitleAndNumCallBack;)V
+
+    .line 2592
+    return-void
+.end method
+
+.method public setSavePageClient(Landroid/webkit/SavePageClient;)V
+    .locals 1
+    .param p1, "client"    # Landroid/webkit/SavePageClient;
+
+    .prologue
+    .line 1720
+    invoke-direct {p0}, Landroid/webkit/WebView;->checkThread()V
+
+    .line 1721
+    iget-object v0, p0, Landroid/webkit/WebView;->mProvider:Landroid/webkit/WebViewProvider;
+
+    invoke-interface {v0, p1}, Landroid/webkit/WebViewProvider;->setSavePageClient(Landroid/webkit/SavePageClient;)V
+
+    .line 1722
+    return-void
 .end method

@@ -15,6 +15,8 @@
 
 
 # instance fields
+.field mFlymeToastType:I
+
 .field mGravity:I
 
 .field final mHandler:Landroid/os/Handler;
@@ -112,6 +114,8 @@
     const/16 v1, 0x98
 
     iput v1, v0, Landroid/view/WindowManager$LayoutParams;->flags:I
+
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Toast$TN;->initFlymeExtraFields()V
 
     .line 370
     return-void
@@ -234,6 +238,9 @@
 
     .line 458
     :cond_1
+
+    invoke-static {}, Landroid/widget/Toast$FlymeInjector;->resetFlymeExtraFields()V
+
     return-void
 .end method
 
@@ -396,6 +403,8 @@
 
     iput-object v3, v4, Landroid/view/WindowManager$LayoutParams;->packageName:Ljava/lang/String;
 
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Toast$TN;->hookFlymeToastType()V
+
     .line 419
     iget-object v4, p0, Landroid/widget/Toast$TN;->mView:Landroid/view/View;
 
@@ -461,5 +470,33 @@
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
     .line 379
+    return-void
+.end method
+
+.method private hookFlymeToastType()V
+    .locals 2
+
+    .prologue
+    .line 488
+    iget-object v0, p0, Landroid/widget/Toast$TN;->mParams:Landroid/view/WindowManager$LayoutParams;
+
+    iget v1, p0, Landroid/widget/Toast$TN;->mFlymeToastType:I
+
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->type:I
+
+    .line 489
+    return-void
+.end method
+
+.method private initFlymeExtraFields()V
+    .locals 1
+
+    .prologue
+    .line 484
+    const/16 v0, 0x7d5
+
+    iput v0, p0, Landroid/widget/Toast$TN;->mFlymeToastType:I
+
+    .line 485
     return-void
 .end method

@@ -195,6 +195,20 @@
 .field public static final WINDOW_SERVICE:Ljava/lang/String; = "window"
 
 
+# instance fields
+.field private mFlymeColorThemeCacheMap:Ljava/util/HashMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/HashMap",
+            "<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Integer;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
 # direct methods
 .method public constructor <init>()V
     .locals 0
@@ -877,4 +891,189 @@
 .end method
 
 .method public abstract unregisterReceiver(Landroid/content/BroadcastReceiver;)V
+.end method
+
+.method public isColorTheme()Z
+    .locals 9
+
+    .prologue
+    const/4 v0, 0x1
+
+    .line 3480
+    new-instance v5, Landroid/util/TypedValue;
+
+    invoke-direct {v5}, Landroid/util/TypedValue;-><init>()V
+
+    .line 3481
+    .local v5, "typedValue":Landroid/util/TypedValue;
+    invoke-virtual {p0}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 3482
+    .local v3, "packageName":Ljava/lang/String;
+    const/4 v1, 0x0
+
+    .line 3483
+    .local v1, "id":I
+    invoke-virtual {p0}, Landroid/content/Context;->getThemeResId()I
+
+    move-result v4
+
+    .line 3484
+    .local v4, "themeResId":I
+    const/4 v2, 0x0
+
+    .line 3485
+    .local v2, "isFlymeRes":Z
+    const/high16 v6, -0x1000000
+
+    and-int/2addr v6, v4
+
+    invoke-static {}, Landroid/app/LoadedApk$FlymeInjector;->getFlymePackageId()I
+
+    move-result v7
+
+    shl-int/lit8 v7, v7, 0x18
+
+    if-ne v6, v7, :cond_0
+
+    .line 3486
+    const/4 v2, 0x1
+
+    .line 3489
+    :cond_0
+    iget-object v6, p0, Landroid/content/Context;->mFlymeColorThemeCacheMap:Ljava/util/HashMap;
+
+    if-nez v6, :cond_1
+
+    .line 3490
+    new-instance v6, Ljava/util/HashMap;
+
+    invoke-direct {v6}, Ljava/util/HashMap;-><init>()V
+
+    iput-object v6, p0, Landroid/content/Context;->mFlymeColorThemeCacheMap:Ljava/util/HashMap;
+
+    .line 3493
+    :cond_1
+    const-string v6, "android"
+
+    invoke-virtual {v3, v6}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v6
+
+    if-nez v6, :cond_2
+
+    if-eqz v2, :cond_3
+
+    :cond_2
+    const-string v3, "flyme"
+
+    .line 3494
+    :cond_3
+    iget-object v6, p0, Landroid/content/Context;->mFlymeColorThemeCacheMap:Ljava/util/HashMap;
+
+    invoke-virtual {v6}, Ljava/util/HashMap;->isEmpty()Z
+
+    move-result v6
+
+    if-nez v6, :cond_4
+
+    iget-object v6, p0, Landroid/content/Context;->mFlymeColorThemeCacheMap:Ljava/util/HashMap;
+
+    invoke-virtual {v6, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v6
+
+    if-eqz v6, :cond_4
+
+    .line 3495
+    iget-object v6, p0, Landroid/content/Context;->mFlymeColorThemeCacheMap:Ljava/util/HashMap;
+
+    invoke-virtual {v6, v3}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v6
+
+    check-cast v6, Ljava/lang/Integer;
+
+    invoke-virtual {v6}, Ljava/lang/Integer;->intValue()I
+
+    move-result v1
+
+    .line 3500
+    :goto_0
+    invoke-virtual {p0}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+
+    move-result-object v6
+
+    invoke-virtual {v6, v1, v5, v0}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_5
+
+    iget v6, v5, Landroid/util/TypedValue;->data:I
+
+    if-eqz v6, :cond_5
+
+    .line 3501
+    .local v0, "flag":Z
+    :goto_1
+    return v0
+
+    .line 3497
+    .end local v0    # "flag":Z
+    :cond_4
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v6
+
+    const-string/jumbo v7, "mzThemeColor"
+
+    const-string v8, "attr"
+
+    invoke-virtual {v6, v7, v8, v3}, Landroid/content/res/Resources;->getIdentifier(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result v1
+
+    .line 3498
+    iget-object v6, p0, Landroid/content/Context;->mFlymeColorThemeCacheMap:Ljava/util/HashMap;
+
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v7
+
+    invoke-virtual {v6, v3, v7}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    goto :goto_0
+
+    .line 3500
+    :cond_5
+    const/4 v0, 0x0
+
+    goto :goto_1
+.end method
+
+.method public isDeviceDefaultTheme()Z
+    .locals 1
+
+    .prologue
+    .line 3463
+    invoke-virtual {p0}, Landroid/content/Context;->isColorTheme()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public isThemeLight()Z
+    .locals 1
+
+    .prologue
+    .line 3471
+    invoke-virtual {p0}, Landroid/content/Context;->isColorTheme()Z
+
+    move-result v0
+
+    return v0
 .end method

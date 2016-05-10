@@ -6,12 +6,18 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/view/ActionMode$OnActionItemDragListener;,
+        Landroid/view/ActionMode$BackPressedListener;,
         Landroid/view/ActionMode$Callback;
     }
 .end annotation
 
 
 # instance fields
+.field private mFlymeActionItemDragListener:Landroid/view/ActionMode$OnActionItemDragListener;
+
+.field private mFlymeBackListener:Landroid/view/ActionMode$BackPressedListener;
+
 .field private mTag:Ljava/lang/Object;
 
 .field private mTitleOptionalHint:Z
@@ -128,5 +134,58 @@
     iput-boolean p1, p0, Landroid/view/ActionMode;->mTitleOptionalHint:Z
 
     .line 124
+    return-void
+.end method
+
+.method public getActionItemDragListener()Landroid/view/ActionMode$OnActionItemDragListener;
+    .locals 1
+
+    .prologue
+    .line 310
+    iget-object v0, p0, Landroid/view/ActionMode;->mFlymeActionItemDragListener:Landroid/view/ActionMode$OnActionItemDragListener;
+
+    return-object v0
+.end method
+
+.method public getBackPressListener()Landroid/view/ActionMode$BackPressedListener;
+    .locals 1
+
+    .prologue
+    .line 289
+    iget-object v0, p0, Landroid/view/ActionMode;->mFlymeBackListener:Landroid/view/ActionMode$BackPressedListener;
+
+    return-object v0
+.end method
+
+.method public setActionItemDragListener(Landroid/view/ActionMode$OnActionItemDragListener;)V
+    .locals 0
+    .param p1, "listener"    # Landroid/view/ActionMode$OnActionItemDragListener;
+
+    .prologue
+    .line 303
+    iput-object p1, p0, Landroid/view/ActionMode;->mFlymeActionItemDragListener:Landroid/view/ActionMode$OnActionItemDragListener;
+
+    .line 304
+    return-void
+.end method
+
+.method public setBackPressListener(Landroid/view/ActionMode$BackPressedListener;)V
+    .locals 0
+    .param p1, "listener"    # Landroid/view/ActionMode$BackPressedListener;
+
+    .prologue
+    .line 282
+    iput-object p1, p0, Landroid/view/ActionMode;->mFlymeBackListener:Landroid/view/ActionMode$BackPressedListener;
+
+    .line 283
+    return-void
+.end method
+
+.method public setDragDismissAnimating(Z)V
+    .locals 0
+    .param p1, "isAnimating"    # Z
+
+    .prologue
+    .line 316
     return-void
 .end method

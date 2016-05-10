@@ -1406,3 +1406,121 @@
     :cond_0
     return-void
 .end method
+
+.method public static isRingtoneFileExist(Landroid/content/Context;Landroid/net/Uri;)Z
+    .locals 10
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "uri"    # Landroid/net/Uri;
+
+    .prologue
+    const/4 v9, 0x1
+
+    const/4 v8, 0x0
+
+    .line 712
+    if-nez p1, :cond_0
+
+    move v0, v8
+
+    .line 725
+    :goto_0
+    return v0
+
+    .line 713
+    :cond_0
+    const/4 v6, 0x0
+
+    .line 715
+    .local v6, "cursor":Landroid/database/Cursor;
+    :try_start_0
+    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v0
+
+    const/4 v1, 0x1
+
+    new-array v2, v1, [Ljava/lang/String;
+
+    const/4 v1, 0x0
+
+    const-string v3, "_data"
+
+    aput-object v3, v2, v1
+
+    const/4 v3, 0x0
+
+    const/4 v4, 0x0
+
+    const/4 v5, 0x0
+
+    move-object v1, p1
+
+    invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v6
+
+    .line 716
+    if-eqz v6, :cond_1
+
+    invoke-interface {v6}, Landroid/database/Cursor;->getCount()I
+    :try_end_0
+    .catch Landroid/database/sqlite/SQLiteException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    move-result v0
+
+    if-gtz v0, :cond_3
+
+    .line 724
+    :cond_1
+    if-eqz v6, :cond_2
+
+    .line 725
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    :cond_2
+    move v0, v8
+
+    goto :goto_0
+
+    .line 724
+    :cond_3
+    if-eqz v6, :cond_4
+
+    .line 725
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    :cond_4
+    move v0, v9
+
+    goto :goto_0
+
+    .line 721
+    :catch_0
+    move-exception v7
+
+    .line 724
+    .local v7, "e":Landroid/database/sqlite/SQLiteException;
+    if-eqz v6, :cond_5
+
+    .line 725
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    :cond_5
+    move v0, v8
+
+    goto :goto_0
+
+    .line 724
+    .end local v7    # "e":Landroid/database/sqlite/SQLiteException;
+    :catchall_0
+    move-exception v0
+
+    if-eqz v6, :cond_6
+
+    .line 725
+    invoke-interface {v6}, Landroid/database/Cursor;->close()V
+
+    :cond_6
+    throw v0
+.end method

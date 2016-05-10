@@ -1151,3 +1151,135 @@
 
     goto :goto_0
 .end method
+
+.method public isLocalPlayerValid()Z
+    .locals 1
+
+    .prologue
+    .line 375
+    iget-object v0, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public playLocal()Z
+    .locals 2
+
+    .prologue
+    .line 362
+    iget-object v0, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
+
+    if-eqz v0, :cond_1
+
+    .line 365
+    iget-object v0, p0, Landroid/media/Ringtone;->mAudioManager:Landroid/media/AudioManager;
+
+    iget-object v1, p0, Landroid/media/Ringtone;->mAudioAttributes:Landroid/media/AudioAttributes;
+
+    invoke-static {v1}, Landroid/media/AudioAttributes;->toLegacyStreamType(Landroid/media/AudioAttributes;)I
+
+    move-result v1
+
+    invoke-virtual {v0, v1}, Landroid/media/AudioManager;->getStreamVolume(I)I
+
+    move-result v0
+
+    if-ltz v0, :cond_0
+
+    .line 366
+    iget-object v0, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
+
+    invoke-virtual {v0}, Landroid/media/MediaPlayer;->start()V
+
+    .line 368
+    :cond_0
+    const/4 v0, 0x1
+
+    .line 370
+    :goto_0
+    return v0
+
+    :cond_1
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method public setOnCompletionListener(Landroid/media/MediaPlayer$OnCompletionListener;)V
+    .locals 1
+    .param p1, "listener"    # Landroid/media/MediaPlayer$OnCompletionListener;
+
+    .prologue
+    .line 380
+    iget-object v0, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
+
+    if-nez v0, :cond_0
+
+    .line 382
+    :goto_0
+    return-void
+
+    .line 381
+    :cond_0
+    iget-object v0, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
+
+    invoke-virtual {v0, p1}, Landroid/media/MediaPlayer;->setOnCompletionListener(Landroid/media/MediaPlayer$OnCompletionListener;)V
+
+    goto :goto_0
+.end method
+
+.method public setOnErrorListener(Landroid/media/MediaPlayer$OnErrorListener;)V
+    .locals 1
+    .param p1, "listener"    # Landroid/media/MediaPlayer$OnErrorListener;
+
+    .prologue
+    .line 386
+    iget-object v0, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
+
+    if-nez v0, :cond_0
+
+    .line 388
+    :goto_0
+    return-void
+
+    .line 387
+    :cond_0
+    iget-object v0, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
+
+    invoke-virtual {v0, p1}, Landroid/media/MediaPlayer;->setOnErrorListener(Landroid/media/MediaPlayer$OnErrorListener;)V
+
+    goto :goto_0
+.end method
+
+.method public setRingVolume(F)V
+    .locals 1
+    .param p1, "volume"    # F
+
+    .prologue
+    .line 392
+    iget-object v0, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
+
+    if-nez v0, :cond_0
+
+    .line 394
+    :goto_0
+    return-void
+
+    .line 393
+    :cond_0
+    iget-object v0, p0, Landroid/media/Ringtone;->mLocalPlayer:Landroid/media/MediaPlayer;
+
+    invoke-virtual {v0, p1, p1}, Landroid/media/MediaPlayer;->setVolume(FF)V
+
+    goto :goto_0
+.end method

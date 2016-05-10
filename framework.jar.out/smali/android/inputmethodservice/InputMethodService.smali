@@ -8,6 +8,7 @@
     value = {
         Landroid/inputmethodservice/InputMethodService$Insets;,
         Landroid/inputmethodservice/InputMethodService$InputMethodSessionImpl;,
+        Landroid/inputmethodservice/InputMethodService$FlymeInjector;,
         Landroid/inputmethodservice/InputMethodService$InputMethodImpl;
     }
 .end annotation
@@ -34,6 +35,26 @@
 
 
 # instance fields
+.field mFlymeCoverFrame:Landroid/widget/ViewAnimator;
+
+.field mFlymeCoverView:Lcom/meizu/widget/inputmethod/CoverView;
+
+.field mFlymeHandler:Landroid/os/Handler;
+
+.field mFlymeMethodFlags:I
+
+.field mFlymePrivateImeOptionsMap:Ljava/util/Map;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Map",
+            "<",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
 .field final mActionClickListener:Landroid/view/View$OnClickListener;
 
 .field mBackDisposition:I
@@ -685,6 +706,8 @@
     .line 1603
     invoke-virtual {p0, p2, p3}, Landroid/inputmethodservice/InputMethodService;->onStartInput(Landroid/view/inputmethod/EditorInfo;Z)V
 
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->removeHideSelfMessage(Landroid/inputmethodservice/InputMethodService;)V
+
     .line 1604
     iget-boolean v0, p0, Landroid/inputmethodservice/InputMethodService;->mWindowVisible:Z
 
@@ -715,7 +738,7 @@
     :cond_2
     iget v0, p0, Landroid/inputmethodservice/InputMethodService;->mCandidatesVisibility:I
 
-    if-nez v0, :cond_1
+    if-nez v0, :cond_flyme_0
 
     .line 1612
     iput-boolean v1, p0, Landroid/inputmethodservice/InputMethodService;->mCandidatesViewStarted:Z
@@ -725,7 +748,13 @@
 
     invoke-virtual {p0, v0, p3}, Landroid/inputmethodservice/InputMethodService;->onStartCandidatesView(Landroid/view/inputmethod/EditorInfo;Z)V
 
-    goto :goto_0
+    goto :goto_flyme_0
+
+    :cond_flyme_0
+    :goto_flyme_0
+    invoke-static/range {p0 .. p2}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->hideInputDelayIfNeeded(Landroid/inputmethodservice/InputMethodService;Landroid/view/inputmethod/InputConnection;Landroid/view/inputmethod/EditorInfo;)V
+
+    return-void
 .end method
 
 .method protected dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
@@ -1957,6 +1986,8 @@
 
     invoke-virtual {v0, v4}, Landroid/widget/FrameLayout;->setVisibility(I)V
 
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->initFlymeCoverViews(Landroid/inputmethodservice/InputMethodService;)V
+
     .line 735
     return-void
 .end method
@@ -2438,6 +2469,10 @@
 
     move v5, v4
 
+    sget v4, Lcom/flyme/internal/R$style;->Theme_Flyme_InputMethod:I
+
+    sget v5, Lcom/flyme/internal/R$style;->Theme_Flyme_InputMethod:I
+
     invoke-static/range {v0 .. v5}, Landroid/content/res/Resources;->selectSystemTheme(IIIIII)I
 
     move-result v0
@@ -2531,6 +2566,8 @@
     const/4 v2, -0x2
 
     invoke-virtual {v0, v1, v2}, Landroid/view/Window;->setLayout(II)V
+
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->initFlymeExtraFields(Landroid/inputmethodservice/InputMethodService;)V
 
     .line 680
     return-void
@@ -2709,6 +2746,18 @@
 
     .line 994
     :cond_2
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->onEvaluateFullscreenMode(Landroid/inputmethodservice/InputMethodService;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_flyme_0
+
+    iget-boolean v2, p0, Landroid/inputmethodservice/InputMethodService;->mIsFullscreen:Z
+
+    return v2
+
+    :cond_flyme_0
+
     const/4 v1, 0x1
 
     goto :goto_0
@@ -3119,6 +3168,20 @@
 
     if-ne v1, v2, :cond_1
 
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->isImeInterceptBackKey(Landroid/inputmethodservice/InputMethodService;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->handleBack(Landroid/inputmethodservice/InputMethodService;)Z
+
+    move-result v1
+
+    return v1
+
+    :cond_flyme_0
+
     .line 1801
     invoke-direct {p0, v0}, Landroid/inputmethodservice/InputMethodService;->handleBack(Z)Z
 
@@ -3200,6 +3263,18 @@
     move-result v0
 
     if-nez v0, :cond_0
+
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->isImeInterceptBackKey(Landroid/inputmethodservice/InputMethodService;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_flyme_0
+
+    const/4 v0, 0x0
+
+    return v0
+
+    :cond_flyme_0
 
     .line 1850
     const/4 v0, 0x1
@@ -3756,6 +3831,16 @@
     .param p1, "flags"    # I
 
     .prologue
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->requestHideSelf(Landroid/inputmethodservice/InputMethodService;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     .line 1743
     iget-object v0, p0, Landroid/inputmethodservice/InputMethodService;->mImm:Landroid/view/inputmethod/InputMethodManager;
 
@@ -4432,6 +4517,8 @@
 
     .line 1486
     :cond_4
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->updateCoverViewShown(Landroid/inputmethodservice/InputMethodService;)V
+
     if-nez v2, :cond_5
 
     .line 1488
@@ -5185,4 +5272,26 @@
     const/16 v2, 0x8
 
     goto :goto_1
+.end method
+
+.method flymeInvokeMethodHandleBack(Z)Z
+    .locals 1
+    .param p1, "doIt"    # Z
+
+    .prologue
+    .line 2490
+    invoke-direct {p0, p1}, Landroid/inputmethodservice/InputMethodService;->handleBack(Z)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method protected final setCheckTouchBound(Z)V
+    .locals 0
+    .param p1, "check"    # Z
+
+    .prologue
+    .line 2487
+    return-void
 .end method

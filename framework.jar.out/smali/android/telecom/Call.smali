@@ -1723,3 +1723,17 @@
     .line 604
     return-void
 .end method
+
+.method public phoneAccountSelected(Landroid/telecom/PhoneAccountHandle;)V
+    .locals 1
+    .param p1, "accountHandle"    # Landroid/telecom/PhoneAccountHandle;
+
+    .prologue
+    .line 1015
+    const/4 v0, 0x0
+
+    invoke-virtual {p0, p1, v0}, Landroid/telecom/Call;->phoneAccountSelected(Landroid/telecom/PhoneAccountHandle;Z)V
+
+    .line 1016
+    return-void
+.end method

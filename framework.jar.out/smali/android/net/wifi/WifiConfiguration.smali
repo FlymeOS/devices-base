@@ -12,6 +12,7 @@
         Landroid/net/wifi/WifiConfiguration$Visibility;,
         Landroid/net/wifi/WifiConfiguration$Status;,
         Landroid/net/wifi/WifiConfiguration$GroupCipher;,
+        Landroid/net/wifi/WifiConfiguration$FlymeInjector;,
         Landroid/net/wifi/WifiConfiguration$PairwiseCipher;,
         Landroid/net/wifi/WifiConfiguration$AuthAlgorithm;,
         Landroid/net/wifi/WifiConfiguration$Protocol;,
@@ -130,6 +131,14 @@
 
 
 # instance fields
+.field public BandMode:I
+
+.field public HexSSID:Ljava/lang/String;
+
+.field public adhocMode:Ljava/lang/String;
+
+.field public preSharedKeyEncry:Ljava/lang/String;
+
 .field public BSSID:Ljava/lang/String;
 
 .field public FQDN:Ljava/lang/String;
@@ -572,6 +581,8 @@
     invoke-direct {v1}, Landroid/net/IpConfiguration;-><init>()V
 
     iput-object v1, p0, Landroid/net/wifi/WifiConfiguration;->mIpConfiguration:Landroid/net/IpConfiguration;
+
+    invoke-static/range {p0 .. p0}, Landroid/net/wifi/WifiConfiguration$FlymeInjector;->initFlymeExtraFields(Landroid/net/wifi/WifiConfiguration;)V
 
     .line 885
     return-void
@@ -1042,6 +1053,8 @@
     iget v1, p1, Landroid/net/wifi/WifiConfiguration;->numNoInternetAccessReports:I
 
     iput v1, p0, Landroid/net/wifi/WifiConfiguration;->numNoInternetAccessReports:I
+
+    invoke-static/range {p0 .. p1}, Landroid/net/wifi/WifiConfiguration$FlymeInjector;->initFlymeExtraFields(Landroid/net/wifi/WifiConfiguration;Landroid/net/wifi/WifiConfiguration;)V
 
     .line 1581
     .end local v0    # "i":I
@@ -4857,6 +4870,8 @@
     iget-object v4, p0, Landroid/net/wifi/WifiConfiguration;->allowedGroupCiphers:Ljava/util/BitSet;
 
     invoke-static {p1, v4}, Landroid/net/wifi/WifiConfiguration;->writeBitSet(Landroid/os/Parcel;Ljava/util/BitSet;)V
+
+    invoke-static/range {p0 .. p1}, Landroid/net/wifi/WifiConfiguration$FlymeInjector;->writeFlymeExtraFields(Landroid/net/wifi/WifiConfiguration;Landroid/os/Parcel;)V
 
     .line 1615
     iget-object v4, p0, Landroid/net/wifi/WifiConfiguration;->enterpriseConfig:Landroid/net/wifi/WifiEnterpriseConfig;

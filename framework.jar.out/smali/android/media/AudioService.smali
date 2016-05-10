@@ -2821,6 +2821,24 @@
 
     .line 1018
     :cond_2
+    invoke-direct/range {p0 .. p2}, Landroid/media/AudioService;->flymeCheckResumeRingerModeNormal(II)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    move-object/from16 v0, p0
+
+    move/from16 v1, p1
+
+    move-object/from16 v2, p4
+
+    invoke-direct {v0, v1, v2}, Landroid/media/AudioService;->flymeSetStreamVolume(ILjava/lang/String;)V
+
+    return-void
+
+    :cond_flyme_0
+
     move-object/from16 v0, p0
 
     move/from16 v1, p2
@@ -3514,6 +3532,8 @@
 
     .line 994
     :cond_1
+    goto/16 :goto_flyme_0
+
     iget-object v0, p0, Landroid/media/AudioService;->mVolumeController:Landroid/media/AudioService$VolumeController;
 
     invoke-virtual {v0, v6, p3}, Landroid/media/AudioService$VolumeController;->suppressAdjustment(II)Z
@@ -3543,6 +3563,7 @@
     invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     :cond_2
+    :goto_flyme_0
     move-object v0, p0
 
     move v2, p1
@@ -11879,6 +11900,8 @@
 
     .line 1247
     :cond_1
+    invoke-direct/range {p0 .. p2}, Landroid/media/AudioService;->flymeCheckResumeRingerModeNormal(II)Z
+
     invoke-direct {p0, p1}, Landroid/media/AudioService;->ensureValidStreamType(I)V
 
     .line 1248
@@ -17343,4 +17366,89 @@
     .packed-switch 0x2
         :pswitch_0
     .end packed-switch
+.end method
+
+.method private flymeCheckResumeRingerModeNormal(II)Z
+    .locals 6
+    .param p1, "streamType"    # I
+    .param p2, "direction"    # I
+
+    .prologue
+    const/4 v5, 0x2
+
+    const/4 v3, 0x0
+
+    const/4 v2, 0x1
+
+    .line 6022
+    const/16 v1, 0x26
+
+    .line 6025
+    .local v1, "mCanResumeNormalStreams":I
+    if-lez p2, :cond_1
+
+    move v0, v2
+
+    .line 6026
+    .local v0, "isUnMute":Z
+    :goto_0
+    shl-int v4, v2, p1
+
+    and-int/2addr v4, v1
+
+    if-eqz v4, :cond_2
+
+    if-eqz v0, :cond_2
+
+    invoke-virtual {p0}, Landroid/media/AudioService;->getRingerModeInternal()I
+
+    move-result v4
+
+    if-eqz v4, :cond_0
+
+    invoke-virtual {p0}, Landroid/media/AudioService;->getRingerModeInternal()I
+
+    move-result v4
+
+    if-ne v4, v2, :cond_2
+
+    .line 6029
+    :cond_0
+    invoke-direct {p0, v5, v2}, Landroid/media/AudioService;->setRingerModeInt(IZ)V
+
+    .line 6030
+    invoke-direct {p0, v5}, Landroid/media/AudioService;->setRingerModeExt(I)V
+
+    .line 6033
+    :goto_1
+    return v2
+
+    .end local v0    # "isUnMute":Z
+    :cond_1
+    move v0, v3
+
+    .line 6025
+    goto :goto_0
+
+    .restart local v0    # "isUnMute":Z
+    :cond_2
+    move v2, v3
+
+    .line 6033
+    goto :goto_1
+.end method
+
+.method private flymeSetStreamVolume(ILjava/lang/String;)V
+    .locals 1
+    .param p1, "streamType"    # I
+    .param p2, "callingPackage"    # Ljava/lang/String;
+
+    .prologue
+    const/4 v0, 0x1
+
+    .line 1159
+    invoke-virtual {p0, p1, v0, v0, p2}, Landroid/media/AudioService;->setStreamVolume(IIILjava/lang/String;)V
+
+    .line 1160
+    return-void
 .end method
