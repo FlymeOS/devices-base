@@ -1,0 +1,19 @@
+!!brut.androlib.meta.MetaInfo
+apkFileName: framework-res.apk
+compressionType: false
+doNotCompress:
+- arsc
+isFrameworkApk: true
+packageInfo:
+  forcedPackageId: '1'
+  renameManifestPackage: null
+sdkInfo:
+  minSdkVersion: '22'
+  targetSdkVersion: '22'
+sharedLibrary: false
+unknownFiles: {}
+usesFramework: null
+version: 2.1.0-1e8d95-SNAPSHOT
+versionInfo:
+  versionCode: '22'
+  versionName: 5.1.1-2167285
