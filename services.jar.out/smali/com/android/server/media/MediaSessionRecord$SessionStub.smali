@@ -293,6 +293,8 @@
     # setter for: Lcom/android/server/media/MediaSessionRecord;->mFlags:J
     invoke-static {v2, v4, v5}, Lcom/android/server/media/MediaSessionRecord;->access$902(Lcom/android/server/media/MediaSessionRecord;J)J
 
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/media/MediaSessionRecord$SessionStub;->flymeUpdateMediaSession()V
+
     .line 767
     iget-object v2, p0, Lcom/android/server/media/MediaSessionRecord$SessionStub;->this$0:Lcom/android/server/media/MediaSessionRecord;
 
@@ -846,5 +848,24 @@
     invoke-static {v0, p1}, Lcom/android/server/media/MediaSessionRecord;->access$1902(Lcom/android/server/media/MediaSessionRecord;I)I
 
     .line 835
+    return-void
+.end method
+
+.method private flymeUpdateMediaSession()V
+    .locals 2
+
+    .prologue
+    .line 773
+    iget-object v0, p0, Lcom/android/server/media/MediaSessionRecord$SessionStub;->this$0:Lcom/android/server/media/MediaSessionRecord;
+
+    invoke-virtual {v0}, Lcom/android/server/media/MediaSessionRecord;->flymeGetFieldService()Lcom/android/server/media/MediaSessionService;
+
+    move-result-object v0
+
+    iget-object v1, p0, Lcom/android/server/media/MediaSessionRecord$SessionStub;->this$0:Lcom/android/server/media/MediaSessionRecord;
+
+    invoke-virtual {v0, v1}, Lcom/android/server/media/MediaSessionService;->updateSession(Lcom/android/server/media/MediaSessionRecord;)V
+
+    .line 775
     return-void
 .end method

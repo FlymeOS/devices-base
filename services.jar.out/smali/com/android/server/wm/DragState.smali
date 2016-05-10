@@ -4,6 +4,18 @@
 
 
 # instance fields
+.field mMzInitHeight:F
+
+.field mMzInitWidth:F
+
+.field mMzInitX:F
+
+.field mMzInitY:F
+
+.field mMzOnTouching:Z
+
+.field mMzStatusBarNfcEnabled:Z
+
 .field mClientChannel:Landroid/view/InputChannel;
 
 .field mCurrentX:F
@@ -327,6 +339,8 @@
 
     .line 223
     :cond_1
+    invoke-virtual/range {p0 .. p0}, Lcom/android/server/wm/DragState;->mzSendDragStartedLw()V
+
     iget-boolean v0, p0, Lcom/android/server/wm/DragState;->mDragInProgress:Z
 
     if-eqz v0, :cond_0
@@ -731,6 +745,8 @@
 
     .line 358
     .local v0, "touchedWin":Lcom/android/server/wm/WindowState;
+    invoke-direct {p0, v0}, Lcom/android/server/wm/DragState;->flymeNotifyDropLw(Lcom/android/server/wm/WindowState;)V
+
     if-nez v0, :cond_1
 
     .line 361
@@ -988,6 +1004,8 @@
     .line 324
     .end local v11    # "touchedBinder":Landroid/os/IBinder;
     :cond_1
+    invoke-direct {p0, v12}, Lcom/android/server/wm/DragState;->flymeNotifyMoveLw(Lcom/android/server/wm/WindowState;)V
+
     :try_start_1
     iget-object v0, p0, Lcom/android/server/wm/DragState;->mTargetWindow:Lcom/android/server/wm/WindowState;
 
@@ -1537,4 +1555,142 @@
     invoke-virtual {v0}, Lcom/android/server/wm/WindowManagerService;->resumeRotationLocked()V
 
     goto :goto_0
+.end method
+
+.method private flymeNotifyDropLw(Lcom/android/server/wm/WindowState;)V
+    .locals 2
+    .param p1, "touchedWin"    # Lcom/android/server/wm/WindowState;
+
+    .prologue
+    .line 456
+    if-eqz p1, :cond_0
+
+    iget-boolean v0, p0, Lcom/android/server/wm/DragState;->mMzStatusBarNfcEnabled:Z
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p1, Lcom/android/server/wm/WindowState;->mAttrs:Landroid/view/WindowManager$LayoutParams;
+
+    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->type:I
+
+    const/16 v1, 0x7d0
+
+    if-ne v0, v1, :cond_0
+
+    .line 457
+    iget-object p1, p0, Lcom/android/server/wm/DragState;->mTargetWindow:Lcom/android/server/wm/WindowState;
+
+    .line 459
+    :cond_0
+    return-void
+.end method
+
+.method private flymeNotifyMoveLw(Lcom/android/server/wm/WindowState;)V
+    .locals 1
+    .param p1, "touchedWin"    # Lcom/android/server/wm/WindowState;
+
+    .prologue
+    .line 462
+    iget v0, p0, Lcom/android/server/wm/DragState;->mFlags:I
+
+    and-int/lit8 v0, v0, 0x1
+
+    if-nez v0, :cond_0
+
+    .line 463
+    invoke-direct {p0, p1}, Lcom/android/server/wm/DragState;->flymeNotifyDropLw(Lcom/android/server/wm/WindowState;)V
+
+    .line 465
+    :cond_0
+    return-void
+.end method
+
+.method protected mzBroadcastDragCanceledLw()V
+    .locals 0
+
+    .prologue
+    .line 468
+    return-void
+.end method
+
+.method public mzCancelDragLw()V
+    .locals 0
+
+    .prologue
+    .line 486
+    return-void
+.end method
+
+.method public mzEndDragLwAnimation()V
+    .locals 0
+
+    .prologue
+    .line 488
+    return-void
+.end method
+
+.method public mzIsDragAnimation()Z
+    .locals 1
+
+    .prologue
+    .line 484
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public mzRegisterReceivers()V
+    .locals 0
+
+    .prologue
+    .line 480
+    return-void
+.end method
+
+.method protected mzSendDragStartedLw()V
+    .locals 0
+
+    .prologue
+    .line 467
+    return-void
+.end method
+
+.method public mzSetInitXAndY(FF)V
+    .locals 0
+    .param p1, "x"    # F
+    .param p2, "y"    # F
+
+    .prologue
+    .line 476
+    iput p1, p0, Lcom/android/server/wm/DragState;->mMzInitX:F
+
+    .line 477
+    iput p2, p0, Lcom/android/server/wm/DragState;->mMzInitY:F
+
+    .line 478
+    return-void
+.end method
+
+.method public mzSetWidthAndHeight(FF)V
+    .locals 0
+    .param p1, "width"    # F
+    .param p2, "height"    # F
+
+    .prologue
+    .line 471
+    iput p1, p0, Lcom/android/server/wm/DragState;->mMzInitWidth:F
+
+    .line 472
+    iput p2, p0, Lcom/android/server/wm/DragState;->mMzInitHeight:F
+
+    .line 473
+    return-void
+.end method
+
+.method public mzUnRegisterReceivers()V
+    .locals 0
+
+    .prologue
+    .line 482
+    return-void
 .end method

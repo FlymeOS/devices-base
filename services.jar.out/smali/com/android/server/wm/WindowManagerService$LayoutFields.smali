@@ -292,3 +292,47 @@
 
     return p1
 .end method
+
+.method flymeGetFieldSyswin()Z
+    .locals 1
+
+    .prologue
+    .line 690
+    iget-boolean v0, p0, Lcom/android/server/wm/WindowManagerService$LayoutFields;->mSyswin:Z
+
+    return v0
+.end method
+
+.method flymeGetFieldUserActivityTimeout()J
+    .locals 2
+
+    .prologue
+    .line 698
+    iget-wide v0, p0, Lcom/android/server/wm/WindowManagerService$LayoutFields;->mUserActivityTimeout:J
+
+    return-wide v0
+.end method
+
+.method flymeSetFieldSyswin(Z)V
+    .locals 0
+    .param p1, "sysWin"    # Z
+
+    .prologue
+    .line 694
+    iput-boolean p1, p0, Lcom/android/server/wm/WindowManagerService$LayoutFields;->mSyswin:Z
+
+    .line 695
+    return-void
+.end method
+
+.method flymeSetFieldUserActivityTimeout(J)V
+    .locals 1
+    .param p1, "userActivityTimeout"    # J
+
+    .prologue
+    .line 702
+    iput-wide p1, p0, Lcom/android/server/wm/WindowManagerService$LayoutFields;->mUserActivityTimeout:J
+
+    .line 703
+    return-void
+.end method
