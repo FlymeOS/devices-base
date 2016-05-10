@@ -1386,7 +1386,7 @@
 
     move-object/from16 v19, v3
 
-    move-object/from16 v20, v6
+    move/from16 v20, v6
 
     invoke-direct/range {v14 .. v20}, Landroid/widget/PopupWindow;->meansureFlymePopupPosition(Landroid/view/View;Landroid/view/WindowManager$LayoutParams;IILandroid/graphics/Rect;Z)Landroid/view/WindowManager$LayoutParams;
 

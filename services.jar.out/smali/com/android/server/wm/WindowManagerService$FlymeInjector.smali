@@ -393,9 +393,9 @@
 
     iget-object v1, p0, Lcom/android/server/wm/WindowManagerService;->mCurConfiguration:Landroid/content/res/Configuration;
 
-    iget-object v1, v1, Landroid/content/res/Configuration;->configurationExt:Lframeworks/base/core/java/android/content/res/flymetheme/ConfigurationExt;
+    iget-object v1, v1, Landroid/content/res/Configuration;->configurationExt:Landroid/content/res/flymetheme/ConfigurationExt;
 
-    iput-object v1, v0, Landroid/content/res/Configuration;->configurationExt:Lframeworks/base/core/java/android/content/res/flymetheme/ConfigurationExt;
+    iput-object v1, v0, Landroid/content/res/Configuration;->configurationExt:Landroid/content/res/flymetheme/ConfigurationExt;
 
     .line 11919
     return-void
@@ -410,9 +410,9 @@
     .line 11923
     iget-object v0, p0, Lcom/android/server/wm/WindowManagerService;->mTempConfiguration:Landroid/content/res/Configuration;
 
-    iget-object v1, p1, Landroid/content/res/Configuration;->configurationExt:Lframeworks/base/core/java/android/content/res/flymetheme/ConfigurationExt;
+    iget-object v1, p1, Landroid/content/res/Configuration;->configurationExt:Landroid/content/res/flymetheme/ConfigurationExt;
 
-    iput-object v1, v0, Landroid/content/res/Configuration;->configurationExt:Lframeworks/base/core/java/android/content/res/flymetheme/ConfigurationExt;
+    iput-object v1, v0, Landroid/content/res/Configuration;->configurationExt:Landroid/content/res/flymetheme/ConfigurationExt;
 
     .line 11925
     return-void
