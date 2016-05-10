@@ -1776,3 +1776,60 @@
     .line 114
     return-void
 .end method
+
+.method public constructor <init>()V
+    .locals 1
+
+    .prologue
+    .line 893
+    invoke-static {}, Landroid/telephony/SmsMessage;->getSmsFacility()Lcom/android/internal/telephony/SmsMessageBase;
+
+    move-result-object v0
+
+    invoke-direct {p0, v0}, Landroid/telephony/SmsMessage;-><init>(Lcom/android/internal/telephony/SmsMessageBase;)V
+
+    .line 894
+    return-void
+.end method
+
+.method private static final getSmsFacility()Lcom/android/internal/telephony/SmsMessageBase;
+    .locals 1
+
+    .prologue
+    .line 880
+    invoke-static {}, Landroid/telephony/SmsMessage;->isCdmaVoice()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 881
+    new-instance v0, Lcom/android/internal/telephony/cdma/SmsMessage;
+
+    invoke-direct {v0}, Lcom/android/internal/telephony/cdma/SmsMessage;-><init>()V
+
+    .line 883
+    :goto_0
+    return-object v0
+
+    :cond_0
+    new-instance v0, Lcom/android/internal/telephony/gsm/SmsMessage;
+
+    invoke-direct {v0}, Lcom/android/internal/telephony/gsm/SmsMessage;-><init>()V
+
+    goto :goto_0
+.end method
+
+.method public getDestinationAddress()Ljava/lang/String;
+    .locals 1
+
+    .prologue
+    .line 904
+    iget-object v0, p0, Landroid/telephony/SmsMessage;->mWrappedSmsMessage:Lcom/android/internal/telephony/SmsMessageBase;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/SmsMessageBase;->getDestinationAddress()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method

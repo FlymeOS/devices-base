@@ -1726,6 +1726,8 @@
 
     iput-object v4, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mRecipientAddress:Lcom/android/internal/telephony/gsm/GsmSmsAddress;
 
+    invoke-direct/range {p0 .. p0}, Lcom/android/internal/telephony/gsm/SmsMessage;->mzSetDestinationAddress()V
+
     .line 1059
     iget-object v4, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mRecipientAddress:Lcom/android/internal/telephony/gsm/GsmSmsAddress;
 
@@ -3190,4 +3192,17 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method private mzSetDestinationAddress()V
+    .locals 1
+
+    .prologue
+    .line 1107
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mRecipientAddress:Lcom/android/internal/telephony/gsm/GsmSmsAddress;
+
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->destinationAddress:Lcom/android/internal/telephony/SmsAddress;
+
+    .line 1108
+    return-void
 .end method
