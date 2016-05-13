@@ -2534,3 +2534,33 @@
 
     goto :goto_0
 .end method
+
+.method public static isMtkPlatform()Z
+    .locals 2
+
+    .prologue
+    const-string v1, "ro.mediatek.platform"
+
+    invoke-static {v1}, Landroid/os/BuildExt;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, "platformMtk":Ljava/lang/String;
+    const-string v1, "MT"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    const/4 v1, 0x1
+
+    :goto_0
+    return v1
+
+    :cond_0
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
