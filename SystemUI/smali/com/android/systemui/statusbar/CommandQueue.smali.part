@@ -1,6 +1,0 @@
-.method public showScreenPinningRequest()V
-    .locals 0
-
-    .prologue
-    return-void
-.end method
