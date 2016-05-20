@@ -355,6 +355,12 @@
     .param p1, "type"    # I
 
     .prologue
+    invoke-static/range {p0 .. p1}, Landroid/media/MzRingtoneManager;->getActualDefaultRingtoneUri(Landroid/content/Context;I)Landroid/net/Uri;
+
+    move-result-object v0
+
+    return-object v0
+
     const/4 v2, 0x0
 
     .line 614
@@ -944,6 +950,8 @@
     :goto_1
     invoke-static {v2, v0, v1}, Landroid/provider/Settings$System;->putString(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;)Z
 
+    invoke-static/range {p0 .. p2}, Landroid/media/RingtoneManager;->setFlymeActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
+
     goto :goto_0
 
     :cond_1
@@ -1523,4 +1531,31 @@
 
     :cond_6
     throw v0
+.end method
+
+.method private static setFlymeActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
+    .locals 1
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "type"    # I
+    .param p2, "ringtoneUri"    # Landroid/net/Uri;
+
+    .prologue
+    .line 647
+    const/4 v0, 0x1
+
+    if-ne p1, v0, :cond_0
+
+    .line 648
+    const/16 v0, 0x800
+
+    invoke-static {p0, v0, p2}, Landroid/media/MzRingtoneManager;->setActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
+
+    .line 649
+    const/16 v0, 0x1000
+
+    invoke-static {p0, v0, p2}, Landroid/media/MzRingtoneManager;->setActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
+
+    .line 652
+    :cond_0
+    return-void
 .end method

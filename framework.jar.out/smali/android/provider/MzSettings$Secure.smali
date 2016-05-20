@@ -80,11 +80,15 @@
 
 .field public static final MZ_INSTALL_PACKAGE_AUTHENTICATION:Ljava/lang/String; = "mz_package_install_authentication"
 
+.field public static final MZ_KEYGUARD_PICTORIAL_ENABLED:Ljava/lang/String; = "mz_keyguard_pictorial_enabled"
+
 .field public static final MZ_NEED_COMPATIBLE_PASSWORD:Ljava/lang/String; = "mz_need_compatible_password"
 
 .field public static final MZ_NFCP2P_DRAG_GUIDE:Ljava/lang/String; = "mz_nfcp2p_drag_guide"
 
 .field public static final MZ_NFCP2P_ON:Ljava/lang/String; = "mz_nfcp2p_on"
+
+.field public static final MZ_NOTIFICATION_REPLY_ASSISTANT_SWITCH:Ljava/lang/String; = "mz_notification_reply_assistant_switch"
 
 .field public static final MZ_PASSWORD_LENGTH_APPLOCK:Ljava/lang/String; = "mz_password_length_applock"
 

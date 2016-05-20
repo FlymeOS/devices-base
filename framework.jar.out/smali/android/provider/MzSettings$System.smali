@@ -231,6 +231,8 @@
 
 .field public static final MZ_QUICK_WAKEUP_SWITCH:Ljava/lang/String; = "mz_quick_wakeup_switch"
 
+.field public static final MZ_REGION:Ljava/lang/String; = "mz_region"
+
 .field public static final MZ_SCHEDULED_POWER_OFF:Ljava/lang/String; = "mz_scheduled_power_off"
 
 .field public static final MZ_SCHEDULED_POWER_OFF_DAYS:Ljava/lang/String; = "mz_scheduled_power_off_days"
@@ -314,6 +316,10 @@
 .field public static final REJECT_WHEN_UNKOWN_UNMBER:Ljava/lang/String; = "reject_when_unkown_number"
 
 .field public static final RINGTONE_SOUND_FILE_PATH:Ljava/lang/String; = "ringtone_sound_file_path"
+
+.field public static final RINGTONE_SOUND_PHONE_1:Ljava/lang/String; = "ringtone_sound_phone_1"
+
+.field public static final RINGTONE_SOUND_PHONE_2:Ljava/lang/String; = "ringtone_sound_phone_2"
 
 .field public static final SCREEN_BRIGHTNESS_ANIMATION:Ljava/lang/String; = "animation_brightness"
 

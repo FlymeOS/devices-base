@@ -1126,8 +1126,6 @@
 
     iput v4, p0, Landroid/widget/Editor$HandleView;->mPositionY:I
 
-    invoke-direct/range {p0 .. p1}, Landroid/widget/Editor$HandleView;->flymeSetPositionY(I)V
-
     .line 3370
     iget v4, p0, Landroid/widget/Editor$HandleView;->mPositionX:I
 
@@ -1704,70 +1702,6 @@
     invoke-direct {p0, v0}, Landroid/widget/Editor$HandleView;->flymeSendEmptyMessage(I)V
 
     .line 3817
-    return-void
-.end method
-
-.method private flymeSetPositionY(I)V
-    .locals 4
-    .param p1, "offset"    # I
-
-    .prologue
-    .line 3625
-    iget-object v2, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
-
-    invoke-virtual {v2}, Landroid/widget/Editor;->flymeGetFieldTextView()Landroid/widget/TextView;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/widget/TextView;->getLayout()Landroid/text/Layout;
-
-    move-result-object v0
-
-    .line 3626
-    .local v0, "layout":Landroid/text/Layout;
-    invoke-virtual {v0, p1}, Landroid/text/Layout;->getLineForOffset(I)I
-
-    move-result v1
-
-    .line 3627
-    .local v1, "line":I
-    iget-object v2, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
-
-    invoke-virtual {v2}, Landroid/widget/Editor;->flymeGetFieldTextView()Landroid/widget/TextView;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Landroid/widget/TextView;->getLineCount()I
-
-    move-result v2
-
-    add-int/lit8 v2, v2, -0x1
-
-    if-ge v1, v2, :cond_0
-
-    .line 3628
-    iget v2, p0, Landroid/widget/Editor$HandleView;->mPositionY:I
-
-    int-to-float v2, v2
-
-    iget-object v3, p0, Landroid/widget/Editor$HandleView;->this$0:Landroid/widget/Editor;
-
-    invoke-virtual {v3}, Landroid/widget/Editor;->flymeGetFieldTextView()Landroid/widget/TextView;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Landroid/widget/TextView;->getLineSpacingExtra()F
-
-    move-result v3
-
-    sub-float/2addr v2, v3
-
-    float-to-int v2, v2
-
-    iput v2, p0, Landroid/widget/Editor$HandleView;->mPositionY:I
-
-    .line 3630
-    :cond_0
     return-void
 .end method
 

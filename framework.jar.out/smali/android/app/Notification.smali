@@ -25,6 +25,12 @@
 
 
 # static fields
+.field public static final FLAG_ALWAYS_SHOW_TICKER:I = 0x1000000
+
+.field private static final FLAG_FLYME_START:I = 0x1000000
+
+.field public static final FLAG_ONLY_UPDATE_TICKER:I = 0x2000000
+
 .field public static final AUDIO_ATTRIBUTES_DEFAULT:Landroid/media/AudioAttributes;
 
 .field public static final CATEGORY_ALARM:Ljava/lang/String; = "alarm"

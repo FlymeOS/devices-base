@@ -185,7 +185,7 @@
 
     iget-object v0, v0, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
 
-    const-string v1, "com.sina.weibo.ComposerDispatchActivity"
+    const-string v1, "com.sina.weibo.composerinde.ComposerDispatchActivity"
 
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 

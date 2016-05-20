@@ -20,6 +20,8 @@
 
 .field public static final HIDE_INFO:Ljava/lang/Boolean;
 
+.field public static final IS_A02:Ljava/lang/Boolean;
+
 .field public static final IS_CTA:Z
 
 .field public static final IS_FLYMEROM:Z
@@ -41,6 +43,8 @@
 .field public static final IS_M80:Ljava/lang/Boolean;
 
 .field public static final IS_M91:Ljava/lang/Boolean;
+
+.field public static final IS_M95:Ljava/lang/Boolean;
 
 .field public static final IS_M98:Ljava/lang/Boolean;
 
@@ -68,7 +72,11 @@
 
 .field public static final IS_TD_PLATFORM:Ljava/lang/Boolean;
 
+.field public static final IS_U15:Ljava/lang/Boolean;
+
 .field public static final IS_WCDMA_PLATFORM:Ljava/lang/Boolean;
+
+.field public static final IS_Y15:Ljava/lang/Boolean;
 
 .field public static final MANUFACTURER:Ljava/lang/String;
 
@@ -810,15 +818,9 @@
 
     if-nez v0, :cond_a
 
-    const-string/jumbo v0, "ro.product.flyme.model"
+    const-string v0, "MA01C"
 
-    invoke-static {v0}, Landroid/os/BuildExt;->getString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v3, "MA01C"
-
-    invoke-virtual {v0, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
 
     move-result v0
 
@@ -902,15 +904,9 @@
 
     if-nez v0, :cond_c
 
-    const-string/jumbo v0, "ro.product.flyme.model"
+    const-string v0, "8097"
 
-    invoke-static {v0}, Landroid/os/BuildExt;->getString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v3, "8097"
-
-    invoke-virtual {v0, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
 
     move-result v0
 
@@ -924,16 +920,9 @@
 
     sput-object v0, Landroid/os/BuildExt;->IS_M80:Ljava/lang/Boolean;
 
-    .line 141
-    const-string/jumbo v0, "ro.product.flyme.model"
+    const-string v0, "9155"
 
-    invoke-static {v0}, Landroid/os/BuildExt;->getString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v1, "9155"
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
 
     move-result v0
 
@@ -943,16 +932,9 @@
 
     sput-object v0, Landroid/os/BuildExt;->IS_M91:Ljava/lang/Boolean;
 
-    .line 143
-    const-string/jumbo v0, "ro.product.flyme.model"
+    const-string v0, "9850"
 
-    invoke-static {v0}, Landroid/os/BuildExt;->getString(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    const-string v1, "9850"
-
-    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
 
     move-result v0
 
@@ -961,6 +943,54 @@
     move-result-object v0
 
     sput-object v0, Landroid/os/BuildExt;->IS_M98:Ljava/lang/Boolean;
+
+    const-string v0, "9597"
+
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
+
+    move-result v0
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    sput-object v0, Landroid/os/BuildExt;->IS_M95:Ljava/lang/Boolean;
+
+    const-string v0, "y15"
+
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
+
+    move-result v0
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    sput-object v0, Landroid/os/BuildExt;->IS_Y15:Ljava/lang/Boolean;
+
+    const-string v0, "u15"
+
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
+
+    move-result v0
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    sput-object v0, Landroid/os/BuildExt;->IS_U15:Ljava/lang/Boolean;
+
+    const-string v0, "0255"
+
+    invoke-static {v0}, Landroid/os/BuildExt;->checkProductModel(Ljava/lang/String;)Z
+
+    move-result v0
+
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
+    sput-object v0, Landroid/os/BuildExt;->IS_A02:Ljava/lang/Boolean;
 
     .line 146
     const-string/jumbo v0, "ro.meizu.product.model"
@@ -2561,6 +2591,85 @@
 
     :cond_0
     const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
+.method private static checkProductModel(Ljava/lang/String;)Z
+    .locals 1
+    .param p0, "productModel"    # Ljava/lang/String;
+
+    .prologue
+    const-string v0, "ro.product.flyme.model"
+
+    invoke-static {v0}, Landroid/os/BuildExt;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public static isProductOnlySoldInInternational()Z
+    .locals 7
+
+    .prologue
+    const/4 v6, 0x6
+
+    const/4 v2, 0x1
+
+    const/4 v3, 0x0
+
+    const-string v4, "ro.meizu.hardware.version"
+
+    invoke-static {v4}, Landroid/os/BuildExt;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    .local v0, "hardwareInfo":Ljava/lang/String;
+    const/4 v4, 0x2
+
+    new-array v1, v4, [Ljava/lang/String;
+
+    const-string v4, "4"
+
+    aput-object v4, v1, v3
+
+    const-string v4, "5"
+
+    aput-object v4, v1, v2
+
+    .local v1, "intlCode":[Ljava/lang/String;
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    move-result v4
+
+    if-lt v4, v6, :cond_0
+
+    invoke-static {v1}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
+
+    move-result-object v4
+
+    const/4 v5, 0x5
+
+    invoke-virtual {v0, v5, v6}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-interface {v4, v5}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_0
+
+    :goto_0
+    return v2
+
+    :cond_0
+    move v2, v3
 
     goto :goto_0
 .end method

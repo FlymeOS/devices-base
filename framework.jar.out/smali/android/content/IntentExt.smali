@@ -40,6 +40,8 @@
 
 .field public static final MEIZU_FLAG_STOP_RECOMMEND:I = 0x800
 
+.field public static final MZ_ACTION_ACCOUNT_ACCOUNTCENTER:Ljava/lang/String; = "com.meizu.account.ACCOUNTCENTER"
+
 .field public static final MZ_ACTION_APP_DOWN_PROMPT:Ljava/lang/String; = "meizu.intent.action.APP_DOWNLOAD_PROMPT"
 
 .field public static final MZ_ACTION_DEVICE_CONNECTION_STATE_CHANGED:Ljava/lang/String; = "meizu.intent.action.DEVICE_CONNECTION_STATE_CHANGED"
@@ -136,6 +138,8 @@
 
 .field public mAccessPackageName:Ljava/lang/String;
 
+.field public mAccessSrcFlags:I
+
 .field public mMeizuFlags:I
 
 
@@ -150,8 +154,6 @@
     return-void
 .end method
 
-
-# virtual methods
 .method public addMeizuFlags(I)V
     .locals 1
     .param p1, "flags"    # I
@@ -231,5 +233,40 @@
     iput p1, p0, Landroid/content/IntentExt;->mMeizuFlags:I
 
     .line 307
+    return-void
+.end method
+
+
+# virtual methods
+.method public addAccessSrcFlags(I)V
+    .locals 1
+    .param p1, "flags"    # I
+
+    .prologue
+    iget v0, p0, Landroid/content/IntentExt;->mAccessSrcFlags:I
+
+    or-int/2addr v0, p1
+
+    iput v0, p0, Landroid/content/IntentExt;->mAccessSrcFlags:I
+
+    return-void
+.end method
+
+.method public getAccessSrcFlags()I
+    .locals 1
+
+    .prologue
+    iget v0, p0, Landroid/content/IntentExt;->mAccessSrcFlags:I
+
+    return v0
+.end method
+
+.method public setAccessSrcFlags(I)V
+    .locals 0
+    .param p1, "flags"    # I
+
+    .prologue
+    iput p1, p0, Landroid/content/IntentExt;->mAccessSrcFlags:I
+
     return-void
 .end method

@@ -38,69 +38,64 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 1263
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     sput-object v0, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->appWidgetList:Ljava/util/ArrayList;
 
-    .line 1264
     sput-object v1, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->r:Lcom/android/server/am/BroadcastRecord;
 
-    .line 1265
     sput-object v1, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->systemSignature:[Landroid/content/pm/Signature;
 
-    .line 1267
     sget-object v0, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->appWidgetList:Ljava/util/ArrayList;
 
     const-string v1, "android.appwidget.action.APPWIDGET_UPDATE"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1268
     sget-object v0, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->appWidgetList:Ljava/util/ArrayList;
 
     const-string v1, "android.appwidget.action.APPWIDGET_BIND"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1269
     sget-object v0, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->appWidgetList:Ljava/util/ArrayList;
 
     const-string v1, "android.appwidget.action.APPWIDGET_CONFIGURE"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1270
     sget-object v0, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->appWidgetList:Ljava/util/ArrayList;
 
     const-string v1, "android.appwidget.action.APPWIDGET_DELETED"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1271
     sget-object v0, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->appWidgetList:Ljava/util/ArrayList;
 
     const-string v1, "android.appwidget.action.APPWIDGET_DISABLED"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1272
     sget-object v0, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->appWidgetList:Ljava/util/ArrayList;
 
     const-string v1, "android.appwidget.action.APPWIDGET_ENABLED"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1273
     sget-object v0, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->appWidgetList:Ljava/util/ArrayList;
 
     const-string v1, "android.appwidget.action.APPWIDGET_UPDATE_OPTIONS"
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 1274
+    sget-object v0, Lcom/android/server/am/BroadcastQueue$FlymeBroadcastQueueInjector;->appWidgetList:Ljava/util/ArrayList;
+
+    const-string v1, "com.insdio.aqicn.airwidget.intent.action.CLICK"
+
+    invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
     return-void
 .end method
 

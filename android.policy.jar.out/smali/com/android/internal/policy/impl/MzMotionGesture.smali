@@ -1743,6 +1743,12 @@
     if-ne v1, v3, :cond_7
 
     :cond_6
+    invoke-virtual {p0}, Lcom/android/internal/policy/impl/MzMotionGesture;->isGlobalSystemUIShow()Z
+
+    move-result v1
+
+    if-nez v1, :cond_7
+
     iget-object v1, p0, Lcom/android/internal/policy/impl/MzMotionGesture;->mzPw:Lcom/android/internal/policy/impl/MzPhoneWindowManager;
 
     invoke-virtual {v1}, Lcom/android/internal/policy/impl/MzPhoneWindowManager;->isPowerSaveMode()Z

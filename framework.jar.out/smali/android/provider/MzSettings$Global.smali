@@ -35,6 +35,8 @@
 
 .field public static final HAPTIC_FEEDBACK_UI_DEVICE_HANDLE:Ljava/lang/String; = "haptic_feedback_ui_devicehandle"
 
+.field public static final INCOMING_FLASH_REMINDER:Ljava/lang/String; = "incoming_flash_reminder"
+
 .field public static final MEIZU_ALI_ENABLE_TRANSFER:Ljava/lang/String; = "ali_enable_transfer"
 
 .field public static final MEIZU_BLUETOOTH_CONNECT_AFTER_PAIR:Ljava/lang/String; = "bluetooth_connect_after_pair"

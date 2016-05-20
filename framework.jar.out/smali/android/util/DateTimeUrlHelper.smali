@@ -82,7 +82,11 @@
 
 .field public static final FORMAT_Y_M_D:Ljava/lang/String; = "yyyy/MM/dd"
 
-.field public static final FORMAT_Y_M_D_H_M:Ljava/lang/String; = "yyyy/MM/dd HH:mm"
+.field public static final FORMAT_Y_M_D_2:Ljava/lang/String; = "yyyy-MM-dd"
+
+.field public static final FORMAT_Y_M_D_H_M_1:Ljava/lang/String; = "yyyy/MM/dd HH:mm"
+
+.field public static final FORMAT_Y_M_D_H_M_2:Ljava/lang/String; = "yyyy-MM-dd HH:mm"
 
 .field public static final FORMAT_Y_M_D_NO_SEPARATOR:Ljava/lang/String; = "yyyyMMdd"
 
@@ -398,8 +402,7 @@
 
     sput-object v0, Landroid/util/DateTimeUrlHelper;->MONTH_STRINGS:[Ljava/lang/String;
 
-    .line 225
-    const-string v0, "((([1-9][0-9][0-9][0-9])\\/([0-9][0-9]|[0-9])\\/([0-9][0-9]|[0-9])))"
+    const-string v0, "((([1-9][0-9][0-9][0-9])[\\/-]([0-9][0-9]|[0-9])[\\/-]?([0-9][0-9]|[0-9])))"
 
     invoke-static {v0}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
 
@@ -452,8 +455,7 @@
 
     sput-object v0, Landroid/util/DateTimeUrlHelper;->PATTERN_M_D_ALL_CN:Ljava/util/regex/Pattern;
 
-    .line 283
-    const-string v0, "((([1-9][0-9][0-9][0-9])\\/([0-9][0-9]|[0-9])\\/([0-9][0-9]|[0-9])\\u0020+([0-2][0-9]|[0-9])([\\:|\uff1a])([0-5][0-9])))"
+    const-string v0, "((([1-9][0-9][0-9][0-9])[\\/-]([0-9][0-9]|[0-9])[\\/-]([0-9][0-9]|[0-9])\\u0020+([0-2][0-9]|[0-9])([\\:|\uff1a])([0-5][0-9])))"
 
     invoke-static {v0}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
 
@@ -3455,12 +3457,12 @@
     .param p0, "matchingRegion"    # Ljava/lang/String;
 
     .prologue
-    .line 510
+    const/4 v7, -0x1
+
     new-instance v0, Ljava/util/Date;
 
     invoke-direct {v0}, Ljava/util/Date;-><init>()V
 
-    .line 511
     .local v0, "date":Ljava/util/Date;
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_Y_M_D_H_M:Ljava/util/regex/Pattern;
 
@@ -3468,23 +3470,37 @@
 
     move-result v6
 
+    if-eqz v6, :cond_2
+
+    const/4 v3, 0x0
+
+    .local v3, "sdf":Ljava/text/SimpleDateFormat;
+    :try_start_0
+    const-string v6, "/"
+
+    invoke-virtual {p0, v6}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v6
+
     if-eqz v6, :cond_1
 
-    .line 513
-    :try_start_0
-    new-instance v3, Ljava/text/SimpleDateFormat;
+    new-instance v4, Ljava/text/SimpleDateFormat;
 
-    const-string/jumbo v6, "yyyy/MM/dd HH:mm"
+    const-string v6, "yyyy/MM/dd HH:mm"
 
-    invoke-direct {v3, v6}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
+    invoke-direct {v4, v6}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
 
-    .line 514
-    .local v3, "sdf":Ljava/text/SimpleDateFormat;
+    .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
+    .local v4, "sdf":Ljava/text/SimpleDateFormat;
+    move-object v3, v4
+
+    .end local v4    # "sdf":Ljava/text/SimpleDateFormat;
+    .restart local v3    # "sdf":Ljava/text/SimpleDateFormat;
+    :goto_0
     invoke-virtual {v3, p0}, Ljava/text/SimpleDateFormat;->parse(Ljava/lang/String;)Ljava/util/Date;
 
     move-result-object v0
 
-    .line 515
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -3520,24 +3536,37 @@
     move-result-object v6
 
     invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-    :try_end_0
-    .catch Ljava/text/ParseException; {:try_start_0 .. :try_end_0} :catch_0
 
     move-result-object p0
 
-    .line 617
     .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
     .end local p0    # "matchingRegion":Ljava/lang/String;
     :cond_0
-    :goto_0
+    :goto_1
     return-object p0
 
-    .line 516
+    .restart local v3    # "sdf":Ljava/text/SimpleDateFormat;
     .restart local p0    # "matchingRegion":Ljava/lang/String;
+    :cond_1
+    new-instance v4, Ljava/text/SimpleDateFormat;
+
+    const-string v6, "yyyy-MM-dd HH:mm"
+
+    invoke-direct {v4, v6}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
+    :try_end_0
+    .catch Ljava/text/ParseException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
+    .restart local v4    # "sdf":Ljava/text/SimpleDateFormat;
+    move-object v3, v4
+
+    .end local v4    # "sdf":Ljava/text/SimpleDateFormat;
+    .restart local v3    # "sdf":Ljava/text/SimpleDateFormat;
+    goto :goto_0
+
     :catch_0
     move-exception v2
 
-    .line 517
     .local v2, "e":Ljava/text/ParseException;
     sget-object v6, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
@@ -3547,18 +3576,19 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto :goto_0
+    goto :goto_1
 
     .line 519
     .end local v2    # "e":Ljava/text/ParseException;
-    :cond_1
+    .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
+    :cond_2
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_Y_M_D:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_3
+    if-eqz v6, :cond_5
 
     .line 521
     const/4 v3, 0x0
@@ -3572,9 +3602,7 @@
 
     move-result v6
 
-    const/4 v7, -0x1
-
-    if-eq v6, v7, :cond_2
+    if-eq v6, v7, :cond_3
 
     .line 523
     new-instance v4, Ljava/text/SimpleDateFormat;
@@ -3584,13 +3612,13 @@
     invoke-direct {v4, v6}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
 
     .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
-    .local v4, "sdf":Ljava/text/SimpleDateFormat;
+    .restart local v4    # "sdf":Ljava/text/SimpleDateFormat;
     move-object v3, v4
 
     .line 527
     .end local v4    # "sdf":Ljava/text/SimpleDateFormat;
     .restart local v3    # "sdf":Ljava/text/SimpleDateFormat;
-    :goto_1
+    :goto_2
     invoke-virtual {v3, p0}, Ljava/text/SimpleDateFormat;->parse(Ljava/lang/String;)Ljava/util/Date;
 
     move-result-object v0
@@ -3634,13 +3662,35 @@
 
     move-result-object p0
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 525
-    :cond_2
+    :cond_3
+    const-string v6, "-"
+
+    invoke-virtual {p0, v6}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
+
+    move-result v6
+
+    if-eq v6, v7, :cond_4
+
     new-instance v4, Ljava/text/SimpleDateFormat;
 
-    const-string/jumbo v6, "yyyyMMdd"
+    const-string v6, "yyyy-MM-dd"
+
+    invoke-direct {v4, v6}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
+
+    .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
+    .restart local v4    # "sdf":Ljava/text/SimpleDateFormat;
+    move-object v3, v4
+
+    .end local v4    # "sdf":Ljava/text/SimpleDateFormat;
+    .restart local v3    # "sdf":Ljava/text/SimpleDateFormat;
+    goto :goto_2
+
+    :cond_4
+    new-instance v4, Ljava/text/SimpleDateFormat;
+
+    const-string v6, "yyyyMMdd"
 
     invoke-direct {v4, v6}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;)V
     :try_end_1
@@ -3652,7 +3702,7 @@
 
     .end local v4    # "sdf":Ljava/text/SimpleDateFormat;
     .restart local v3    # "sdf":Ljava/text/SimpleDateFormat;
-    goto :goto_1
+    goto :goto_2
 
     .line 530
     :catch_1
@@ -3668,19 +3718,19 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto :goto_0
+    goto/16 :goto_1
 
     .line 533
     .end local v2    # "e":Ljava/text/ParseException;
     .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
-    :cond_3
+    :cond_5
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_TIME_TO_TIME:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_4
+    if-eqz v6, :cond_6
 
     .line 535
     :try_start_2
@@ -3755,7 +3805,7 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 541
     .end local v1    # "dates":[Ljava/util/Date;
@@ -3772,18 +3822,18 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 544
     .end local v2    # "e":Ljava/lang/Exception;
-    :cond_4
+    :cond_6
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_TIAN_WU_CN:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_5
+    if-eqz v6, :cond_7
 
     .line 546
     :try_start_3
@@ -3855,7 +3905,7 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 549
     .end local v1    # "dates":[Ljava/util/Date;
@@ -3872,18 +3922,18 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 552
     .end local v2    # "e":Ljava/lang/Exception;
-    :cond_5
+    :cond_7
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_Y_M_D_CN:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_6
+    if-eqz v6, :cond_8
 
     .line 554
     :try_start_4
@@ -3944,7 +3994,7 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 557
     .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
@@ -3961,18 +4011,18 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 560
     .end local v2    # "e":Ljava/text/ParseException;
-    :cond_6
+    :cond_8
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_M_D_CN:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_7
+    if-eqz v6, :cond_9
 
     .line 562
     :try_start_5
@@ -4033,7 +4083,7 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 565
     .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
@@ -4050,18 +4100,18 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 568
     .end local v2    # "e":Ljava/text/ParseException;
-    :cond_7
+    :cond_9
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_M_D_ALL_CN:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_8
+    if-eqz v6, :cond_a
 
     .line 570
     :try_start_6
@@ -4128,7 +4178,7 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 574
     .end local v3    # "sdf":Ljava/text/SimpleDateFormat;
@@ -4146,18 +4196,18 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
     .line 577
     .end local v2    # "e":Ljava/text/ParseException;
-    :cond_8
+    :cond_a
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_TIME:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_9
+    if-eqz v6, :cond_b
 
     .line 578
     invoke-static {p0}, Landroid/util/DateTimeUrlHelper;->createTimePointDates(Ljava/lang/String;)Ljava/util/Date;
@@ -4203,25 +4253,22 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 580
-    :cond_9
+    :cond_b
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_DAY_WU_CN:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_a
+    if-eqz v6, :cond_c
 
-    .line 582
     :try_start_7
     invoke-static {p0}, Landroid/util/DateTimeUrlHelper;->createDateByDayWu(Ljava/lang/String;)[Ljava/util/Date;
 
     move-result-object v1
 
-    .line 583
     .restart local v1    # "dates":[Ljava/util/Date;
     new-instance v6, Ljava/lang/StringBuilder;
 
@@ -4285,14 +4332,12 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 585
     .end local v1    # "dates":[Ljava/util/Date;
     :catch_7
     move-exception v2
 
-    .line 586
     .local v2, "e":Ljava/lang/Exception;
     sget-object v6, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
@@ -4302,26 +4347,23 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 588
     .end local v2    # "e":Ljava/lang/Exception;
-    :cond_a
+    :cond_c
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_NEXT_DAY_OF_WEEK:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_b
+    if-eqz v6, :cond_d
 
-    .line 590
     :try_start_8
     invoke-static {p0}, Landroid/util/DateTimeUrlHelper;->createDateByNextDayOfWeek(Ljava/lang/String;)Ljava/util/Date;
 
     move-result-object v0
 
-    .line 591
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -4362,13 +4404,11 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 592
     :catch_8
     move-exception v2
 
-    .line 593
     .restart local v2    # "e":Ljava/lang/Exception;
     sget-object v6, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
@@ -4378,26 +4418,23 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 595
     .end local v2    # "e":Ljava/lang/Exception;
-    :cond_b
+    :cond_d
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_M_D_Y_EN:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_c
+    if-eqz v6, :cond_e
 
-    .line 597
     :try_start_9
     invoke-static {p0}, Landroid/util/DateTimeUrlHelper;->createDateByEN_M_D_Y(Ljava/lang/String;)Ljava/util/Date;
 
     move-result-object v0
 
-    .line 598
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -4438,13 +4475,11 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 599
     :catch_9
     move-exception v2
 
-    .line 600
     .restart local v2    # "e":Ljava/lang/Exception;
     sget-object v6, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
@@ -4454,26 +4489,23 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 602
     .end local v2    # "e":Ljava/lang/Exception;
-    :cond_c
+    :cond_e
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_M_D_EN:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
 
     move-result v6
 
-    if-eqz v6, :cond_d
+    if-eqz v6, :cond_f
 
-    .line 604
     :try_start_a
     invoke-static {p0}, Landroid/util/DateTimeUrlHelper;->createDateByEN_M_D(Ljava/lang/String;)Ljava/util/Date;
 
     move-result-object v0
 
-    .line 605
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -4514,13 +4546,11 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 606
     :catch_a
     move-exception v2
 
-    .line 607
     .restart local v2    # "e":Ljava/lang/Exception;
     sget-object v6, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
@@ -4530,11 +4560,10 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 609
     .end local v2    # "e":Ljava/lang/Exception;
-    :cond_d
+    :cond_f
     sget-object v6, Landroid/util/DateTimeUrlHelper;->PATTERN_WU_TIME:Ljava/util/regex/Pattern;
 
     invoke-static {v6, p0}, Landroid/util/DateTimeUrlHelper;->match(Ljava/util/regex/Pattern;Ljava/lang/String;)Z
@@ -4543,13 +4572,11 @@
 
     if-eqz v6, :cond_0
 
-    .line 611
     :try_start_b
     invoke-static {p0}, Landroid/util/DateTimeUrlHelper;->createDateByCN_Wu_Dian(Ljava/lang/String;)Ljava/util/Date;
 
     move-result-object v0
 
-    .line 612
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
@@ -4590,13 +4617,11 @@
 
     move-result-object p0
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 613
     :catch_b
     move-exception v2
 
-    .line 614
     .restart local v2    # "e":Ljava/lang/Exception;
     sget-object v6, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
@@ -4606,7 +4631,7 @@
 
     invoke-virtual {v6, v7}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 .end method
 
 .method private static switchFormat(Ljava/lang/String;)Ljava/lang/String;
@@ -4614,12 +4639,10 @@
     .param p0, "date"    # Ljava/lang/String;
 
     .prologue
-    .line 950
     new-instance v2, Ljava/lang/StringBuffer;
 
     invoke-direct {v2}, Ljava/lang/StringBuffer;-><init>()V
 
-    .line 951
     .local v2, "newDate":Ljava/lang/StringBuffer;
     const/4 v1, 0x0
 
@@ -4631,12 +4654,10 @@
 
     if-ge v1, v3, :cond_8
 
-    .line 952
     invoke-virtual {p0, v1}, Ljava/lang/String;->charAt(I)C
 
     move-result v0
 
-    .line 953
     .local v0, "c":C
     invoke-static {v0}, Ljava/lang/Character;->isDigit(C)Z
 
@@ -4644,17 +4665,14 @@
 
     if-eqz v3, :cond_1
 
-    .line 954
     invoke-virtual {v2, v0}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
 
-    .line 951
     :cond_0
     :goto_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 955
     :cond_1
     invoke-static {v0}, Landroid/util/DateTimeUrlHelper;->isCNDigit(C)Z
 
@@ -4662,12 +4680,10 @@
 
     if-eqz v3, :cond_7
 
-    .line 956
     const/16 v3, 0x5341
 
     if-ne v0, v3, :cond_2
 
-    .line 957
     add-int/lit8 v3, v1, -0x1
 
     invoke-virtual {p0, v3}, Ljava/lang/String;->charAt(I)C
@@ -4680,7 +4696,6 @@
 
     if-eqz v3, :cond_4
 
-    .line 958
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     move-result v3
@@ -4689,7 +4704,6 @@
 
     if-ge v1, v3, :cond_3
 
-    .line 959
     add-int/lit8 v3, v1, 0x1
 
     invoke-virtual {p0, v3}, Ljava/lang/String;->charAt(I)C
@@ -4702,10 +4716,8 @@
 
     if-nez v3, :cond_0
 
-    .line 962
     const v0, 0x96f6
 
-    .line 977
     :cond_2
     :goto_2
     invoke-static {v0}, Landroid/util/DateTimeUrlHelper;->changeNum(C)I
@@ -4716,13 +4728,11 @@
 
     goto :goto_1
 
-    .line 965
     :cond_3
     const v0, 0x96f6
 
     goto :goto_2
 
-    .line 968
     :cond_4
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
@@ -4752,7 +4762,6 @@
 
     if-nez v3, :cond_6
 
-    .line 969
     :cond_5
     const-string v3, "10"
 
@@ -4760,13 +4769,11 @@
 
     goto :goto_1
 
-    .line 972
     :cond_6
     const/16 v0, 0x4e00
 
     goto :goto_2
 
-    .line 979
     :cond_7
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
@@ -4776,14 +4783,12 @@
 
     if-eq v1, v3, :cond_0
 
-    .line 980
     const-string v3, "/"
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     goto :goto_1
 
-    .line 984
     .end local v0    # "c":C
     :cond_8
     invoke-virtual {v2}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
@@ -4798,12 +4803,10 @@
     .param p0, "date"    # Ljava/lang/String;
 
     .prologue
-    .line 995
     new-instance v2, Ljava/util/Date;
 
     invoke-direct {v2}, Ljava/util/Date;-><init>()V
 
-    .line 997
     .local v2, "now":Ljava/util/Date;
     new-instance v1, Ljava/lang/StringBuffer;
 
@@ -4833,7 +4836,6 @@
 
     invoke-direct {v1, v3}, Ljava/lang/StringBuffer;-><init>(Ljava/lang/String;)V
 
-    .line 998
     .local v1, "newDate":Ljava/lang/StringBuffer;
     const/4 v0, 0x0
 
@@ -4845,7 +4847,6 @@
 
     if-ge v0, v3, :cond_2
 
-    .line 999
     invoke-virtual {p0, v0}, Ljava/lang/String;->charAt(I)C
 
     move-result v3
@@ -4856,21 +4857,18 @@
 
     if-eqz v3, :cond_1
 
-    .line 1000
     invoke-virtual {p0, v0}, Ljava/lang/String;->charAt(I)C
 
     move-result v3
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuffer;->append(C)Ljava/lang/StringBuffer;
 
-    .line 998
     :cond_0
     :goto_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 1002
     :cond_1
     invoke-virtual {p0}, Ljava/lang/String;->length()I
 
@@ -4880,14 +4878,12 @@
 
     if-eq v0, v3, :cond_0
 
-    .line 1003
     const-string v3, "/"
 
     invoke-virtual {v1, v3}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
     goto :goto_1
 
-    .line 1007
     :cond_2
     invoke-virtual {v1}, Ljava/lang/StringBuffer;->toString()Ljava/lang/String;
 
@@ -4907,43 +4903,64 @@
 
     const/4 v9, 0x0
 
-    .line 391
+    const/4 v2, 0x0
+
+    .local v2, "first":I
+    const/4 v6, 0x0
+
+    .local v6, "second":I
+    const-string v11, "/"
+
+    invoke-virtual {p0, v11}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v11
+
+    if-eqz v11, :cond_0
+
     const-string v11, "/"
 
     invoke-virtual {p0, v11}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
 
     move-result v2
 
-    .line 392
-    .local v2, "first":I
     const-string v11, "/"
 
     invoke-virtual {p0, v11}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
 
     move-result v6
 
-    .line 394
-    .local v6, "second":I
-    if-ne v2, v6, :cond_0
+    :goto_0
+    if-ne v2, v6, :cond_1
 
-    .line 395
     sget-object v10, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
-    const-string v11, "Input String must has /"
+    const-string v11, "Input String must has / or -"
 
     invoke-virtual {v10, v11}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    .line 431
-    :goto_0
+    :goto_1
     return v9
 
-    .line 398
     :cond_0
+    const-string v11, "-"
+
+    invoke-virtual {p0, v11}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
+
+    move-result v2
+
+    const-string v11, "-"
+
+    invoke-virtual {p0, v11}, Ljava/lang/String;->lastIndexOf(Ljava/lang/String;)I
+
+    move-result v6
+
+    goto :goto_0
+
+    :cond_1
     invoke-virtual {p0, v9, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     move-result-object v8
 
-    .line 399
     .local v8, "year":Ljava/lang/String;
     add-int/lit8 v11, v2, 0x1
 
@@ -4951,7 +4968,6 @@
 
     move-result-object v5
 
-    .line 400
     .local v5, "month":Ljava/lang/String;
     add-int/lit8 v11, v6, 0x1
 
@@ -4963,11 +4979,9 @@
 
     move-result-object v1
 
-    .line 401
     .local v1, "day":Ljava/lang/String;
     const/16 v4, 0x1f
 
-    .line 402
     .local v4, "maxDays":I
     sget-object v11, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
@@ -5005,167 +5019,148 @@
 
     invoke-virtual {v11, v12}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    .line 403
     invoke-static {v8}, Landroid/util/DateTimeUrlHelper;->isNumber(Ljava/lang/String;)Z
 
     move-result v11
 
-    if-eqz v11, :cond_1
+    if-eqz v11, :cond_2
 
     invoke-static {v5}, Landroid/util/DateTimeUrlHelper;->isNumber(Ljava/lang/String;)Z
 
     move-result v11
 
-    if-eqz v11, :cond_1
+    if-eqz v11, :cond_2
 
     invoke-static {v1}, Landroid/util/DateTimeUrlHelper;->isNumber(Ljava/lang/String;)Z
 
     move-result v11
 
-    if-nez v11, :cond_2
+    if-nez v11, :cond_3
 
-    .line 404
-    :cond_1
+    :cond_2
     sget-object v10, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
     const-string v11, "Input String error"
 
     invoke-virtual {v10, v11}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 406
-    :cond_2
+    :cond_3
     invoke-virtual {v8}, Ljava/lang/String;->length()I
 
     move-result v11
 
-    if-ge v11, v14, :cond_3
+    if-ge v11, v14, :cond_4
 
-    .line 407
     sget-object v10, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
     const-string v11, "Input year num < 4"
 
     invoke-virtual {v10, v11}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 410
-    :cond_3
+    :cond_4
     invoke-static {v8}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
     move-result v7
 
-    .line 411
     .local v7, "y":I
     invoke-static {v5}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
     move-result v3
 
-    .line 412
     .local v3, "m":I
     invoke-static {v1}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
     move-result v0
 
-    .line 413
     .local v0, "d":I
     const/16 v11, 0xc
 
-    if-gt v3, v11, :cond_4
+    if-gt v3, v11, :cond_5
 
-    if-ge v3, v10, :cond_5
+    if-ge v3, v10, :cond_6
 
-    .line 414
-    :cond_4
+    :cond_5
     sget-object v10, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
-    const-string/jumbo v11, "the month must 1 to 12"
+    const-string v11, "the month must 1 to 12"
 
     invoke-virtual {v10, v11}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto :goto_0
+    goto/16 :goto_1
 
-    .line 416
-    :cond_5
-    if-eq v3, v14, :cond_6
+    :cond_6
+    if-eq v3, v14, :cond_7
 
     const/4 v11, 0x6
 
-    if-eq v3, v11, :cond_6
+    if-eq v3, v11, :cond_7
 
     const/16 v11, 0x9
 
-    if-eq v3, v11, :cond_6
+    if-eq v3, v11, :cond_7
 
     const/16 v11, 0xb
 
-    if-ne v3, v11, :cond_9
+    if-ne v3, v11, :cond_a
 
-    .line 417
-    :cond_6
+    :cond_7
     const/16 v4, 0x1e
 
-    .line 426
-    :cond_7
-    :goto_1
-    if-lt v0, v10, :cond_8
-
-    if-le v0, v4, :cond_c
-
-    .line 427
     :cond_8
+    :goto_2
+    if-lt v0, v10, :cond_9
+
+    if-le v0, v4, :cond_d
+
+    .line 580
+    :cond_9
     sget-object v10, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
-    const-string/jumbo v11, "the day is error"
+    const-string v11, "the day is error"
 
     invoke-virtual {v10, v11}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    goto/16 :goto_0
+    goto/16 :goto_1
 
-    .line 418
-    :cond_9
+    :cond_a
     const/4 v11, 0x2
 
-    if-ne v3, v11, :cond_7
+    if-ne v3, v11, :cond_8
 
-    .line 419
     rem-int/lit8 v11, v7, 0x4
-
-    if-lez v11, :cond_a
-
-    .line 420
-    const/16 v4, 0x1c
-
-    goto :goto_1
-
-    .line 421
-    :cond_a
-    rem-int/lit8 v11, v7, 0x64
-
-    if-nez v11, :cond_b
-
-    rem-int/lit16 v11, v7, 0x190
 
     if-lez v11, :cond_b
 
-    .line 422
     const/16 v4, 0x1c
 
-    goto :goto_1
+    goto :goto_2
 
-    .line 424
     :cond_b
-    const/16 v4, 0x1d
+    rem-int/lit8 v11, v7, 0x64
 
-    goto :goto_1
+    if-nez v11, :cond_c
+
+    rem-int/lit16 v11, v7, 0x190
+
+    if-lez v11, :cond_c
+
+    const/16 v4, 0x1c
+
+    goto :goto_2
 
     :cond_c
+    const/16 v4, 0x1d
+
+    goto :goto_2
+
+    :cond_d
     move v9, v10
 
-    .line 431
-    goto/16 :goto_0
+    goto/16 :goto_1
 .end method
 
 .method public static validateTime(Ljava/lang/String;)Z
@@ -5179,8 +5174,7 @@
 
     const/4 v9, 0x0
 
-    .line 441
-    const-string/jumbo v11, "\u70b9"
+    const-string v11, "\u70b9"
 
     invoke-virtual {p0, v11}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
@@ -5188,7 +5182,7 @@
 
     if-nez v11, :cond_0
 
-    const-string/jumbo v11, "\u9ede"
+    const-string v11, "\u9ede"
 
     invoke-virtual {p0, v11}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
@@ -5196,13 +5190,11 @@
 
     if-eqz v11, :cond_1
 
-    .line 442
     :cond_0
     invoke-static {p0}, Landroid/util/DateTimeUrlHelper;->cnTimeTransform(Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p0
 
-    .line 444
     :cond_1
     const-string v11, ":"
 
@@ -5210,25 +5202,21 @@
 
     move-result v0
 
-    .line 445
     .local v0, "first":I
     const/4 v11, -0x1
 
     if-ne v0, v11, :cond_3
 
-    .line 446
     sget-object v10, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
     const-string v11, "Input String must has : "
 
     invoke-virtual {v10, v11}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    .line 485
     :cond_2
     :goto_0
     return v9
 
-    .line 449
     :cond_3
     const-string v11, ":"
 
@@ -5236,19 +5224,15 @@
 
     move-result-object v8
 
-    .line 451
     .local v8, "times":[Ljava/lang/String;
     aget-object v2, v8, v9
 
-    .line 452
     .local v2, "hour":Ljava/lang/String;
     aget-object v5, v8, v10
 
-    .line 453
     .local v5, "min":Ljava/lang/String;
     const/4 v7, 0x0
 
-    .line 454
     .local v7, "second":Ljava/lang/String;
     array-length v11, v8
 
@@ -5256,16 +5240,13 @@
 
     if-ne v11, v12, :cond_4
 
-    .line 455
     const/4 v11, 0x2
 
     aget-object v7, v8, v11
 
-    .line 457
     :cond_4
     const/16 v4, 0x17
 
-    .line 458
     .local v4, "maxHour":I
     sget-object v11, Ljava/lang/System;->out:Ljava/io/PrintStream;
 
@@ -5293,7 +5274,6 @@
 
     invoke-virtual {v11, v12}, Ljava/io/PrintStream;->println(Ljava/lang/String;)V
 
-    .line 459
     invoke-static {v2}, Landroid/util/DateTimeUrlHelper;->isNumber(Ljava/lang/String;)Z
 
     move-result v11
@@ -5306,6 +5286,7 @@
 
     if-nez v11, :cond_6
 
+    .line 969
     .line 460
     :cond_5
     sget-object v10, Ljava/lang/System;->out:Ljava/io/PrintStream;
