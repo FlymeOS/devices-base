@@ -43,6 +43,8 @@
 # instance fields
 .field public mFlymeNotificationBuilder:Landroid/app/NotificationBuilderExt;
 
+.field private mFlymeReplyIntent:Landroid/app/PendingIntent;
+
 .field private mFlymeSnoozeIntent:Landroid/app/PendingIntent;
 
 .field private mActions:Ljava/util/ArrayList;
@@ -5796,12 +5798,17 @@
     .param p1, "dst"    # Landroid/app/Notification;
 
     .prologue
-    .line 3699
+    .line 3739
     iget-object v0, p0, Landroid/app/Notification$Builder;->mFlymeSnoozeIntent:Landroid/app/PendingIntent;
 
     iput-object v0, p1, Landroid/app/Notification;->snoozeIntent:Landroid/app/PendingIntent;
 
-    .line 3701
+    .line 3742
+    iget-object v0, p0, Landroid/app/Notification$Builder;->mFlymeReplyIntent:Landroid/app/PendingIntent;
+
+    iput-object v0, p1, Landroid/app/Notification;->replyIntent:Landroid/app/PendingIntent;
+
+    .line 3744
     iget-object v0, p1, Landroid/app/Notification;->mFlymeNotification:Landroid/app/NotificationExt;
 
     iget-object v1, p0, Landroid/app/Notification$Builder;->mFlymeNotificationBuilder:Landroid/app/NotificationBuilderExt;
@@ -6197,12 +6204,17 @@
     .param p1, "n"    # Landroid/app/Notification;
 
     .prologue
-    .line 3639
+    .line 3676
     iget-object v0, p1, Landroid/app/Notification;->snoozeIntent:Landroid/app/PendingIntent;
 
     iput-object v0, p0, Landroid/app/Notification$Builder;->mFlymeSnoozeIntent:Landroid/app/PendingIntent;
 
-    .line 3641
+    .line 3679
+    iget-object v0, p1, Landroid/app/Notification;->replyIntent:Landroid/app/PendingIntent;
+
+    iput-object v0, p0, Landroid/app/Notification$Builder;->mFlymeReplyIntent:Landroid/app/PendingIntent;
+
+    .line 3681
     return-void
 .end method
 
@@ -6316,5 +6328,15 @@
     iput-object p1, p0, Landroid/app/Notification$Builder;->mFlymeSnoozeIntent:Landroid/app/PendingIntent;
 
     .line 2300
+    return-object p0
+.end method
+
+.method public setReplyIntent(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+    .locals 0
+    .param p1, "intent"    # Landroid/app/PendingIntent;
+
+    .prologue
+    iput-object p1, p0, Landroid/app/Notification$Builder;->mFlymeReplyIntent:Landroid/app/PendingIntent;
+
     return-object p0
 .end method
