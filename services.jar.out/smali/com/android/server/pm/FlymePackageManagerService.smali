@@ -49,7 +49,7 @@
 
 # virtual methods
 .method public backupData(Ljava/lang/String;Ljava/lang/String;)Z
-    .locals 5
+    .locals 6
     .param p1, "sourceDir"    # Ljava/lang/String;
     .param p2, "targetDir"    # Ljava/lang/String;
 
@@ -94,11 +94,17 @@
     .local v0, "info":Landroid/content/pm/ApplicationInfo;
     if-eqz v0, :cond_1
 
-    iget v3, v0, Landroid/content/pm/ApplicationInfo;->flags:I
+    iget-object v3, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
-    and-int/lit8 v3, v3, 0x1
+    iget-object v4, v0, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
-    if-eqz v3, :cond_1
+    const-string v5, "android"
+
+    invoke-virtual {v3, v4, v5}, Lcom/android/server/pm/PackageManagerService;->checkSignatures(Ljava/lang/String;Ljava/lang/String;)I
+
+    move-result v3
+
+    if-ltz v3, :cond_1
 
     .line 50
     iget-object v2, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInstaller:Lcom/android/server/pm/Installer;
