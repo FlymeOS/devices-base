@@ -24297,7 +24297,7 @@
     .line 6495
     .local v3, "isAppWindow":Z
     :goto_0
-    if-eqz v3, :cond_7
+    if-eqz v3, :cond_9
 
     .line 6497
     invoke-interface {p1}, Landroid/view/WindowManagerPolicy$WindowState;->getContentFrameLw()Landroid/graphics/Rect;
@@ -24310,7 +24310,7 @@
 
     if-eqz v7, :cond_2
 
-    .line 6521
+    .line 6523
     :cond_0
     :goto_1
     return v6
@@ -24376,6 +24376,20 @@
     .line 6510
     .local v1, "hasLeftPadding":Z
     :goto_2
+    if-eqz v1, :cond_5
+
+    invoke-interface {p1}, Landroid/view/WindowManagerPolicy$WindowState;->getDisplayFrameLw()Landroid/graphics/Rect;
+
+    move-result-object v7
+
+    iget v7, v7, Landroid/graphics/Rect;->left:I
+
+    if-ltz v7, :cond_5
+
+    move v1, v5
+
+    .line 6511
+    :goto_3
     invoke-interface {p1}, Landroid/view/WindowManagerPolicy$WindowState;->getContentFrameLw()Landroid/graphics/Rect;
 
     move-result-object v7
@@ -24388,13 +24402,29 @@
 
     iget v8, v8, Landroid/graphics/Rect;->right:I
 
-    if-ge v7, v8, :cond_5
+    if-ge v7, v8, :cond_6
 
     move v2, v5
 
-    .line 6511
+    .line 6512
     .local v2, "hasRightPadding":Z
-    :goto_3
+    :goto_4
+    if-eqz v2, :cond_7
+
+    invoke-interface {p1}, Landroid/view/WindowManagerPolicy$WindowState;->getDisplayFrameLw()Landroid/graphics/Rect;
+
+    move-result-object v7
+
+    iget v7, v7, Landroid/graphics/Rect;->right:I
+
+    const/16 v8, 0xbb8
+
+    if-ge v7, v8, :cond_7
+
+    move v2, v5
+
+    .line 6513
+    :goto_5
     invoke-interface {p1}, Landroid/view/WindowManagerPolicy$WindowState;->getContentFrameLw()Landroid/graphics/Rect;
 
     move-result-object v7
@@ -24407,13 +24437,13 @@
 
     iget v8, v8, Landroid/graphics/Rect;->bottom:I
 
-    if-ge v7, v8, :cond_6
+    if-ge v7, v8, :cond_8
 
     move v0, v5
 
-    .line 6513
+    .line 6515
     .local v0, "hasBottomPadding":Z
-    :goto_4
+    :goto_6
     if-nez v1, :cond_0
 
     if-nez v2, :cond_0
@@ -24424,7 +24454,7 @@
     :cond_3
     move v6, v5
 
-    .line 6517
+    .line 6519
     goto :goto_1
 
     :cond_4
@@ -24435,22 +24465,34 @@
 
     .restart local v1    # "hasLeftPadding":Z
     :cond_5
-    move v2, v6
+    move v1, v6
 
     .line 6510
     goto :goto_3
 
-    .restart local v2    # "hasRightPadding":Z
     :cond_6
-    move v0, v6
+    move v2, v6
 
     .line 6511
     goto :goto_4
 
-    .line 6520
+    .restart local v2    # "hasRightPadding":Z
+    :cond_7
+    move v2, v6
+
+    .line 6512
+    goto :goto_5
+
+    :cond_8
+    move v0, v6
+
+    .line 6513
+    goto :goto_6
+
+    .line 6522
     .end local v1    # "hasLeftPadding":Z
     .end local v2    # "hasRightPadding":Z
-    :cond_7
+    :cond_9
     invoke-interface {p1}, Landroid/view/WindowManagerPolicy$WindowState;->getAttrs()Landroid/view/WindowManager$LayoutParams;
 
     move-result-object v7
@@ -24459,21 +24501,21 @@
 
     const/16 v8, 0x7d4
 
-    if-ne v7, v8, :cond_8
+    if-ne v7, v8, :cond_a
 
     move v4, v5
 
     .local v4, "isKeyguardWindow":Z
-    :goto_5
+    :goto_7
     move v6, v4
 
-    .line 6521
-    goto :goto_1
+    .line 6523
+    goto/16 :goto_1
 
     .end local v4    # "isKeyguardWindow":Z
-    :cond_8
+    :cond_a
     move v4, v6
 
-    .line 6520
-    goto :goto_5
+    .line 6522
+    goto :goto_7
 .end method

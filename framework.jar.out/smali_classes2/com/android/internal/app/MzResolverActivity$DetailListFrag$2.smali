@@ -26,7 +26,7 @@
     .locals 0
 
     .prologue
-    .line 1692
+    .line 1696
     iput-object p1, p0, Lcom/android/internal/app/MzResolverActivity$DetailListFrag$2;->this$0:Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .param p1, "v"    # Landroid/view/View;
 
     .prologue
-    .line 1695
+    .line 1699
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DetailListFrag$2;->this$0:Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     # getter for: Lcom/android/internal/app/MzResolverActivity$DetailListFrag;->mActivity:Lcom/android/internal/app/MzResolverActivity;
@@ -51,6 +51,6 @@
 
     invoke-virtual {v0}, Lcom/android/internal/app/MzResolverActivity;->finish()V
 
-    .line 1696
+    .line 1700
     return-void
 .end method
