@@ -70,6 +70,8 @@
 
 .field mFlymeDecoViewDrawFlag:Z
 
+.field mFlymeDecoViewPostCount:I
+
 .field mFlymeDecorViewPaddingTop:I
 
 .field mFlymeDensity:F
@@ -10822,10 +10824,8 @@
     .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .prologue
-    .line 6327
     invoke-static {p0}, Landroid/app/Activity$FlymeInjector;->drawStatusBarBackground(Landroid/app/Activity;)V
 
-    .line 6328
     return-void
 .end method
 
