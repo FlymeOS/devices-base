@@ -4211,6 +4211,8 @@
 
     .line 1217
     :cond_0
+    invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->setFlymeSystle(Landroid/inputmethodservice/InputMethodService;)V
+
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Landroid/inputmethodservice/InputMethodService;->startExtractingText(Z)V
