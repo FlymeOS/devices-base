@@ -13675,11 +13675,22 @@
 
     .prologue
     .line 4684
+    if-gez p1, :cond_1
+
+    const/16 v18, 0x0
+
+    .line 4771
+    :cond_0
+    :goto_0
+    return v18
+
+    .line 4685
+    :cond_1
     move-object/from16 v0, p0
 
     iget v6, v0, Landroid/widget/ListView;->mFirstPosition:I
 
-    .line 4685
+    .line 4686
     .local v6, "first":I
     move-object/from16 v0, p0
 
@@ -13691,13 +13702,13 @@
 
     move-result v8
 
-    .line 4686
+    .line 4687
     .local v8, "headerCount":I
     move-object/from16 v0, p0
 
     iget v14, v0, Landroid/widget/ListView;->mItemCount:I
 
-    .line 4687
+    .line 4688
     .local v14, "itemCount":I
     move-object/from16 v0, p0
 
@@ -13711,53 +13722,53 @@
 
     sub-int v7, v14, v20
 
-    .line 4689
+    .line 4690
     .local v7, "footerLimit":I
     move-object/from16 v0, p0
 
     iget-object v2, v0, Landroid/widget/ListView;->mAdapter:Landroid/widget/ListAdapter;
 
-    .line 4690
+    .line 4691
     .local v2, "adapter":Landroid/widget/ListAdapter;
     instance-of v10, v2, Landroid/widget/ListView$DividerFilter;
 
-    .line 4691
+    .line 4692
     .local v10, "isDividerFilter":Z
     instance-of v13, v2, Landroid/widget/HeaderViewListAdapter;
 
-    .line 4692
+    .line 4693
     .local v13, "isHeaderViewListAdapter":Z
     const/16 v19, 0x0
 
-    .line 4693
+    .line 4694
     .local v19, "wrappedAdapter":Landroid/widget/ListAdapter;
-    if-eqz v13, :cond_0
+    if-eqz v13, :cond_2
 
     move-object/from16 v20, v2
 
-    .line 4694
+    .line 4695
     check-cast v20, Landroid/widget/HeaderViewListAdapter;
 
     invoke-virtual/range {v20 .. v20}, Landroid/widget/HeaderViewListAdapter;->getWrappedAdapter()Landroid/widget/ListAdapter;
 
     move-result-object v19
 
-    .line 4695
+    .line 4696
     move-object/from16 v0, v19
 
     instance-of v10, v0, Landroid/widget/ListView$DividerFilter;
 
-    .line 4696
-    if-nez v10, :cond_0
-
     .line 4697
+    if-nez v10, :cond_2
+
+    .line 4698
     const/16 v19, 0x0
 
-    .line 4700
-    :cond_0
+    .line 4701
+    :cond_2
     move/from16 v9, p1
 
-    .line 4701
+    .line 4702
     .local v9, "index":I
     move-object/from16 v0, p0
 
@@ -13765,50 +13776,50 @@
 
     move/from16 v20, v0
 
-    if-eqz v20, :cond_1
+    if-eqz v20, :cond_3
 
-    .line 4702
+    .line 4703
     add-int/lit8 v9, v9, 0x1
 
-    .line 4704
-    :cond_1
+    .line 4705
+    :cond_3
     add-int v15, v6, v9
 
-    .line 4705
+    .line 4706
     .local v15, "itemIndex":I
-    if-ge v15, v8, :cond_5
+    if-ge v15, v8, :cond_6
 
     const/4 v12, 0x1
 
-    .line 4706
+    .line 4707
     .local v12, "isHeader":Z
-    :goto_0
-    if-lt v15, v7, :cond_6
+    :goto_1
+    if-lt v15, v7, :cond_7
 
     const/4 v11, 0x1
 
-    .line 4707
+    .line 4708
     .local v11, "isFooter":Z
-    :goto_1
+    :goto_2
     const/16 v18, 0x1
 
-    .line 4708
-    .local v18, "toDraw":Z
-    if-eqz v10, :cond_8
-
     .line 4709
-    if-eqz v13, :cond_7
+    .local v18, "toDraw":Z
+    if-eqz v10, :cond_9
 
     .line 4710
-    if-eqz v19, :cond_2
+    if-eqz v13, :cond_8
 
-    if-nez v12, :cond_2
+    .line 4711
+    if-eqz v19, :cond_4
 
-    if-nez v11, :cond_2
+    if-nez v12, :cond_4
+
+    if-nez v11, :cond_4
 
     move-object/from16 v20, v19
 
-    .line 4711
+    .line 4712
     check-cast v20, Landroid/widget/ListView$DividerFilter;
 
     sub-int v21, v15, v8
@@ -13817,31 +13828,31 @@
 
     move-result v18
 
-    .line 4724
-    :cond_2
-    :goto_2
+    .line 4725
+    :cond_4
+    :goto_3
     move-object/from16 v0, p0
 
     iget-boolean v0, v0, Landroid/widget/ListView;->mStackFromBottom:Z
 
     move/from16 v20, v0
 
-    if-nez v20, :cond_c
-
-    .line 4725
-    const/4 v5, 0x0
+    if-nez v20, :cond_d
 
     .line 4726
-    .local v5, "drawTop":Z
-    if-eqz v10, :cond_b
+    const/4 v5, 0x0
 
     .line 4727
-    if-eqz v13, :cond_a
+    .local v5, "drawTop":Z
+    if-eqz v10, :cond_c
 
     .line 4728
-    if-eqz v19, :cond_3
+    if-eqz v13, :cond_b
 
     .line 4729
+    if-eqz v19, :cond_5
+
+    .line 4730
     check-cast v19, Landroid/widget/ListView$DividerFilter;
 
     .end local v19    # "wrappedAdapter":Landroid/widget/ListAdapter;
@@ -13849,53 +13860,50 @@
 
     move-result v5
 
-    .line 4738
+    .line 4739
     .end local v2    # "adapter":Landroid/widget/ListAdapter;
-    :cond_3
-    :goto_3
+    :cond_5
+    :goto_4
     const/16 v20, -0x1
 
     move/from16 v0, p1
 
     move/from16 v1, v20
 
-    if-ne v0, v1, :cond_10
+    if-ne v0, v1, :cond_11
 
-    if-nez v5, :cond_10
+    if-nez v5, :cond_11
 
-    .line 4739
+    .line 4740
     const/16 v18, 0x0
 
-    .line 4770
-    .end local v5    # "drawTop":Z
-    .end local v18    # "toDraw":Z
-    :cond_4
-    :goto_4
-    return v18
-
-    .line 4705
-    .end local v11    # "isFooter":Z
-    .end local v12    # "isHeader":Z
-    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
-    .restart local v19    # "wrappedAdapter":Landroid/widget/ListAdapter;
-    :cond_5
-    const/4 v12, 0x0
-
-    goto :goto_0
+    goto/16 :goto_0
 
     .line 4706
-    .restart local v12    # "isHeader":Z
+    .end local v5    # "drawTop":Z
+    .end local v11    # "isFooter":Z
+    .end local v12    # "isHeader":Z
+    .end local v18    # "toDraw":Z
+    .restart local v2    # "adapter":Landroid/widget/ListAdapter;
+    .restart local v19    # "wrappedAdapter":Landroid/widget/ListAdapter;
     :cond_6
-    const/4 v11, 0x0
+    const/4 v12, 0x0
 
     goto :goto_1
 
+    .line 4707
+    .restart local v12    # "isHeader":Z
+    :cond_7
+    const/4 v11, 0x0
+
+    goto :goto_2
+
     .restart local v11    # "isFooter":Z
     .restart local v18    # "toDraw":Z
-    :cond_7
+    :cond_8
     move-object/from16 v20, v2
 
-    .line 4714
+    .line 4715
     check-cast v20, Landroid/widget/ListView$DividerFilter;
 
     move-object/from16 v0, v20
@@ -13904,26 +13912,26 @@
 
     move-result v18
 
-    goto :goto_2
+    goto :goto_3
 
-    .line 4716
-    :cond_8
+    .line 4717
+    :cond_9
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
 
     move-object/from16 v20, v0
 
-    if-eqz v20, :cond_2
-
-    .line 4717
-    if-eqz v13, :cond_9
-
-    if-nez v12, :cond_9
-
-    if-nez v11, :cond_9
+    if-eqz v20, :cond_4
 
     .line 4718
+    if-eqz v13, :cond_a
+
+    if-nez v12, :cond_a
+
+    if-nez v11, :cond_a
+
+    .line 4719
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
@@ -13936,10 +13944,10 @@
 
     move-result v18
 
-    goto :goto_2
+    goto :goto_3
 
-    .line 4720
-    :cond_9
+    .line 4721
+    :cond_a
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
@@ -13952,11 +13960,11 @@
 
     move-result v18
 
-    goto :goto_2
+    goto :goto_3
 
-    .line 4732
+    .line 4733
     .restart local v5    # "drawTop":Z
-    :cond_a
+    :cond_b
     check-cast v2, Landroid/widget/ListView$DividerFilter;
 
     .end local v2    # "adapter":Landroid/widget/ListAdapter;
@@ -13964,20 +13972,20 @@
 
     move-result v5
 
-    goto :goto_3
+    goto :goto_4
 
-    .line 4734
+    .line 4735
     .restart local v2    # "adapter":Landroid/widget/ListAdapter;
-    :cond_b
+    :cond_c
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
 
     move-object/from16 v20, v0
 
-    if-eqz v20, :cond_3
+    if-eqz v20, :cond_5
 
-    .line 4735
+    .line 4736
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
@@ -13988,24 +13996,24 @@
 
     move-result v5
 
-    goto :goto_3
-
-    .line 4742
-    .end local v5    # "drawTop":Z
-    :cond_c
-    const/4 v4, 0x0
+    goto :goto_4
 
     .line 4743
-    .local v4, "drawBottom":Z
-    if-eqz v10, :cond_f
+    .end local v5    # "drawTop":Z
+    :cond_d
+    const/4 v4, 0x0
 
     .line 4744
-    if-eqz v13, :cond_e
+    .local v4, "drawBottom":Z
+    if-eqz v10, :cond_10
 
     .line 4745
-    if-eqz v19, :cond_d
+    if-eqz v13, :cond_f
 
     .line 4746
+    if-eqz v19, :cond_e
+
+    .line 4747
     check-cast v19, Landroid/widget/ListView$DividerFilter;
 
     .end local v19    # "wrappedAdapter":Landroid/widget/ListAdapter;
@@ -14013,9 +14021,9 @@
 
     move-result v4
 
-    .line 4754
+    .line 4755
     .end local v2    # "adapter":Landroid/widget/ListAdapter;
-    :cond_d
+    :cond_e
     :goto_5
     const/16 v20, -0x1
 
@@ -14023,19 +14031,19 @@
 
     move/from16 v1, v20
 
-    if-ne v0, v1, :cond_10
+    if-ne v0, v1, :cond_11
 
-    if-nez v4, :cond_10
+    if-nez v4, :cond_11
 
-    .line 4755
+    .line 4756
     const/16 v18, 0x0
 
-    goto :goto_4
+    goto/16 :goto_0
 
-    .line 4749
+    .line 4750
     .restart local v2    # "adapter":Landroid/widget/ListAdapter;
     .restart local v19    # "wrappedAdapter":Landroid/widget/ListAdapter;
-    :cond_e
+    :cond_f
     check-cast v2, Landroid/widget/ListView$DividerFilter;
 
     .end local v2    # "adapter":Landroid/widget/ListAdapter;
@@ -14045,18 +14053,18 @@
 
     goto :goto_5
 
-    .line 4751
+    .line 4752
     .restart local v2    # "adapter":Landroid/widget/ListAdapter;
-    :cond_f
+    :cond_10
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
 
     move-object/from16 v20, v0
 
-    if-eqz v20, :cond_d
+    if-eqz v20, :cond_e
 
-    .line 4752
+    .line 4753
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
@@ -14069,20 +14077,20 @@
 
     goto :goto_5
 
-    .line 4759
+    .line 4760
     .end local v2    # "adapter":Landroid/widget/ListAdapter;
     .end local v4    # "drawBottom":Z
     .end local v19    # "wrappedAdapter":Landroid/widget/ListAdapter;
-    :cond_10
+    :cond_11
     move-object/from16 v0, p0
 
     iget-object v3, v0, Landroid/widget/ListView;->mDivider:Landroid/graphics/drawable/Drawable;
 
-    .line 4760
+    .line 4761
     .local v3, "divider":Landroid/graphics/drawable/Drawable;
-    if-eqz v18, :cond_4
+    if-eqz v18, :cond_0
 
-    if-eqz v3, :cond_4
+    if-eqz v3, :cond_0
 
     move-object/from16 v0, p0
 
@@ -14090,9 +14098,9 @@
 
     move-object/from16 v20, v0
 
-    if-eqz v20, :cond_4
+    if-eqz v20, :cond_0
 
-    .line 4761
+    .line 4762
     move-object/from16 v0, p0
 
     iget-object v0, v0, Landroid/widget/ListView;->mDividerPadding:Landroid/widget/ListView$DividerPadding;
@@ -14105,9 +14113,9 @@
 
     move-result-object v16
 
-    .line 4762
+    .line 4763
     .local v16, "paddings":[I
-    if-eqz v16, :cond_4
+    if-eqz v16, :cond_0
 
     move-object/from16 v0, v16
 
@@ -14121,14 +14129,14 @@
 
     move/from16 v1, v21
 
-    if-ne v0, v1, :cond_4
+    if-ne v0, v1, :cond_0
 
-    .line 4765
+    .line 4766
     invoke-virtual {v3}, Landroid/graphics/drawable/Drawable;->getBounds()Landroid/graphics/Rect;
 
     move-result-object v17
 
-    .line 4766
+    .line 4767
     .local v17, "rect":Landroid/graphics/Rect;
     move-object/from16 v0, v17
 
@@ -14148,7 +14156,7 @@
 
     iput v0, v1, Landroid/graphics/Rect;->left:I
 
-    .line 4767
+    .line 4768
     move-object/from16 v0, v17
 
     iget v0, v0, Landroid/graphics/Rect;->right:I
@@ -14167,12 +14175,12 @@
 
     iput v0, v1, Landroid/graphics/Rect;->right:I
 
-    .line 4768
+    .line 4769
     move-object/from16 v0, v17
 
     invoke-virtual {v3, v0}, Landroid/graphics/drawable/Drawable;->setBounds(Landroid/graphics/Rect;)V
 
-    goto/16 :goto_4
+    goto/16 :goto_0
 .end method
 
 .method private flymeEndDragSelection()V
@@ -14452,7 +14460,6 @@
     .param p1, "dividerHeight"    # I
 
     .prologue
-    .line 4039
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeDividerInside:Z
 
     if-eqz v0, :cond_0
@@ -14461,15 +14468,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 4040
     iget v0, p0, Landroid/widget/ListView;->mFlymeDividerH:I
 
     if-lez v0, :cond_0
 
-    .line 4041
     iget p1, p0, Landroid/widget/ListView;->mFlymeDividerH:I
 
-    .line 4044
     :cond_0
     return p1
 .end method
@@ -14479,7 +14483,6 @@
     .param p1, "drawDividers"    # Z
 
     .prologue
-    .line 4030
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeDividerInside:Z
 
     if-eqz v0, :cond_0
@@ -14488,15 +14491,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 4031
     iget v0, p0, Landroid/widget/ListView;->mFlymeDividerH:I
 
     if-lez v0, :cond_0
 
-    .line 4032
     const/4 p1, 0x1
 
-    .line 4035
     :cond_0
     return p1
 .end method
@@ -14515,72 +14515,50 @@
 
     const/4 v0, 0x0
 
-    .line 3978
     iput-object v2, p0, Landroid/widget/ListView;->mFlymeDragSelectListener:Landroid/widget/ListView$OnDragSelectListener;
 
-    .line 3979
     iput-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeBeginDragSelect:Z
 
-    .line 3980
     iput v0, p0, Landroid/widget/ListView;->mFlymeDragMotionViewTop:I
 
-    .line 3981
     iput v0, p0, Landroid/widget/ListView;->mFlymeDragMotionViewBottom:I
 
-    .line 3982
     iput v1, p0, Landroid/widget/ListView;->mFlymeDragMotionPosition:I
 
-    .line 3983
     iput v1, p0, Landroid/widget/ListView;->mFlymeDragMotionY:I
 
-    .line 3984
     iput v0, p0, Landroid/widget/ListView;->mFlymeLastDragMotionY:I
 
-    .line 3985
     iput v0, p0, Landroid/widget/ListView;->mFlymeIntercepeDragMotionX:I
 
-    .line 3986
     iput v0, p0, Landroid/widget/ListView;->mFlymeIntercepeDragMotionY:I
 
-    .line 3987
     iput v1, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
-    .line 3988
     iput v1, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
 
-    .line 3989
     iput v1, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
-    .line 3990
     iput-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeOutOfListContent:Z
 
-    .line 3991
     iput v0, p0, Landroid/widget/ListView;->mFlymeDragWidth:I
 
-    .line 3992
     iput v0, p0, Landroid/widget/ListView;->mFlymeDragSlop:I
 
-    .line 3993
     iput v1, p0, Landroid/widget/ListView;->mFlymeLongPressPosition:I
 
-    .line 3994
     iput-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeOutOfDragRegion:Z
 
-    .line 3995
     iput-boolean v0, p0, Landroid/widget/ListView;->mFlymeSelectToBottom:Z
 
-    .line 3996
     iput-object v2, p0, Landroid/widget/ListView;->mFlymeFocuseRect:Landroid/graphics/Rect;
 
-    .line 3997
     iput-object v2, p0, Landroid/widget/ListView;->mFlymeScrollSelection:Landroid/widget/ListView$MzScrollSelectionRunnable;
 
-    .line 3998
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeCheckBoxAnim:Z
 
-    .line 3999
     return-void
 .end method
 
@@ -14588,19 +14566,16 @@
     .locals 3
 
     .prologue
-    .line 4657
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeDragRegionRect:Landroid/graphics/Rect;
 
     if-nez v0, :cond_0
 
-    .line 4658
     new-instance v0, Landroid/graphics/Rect;
 
     invoke-direct {v0}, Landroid/graphics/Rect;-><init>()V
 
     iput-object v0, p0, Landroid/widget/ListView;->mFlymeDragRegionRect:Landroid/graphics/Rect;
 
-    .line 4660
     :cond_0
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeDragRegionRect:Landroid/graphics/Rect;
 
@@ -14614,7 +14589,6 @@
 
     iput v1, v0, Landroid/graphics/Rect;->right:I
 
-    .line 4661
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeDragRegionRect:Landroid/graphics/Rect;
 
     iget-object v1, p0, Landroid/widget/ListView;->mFlymeDragRegionRect:Landroid/graphics/Rect;
@@ -14627,7 +14601,6 @@
 
     iput v1, v0, Landroid/graphics/Rect;->left:I
 
-    .line 4662
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeDragRegionRect:Landroid/graphics/Rect;
 
     iget v1, p0, Landroid/widget/ListView;->mPaddingTop:I
@@ -14642,7 +14615,6 @@
 
     iput v1, v0, Landroid/graphics/Rect;->top:I
 
-    .line 4663
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeDragRegionRect:Landroid/graphics/Rect;
 
     invoke-virtual {p0}, Landroid/widget/ListView;->getBottom()I
@@ -14655,7 +14627,6 @@
 
     iput v1, v0, Landroid/graphics/Rect;->bottom:I
 
-    .line 4664
     return-void
 .end method
 
@@ -14663,22 +14634,18 @@
     .locals 1
 
     .prologue
-    .line 3511
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeDividerInside:Z
 
     if-eqz v0, :cond_0
 
-    .line 3512
     iget v0, p0, Landroid/widget/ListView;->mDividerHeight:I
 
     iput v0, p0, Landroid/widget/ListView;->mFlymeDividerH:I
 
-    .line 3513
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/widget/ListView;->mDividerHeight:I
 
-    .line 3516
     :cond_0
     return-void
 .end method
@@ -14689,7 +14656,6 @@
     .prologue
     const/4 v4, 0x1
 
-    .line 4621
     invoke-virtual {p0}, Landroid/widget/ListView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -14720,18 +14686,14 @@
 
     invoke-virtual {p0, v0, v1, v2, v3}, Landroid/widget/ListView;->setPadding(IIII)V
 
-    .line 4625
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Landroid/widget/ListView;->setClipToPadding(Z)V
 
-    .line 4626
     invoke-virtual {p0, v4}, Landroid/widget/ListView;->setFooterDividersEnabled(Z)V
 
-    .line 4627
     invoke-virtual {p0, v4}, Landroid/widget/ListView;->setDividerInSide(Z)V
 
-    .line 4628
     invoke-virtual {p0}, Landroid/widget/ListView;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
@@ -14744,12 +14706,10 @@
 
     invoke-virtual {p0, v0}, Landroid/widget/ListView;->setDivider(Landroid/graphics/drawable/Drawable;)V
 
-    .line 4629
     sget v0, Lcom/flyme/internal/R$drawable;->mz_list_selector_background:I
 
     invoke-virtual {p0, v0}, Landroid/widget/ListView;->setSelector(I)V
 
-    .line 4630
     return-void
 .end method
 
@@ -14759,7 +14719,6 @@
     .prologue
     const/4 v6, 0x1
 
-    .line 4400
     iget v2, p0, Landroid/widget/ListView;->mItemCount:I
 
     invoke-virtual {p0}, Landroid/widget/ListView;->getFooterViewsCount()I
@@ -14768,18 +14727,15 @@
 
     sub-int v0, v2, v3
 
-    .line 4401
     .local v0, "firtFooterPosition":I
     invoke-virtual {p0}, Landroid/widget/ListView;->clearChoices()V
 
-    .line 4402
     iget v2, p0, Landroid/widget/ListView;->mChoiceMode:I
 
     const/4 v3, 0x2
 
     if-lt v2, v3, :cond_2
 
-    .line 4403
     invoke-virtual {p0}, Landroid/widget/ListView;->getHeaderViewsCount()I
 
     move-result v1
@@ -14788,26 +14744,22 @@
     :goto_0
     if-ge v1, v0, :cond_2
 
-    .line 4404
     invoke-virtual {p0, v1}, Landroid/widget/ListView;->mzIsItemSelectable(I)Z
 
     move-result v2
 
     if-nez v2, :cond_0
 
-    .line 4403
     :goto_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 4408
     :cond_0
     iget-object v2, p0, Landroid/widget/ListView;->mCheckStates:Landroid/util/SparseBooleanArray;
 
     invoke-virtual {v2, v1, v6}, Landroid/util/SparseBooleanArray;->put(IZ)V
 
-    .line 4409
     iget-object v2, p0, Landroid/widget/ListView;->mCheckedIdStates:Landroid/util/LongSparseArray;
 
     if-eqz v2, :cond_1
@@ -14820,7 +14772,6 @@
 
     if-eqz v2, :cond_1
 
-    .line 4410
     iget-object v2, p0, Landroid/widget/ListView;->mCheckedIdStates:Landroid/util/LongSparseArray;
 
     iget-object v3, p0, Landroid/widget/ListView;->mAdapter:Landroid/widget/ListAdapter;
@@ -14835,7 +14786,6 @@
 
     invoke-virtual {v2, v4, v5, v3}, Landroid/util/LongSparseArray;->put(JLjava/lang/Object;)V
 
-    .line 4412
     :cond_1
     iget v2, p0, Landroid/widget/ListView;->mCheckedItemCount:I
 
@@ -14845,7 +14795,6 @@
 
     goto :goto_1
 
-    .line 4416
     .end local v1    # "position":I
     :cond_2
     iget-boolean v2, p0, Landroid/widget/ListView;->mInLayout:Z
@@ -14856,16 +14805,12 @@
 
     if-nez v2, :cond_3
 
-    .line 4417
     iput-boolean v6, p0, Landroid/widget/ListView;->mDataChanged:Z
 
-    .line 4418
     invoke-virtual {p0}, Landroid/widget/ListView;->rememberSyncState()V
 
-    .line 4419
     invoke-virtual {p0}, Landroid/widget/ListView;->requestLayout()V
 
-    .line 4421
     :cond_3
     return-void
 .end method
@@ -14874,7 +14819,6 @@
     .locals 1
 
     .prologue
-    .line 4602
     iget v0, p0, Landroid/widget/ListView;->mScrollY:I
 
     return v0
@@ -14893,7 +14837,6 @@
     .param p9, "isTouchEvent"    # Z
 
     .prologue
-    .line 4597
     invoke-virtual/range {p0 .. p9}, Landroid/widget/ListView;->overScrollBy(IIIIIIIIZ)Z
 
     move-result v0
@@ -14906,10 +14849,8 @@
     .param p1, "scrollY"    # I
 
     .prologue
-    .line 4606
     iput p1, p0, Landroid/widget/ListView;->mScrollY:I
 
-    .line 4607
     return-void
 .end method
 
@@ -14918,10 +14859,8 @@
     .param p1, "childCount"    # I
 
     .prologue
-    .line 4611
     invoke-direct {p0, p1}, Landroid/widget/ListView;->correctTooHigh(I)V
 
-    .line 4612
     return-void
 .end method
 
@@ -14930,10 +14869,8 @@
     .param p1, "childCount"    # I
 
     .prologue
-    .line 4616
     invoke-direct {p0, p1}, Landroid/widget/ListView;->correctTooLow(I)V
 
-    .line 4617
     return-void
 .end method
 
@@ -14945,13 +14882,10 @@
     .prologue
     const/4 v6, -0x1
 
-    .line 4049
     if-ne p1, v6, :cond_1
 
-    .line 4050
     move p1, p2
 
-    .line 4054
     :goto_0
     move v4, p1
 
@@ -14959,24 +14893,20 @@
     :goto_1
     if-gt v4, p2, :cond_6
 
-    .line 4055
     iget v5, p0, Landroid/widget/ListView;->mFlymeLongPressPosition:I
 
     if-ne v4, v5, :cond_2
 
-    .line 4080
     :cond_0
     :goto_2
     return-void
 
-    .line 4052
     .end local v4    # "position":I
     :cond_1
     add-int/lit8 p1, p1, 0x1
 
     goto :goto_0
 
-    .line 4058
     .restart local v4    # "position":I
     :cond_2
     invoke-virtual {p0, v4}, Landroid/widget/ListView;->mzIsItemSelectable(I)Z
@@ -14985,13 +14915,11 @@
 
     if-nez v5, :cond_3
 
-    .line 4054
     :goto_3
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_1
 
-    .line 4062
     :cond_3
     iget v5, p0, Landroid/widget/ListView;->mFirstPosition:I
 
@@ -15001,7 +14929,6 @@
 
     move-result-object v0
 
-    .line 4063
     .local v0, "dragView":Landroid/view/View;
     iget-object v5, p0, Landroid/widget/ListView;->mAdapter:Landroid/widget/ListAdapter;
 
@@ -15009,7 +14936,6 @@
 
     move-result-wide v2
 
-    .line 4064
     .local v2, "id":J
     invoke-virtual {p0, v4}, Landroid/widget/ListView;->mzIsHeaderOrFooter(I)Z
 
@@ -15017,35 +14943,28 @@
 
     if-nez v5, :cond_0
 
-    .line 4065
     const/4 v1, 0x0
 
-    .line 4066
     .local v1, "newSelected":Z
     iget-object v5, p0, Landroid/widget/ListView;->mFlymeDragSelectListener:Landroid/widget/ListView$OnDragSelectListener;
 
     if-eqz v5, :cond_4
 
-    .line 4067
     iget-object v5, p0, Landroid/widget/ListView;->mFlymeDragSelectListener:Landroid/widget/ListView$OnDragSelectListener;
 
     invoke-interface {v5, v0, v4, v2, v3}, Landroid/widget/ListView$OnDragSelectListener;->onDragSelection(Landroid/view/View;IJ)Z
 
     move-result v1
 
-    .line 4072
     :goto_4
     invoke-direct {p0, v0, v1}, Landroid/widget/ListView;->flymeUpdateDragView(Landroid/view/View;Z)V
 
-    .line 4076
     iput v4, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
 
-    .line 4077
     iput v6, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
     goto :goto_3
 
-    .line 4069
     :cond_4
     invoke-virtual {p0, v4}, Landroid/widget/ListView;->isItemChecked(I)Z
 
@@ -15055,19 +14974,16 @@
 
     const/4 v1, 0x1
 
-    .line 4070
     :goto_5
     invoke-virtual {p0, v4, v1}, Landroid/widget/ListView;->setItemChecked(IZ)V
 
     goto :goto_4
 
-    .line 4069
     :cond_5
     const/4 v1, 0x0
 
     goto :goto_5
 
-    .line 4079
     .end local v0    # "dragView":Landroid/view/View;
     .end local v1    # "newSelected":Z
     .end local v2    # "id":J
@@ -15082,10 +14998,8 @@
     .param p1, "flag"    # Z
 
     .prologue
-    .line 4838
     iput-boolean p1, p0, Landroid/widget/ListView;->mFlymeEnableDragSelectDuringNormal:Z
 
-    .line 4839
     return-void
 .end method
 
@@ -15094,32 +15008,26 @@
     .param p1, "up"    # Z
 
     .prologue
-    .line 4483
     invoke-virtual {p0}, Landroid/widget/ListView;->getChildCount()I
 
     move-result v1
 
-    .line 4484
     .local v1, "childCount":I
     const/4 v3, -0x1
 
-    .line 4485
     .local v3, "position":I
     if-eqz p1, :cond_3
 
-    .line 4486
     const/4 v2, 0x0
 
     .local v2, "index":I
     :goto_0
     if-ge v2, v1, :cond_0
 
-    .line 4487
     invoke-virtual {p0, v2}, Landroid/widget/ListView;->getChildAt(I)Landroid/view/View;
 
     move-result-object v0
 
-    .line 4488
     .local v0, "child":Landroid/view/View;
     invoke-virtual {v0}, Landroid/view/View;->getBottom()I
 
@@ -15139,12 +15047,10 @@
 
     if-le v4, v5, :cond_2
 
-    .line 4489
     iget v4, p0, Landroid/widget/ListView;->mFirstPosition:I
 
     add-int v3, v4, v2
 
-    .line 4504
     .end local v0    # "child":Landroid/view/View;
     :cond_0
     :goto_1
@@ -15154,21 +15060,17 @@
 
     if-eqz v4, :cond_1
 
-    .line 4505
     const/4 v3, -0x1
 
-    .line 4508
     :cond_1
     return v3
 
-    .line 4486
     .restart local v0    # "child":Landroid/view/View;
     :cond_2
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 4494
     .end local v0    # "child":Landroid/view/View;
     .end local v2    # "index":I
     :cond_3
@@ -15178,12 +15080,10 @@
     :goto_2
     if-ltz v2, :cond_0
 
-    .line 4495
     invoke-virtual {p0, v2}, Landroid/widget/ListView;->getChildAt(I)Landroid/view/View;
 
     move-result-object v0
 
-    .line 4496
     .restart local v0    # "child":Landroid/view/View;
     invoke-virtual {v0}, Landroid/view/View;->getTop()I
 
@@ -15209,15 +15109,12 @@
 
     if-ge v4, v5, :cond_4
 
-    .line 4497
     iget v4, p0, Landroid/widget/ListView;->mFirstPosition:I
 
     add-int v3, v4, v2
 
-    .line 4498
     goto :goto_1
 
-    .line 4494
     :cond_4
     add-int/lit8 v2, v2, -0x1
 
@@ -15232,13 +15129,10 @@
     .prologue
     const/4 v6, -0x1
 
-    .line 4084
     if-ne p1, v6, :cond_1
 
-    .line 4085
     move p1, p2
 
-    .line 4090
     :goto_0
     move v4, p1
 
@@ -15246,24 +15140,20 @@
     :goto_1
     if-lt v4, p2, :cond_6
 
-    .line 4091
     iget v5, p0, Landroid/widget/ListView;->mFlymeLongPressPosition:I
 
     if-ne v4, v5, :cond_2
 
-    .line 4117
     :cond_0
     :goto_2
     return-void
 
-    .line 4087
     .end local v4    # "position":I
     :cond_1
     add-int/lit8 p1, p1, -0x1
 
     goto :goto_0
 
-    .line 4094
     .restart local v4    # "position":I
     :cond_2
     invoke-virtual {p0, v4}, Landroid/widget/ListView;->mzIsItemSelectable(I)Z
@@ -15272,13 +15162,11 @@
 
     if-nez v5, :cond_3
 
-    .line 4090
     :goto_3
     add-int/lit8 v4, v4, -0x1
 
     goto :goto_1
 
-    .line 4098
     :cond_3
     iget v5, p0, Landroid/widget/ListView;->mFirstPosition:I
 
@@ -15288,7 +15176,6 @@
 
     move-result-object v0
 
-    .line 4099
     .local v0, "dragView":Landroid/view/View;
     iget-object v5, p0, Landroid/widget/ListView;->mAdapter:Landroid/widget/ListAdapter;
 
@@ -15296,7 +15183,6 @@
 
     move-result-wide v2
 
-    .line 4100
     .local v2, "id":J
     invoke-virtual {p0, v4}, Landroid/widget/ListView;->mzIsHeaderOrFooter(I)Z
 
@@ -15304,35 +15190,28 @@
 
     if-nez v5, :cond_0
 
-    .line 4101
     const/4 v1, 0x0
 
-    .line 4102
     .local v1, "newSelected":Z
     iget-object v5, p0, Landroid/widget/ListView;->mFlymeDragSelectListener:Landroid/widget/ListView$OnDragSelectListener;
 
     if-eqz v5, :cond_4
 
-    .line 4103
     iget-object v5, p0, Landroid/widget/ListView;->mFlymeDragSelectListener:Landroid/widget/ListView$OnDragSelectListener;
 
     invoke-interface {v5, v0, v4, v2, v3}, Landroid/widget/ListView$OnDragSelectListener;->onDragSelection(Landroid/view/View;IJ)Z
 
     move-result v1
 
-    .line 4108
     :goto_4
     invoke-direct {p0, v0, v1}, Landroid/widget/ListView;->flymeUpdateDragView(Landroid/view/View;Z)V
 
-    .line 4113
     iput v4, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
-    .line 4114
     iput v6, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
 
     goto :goto_3
 
-    .line 4105
     :cond_4
     invoke-virtual {p0, v4}, Landroid/widget/ListView;->isItemChecked(I)Z
 
@@ -15342,19 +15221,16 @@
 
     const/4 v1, 0x1
 
-    .line 4106
     :goto_5
     invoke-virtual {p0, v4, v1}, Landroid/widget/ListView;->setItemChecked(IZ)V
 
     goto :goto_4
 
-    .line 4105
     :cond_5
     const/4 v1, 0x0
 
     goto :goto_5
 
-    .line 4116
     .end local v0    # "dragView":Landroid/view/View;
     .end local v1    # "newSelected":Z
     .end local v2    # "id":J
@@ -15371,7 +15247,6 @@
     .prologue
     const/4 v4, -0x1
 
-    .line 4167
     iget-boolean v3, p0, Landroid/widget/ListView;->mFlymeEnableDragSelectDuringNormal:Z
 
     if-nez v3, :cond_0
@@ -15380,16 +15255,13 @@
 
     if-nez v3, :cond_0
 
-    .line 4168
     invoke-super {p0, p1}, Landroid/widget/AbsListView;->onInterceptTouchEvent(Landroid/view/MotionEvent;)Z
 
     move-result v3
 
-    .line 4205
     :goto_0
     return v3
 
-    .line 4170
     :cond_0
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
@@ -15397,7 +15269,6 @@
 
     float-to-int v0, v3
 
-    .line 4172
     .local v0, "dragMotionX":I
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
@@ -15405,14 +15276,11 @@
 
     float-to-int v1, v3
 
-    .line 4173
     .local v1, "dragMotionY":I
     invoke-direct {p0}, Landroid/widget/ListView;->onFlymeSizeChanged()V
 
-    .line 4174
     iget-object v2, p0, Landroid/widget/ListView;->mFlymeDragRegionRect:Landroid/graphics/Rect;
 
-    .line 4177
     .local v2, "dragRegion":Landroid/graphics/Rect;
     invoke-virtual {p0}, Landroid/widget/ListView;->isEnabled()Z
 
@@ -15430,7 +15298,6 @@
 
     if-eqz v3, :cond_1
 
-    .line 4179
     invoke-virtual {p1}, Landroid/view/MotionEvent;->getAction()I
 
     move-result v3
@@ -15439,7 +15306,6 @@
 
     packed-switch v3, :pswitch_data_0
 
-    .line 4205
     :cond_1
     :goto_1
     :pswitch_0
@@ -15449,24 +15315,19 @@
 
     goto :goto_0
 
-    .line 4182
     :pswitch_1
     iget v3, p0, Landroid/widget/ListView;->mTouchMode:I
 
     if-ne v3, v4, :cond_1
 
-    .line 4183
     iput v0, p0, Landroid/widget/ListView;->mFlymeIntercepeDragMotionX:I
 
-    .line 4184
     iput v1, p0, Landroid/widget/ListView;->mFlymeIntercepeDragMotionY:I
 
-    .line 4185
     iput v4, p0, Landroid/widget/ListView;->mFlymeLongPressPosition:I
 
     goto :goto_1
 
-    .line 4191
     :pswitch_2
     iget v3, p0, Landroid/widget/ListView;->mFlymeIntercepeDragMotionY:I
 
@@ -15480,7 +15341,6 @@
 
     if-le v3, v4, :cond_1
 
-    .line 4194
     iget v3, p0, Landroid/widget/ListView;->mFlymeIntercepeDragMotionY:I
 
     invoke-direct {p0, v3}, Landroid/widget/ListView;->flymeOnDragMotionChanged(I)Z
@@ -15489,27 +15349,22 @@
 
     if-eqz v3, :cond_1
 
-    .line 4195
     iget v3, p0, Landroid/widget/ListView;->mFlymeDragMotionPosition:I
 
     iput v3, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
-    .line 4196
     iget v3, p0, Landroid/widget/ListView;->mFlymeIntercepeDragMotionY:I
 
     iput v3, p0, Landroid/widget/ListView;->mFlymeDragMotionY:I
 
-    .line 4197
     const/4 v3, 0x0
 
     iput-boolean v3, p0, Landroid/widget/ListView;->mIsFlymeBeginDragSelect:Z
 
-    .line 4198
     const/4 v3, 0x1
 
     goto :goto_0
 
-    .line 4179
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -15523,7 +15378,6 @@
     .param p1, "ev"    # Landroid/view/MotionEvent;
 
     .prologue
-    .line 4211
     iget-boolean v0, p0, Landroid/widget/ListView;->mFlymeEnableDragSelectDuringNormal:Z
 
     if-nez v0, :cond_0
@@ -15532,16 +15386,13 @@
 
     if-nez v0, :cond_0
 
-    .line 4212
     invoke-super/range {p0 .. p1}, Landroid/widget/AbsListView;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
     move-result v0
 
-    .line 4357
     :goto_0
     return v0
 
-    .line 4214
     :cond_0
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getY()F
 
@@ -15549,7 +15400,6 @@
 
     float-to-int v11, v0
 
-    .line 4215
     .local v11, "dragMotionY":I
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getX()F
 
@@ -15557,11 +15407,9 @@
 
     float-to-int v10, v0
 
-    .line 4216
     .local v10, "dragMotionX":I
     iget-object v12, p0, Landroid/widget/ListView;->mFlymeDragRegionRect:Landroid/graphics/Rect;
 
-    .line 4217
     .local v12, "dragRegion":Landroid/graphics/Rect;
     invoke-virtual/range {p1 .. p1}, Landroid/view/MotionEvent;->getAction()I
 
@@ -15569,27 +15417,22 @@
 
     and-int/lit16 v8, v0, 0xff
 
-    .line 4218
     .local v8, "action":I
     packed-switch v8, :pswitch_data_0
 
-    .line 4270
     :cond_1
     :goto_1
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeBeginDragSelect:Z
 
     if-eqz v0, :cond_1a
 
-    .line 4271
     packed-switch v8, :pswitch_data_1
 
-    .line 4355
     :goto_2
     const/4 v0, 0x1
 
     goto :goto_0
 
-    .line 4220
     :pswitch_0
     iget-boolean v0, p0, Landroid/widget/ListView;->mFlymeEnableDragSelection:Z
 
@@ -15611,19 +15454,16 @@
 
     if-gt v10, v0, :cond_1
 
-    .line 4224
     invoke-direct {p0, v11}, Landroid/widget/ListView;->flymeOnDragMotionChanged(I)Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
-    .line 4225
     iput v11, p0, Landroid/widget/ListView;->mFlymeDragMotionY:I
 
     goto :goto_1
 
-    .line 4231
     :pswitch_1
     iget-boolean v0, p0, Landroid/widget/ListView;->mFlymeEnableDragSelection:Z
 
@@ -15661,25 +15501,20 @@
 
     if-le v0, v1, :cond_2
 
-    .line 4235
     iget v0, p0, Landroid/widget/ListView;->mFlymeDragMotionPosition:I
 
     iput v0, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
-    .line 4236
     iput v11, p0, Landroid/widget/ListView;->mFlymeDragMotionY:I
 
-    .line 4237
     iget v0, p0, Landroid/widget/ListView;->mFlymeDragMotionY:I
 
     iput v0, p0, Landroid/widget/ListView;->mFlymeLastDragMotionY:I
 
-    .line 4240
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeBeginDragSelect:Z
 
-    .line 4242
     const-wide/16 v0, 0x0
 
     const-wide/16 v2, 0x0
@@ -15696,33 +15531,27 @@
 
     move-result-object v9
 
-    .line 4244
     .local v9, "cancelMotion":Landroid/view/MotionEvent;
     invoke-super {p0, v9}, Landroid/widget/AbsListView;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
-    .line 4245
     const/4 v0, 0x3
 
     iput v0, p0, Landroid/widget/ListView;->mTouchMode:I
 
-    .line 4246
     const/4 v0, 0x1
 
     goto :goto_0
 
-    .line 4247
     .end local v9    # "cancelMotion":Landroid/view/MotionEvent;
     :cond_2
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeOutOfDragRegion:Z
 
     if-eqz v0, :cond_3
 
-    .line 4248
     const/4 v0, 0x1
 
     goto/16 :goto_0
 
-    .line 4249
     :cond_3
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeBeginDragSelect:Z
 
@@ -15736,45 +15565,37 @@
 
     if-le v10, v0, :cond_6
 
-    .line 4250
     :cond_4
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeOutOfDragRegion:Z
 
-    .line 4251
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeScrollSelection:Landroid/widget/ListView$MzScrollSelectionRunnable;
 
     if-eqz v0, :cond_5
 
-    .line 4252
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeScrollSelection:Landroid/widget/ListView$MzScrollSelectionRunnable;
 
     invoke-virtual {v0}, Landroid/widget/ListView$MzScrollSelectionRunnable;->finish()V
 
-    .line 4254
     :cond_5
     const/4 v0, 0x1
 
     goto/16 :goto_0
 
-    .line 4255
     :cond_6
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeBeginDragSelect:Z
 
     if-eqz v0, :cond_1
 
-    .line 4256
     iget v0, p0, Landroid/widget/ListView;->mFlymeDragMotionY:I
 
     iput v0, p0, Landroid/widget/ListView;->mFlymeLastDragMotionY:I
 
-    .line 4257
     iput v11, p0, Landroid/widget/ListView;->mFlymeDragMotionY:I
 
     goto/16 :goto_1
 
-    .line 4261
     :pswitch_2
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeBeginDragSelect:Z
 
@@ -15786,58 +15607,51 @@
 
     if-eq v0, v1, :cond_7
 
-    .line 4262
     const/4 v0, -0x1
 
     iget v1, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/ListView;->mzDownSelect(II)V
 
-    .line 4266
     :cond_7
     :pswitch_3
     invoke-direct {p0}, Landroid/widget/ListView;->flymeEndDragSelection()V
 
     goto/16 :goto_1
 
-    .line 4273
     :pswitch_4
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeOutOfListContent:Z
 
     if-eqz v0, :cond_a
 
-    .line 4275
     invoke-direct {p0, v11}, Landroid/widget/ListView;->flymeOnDragMotionChanged(I)Z
 
     move-result v0
 
     if-eqz v0, :cond_8
 
-    .line 4277
     iget v0, p0, Landroid/widget/ListView;->mFlymeLastDragMotionY:I
 
     if-gez v0, :cond_9
 
-    .line 4278
     const/4 v0, -0x1
 
     iget v1, p0, Landroid/widget/ListView;->mFlymeDragMotionPosition:I
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/ListView;->mzDownSelect(II)V
 
-    .line 4282
     :goto_3
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeOutOfListContent:Z
 
-    .line 4285
+    .line 4716
     :cond_8
     const/4 v0, 0x1
 
     goto/16 :goto_0
 
-    .line 4280
+    .line 4720
     :cond_9
     const/4 v0, -0x1
 
@@ -15847,7 +15661,6 @@
 
     goto :goto_3
 
-    .line 4286
     :cond_a
     invoke-virtual {p0, v11}, Landroid/widget/ListView;->mzCanScrollSelect(I)Z
 
@@ -15861,19 +15674,16 @@
 
     if-nez v0, :cond_e
 
-    .line 4288
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeScrollSelection:Landroid/widget/ListView$MzScrollSelectionRunnable;
 
     if-nez v0, :cond_b
 
-    .line 4289
     new-instance v0, Landroid/widget/ListView$MzScrollSelectionRunnable;
 
     invoke-direct {v0, p0}, Landroid/widget/ListView$MzScrollSelectionRunnable;-><init>(Landroid/widget/ListView;)V
 
     iput-object v0, p0, Landroid/widget/ListView;->mFlymeScrollSelection:Landroid/widget/ListView$MzScrollSelectionRunnable;
 
-    .line 4292
     :cond_b
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeScrollSelection:Landroid/widget/ListView$MzScrollSelectionRunnable;
 
@@ -15883,7 +15693,6 @@
 
     if-nez v0, :cond_c
 
-    .line 4293
     iget-object v0, p0, Landroid/widget/ListView;->mListPadding:Landroid/graphics/Rect;
 
     iget v0, v0, Landroid/graphics/Rect;->top:I
@@ -15896,27 +15705,23 @@
 
     const/4 v14, 0x1
 
-    .line 4294
     .local v14, "upSelect":Z
     :goto_4
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeScrollSelection:Landroid/widget/ListView$MzScrollSelectionRunnable;
 
     invoke-virtual {v0, v14}, Landroid/widget/ListView$MzScrollSelectionRunnable;->startScrollSelecte(Z)V
 
-    .line 4296
     .end local v14    # "upSelect":Z
     :cond_c
     const/4 v0, 0x1
 
     goto/16 :goto_0
 
-    .line 4293
     :cond_d
     const/4 v14, 0x0
 
     goto :goto_4
 
-    .line 4297
     :cond_e
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeScrollSelection:Landroid/widget/ListView$MzScrollSelectionRunnable;
 
@@ -15930,37 +15735,31 @@
 
     if-eqz v0, :cond_f
 
-    .line 4299
     iget-object v0, p0, Landroid/widget/ListView;->mFlymeScrollSelection:Landroid/widget/ListView$MzScrollSelectionRunnable;
 
     invoke-virtual {v0}, Landroid/widget/ListView$MzScrollSelectionRunnable;->finish()V
 
-    .line 4302
     :cond_f
     iget v0, p0, Landroid/widget/ListView;->mFlymeDragMotionViewTop:I
 
     if-ge v11, v0, :cond_14
 
-    .line 4303
     iget v0, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
     const/4 v1, -0x1
 
     if-eq v0, v1, :cond_10
 
-    .line 4304
     const/4 v0, -0x1
 
     iget v1, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/ListView;->mzUpSelect(II)V
 
-    .line 4305
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
-    .line 4307
     :cond_10
     iget v0, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
 
@@ -15968,14 +15767,12 @@
 
     if-eq v0, v1, :cond_11
 
-    .line 4308
     const/4 v0, -0x1
 
     iget v1, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/ListView;->mzUpSelect(II)V
 
-    .line 4312
     :cond_11
     invoke-direct {p0, v11}, Landroid/widget/ListView;->flymeOnDragMotionChanged(I)Z
 
@@ -15983,42 +15780,35 @@
 
     if-nez v0, :cond_13
 
-    .line 4315
     iget v0, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
     iget v1, p0, Landroid/widget/ListView;->mFirstPosition:I
 
     if-eq v0, v1, :cond_12
 
-    .line 4316
     iget v0, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
     iget v1, p0, Landroid/widget/ListView;->mFirstPosition:I
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/ListView;->mzUpSelect(II)V
 
-    .line 4318
     :cond_12
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
 
-    .line 4319
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
-    .line 4320
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeOutOfListContent:Z
 
-    .line 4321
     const/4 v0, 0x1
 
     goto/16 :goto_0
 
-    .line 4324
     :cond_13
     iget v0, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
@@ -16028,32 +15818,27 @@
 
     goto/16 :goto_2
 
-    .line 4325
     :cond_14
     iget v0, p0, Landroid/widget/ListView;->mFlymeDragMotionViewBottom:I
 
     if-le v11, v0, :cond_19
 
-    .line 4326
     iget v0, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
     const/4 v1, -0x1
 
     if-eq v0, v1, :cond_15
 
-    .line 4327
     const/4 v0, -0x1
 
     iget v1, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/ListView;->mzDownSelect(II)V
 
-    .line 4328
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/widget/ListView;->mFlymeDragDownPosition:I
 
-    .line 4330
     :cond_15
     iget v0, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
@@ -16061,14 +15846,12 @@
 
     if-eq v0, v1, :cond_16
 
-    .line 4331
     const/4 v0, -0x1
 
     iget v1, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
     invoke-virtual {p0, v0, v1}, Landroid/widget/ListView;->mzDownSelect(II)V
 
-    .line 4334
     :cond_16
     invoke-direct {p0, v11}, Landroid/widget/ListView;->flymeOnDragMotionChanged(I)Z
 
@@ -16076,44 +15859,36 @@
 
     if-nez v0, :cond_18
 
-    .line 4337
     invoke-virtual {p0}, Landroid/widget/ListView;->getLastVisiblePosition()I
 
     move-result v13
 
-    .line 4338
     .local v13, "lastPosition":I
     iget v0, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
 
     if-eq v0, v13, :cond_17
 
-    .line 4339
     iget v0, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
 
     invoke-virtual {p0, v0, v13}, Landroid/widget/ListView;->mzDownSelect(II)V
 
-    .line 4341
     :cond_17
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
 
-    .line 4342
     const/4 v0, -0x1
 
     iput v0, p0, Landroid/widget/ListView;->mLastUpSelectPosition:I
 
-    .line 4343
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeOutOfListContent:Z
 
-    .line 4344
     const/4 v0, 0x1
 
     goto/16 :goto_0
 
-    .line 4347
     .end local v13    # "lastPosition":I
     :cond_18
     iget v0, p0, Landroid/widget/ListView;->mLastDownSelectPosition:I
@@ -16124,13 +15899,11 @@
 
     goto/16 :goto_2
 
-    .line 4350
     :cond_19
     const/4 v0, 0x1
 
     goto/16 :goto_0
 
-    .line 4357
     :cond_1a
     invoke-super/range {p0 .. p1}, Landroid/widget/AbsListView;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
@@ -16138,7 +15911,6 @@
 
     goto/16 :goto_0
 
-    .line 4218
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
@@ -16147,7 +15919,6 @@
         :pswitch_3
     .end packed-switch
 
-    .line 4271
     :pswitch_data_1
     .packed-switch 0x2
         :pswitch_4
@@ -16161,21 +15932,17 @@
     .param p3, "longPressId"    # J
 
     .prologue
-    .line 4152
     invoke-super {p0, p1, p2, p3, p4}, Landroid/widget/AbsListView;->performLongPress(Landroid/view/View;IJ)Z
 
     move-result v0
 
-    .line 4154
     .local v0, "result":Z
     iget-boolean v1, p0, Landroid/widget/ListView;->mFlymeEnableDragSelection:Z
 
     if-eqz v1, :cond_0
 
-    .line 4155
     iput p2, p0, Landroid/widget/ListView;->mFlymeLongPressPosition:I
 
-    .line 4158
     :cond_0
     iget v1, p0, Landroid/widget/ListView;->mDragAndDropPosition:I
 
@@ -16183,10 +15950,8 @@
 
     if-eq v1, v2, :cond_1
 
-    .line 4159
     invoke-direct {p0}, Landroid/widget/ListView;->flymeEndDragSelection()V
 
-    .line 4161
     :cond_1
     return v0
 .end method
@@ -16195,14 +15960,13 @@
     .locals 1
 
     .prologue
-    .line 4445
     iget-boolean v0, p0, Landroid/widget/ListView;->mFlymeSelectToBottom:Z
 
     if-nez v0, :cond_0
 
     invoke-super {p0}, Landroid/widget/AbsListView;->rememberSyncState()V
 
-    .line 4446
+    .line 4674
     :cond_0
     return-void
 .end method
@@ -16215,7 +15979,6 @@
     .prologue
     const/4 v7, -0x1
 
-    .line 4450
     iget-boolean v5, p0, Landroid/widget/ListView;->mEnableForEditTextPreference:Z
 
     if-eqz v5, :cond_4
@@ -16226,12 +15989,10 @@
 
     if-eqz p1, :cond_4
 
-    .line 4452
     iget-object v5, p0, Landroid/widget/ListView;->mListPadding:Landroid/graphics/Rect;
 
     iget v4, v5, Landroid/graphics/Rect;->top:I
 
-    .line 4454
     .local v4, "top":I
     invoke-virtual {p0}, Landroid/widget/ListView;->getHeight()I
 
@@ -16243,7 +16004,6 @@
 
     sub-int v0, v5, v6
 
-    .line 4455
     .local v0, "bottom":I
     invoke-virtual {p1}, Landroid/view/View;->getTop()I
 
@@ -16257,28 +16017,23 @@
 
     if-ge v5, v0, :cond_0
 
-    .line 4456
     invoke-super {p0, p1, p2}, Landroid/widget/AbsListView;->requestChildFocus(Landroid/view/View;Landroid/view/View;)V
 
-    .line 4479
     .end local v0    # "bottom":I
     .end local v4    # "top":I
     :goto_0
     return-void
 
-    .line 4459
     .restart local v0    # "bottom":I
     .restart local v4    # "top":I
     :cond_0
     const/4 v3, -0x1
 
-    .line 4460
     .local v3, "position":I
     invoke-virtual {p0}, Landroid/widget/ListView;->getChildCount()I
 
     move-result v1
 
-    .line 4461
     .local v1, "childCount":I
     const/4 v2, 0x0
 
@@ -16286,7 +16041,6 @@
     :goto_1
     if-ge v2, v1, :cond_1
 
-    .line 4462
     invoke-virtual {p0, v2}, Landroid/widget/ListView;->getChildAt(I)Landroid/view/View;
 
     move-result-object v5
@@ -16297,48 +16051,40 @@
 
     if-eqz v5, :cond_5
 
-    .line 4463
     move v3, v2
 
-    .line 4468
+    .line 4677
     :cond_1
     if-eq v3, v7, :cond_4
 
-    .line 4469
     iget-object v5, p0, Landroid/widget/ListView;->mFlymeFocuseRect:Landroid/graphics/Rect;
 
     if-nez v5, :cond_2
 
-    .line 4470
     new-instance v5, Landroid/graphics/Rect;
 
     invoke-direct {v5}, Landroid/graphics/Rect;-><init>()V
 
     iput-object v5, p0, Landroid/widget/ListView;->mFlymeFocuseRect:Landroid/graphics/Rect;
 
-    .line 4471
     :cond_2
     iget-object v5, p0, Landroid/widget/ListView;->mFlymeFocuseRect:Landroid/graphics/Rect;
 
     invoke-virtual {p1, v5}, Landroid/view/View;->getFocusedRect(Landroid/graphics/Rect;)V
 
-    .line 4472
     iget v5, p0, Landroid/widget/ListView;->mTouchMode:I
 
     if-ne v5, v7, :cond_3
 
-    .line 4473
     iget-object v5, p0, Landroid/widget/ListView;->mFlymeFocuseRect:Landroid/graphics/Rect;
 
     const/4 v6, 0x1
 
     invoke-virtual {p0, p1, v5, v6}, Landroid/widget/ListView;->requestChildRectangleOnScreen(Landroid/view/View;Landroid/graphics/Rect;Z)Z
 
-    .line 4475
     :cond_3
     invoke-virtual {p1}, Landroid/view/View;->requestFocus()Z
 
-    .line 4478
     .end local v0    # "bottom":I
     .end local v1    # "childCount":I
     .end local v2    # "i":I
@@ -16349,7 +16095,6 @@
 
     goto :goto_0
 
-    .line 4461
     .restart local v0    # "bottom":I
     .restart local v1    # "childCount":I
     .restart local v2    # "i":I
@@ -16366,15 +16111,12 @@
     .param p1, "isAnimation"    # Z
 
     .prologue
-    .line 4801
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeCheckBoxAnim:Z
 
     if-eq v0, p1, :cond_0
 
-    .line 4802
     iput-boolean p1, p0, Landroid/widget/ListView;->mIsFlymeCheckBoxAnim:Z
 
-    .line 4804
     :cond_0
     return-void
 .end method
@@ -16384,10 +16126,8 @@
     .param p1, "choiceMode"    # I
 
     .prologue
-    .line 4822
     invoke-super {p0, p1}, Landroid/widget/AbsListView;->setChoiceMode(I)V
 
-    .line 4824
     iget v0, p0, Landroid/widget/ListView;->mChoiceModeMZ:I
 
     const/4 v1, 0x4
@@ -16400,17 +16140,14 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 4825
     :cond_0
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Landroid/widget/ListView;->setDividerInSide(Z)V
 
-    .line 4829
     :goto_0
     return-void
 
-    .line 4827
     :cond_1
     const/4 v0, 0x0
 
@@ -16424,10 +16161,8 @@
     .param p1, "dividerFilterListener"    # Landroid/widget/ListView$DividerFilter;
 
     .prologue
-    .line 4778
     iput-object p1, p0, Landroid/widget/ListView;->mFlymeDividerFilterListener:Landroid/widget/ListView$DividerFilter;
 
-    .line 4779
     return-void
 .end method
 
@@ -16436,37 +16171,31 @@
     .param p1, "flag"    # Z
 
     .prologue
-    .line 4786
+    .line 4039
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeDividerInside:Z
 
     if-ne p1, v0, :cond_0
 
-    .line 4797
     :goto_0
     return-void
 
-    .line 4790
     :cond_0
     iput-boolean p1, p0, Landroid/widget/ListView;->mIsFlymeDividerInside:Z
 
-    .line 4791
     iget-boolean v0, p0, Landroid/widget/ListView;->mIsFlymeDividerInside:Z
 
     if-eqz v0, :cond_1
 
-    .line 4792
     iget v0, p0, Landroid/widget/ListView;->mDividerHeight:I
 
     iput v0, p0, Landroid/widget/ListView;->mFlymeDividerH:I
 
-    .line 4793
     const/4 v0, 0x0
 
     invoke-virtual {p0, v0}, Landroid/widget/ListView;->setDividerHeight(I)V
 
     goto :goto_0
 
-    .line 4795
     :cond_1
     iget v0, p0, Landroid/widget/ListView;->mFlymeDividerH:I
 
@@ -16481,7 +16210,6 @@
     .param p2, "rightPadding"    # I
 
     .prologue
-    .line 4808
     return-void
 .end method
 
@@ -16490,10 +16218,8 @@
     .param p1, "dividerPadding"    # Landroid/widget/ListView$DividerPadding;
 
     .prologue
-    .line 4817
     iput-object p1, p0, Landroid/widget/ListView;->mDividerPadding:Landroid/widget/ListView$DividerPadding;
 
-    .line 4818
     return-void
 .end method
 
@@ -16502,15 +16228,12 @@
     .param p1, "listener"    # Landroid/widget/ListView$OnDragSelectListener;
 
     .prologue
-    .line 4135
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Landroid/widget/ListView;->setEnableDragSelection(Z)V
 
-    .line 4136
     iput-object p1, p0, Landroid/widget/ListView;->mFlymeDragSelectListener:Landroid/widget/ListView$OnDragSelectListener;
 
-    .line 4137
     return-void
 .end method
 
@@ -16519,7 +16242,6 @@
     .param p1, "enable"    # Z
 
     .prologue
-    .line 4129
     iget-object v0, p0, Landroid/widget/ListView;->mContext:Landroid/content/Context;
 
     invoke-static {v0}, Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;
@@ -16532,10 +16254,8 @@
 
     iput v0, p0, Landroid/widget/ListView;->mFlymeDragSlop:I
 
-    .line 4130
     iput-boolean p1, p0, Landroid/widget/ListView;->mFlymeEnableDragSelection:Z
 
-    .line 4131
     return-void
 .end method
 
@@ -16549,32 +16269,25 @@
 
     const/4 v3, -0x1
 
-    .line 4362
     iget-boolean v0, p0, Landroid/widget/ListView;->mBlockLayoutRequests:Z
 
-    .line 4363
     .local v0, "blockLayoutRequests":Z
     invoke-virtual {p0}, Landroid/widget/ListView;->getCheckedItemCount()I
 
     move-result v1
 
-    .line 4364
     .local v1, "count":I
     iget v2, p0, Landroid/widget/ListView;->mFlymeDragMotionPosition:I
 
     if-eq v2, v3, :cond_0
 
-    .line 4365
     iput-boolean v4, p0, Landroid/widget/ListView;->mBlockLayoutRequests:Z
 
-    .line 4367
     :cond_0
     invoke-super {p0, p1, p2}, Landroid/widget/AbsListView;->setItemChecked(IZ)V
 
-    .line 4368
     iput-boolean v0, p0, Landroid/widget/ListView;->mBlockLayoutRequests:Z
 
-    .line 4370
     iget v2, p0, Landroid/widget/ListView;->mFlymeDragMotionPosition:I
 
     if-eq v2, v3, :cond_2
@@ -16587,7 +16300,6 @@
 
     if-nez v2, :cond_2
 
-    .line 4372
     :cond_1
     iget-boolean v2, p0, Landroid/widget/ListView;->mInLayout:Z
 
@@ -16597,16 +16309,12 @@
 
     if-nez v2, :cond_2
 
-    .line 4373
     iput-boolean v4, p0, Landroid/widget/ListView;->mDataChanged:Z
 
-    .line 4374
     invoke-virtual {p0}, Landroid/widget/ListView;->rememberSyncState()V
 
-    .line 4375
     invoke-virtual {p0}, Landroid/widget/ListView;->requestLayout()V
 
-    .line 4378
     :cond_2
     return-void
 .end method
@@ -16616,10 +16324,9 @@
     .param p1, "position"    # I
 
     .prologue
-    .line 4668
     invoke-virtual {p0, p1}, Landroid/widget/ListView;->setSelection(I)V
 
-    .line 4669
+    .line 4664
     return-void
 .end method
 
