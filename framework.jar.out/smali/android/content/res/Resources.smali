@@ -7427,58 +7427,65 @@
 
     const/4 v1, 0x0
 
-    .line 2817
+    .line 2818
     iget-boolean v2, p0, Landroid/content/res/Resources;->mIsFlymeThemeChange:Z
 
     if-eqz v2, :cond_0
 
-    .line 2818
+    .line 2819
     iget-object v2, p0, Landroid/content/res/Resources;->mDrawableCache:Landroid/util/ArrayMap;
 
     iget v3, p0, Landroid/content/res/Resources;->mFlymeThemeChanges:I
 
     invoke-direct {p0, v2, v3}, Landroid/content/res/Resources;->clearDrawableCachesLocked(Landroid/util/ArrayMap;I)V
 
-    .line 2819
+    .line 2820
     iget-object v2, p0, Landroid/content/res/Resources;->mColorDrawableCache:Landroid/util/ArrayMap;
 
     iget v3, p0, Landroid/content/res/Resources;->mFlymeThemeChanges:I
 
     invoke-direct {p0, v2, v3}, Landroid/content/res/Resources;->clearDrawableCachesLocked(Landroid/util/ArrayMap;I)V
 
-    .line 2820
+    .line 2821
     sget-object v2, Landroid/content/res/Resources;->sPreloadedColorDrawables:Landroid/util/LongSparseArray;
 
     invoke-virtual {v2}, Landroid/util/LongSparseArray;->clear()V
 
-    .line 2821
-    sget-object v2, Landroid/content/res/Resources;->sPreloadedColorStateLists:Landroid/util/LongSparseArray;
-
-    invoke-virtual {v2}, Landroid/util/LongSparseArray;->clear()V
-
     .line 2822
-    sget-object v2, Landroid/content/res/Resources;->sPreloadedDrawables:[Landroid/util/LongSparseArray;
-
-    aget-object v2, v2, v1
+    sget-object v2, Landroid/content/res/Resources;->sPreloadedColorStateLists:Landroid/util/LongSparseArray;
 
     invoke-virtual {v2}, Landroid/util/LongSparseArray;->clear()V
 
     .line 2823
     sget-object v2, Landroid/content/res/Resources;->sPreloadedDrawables:[Landroid/util/LongSparseArray;
 
-    aget-object v2, v2, v0
+    aget-object v2, v2, v1
 
     invoke-virtual {v2}, Landroid/util/LongSparseArray;->clear()V
 
     .line 2824
+    sget-object v2, Landroid/content/res/Resources;->sPreloadedDrawables:[Landroid/util/LongSparseArray;
+
+    aget-object v2, v2, v0
+
+    invoke-virtual {v2}, Landroid/util/LongSparseArray;->clear()V
+
+    .line 2825
     const/4 v2, 0x0
 
     iput-object v2, p0, Landroid/content/res/Resources;->mTmpValue:Landroid/util/TypedValue;
 
-    .line 2825
-    iput-boolean v1, p0, Landroid/content/res/Resources;->mIsFlymeThemeChange:Z
+    .line 2826
+    invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->cleanFilter()V
 
     .line 2827
+    iput-boolean v1, p0, Landroid/content/res/Resources;->mIsFlymeThemeChange:Z
+
+    .line 2829
     :cond_0
     iget v2, p0, Landroid/content/res/Resources;->mFlymeThemeChanges:I
 
@@ -7488,7 +7495,7 @@
 
     if-eqz v2, :cond_3
 
-    .line 2828
+    .line 2830
     .local v0, "isFlymeFontChange":Z
     :goto_0
     if-nez v0, :cond_1
@@ -7497,11 +7504,11 @@
 
     if-eqz v1, :cond_2
 
-    .line 2829
+    .line 2831
     :cond_1
     invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->cleanflymeTypeface()V
 
-    .line 2831
+    .line 2833
     :cond_2
     return-void
 
@@ -7509,7 +7516,7 @@
     :cond_3
     move v0, v1
 
-    .line 2827
+    .line 2829
     goto :goto_0
 .end method
 

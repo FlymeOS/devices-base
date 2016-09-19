@@ -1191,18 +1191,25 @@
     .param p1, "changes"    # I
 
     .prologue
-    .line 333
+    .line 334
     and-int/lit16 v0, p1, 0x4000
 
     if-eqz v0, :cond_0
 
-    .line 336
+    .line 337
     invoke-static {}, Landroid/graphics/Canvas;->freeCaches()V
 
-    .line 338
+    .line 339
     invoke-static {}, Landroid/graphics/Canvas;->freeTextLayoutCaches()V
 
     .line 340
+    invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->cleanFilter()V
+
+    .line 342
     :cond_0
     const v0, 0x8000
 
@@ -1210,16 +1217,16 @@
 
     if-eqz v0, :cond_1
 
-    .line 343
+    .line 345
     invoke-static {}, Landroid/graphics/Canvas;->freeCaches()V
 
-    .line 345
+    .line 347
     invoke-static {}, Landroid/graphics/Canvas;->freeTextLayoutCaches()V
 
-    .line 347
+    .line 349
     invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->cleanflymeTypeface()V
 
-    .line 349
+    .line 351
     :cond_1
     return-void
 .end method
