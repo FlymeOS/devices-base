@@ -1992,26 +1992,18 @@
 
     .prologue
     .line 540
-    const-string v0, "--update_package"
+    new-instance v3, Ljava/io/File;
+
+    invoke-direct {v3, p2}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
     .line 541
-    .local v0, "MZ_COMMAND_UPDATE":Ljava/lang/String;
-    const-string v1, "--update_package_wipe"
+    .local v3, "packageFile":Ljava/io/File;
+    invoke-virtual {v3}, Ljava/io/File;->getCanonicalPath()Ljava/lang/String;
 
-    .line 543
-    .local v1, "MZ_COMMAND_UPDATE_WIPE":Ljava/lang/String;
-    new-instance v4, Ljava/io/File;
+    move-result-object v0
 
-    invoke-direct {v4, p2}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    .line 544
-    .local v4, "packageFile":Ljava/io/File;
-    invoke-virtual {v4}, Ljava/io/File;->getCanonicalPath()Ljava/lang/String;
-
-    move-result-object v2
-
-    .line 545
-    .local v2, "filename":Ljava/lang/String;
+    .line 542
+    .local v0, "filename":Ljava/lang/String;
     const-string v5, "RecoverySystem"
 
     new-instance v6, Ljava/lang/StringBuilder;
@@ -2024,7 +2016,7 @@
 
     move-result-object v6
 
-    invoke-virtual {v6, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v6
 
@@ -2040,7 +2032,7 @@
 
     invoke-static {v5, v6}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 547
+    .line 544
     new-instance v5, Ljava/lang/StringBuilder;
 
     invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
@@ -2051,41 +2043,76 @@
 
     move-result-object v5
 
-    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v5
 
     invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v1
 
-    .line 548
-    .local v3, "filenameArg":Ljava/lang/String;
-    const/4 v5, 0x2
+    .line 545
+    .local v1, "filenameArg":Ljava/lang/String;
+    new-instance v5, Ljava/lang/StringBuilder;
 
-    new-array v6, v5, [Ljava/lang/String;
+    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
 
-    const/4 v5, 0x0
+    const-string v6, "--locale="
 
-    aput-object v3, v6, v5
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    const/4 v7, 0x1
+    move-result-object v5
 
+    invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Ljava/util/Locale;->toString()Ljava/lang/String;
+
+    move-result-object v6
+
+    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 546
+    .local v2, "localeArg":Ljava/lang/String;
     if-eqz p1, :cond_0
 
-    const-string v5, "--wipe_data"
+    const-string v4, "--wipe_data"
 
+    .line 547
+    .local v4, "wipeDataArg":Ljava/lang/String;
     :goto_0
-    aput-object v5, v6, v7
+    const/4 v5, 0x3
 
-    invoke-static {p0, v6}, Landroid/os/RecoverySystem;->bootCommand(Landroid/content/Context;[Ljava/lang/String;)V
+    new-array v5, v5, [Ljava/lang/String;
 
-    .line 549
-    return-void
+    const/4 v6, 0x0
+
+    aput-object v1, v5, v6
+
+    const/4 v6, 0x1
+
+    aput-object v2, v5, v6
+
+    const/4 v6, 0x2
+
+    aput-object v4, v5, v6
+
+    invoke-static {p0, v5}, Landroid/os/RecoverySystem;->bootCommand(Landroid/content/Context;[Ljava/lang/String;)V
 
     .line 548
+    return-void
+
+    .line 546
+    .end local v4    # "wipeDataArg":Ljava/lang/String;
     :cond_0
-    const/4 v5, 0x0
+    const/4 v4, 0x0
 
     goto :goto_0
 .end method
