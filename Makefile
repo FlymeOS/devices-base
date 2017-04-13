@@ -130,8 +130,8 @@ board_saved_files := lib/libwebviewchromium.so
 # The property decide whether hide the soft mainkeys.
 # If 1, hide the soft mainkeys. If 0, display the soft mainkeys.
 # You should configure the property according to your device.
-#override_property += \
-#    qemu.hw.mainkeys=0
+override_property += \
+    qemu.hw.mainkeys=0
 
 
 # The value of the property ro.flyme.romer will be contained in the ota package name.
@@ -142,7 +142,7 @@ board_saved_files := lib/libwebviewchromium.so
 # You should configure the property according to your device and your ID with replace the "Nexus-5_Unofficial".
 override_property += \
     ro.flyme.romer=Unofficial \
-    ro.product.model_romer=Nexus-5_Unofficial
+    ro.product.model_romer=Nexus-6P_Unofficial
 
 ##############################################################################
 # The value decides which property you will remove from the build.prop.
