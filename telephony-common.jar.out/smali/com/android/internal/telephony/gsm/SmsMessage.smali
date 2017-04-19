@@ -1655,6 +1655,8 @@
 
     iput-object v4, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mRecipientAddress:Lcom/android/internal/telephony/gsm/GsmSmsAddress;
 
+    invoke-direct/range {p0 .. p0}, Lcom/android/internal/telephony/gsm/SmsMessage;->setFlymeDestinationAddress()V
+
     .line 1036
     iget-object v4, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mRecipientAddress:Lcom/android/internal/telephony/gsm/GsmSmsAddress;
 
@@ -3155,4 +3157,17 @@
 
     .line 1343
     goto :goto_0
+.end method
+
+.method private setFlymeDestinationAddress()V
+    .locals 1
+
+    .prologue
+    .line 1375
+    iget-object v0, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mRecipientAddress:Lcom/android/internal/telephony/gsm/GsmSmsAddress;
+
+    iput-object v0, p0, Lcom/android/internal/telephony/gsm/SmsMessage;->mFlymeDestinationAddress:Lcom/android/internal/telephony/SmsAddress;
+
+    .line 1373
+    return-void
 .end method
