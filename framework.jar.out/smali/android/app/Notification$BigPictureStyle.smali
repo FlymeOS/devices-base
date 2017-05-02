@@ -19,6 +19,8 @@
 
 
 # instance fields
+.field private mIsFlymeBigPictureTemplate:Z
+
 .field private mBigLargeIcon:Landroid/graphics/drawable/Icon;
 
 .field private mBigLargeIconSet:Z
@@ -106,6 +108,10 @@
 
     .line 4015
     .local v0, "contentView":Landroid/widget/RemoteViews;
+    invoke-direct {p0, v0}, Landroid/app/Notification$BigPictureStyle;->getFlymeContentView(Landroid/widget/RemoteViews;)Landroid/widget/RemoteViews;
+
+    move-result-object v0
+
     iget-boolean v3, p0, Landroid/app/Notification$BigPictureStyle;->mBigLargeIconSet:Z
 
     if-eqz v3, :cond_1
@@ -158,6 +164,8 @@
     .line 4024
     :goto_1
     invoke-static {v4, v0, v3}, Landroid/app/Notification$Builder;->-wrap2(Landroid/app/Notification$Builder;Landroid/widget/RemoteViews;I)Z
+
+    invoke-virtual {p0, v0}, Landroid/app/Notification$BigPictureStyle;->makeBigContentViewFlyme(Landroid/widget/RemoteViews;)V
 
     .line 4026
     return-object v0
@@ -417,4 +425,61 @@
 
     .line 3955
     return-object p0
+.end method
+
+.method private getFlymeContentView(Landroid/widget/RemoteViews;)Landroid/widget/RemoteViews;
+    .locals 1
+    .param p1, "contentView"    # Landroid/widget/RemoteViews;
+
+    .prologue
+    .line 4505
+    iget-boolean v0, p0, Landroid/app/Notification$BigPictureStyle;->mIsFlymeBigPictureTemplate:Z
+
+    if-eqz v0, :cond_0
+
+    .line 4506
+    sget v0, Lcom/flyme/internal/R$layout;->mz_notification_template_big_picture:I
+
+    invoke-virtual {p0, v0}, Landroid/app/Notification$BigPictureStyle;->getStandardView(I)Landroid/widget/RemoteViews;
+
+    move-result-object p1
+
+    .line 4508
+    :cond_0
+    return-object p1
+.end method
+
+.method public makeBigContentViewFlyme(Landroid/widget/RemoteViews;)V
+    .locals 2
+    .param p1, "contentView"    # Landroid/widget/RemoteViews;
+
+    .prologue
+    .line 4548
+    iget-boolean v0, p0, Landroid/app/Notification$BigPictureStyle;->mIsFlymeBigPictureTemplate:Z
+
+    if-nez v0, :cond_0
+
+    .line 4549
+    sget v0, Lcom/flyme/internal/R$id;->big_picture:I
+
+    iget-object v1, p0, Landroid/app/Notification$BigPictureStyle;->mPicture:Landroid/graphics/Bitmap;
+
+    invoke-virtual {p1, v0, v1}, Landroid/widget/RemoteViews;->setImageViewBitmap(ILandroid/graphics/Bitmap;)V
+
+    .line 4547
+    :cond_0
+    return-void
+.end method
+
+.method public setMeizuBigPictureTemplate()V
+    .locals 1
+
+    .prologue
+    .line 4558
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/app/Notification$BigPictureStyle;->mIsFlymeBigPictureTemplate:Z
+
+    .line 4557
+    return-void
 .end method

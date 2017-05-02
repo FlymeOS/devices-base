@@ -3520,6 +3520,8 @@
     .prologue
     .line 1444
     :try_start_0
+    invoke-direct/range {p0 .. p0}, Landroid/net/wifi/WifiManager;->enforceFlymeWifiPermission()V
+
     iget-object v1, p0, Landroid/net/wifi/WifiManager;->mService:Landroid/net/wifi/IWifiManager;
 
     invoke-interface {v1, p1}, Landroid/net/wifi/IWifiManager;->setWifiEnabled(Z)Z
@@ -3838,4 +3840,34 @@
     move-result v0
 
     return v0
+.end method
+
+.method private enforceFlymeWifiPermission()V
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 1459
+    const/16 v0, 0x44
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 1460
+    new-instance v0, Landroid/os/RemoteException;
+
+    invoke-direct {v0}, Landroid/os/RemoteException;-><init>()V
+
+    throw v0
+
+    .line 1458
+    :cond_0
+    return-void
 .end method

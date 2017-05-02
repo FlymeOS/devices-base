@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/internal/app/AlertController$FlymeInjector;,
         Lcom/android/internal/app/AlertController$ButtonHandler;,
         Lcom/android/internal/app/AlertController$RecycleListView;,
         Lcom/android/internal/app/AlertController$AlertParams;,
@@ -16,6 +17,8 @@
 
 
 # instance fields
+.field public mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
 .field private mAdapter:Landroid/widget/ListAdapter;
 
 .field private mAlertDialogLayout:I
@@ -367,6 +370,7 @@
 
     .line 204
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
+    invoke-static/range {p0 .. p3}, Lcom/android/internal/app/AlertController$FlymeInjector;->initFlymeExtFields(Lcom/android/internal/app/AlertController;Landroid/content/Context;Landroid/content/DialogInterface;Landroid/view/Window;)V
 
     .line 178
     return-void
@@ -2345,6 +2349,8 @@
     .line 563
     invoke-virtual {v5}, Landroid/content/res/TypedArray;->recycle()V
 
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/app/AlertController$FlymeInjector;->syncViewAndData(Lcom/android/internal/app/AlertController;)V
+
     .line 487
     return-void
 
@@ -2956,5 +2962,57 @@
     iput p5, p0, Lcom/android/internal/app/AlertController;->mViewSpacingBottom:I
 
     .line 292
+    return-void
+.end method
+
+.method public getAdapter()Landroid/widget/ListAdapter;
+    .locals 1
+
+    .prologue
+    .line 1205
+    iget-object v0, p0, Lcom/android/internal/app/AlertController;->mAdapter:Landroid/widget/ListAdapter;
+
+    return-object v0
+.end method
+
+.method public getMessage()Ljava/lang/CharSequence;
+    .locals 1
+
+    .prologue
+    .line 1200
+    iget-object v0, p0, Lcom/android/internal/app/AlertController;->mMessage:Ljava/lang/CharSequence;
+
+    return-object v0
+.end method
+
+.method public getTitle()Ljava/lang/CharSequence;
+    .locals 1
+
+    .prologue
+    .line 1195
+    iget-object v0, p0, Lcom/android/internal/app/AlertController;->mTitle:Ljava/lang/CharSequence;
+
+    return-object v0
+.end method
+
+.method public getView()Landroid/view/View;
+    .locals 1
+
+    .prologue
+    .line 1190
+    iget-object v0, p0, Lcom/android/internal/app/AlertController;->mView:Landroid/view/View;
+
+    return-object v0
+.end method
+
+.method public setAlertDialogLayout(I)V
+    .locals 0
+    .param p1, "layoutRes"    # I
+
+    .prologue
+    .line 1211
+    iput p1, p0, Lcom/android/internal/app/AlertController;->mAlertDialogLayout:I
+
+    .line 1209
     return-void
 .end method

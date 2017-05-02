@@ -2900,6 +2900,10 @@
     .param p3, "flags"    # I
 
     .prologue
+    invoke-direct/range {p0 .. p3}, Landroid/media/AudioManager;->adjustFlymeFlags(III)I
+
+    move-result p3
+
     .line 868
     invoke-direct {p0}, Landroid/media/AudioManager;->getContext()Landroid/content/Context;
 
@@ -7184,4 +7188,40 @@
 
     .line 2654
     return-void
+.end method
+
+.method private adjustFlymeFlags(III)I
+    .locals 2
+    .param p1, "direction"    # I
+    .param p2, "suggestedStreamType"    # I
+    .param p3, "flags"    # I
+
+    .prologue
+    .line 877
+    invoke-direct {p0}, Landroid/media/AudioManager;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/content/Context;->getOpPackageName()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 878
+    .local v0, "packageName":Ljava/lang/String;
+    if-nez p3, :cond_0
+
+    const-string/jumbo v1, "com.android.systemui"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 879
+    const/16 p3, 0x10
+
+    .line 881
+    :cond_0
+    return p3
 .end method

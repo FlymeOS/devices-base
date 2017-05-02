@@ -10,6 +10,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/content/res/Configuration$FlymeInjector;,
         Landroid/content/res/Configuration$1;
     }
 .end annotation
@@ -248,6 +249,8 @@
 
 
 # instance fields
+.field public configurationExt:Landroid/content/res/flymetheme/ConfigurationExt;
+
 .field public compatScreenHeightDp:I
 
 .field public compatScreenWidthDp:I
@@ -718,6 +721,8 @@
 
     .line 1721
     :cond_14
+    invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInjector;->generateDelta(Landroid/content/res/Configuration;Landroid/content/res/Configuration;Landroid/content/res/Configuration;)V
+
     return-object v0
 
     .line 1650
@@ -933,6 +938,14 @@
 
     or-int/2addr v1, p1
 
+    or-int/lit16 v1, v1, 0x4000
+
+    const v0, 0x8000
+
+    or-int/2addr v1, v0
+
+    const/4 v0, 0x0
+
     and-int/2addr v1, p0
 
     if-eqz v1, :cond_0
@@ -1126,6 +1139,8 @@
     move-result v1
 
     iput v1, p1, Landroid/content/res/Configuration;->densityDpi:I
+
+    invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->readXmlAttrs(Lorg/xmlpull/v1/XmlPullParser;Landroid/content/res/Configuration;)V
 
     .line 1751
     return-void
@@ -2336,6 +2351,8 @@
 
     .line 1801
     :cond_f
+    invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->writeXmlAttrs(Lorg/xmlpull/v1/XmlSerializer;Landroid/content/res/Configuration;)V
+
     return-void
 .end method
 
@@ -2654,6 +2671,10 @@
     iget v4, p1, Landroid/content/res/Configuration;->densityDpi:I
 
     sub-int v2, v3, v4
+
+    invoke-static {p0, p1, v2}, Landroid/content/res/Configuration$FlymeInjector;->compareTo(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
+
+    move-result v2
 
     .line 1275
     return v2
@@ -3010,6 +3031,10 @@
 
     .line 1091
     :cond_11
+    invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInjector;->diff(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
+
+    move-result v0
+
     return v0
 
     .line 1028
@@ -3250,6 +3275,10 @@
     iget v2, p0, Landroid/content/res/Configuration;->densityDpi:I
 
     add-int v0, v1, v2
+
+    invoke-static {p0, v0}, Landroid/content/res/Configuration$FlymeInjector;->hashCode(Landroid/content/res/Configuration;I)I
+
+    move-result v0
 
     .line 1311
     return v0
@@ -3577,6 +3606,8 @@
 
     iput v0, p0, Landroid/content/res/Configuration;->seq:I
 
+    invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->readFromParcel(Landroid/content/res/Configuration;Landroid/os/Parcel;)V
+
     .line 1181
     return-void
 
@@ -3761,6 +3792,8 @@
 
     iput v0, p0, Landroid/content/res/Configuration;->seq:I
 
+    invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->initFlymeExtraFields(Landroid/content/res/Configuration;Landroid/content/res/Configuration;)V
+
     .line 651
     return-void
 .end method
@@ -3836,6 +3869,8 @@
 
     .line 837
     iput v1, p0, Landroid/content/res/Configuration;->seq:I
+
+    invoke-static/range {p0 .. p0}, Landroid/content/res/Configuration$FlymeInjector;->initFlymeExtraFields(Landroid/content/res/Configuration;)V
 
     .line 819
     return-void
@@ -5281,6 +5316,10 @@
 
     .line 981
     :cond_18
+    invoke-static {p0, p1, v0}, Landroid/content/res/Configuration$FlymeInjector;->updateFrom(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
+
+    move-result v0
+
     return v0
 
     .line 869
@@ -5453,6 +5492,8 @@
     iget v0, p0, Landroid/content/res/Configuration;->seq:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
+
+    invoke-static/range {p0 .. p2}, Landroid/content/res/Configuration$FlymeInjector;->writeToParcel(Landroid/content/res/Configuration;Landroid/os/Parcel;I)V
 
     .line 1145
     return-void

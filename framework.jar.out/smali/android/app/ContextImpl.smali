@@ -355,6 +355,8 @@
 
     move-result-object v10
 
+    invoke-direct {p0, v10}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;)V
+
     .line 1844
     :cond_4
     iput-object v10, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;
@@ -5917,6 +5919,16 @@
     .line 778
     invoke-direct/range {p0 .. p0}, Landroid/app/ContextImpl;->warnIfCallingFromSystemProcess()V
 
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     .line 779
     invoke-virtual/range {p0 .. p0}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -6025,6 +6037,16 @@
     .prologue
     .line 827
     invoke-direct/range {p0 .. p0}, Landroid/app/ContextImpl;->warnIfCallingFromSystemProcess()V
+
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     .line 828
     invoke-virtual/range {p0 .. p0}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
@@ -6239,6 +6261,15 @@
     .param p2, "user"    # Landroid/os/UserHandle;
 
     .prologue
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
     .line 924
     invoke-virtual/range {p0 .. p0}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -6342,6 +6373,15 @@
     .param p4, "appOp"    # I
 
     .prologue
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
     .line 944
     invoke-virtual/range {p0 .. p0}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -6539,6 +6579,16 @@
     .line 844
     invoke-direct/range {p0 .. p0}, Landroid/app/ContextImpl;->warnIfCallingFromSystemProcess()V
 
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     .line 845
     invoke-virtual/range {p0 .. p0}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -6693,6 +6743,16 @@
     .prologue
     .line 890
     invoke-direct/range {p0 .. p0}, Landroid/app/ContextImpl;->warnIfCallingFromSystemProcess()V
+
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     .line 891
     const/4 v5, 0x0
@@ -7029,6 +7089,16 @@
     .param p10, "initialExtras"    # Landroid/os/Bundle;
 
     .prologue
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     .line 978
     const/4 v5, 0x0
 
@@ -7281,6 +7351,16 @@
     .line 1012
     invoke-direct/range {p0 .. p0}, Landroid/app/ContextImpl;->warnIfCallingFromSystemProcess()V
 
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     .line 1013
     invoke-virtual/range {p0 .. p0}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -7369,6 +7449,16 @@
     .end annotation
 
     .prologue
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     .line 1081
     invoke-virtual/range {p0 .. p0}, Landroid/app/ContextImpl;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -7463,6 +7553,16 @@
     .prologue
     .line 1031
     invoke-direct/range {p0 .. p0}, Landroid/app/ContextImpl;->warnIfCallingFromSystemProcess()V
+
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
 
     .line 1032
     const/4 v5, 0x0
@@ -7660,6 +7760,15 @@
     .end annotation
 
     .prologue
+    invoke-direct/range {p0 .. p1}, Landroid/app/ContextImpl;->sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
     .line 1098
     const/4 v5, 0x0
 
@@ -8677,4 +8786,48 @@
 
     .local v0, "e":Landroid/os/RemoteException;
     goto :goto_0
+.end method
+
+.method private sendFlymeBroadcastPermissionGranted(Landroid/content/Intent;)Z
+    .locals 1
+    .param p1, "intent"    # Landroid/content/Intent;
+
+    .prologue
+    .line 767
+    const/16 v0, 0x3b
+
+    invoke-static {v0, p1}, Lmeizu/security/FlymePermissionManager;->isSendBroacastGranted(ILandroid/content/Intent;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    .line 768
+    const/4 v0, 0x0
+
+    return v0
+
+    .line 770
+    :cond_0
+    const/4 v0, 0x1
+
+    return v0
+.end method
+
+.method private setFlymeThemeResource(Landroid/content/res/Resources;)V
+    .locals 1
+    .param p1, "resources"    # Landroid/content/res/Resources;
+
+    .prologue
+    .line 1921
+    iget-object v0, p0, Landroid/app/ContextImpl;->mPackageInfo:Landroid/app/LoadedApk;
+
+    invoke-virtual {v0}, Landroid/app/LoadedApk;->getPackageName()Ljava/lang/String;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Landroid/content/res/Resources;->setFlymeThemeResource(Ljava/lang/String;)V
+
+    .line 1919
+    return-void
 .end method

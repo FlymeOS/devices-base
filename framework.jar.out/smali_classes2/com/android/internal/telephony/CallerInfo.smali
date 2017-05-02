@@ -1689,3 +1689,29 @@
     .restart local v0    # "number":Ljava/lang/String;
     goto :goto_0
 .end method
+
+.method public markAsEmergencyMz()V
+    .locals 1
+
+    .prologue
+    .line 667
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/internal/telephony/CallerInfo;->mIsEmergency:Z
+
+    .line 666
+    return-void
+.end method
+
+.method public markAsVoiceMailMz()V
+    .locals 1
+
+    .prologue
+    .line 671
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/internal/telephony/CallerInfo;->mIsVoiceMail:Z
+
+    .line 670
+    return-void
+.end method

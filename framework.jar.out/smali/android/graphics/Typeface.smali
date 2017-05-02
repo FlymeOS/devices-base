@@ -659,6 +659,20 @@
     .param p0, "style"    # I
 
     .prologue
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->hasFlymeTypeface()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->getflymeTypeface()Landroid/graphics/Typeface;
+
+    move-result-object v0
+
+    return-object v0
+
+    :cond_flyme_0
+
     .line 173
     sget-object v0, Landroid/graphics/Typeface;->sDefaults:[Landroid/graphics/Typeface;
 
@@ -884,6 +898,12 @@
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    move-object/from16 v0, v22
+
+    move-object/from16 v1, v21
+
+    invoke-static {v12, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Family;Landroid/graphics/Typeface;Ljava/util/Map;)V
+
     .line 296
     .end local v22    # "typeface":Landroid/graphics/Typeface;
     :cond_3
@@ -1018,6 +1038,12 @@
     move-object/from16 v2, v19
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, v21
+
+    invoke-static {v4, v0, v1}, Landroid/graphics/Typeface;->putFlymeSystemFonts(Landroid/graphics/FontListParser$Alias;Landroid/graphics/Typeface;Ljava/util/Map;)V
     :try_end_0
     .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
     .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_1
@@ -1444,4 +1470,150 @@
 
     :cond_0
     return v0
+.end method
+
+.method public static isSystemTypeface(Landroid/graphics/Typeface;)Z
+    .locals 1
+    .param p0, "typeface"    # Landroid/graphics/Typeface;
+
+    .prologue
+    .line 434
+    sget-object v0, Landroid/graphics/Typeface;->sSystemFontMap:Ljava/util/Map;
+
+    invoke-interface {v0}, Ljava/util/Map;->values()Ljava/util/Collection;
+
+    move-result-object v0
+
+    invoke-interface {v0, p0}, Ljava/util/Collection;->contains(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method private static putFlymeSystemFonts(Landroid/graphics/FontListParser$Alias;Landroid/graphics/Typeface;Ljava/util/Map;)V
+    .locals 4
+    .param p0, "alias"    # Landroid/graphics/FontListParser$Alias;
+    .param p1, "newFace"    # Landroid/graphics/Typeface;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/graphics/FontListParser$Alias;",
+            "Landroid/graphics/Typeface;",
+            "Ljava/util/Map",
+            "<",
+            "Ljava/lang/String;",
+            "Landroid/graphics/Typeface;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 366
+    .local p2, "systemFonts":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Landroid/graphics/Typeface;>;"
+    const-string/jumbo v0, "persist.sys.flyme.medium_font"
+
+    .line 368
+    .local v0, "PROPERTY_FLYME_MEDIUM_FONT":Ljava/lang/String;
+    const-string/jumbo v2, "true"
+
+    invoke-static {v0, v2}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    const-string/jumbo v3, "true"
+
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    .line 369
+    .local v1, "isUseMediumFont":Z
+    if-nez v1, :cond_0
+
+    .line 370
+    iget-object v2, p0, Landroid/graphics/FontListParser$Alias;->name:Ljava/lang/String;
+
+    if-eqz v2, :cond_0
+
+    .line 371
+    iget-object v2, p0, Landroid/graphics/FontListParser$Alias;->name:Ljava/lang/String;
+
+    const-string/jumbo v3, "sans-serif-medium"
+
+    invoke-virtual {v2, v3}, Ljava/lang/String;->contentEquals(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    .line 372
+    iget-object v2, p0, Landroid/graphics/FontListParser$Alias;->name:Ljava/lang/String;
+
+    invoke-interface {p2, v2, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 364
+    :cond_0
+    return-void
+.end method
+
+.method private static putFlymeSystemFonts(Landroid/graphics/FontListParser$Family;Landroid/graphics/Typeface;Ljava/util/Map;)V
+    .locals 4
+    .param p0, "f"    # Landroid/graphics/FontListParser$Family;
+    .param p1, "typeface"    # Landroid/graphics/Typeface;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/graphics/FontListParser$Family;",
+            "Landroid/graphics/Typeface;",
+            "Ljava/util/Map",
+            "<",
+            "Ljava/lang/String;",
+            "Landroid/graphics/Typeface;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 354
+    .local p2, "systemFonts":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Landroid/graphics/Typeface;>;"
+    const-string/jumbo v0, "persist.sys.flyme.medium_font"
+
+    .line 356
+    .local v0, "PROPERTY_FLYME_MEDIUM_FONT":Ljava/lang/String;
+    const-string/jumbo v2, "true"
+
+    invoke-static {v0, v2}, Landroid/os/SystemProperties;->get(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    const-string/jumbo v3, "true"
+
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    .line 357
+    .local v1, "isUseMediumFont":Z
+    if-nez v1, :cond_0
+
+    .line 358
+    iget-object v2, p0, Landroid/graphics/FontListParser$Family;->name:Ljava/lang/String;
+
+    const-string/jumbo v3, "sans-serif-medium"
+
+    invoke-virtual {v2, v3}, Ljava/lang/String;->contentEquals(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    .line 359
+    iget-object v2, p0, Landroid/graphics/FontListParser$Family;->name:Ljava/lang/String;
+
+    invoke-interface {p2, v2, p1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 352
+    :cond_0
+    return-void
 .end method

@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/provider/Settings$ShareList;,
         Landroid/provider/Settings$SettingNotFoundException;,
         Landroid/provider/Settings$NameValueTable;,
         Landroid/provider/Settings$NameValueCache;,
@@ -600,6 +601,25 @@
 
     .line 8440
     :pswitch_2
+
+    const/16 v5, 0x17
+
+    if-ne p4, v5, :cond_flyme_0
+
+    const/16 v5, 0x17
+
+    invoke-static {v5}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_flyme_0
+
+    const/4 v5, 0x1
+
+    return v5
+
+    :cond_flyme_0
+
     const/4 v5, 0x0
 
     array-length v6, p5

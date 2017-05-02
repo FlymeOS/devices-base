@@ -4332,3 +4332,91 @@
     .local v1, "e":Landroid/os/RemoteException;
     goto :goto_0
 .end method
+
+.method public hook_noteOp(IILjava/lang/String;)I
+    .locals 2
+    .param p1, "op"    # I
+    .param p2, "uid"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+
+    .prologue
+    const/16 v0, 0x14
+
+    const/4 v1, 0x1
+
+    .line 1622
+    if-ne p1, v0, :cond_1
+
+    .line 1624
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 1625
+    invoke-virtual {p0, p1, p2, p3}, Landroid/app/AppOpsManager;->noteOp(IILjava/lang/String;)I
+
+    move-result v0
+
+    return v0
+
+    .line 1627
+    :cond_0
+    return v1
+
+    .line 1630
+    :cond_1
+    invoke-static {}, Landroid/os/Binder;->getCallingPid()I
+
+    move-result v0
+
+    invoke-static {p1, p3, p2, v0}, Lmeizu/security/FlymePermissionManager;->isGranted(ILjava/lang/String;II)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_2
+
+    .line 1631
+    invoke-virtual {p0, p1, p2, p3}, Landroid/app/AppOpsManager;->noteOp(IILjava/lang/String;)I
+
+    move-result v0
+
+    return v0
+
+    .line 1633
+    :cond_2
+    return v1
+.end method
+
+.method public hook_noteOpNoThrow(IILjava/lang/String;)I
+    .locals 1
+    .param p1, "op"    # I
+    .param p2, "uid"    # I
+    .param p3, "packageName"    # Ljava/lang/String;
+
+    .prologue
+    .line 1638
+    invoke-static {}, Landroid/os/Binder;->getCallingPid()I
+
+    move-result v0
+
+    invoke-static {p1, p3, p2, v0}, Lmeizu/security/FlymePermissionManager;->isGranted(ILjava/lang/String;II)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 1639
+    invoke-virtual {p0, p1, p2, p3}, Landroid/app/AppOpsManager;->noteOp(IILjava/lang/String;)I
+
+    move-result v0
+
+    return v0
+
+    .line 1641
+    :cond_0
+    const/4 v0, 0x1
+
+    return v0
+.end method

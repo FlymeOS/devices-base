@@ -225,6 +225,9 @@
 
     .line 95
     invoke-static {}, Landroid/content/res/AssetManager;->ensureSystemAssets()V
+
+    invoke-direct/range {p0 .. p0}, Landroid/content/res/AssetManager;->addFlymeAssetPath()V
+
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -279,6 +282,8 @@
 
     .line 116
     invoke-direct {p0, v1}, Landroid/content/res/AssetManager;->init(Z)V
+
+    invoke-direct/range {p0 .. p0}, Landroid/content/res/AssetManager;->addFlymeAssetPath()V
 
     .line 109
     return-void
@@ -2098,4 +2103,17 @@
     monitor-exit p0
 
     throw v0
+.end method
+
+.method private addFlymeAssetPath()V
+    .locals 1
+
+    .prologue
+    .line 837
+    const-string/jumbo v0, "/system/framework/flyme-res/flyme-res.apk"
+
+    invoke-virtual {p0, v0}, Landroid/content/res/AssetManager;->addAssetPath(Ljava/lang/String;)I
+
+    .line 836
+    return-void
 .end method

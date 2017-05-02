@@ -229,6 +229,41 @@
 
     invoke-virtual {v0}, Lcom/android/internal/app/AlertController;->installContent()V
 
+    invoke-direct/range {p0 .. p0}, Lcom/android/internal/app/AlertActivity;->applyFlymeStyle()V
+
     .line 88
+    return-void
+.end method
+
+.method private applyFlymeStyle()V
+    .locals 1
+
+    .prologue
+    .line 120
+    iget-object v0, p0, Lcom/android/internal/app/AlertActivity;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0}, Lcom/android/internal/app/AlertControllerExt;->applyMeizuStyle()V
+
+    .line 119
+    return-void
+.end method
+
+.method public onContentChanged()V
+    .locals 1
+
+    .prologue
+    .line 114
+    invoke-super {p0}, Landroid/app/Activity;->onContentChanged()V
+
+    .line 115
+    iget-object v0, p0, Lcom/android/internal/app/AlertActivity;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0}, Lcom/android/internal/app/AlertControllerExt;->onAlertContentChanged()V
+
+    .line 111
     return-void
 .end method

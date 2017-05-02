@@ -3,6 +3,18 @@
 .source "EditText.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Landroid/widget/EditText$OnKeyPreImeListener;
+    }
+.end annotation
+
+
+# instance fields
+.field private mFlymeOnKeyPreImeListener:Landroid/widget/EditText$OnKeyPreImeListener;
+
+
 # direct methods
 .method public constructor <init>(Landroid/content/Context;)V
     .locals 1
@@ -301,5 +313,68 @@
     invoke-super {p0, p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;Landroid/widget/TextView$BufferType;)V
 
     .line 83
+    return-void
+.end method
+
+.method protected drawableStateChanged()V
+    .locals 1
+
+    .prologue
+    .line 186
+    invoke-super {p0}, Landroid/widget/TextView;->drawableStateChanged()V
+
+    .line 189
+    invoke-virtual {p0}, Landroid/widget/EditText;->mzIsCursorVisible()Z
+
+    move-result v0
+
+    invoke-virtual {p0, v0}, Landroid/widget/EditText;->updateBackground(Z)V
+
+    .line 185
+    return-void
+.end method
+
+.method public onKeyPreIme(ILandroid/view/KeyEvent;)Z
+    .locals 1
+    .param p1, "keyCode"    # I
+    .param p2, "event"    # Landroid/view/KeyEvent;
+
+    .prologue
+    .line 154
+    iget-object v0, p0, Landroid/widget/EditText;->mFlymeOnKeyPreImeListener:Landroid/widget/EditText$OnKeyPreImeListener;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/widget/EditText;->mFlymeOnKeyPreImeListener:Landroid/widget/EditText$OnKeyPreImeListener;
+
+    invoke-interface {v0, p0, p1, p2}, Landroid/widget/EditText$OnKeyPreImeListener;->onKeyPreIme(Landroid/view/View;ILandroid/view/KeyEvent;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 155
+    const/4 v0, 0x1
+
+    return v0
+
+    .line 157
+    :cond_0
+    invoke-super {p0, p1, p2}, Landroid/widget/TextView;->onKeyPreIme(ILandroid/view/KeyEvent;)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public setOnKeyPreImeListener(Landroid/widget/EditText$OnKeyPreImeListener;)V
+    .locals 0
+    .param p1, "l"    # Landroid/widget/EditText$OnKeyPreImeListener;
+
+    .prologue
+    .line 162
+    iput-object p1, p0, Landroid/widget/EditText;->mFlymeOnKeyPreImeListener:Landroid/widget/EditText$OnKeyPreImeListener;
+
+    .line 161
     return-void
 .end method

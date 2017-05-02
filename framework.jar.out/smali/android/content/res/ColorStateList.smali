@@ -766,6 +766,16 @@
 
     .line 287
     .local v20, "stateResId":I
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
+
+    move-object/from16 v2, p3
+
+    invoke-direct {v0, v1, v2, v14, v7}, Landroid/content/res/ColorStateList;->overlayFlymeThemeColor(Landroid/content/res/Resources;Landroid/util/AttributeSet;II)I
+
+    move-result v7
+
     sparse-switch v20, :sswitch_data_0
 
     .line 293
@@ -1874,4 +1884,64 @@
 
     .line 641
     return-void
+.end method
+
+.method private overlayFlymeThemeColor(Landroid/content/res/Resources;Landroid/util/AttributeSet;II)I
+    .locals 6
+    .param p1, "r"    # Landroid/content/res/Resources;
+    .param p2, "attrs"    # Landroid/util/AttributeSet;
+    .param p3, "i"    # I
+    .param p4, "defColor"    # I
+
+    .prologue
+    const/4 v5, 0x0
+
+    .line 677
+    invoke-interface {p2, p3}, Landroid/util/AttributeSet;->getAttributeNameResource(I)I
+
+    move-result v3
+
+    .line 678
+    .local v3, "stateResId":I
+    const v4, #android:attr@color#t
+
+    if-ne v3, v4, :cond_0
+
+    .line 679
+    invoke-interface {p2, p3, v5}, Landroid/util/AttributeSet;->getAttributeResourceValue(II)I
+
+    move-result v1
+
+    .line 680
+    .local v1, "colorRes":I
+    if-eqz v1, :cond_0
+
+    .line 682
+    :try_start_0
+    invoke-static {p1, v1}, Landroid/content/res/Resources$FlymeInjector;->getFlymeThemeColor(Landroid/content/res/Resources;I)Landroid/content/res/flymetheme/ColorInfo;
+
+    move-result-object v0
+
+    .line 683
+    .local v0, "cInfo":Landroid/content/res/flymetheme/ColorInfo;
+    if-eqz v0, :cond_0
+
+    .line 684
+    iget-wide v4, v0, Landroid/content/res/flymetheme/ColorInfo;->mColor:J
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    long-to-int v4, v4
+
+    return v4
+
+    .line 686
+    .end local v0    # "cInfo":Landroid/content/res/flymetheme/ColorInfo;
+    :catch_0
+    move-exception v2
+
+    .line 690
+    .end local v1    # "colorRes":I
+    :cond_0
+    return p4
 .end method

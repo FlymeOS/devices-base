@@ -274,6 +274,8 @@
 
     invoke-virtual {p0, v0}, Landroid/graphics/Paint;->setTextLocale(Ljava/util/Locale;)V
 
+    invoke-direct/range {p0 .. p0}, Landroid/graphics/Paint;->setFlymeTypeface()V
+
     .line 429
     return-void
 .end method
@@ -309,6 +311,8 @@
 
     .line 449
     invoke-direct {p0, p1}, Landroid/graphics/Paint;->setClassVariablesFrom(Landroid/graphics/Paint;)V
+
+    invoke-direct/range {p0 .. p0}, Landroid/graphics/Paint;->setFlymeTypeface()V
 
     .line 447
     return-void
@@ -4948,6 +4952,8 @@
     .param p1, "typeface"    # Landroid/graphics/Typeface;
 
     .prologue
+    invoke-direct/range {p0 .. p1}, Landroid/graphics/Paint;->setFlymeTypeface(Landroid/graphics/Typeface;)V
+
     .line 1072
     const-wide/16 v0, 0x0
 
@@ -5003,4 +5009,55 @@
 
     .line 990
     return-object p1
+.end method
+
+.method private setFlymeTypeface()V
+    .locals 1
+
+    .prologue
+    .line 460
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->hasFlymeTypeface()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 461
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->getflymeTypeface()Landroid/graphics/Typeface;
+
+    move-result-object v0
+
+    invoke-virtual {p0, v0}, Landroid/graphics/Paint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
+
+    .line 459
+    :cond_0
+    return-void
+.end method
+
+.method private setFlymeTypeface(Landroid/graphics/Typeface;)V
+    .locals 1
+    .param p1, "typeface"    # Landroid/graphics/Typeface;
+
+    .prologue
+    .line 1099
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->hasFlymeTypeface()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-static {p1}, Landroid/content/res/flymetheme/FlymeFontsHelper;->isDefaultTypeface(Landroid/graphics/Typeface;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 1100
+    invoke-static {}, Landroid/content/res/flymetheme/FlymeFontsHelper;->getflymeTypeface()Landroid/graphics/Typeface;
+
+    move-result-object p1
+
+    .line 1098
+    :cond_0
+    return-void
 .end method

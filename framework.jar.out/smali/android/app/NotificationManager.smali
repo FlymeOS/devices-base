@@ -1177,6 +1177,8 @@
     .local v5, "stripped":Landroid/app/Notification;
     invoke-static {v5}, Landroid/app/Notification$Builder;->stripForDelivery(Landroid/app/Notification;)V
 
+    invoke-direct {p0, v5}, Landroid/app/NotificationManager;->fixedFlymeFontColor(Landroid/app/Notification;)V
+
     .line 230
     :try_start_0
     iget-object v2, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
@@ -1656,4 +1658,98 @@
     const/4 v2, 0x0
 
     return v2
+.end method
+
+.method private fixedFlymeFontColor(Landroid/app/Notification;)V
+    .locals 6
+    .param p1, "stripped"    # Landroid/app/Notification;
+
+    .prologue
+    const/4 v5, 0x1
+
+    .line 246
+    iget-object v3, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v3}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v3
+
+    const-string/jumbo v4, "notification_fixed_font_color"
+
+    invoke-static {v3, v4, v5}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v3
+
+    if-ne v3, v5, :cond_1
+
+    const/4 v0, 0x1
+
+    .line 247
+    .local v0, "fixed":Z
+    :goto_0
+    iget-object v3, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v3}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
+
+    move-result-object v3
+
+    iget v1, v3, Landroid/content/pm/ApplicationInfo;->flags:I
+
+    .line 248
+    .local v1, "flag":I
+    and-int/lit8 v3, v1, 0x1
+
+    if-nez v3, :cond_2
+
+    const/4 v2, 0x1
+
+    .line 249
+    .local v2, "isNotSysApp":Z
+    :goto_1
+    if-eqz v2, :cond_3
+
+    and-int/lit16 v3, v1, 0x80
+
+    if-nez v3, :cond_3
+
+    const/4 v2, 0x1
+
+    .line 250
+    :goto_2
+    if-eqz v0, :cond_0
+
+    if-eqz v2, :cond_0
+
+    .line 251
+    iget-object v3, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
+
+    invoke-static {p1, v3}, Landroid/app/Notification$Builder;->fixedFontColor(Landroid/app/Notification;Landroid/content/Context;)V
+
+    .line 245
+    :cond_0
+    return-void
+
+    .line 246
+    .end local v0    # "fixed":Z
+    .end local v1    # "flag":I
+    .end local v2    # "isNotSysApp":Z
+    :cond_1
+    const/4 v0, 0x0
+
+    .restart local v0    # "fixed":Z
+    goto :goto_0
+
+    .line 248
+    .restart local v1    # "flag":I
+    :cond_2
+    const/4 v2, 0x0
+
+    .restart local v2    # "isNotSysApp":Z
+    goto :goto_1
+
+    .line 249
+    :cond_3
+    const/4 v2, 0x0
+
+    goto :goto_2
 .end method

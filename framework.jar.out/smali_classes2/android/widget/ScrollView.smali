@@ -22,6 +22,10 @@
 
 
 # instance fields
+.field private mFlymeFirstInit:Z
+
+.field private mFlymeIsThemeLight:Z
+
 .field private mActivePointerId:I
 
 .field private mChildToScrollTo:Landroid/view/View;
@@ -201,6 +205,8 @@
 
     .line 188
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
+
+    invoke-direct/range {p0 .. p0}, Landroid/widget/ScrollView;->initFlymeStyles()V
 
     .line 179
     return-void
@@ -2141,6 +2147,16 @@
     .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .prologue
+    invoke-direct/range {p0 .. p0}, Landroid/widget/ScrollView;->isFlymeThemeLight()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_flyme_0
+
+    return-void
+
+    :cond_flyme_0
+
     .line 1712
     invoke-super {p0, p1}, Landroid/widget/FrameLayout;->draw(Landroid/graphics/Canvas;)V
 
@@ -6308,5 +6324,140 @@
     invoke-virtual {p0, v0, v1}, Landroid/widget/ScrollView;->smoothScrollBy(II)V
 
     .line 1222
+    return-void
+.end method
+
+.method private initFlymeStyles()V
+    .locals 1
+
+    .prologue
+    .line 199
+    const/4 v0, 0x1
+
+    iput v0, p0, Landroid/widget/ScrollView;->mOverflingDistance:I
+
+    .line 197
+    return-void
+.end method
+
+.method private isFlymeThemeLight()Z
+    .locals 1
+
+    .prologue
+    .line 1785
+    iget-boolean v0, p0, Landroid/widget/ScrollView;->mFlymeFirstInit:Z
+
+    if-nez v0, :cond_0
+
+    .line 1786
+    invoke-virtual {p0}, Landroid/widget/ScrollView;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/Context;->isThemeLight()Z
+
+    move-result v0
+
+    iput-boolean v0, p0, Landroid/widget/ScrollView;->mFlymeIsThemeLight:Z
+
+    .line 1787
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/widget/ScrollView;->mFlymeFirstInit:Z
+
+    .line 1789
+    :cond_0
+    iget-boolean v0, p0, Landroid/widget/ScrollView;->mFlymeIsThemeLight:Z
+
+    return v0
+.end method
+
+.method public dispatchStatusBarTap()Z
+    .locals 1
+
+    .prologue
+    .line 1922
+    invoke-virtual {p0}, Landroid/widget/ScrollView;->onStatusBarTapScrollTop()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public isDelayTopOverScrollEnabled()Z
+    .locals 1
+
+    .prologue
+    .line 1909
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method protected onStatusBarTapScrollTop()Z
+    .locals 5
+
+    .prologue
+    const/4 v4, 0x0
+
+    .line 1930
+    iget-object v0, p0, Landroid/widget/ScrollView;->mScroller:Landroid/widget/OverScroller;
+
+    if-eqz v0, :cond_0
+
+    iget v0, p0, Landroid/widget/ScrollView;->mScrollY:I
+
+    if-lez v0, :cond_0
+
+    .line 1932
+    iget-object v0, p0, Landroid/widget/ScrollView;->mScroller:Landroid/widget/OverScroller;
+
+    iget v1, p0, Landroid/widget/ScrollView;->mScrollX:I
+
+    iget v2, p0, Landroid/widget/ScrollView;->mScrollY:I
+
+    iget v3, p0, Landroid/widget/ScrollView;->mScrollY:I
+
+    neg-int v3, v3
+
+    invoke-virtual {v0, v1, v2, v4, v3}, Landroid/widget/OverScroller;->startScroll(IIII)V
+
+    .line 1933
+    invoke-virtual {p0}, Landroid/widget/ScrollView;->invalidate()V
+
+    .line 1934
+    const/4 v0, 0x1
+
+    return v0
+
+    .line 1936
+    :cond_0
+    return v4
+.end method
+
+.method public setDelayTopOverScrollEnabled(Z)V
+    .locals 0
+    .param p1, "enabled"    # Z
+
+    .prologue
+    .line 1902
+    return-void
+.end method
+
+.method public setDelayTopOverScrollOffset(I)V
+    .locals 0
+    .param p1, "offset"    # I
+
+    .prologue
+    .line 1915
+    return-void
+.end method
+
+.method public springBackDelay(I)V
+    .locals 0
+    .param p1, "delayTime"    # I
+
+    .prologue
+    .line 1896
     return-void
 .end method
