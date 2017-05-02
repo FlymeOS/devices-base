@@ -6,6 +6,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/notification/NotificationManagerService$FlymeExtNotificationManagerServiceInternal;,
+        Lcom/android/server/notification/NotificationManagerService$FlymeWakeUpScreenRunnable;,
         Lcom/android/server/notification/NotificationManagerService$Archive;,
         Lcom/android/server/notification/NotificationManagerService$ToastRecord;,
         Lcom/android/server/notification/NotificationManagerService$SettingsObserver;,
@@ -26,6 +28,14 @@
 
 
 # static fields
+.field private mFlymeFirewall:Lcom/android/server/notification/NotificationFirewall;
+
+.field mFlymePowerManager:Landroid/os/PowerManager;
+
+.field mFlymeWakeLock:Landroid/os/PowerManager$WakeLock;
+
+.field mFlymeWakeUpScreenRunnable:Ljava/lang/Runnable;
+
 .field private static final ATTR_NAME:Ljava/lang/String; = "name"
 
 .field private static final ATTR_VERSION:Ljava/lang/String; = "version"
@@ -1397,6 +1407,8 @@
     .line 2462
     invoke-virtual/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->updateLightsLocked()V
 
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService;->notifyFlymeWakeupScreen(Lcom/android/server/notification/NotificationRecord;)V
+
     .line 2463
     move-object/from16 v0, p0
 
@@ -2604,6 +2616,12 @@
     iget-object v12, p0, Lcom/android/server/notification/NotificationManagerService;->mLights:Ljava/util/ArrayList;
 
     invoke-virtual {v12, v2}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+
+    move-object/from16 v0, p1
+
+    move/from16 v1, p3
+
+    invoke-direct {p0, v0, v1}, Lcom/android/server/notification/NotificationManagerService;->addFlymePackageRemoveByUserNumber(Lcom/android/server/notification/NotificationRecord;I)V
 
     .line 2818
     packed-switch p3, :pswitch_data_0
@@ -9619,6 +9637,8 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/server/notification/NotificationManagerService;->publishLocalService(Ljava/lang/Class;Ljava/lang/Object;)V
 
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->initFlymeExtraFields()V
+
     .line 857
     return-void
 
@@ -10189,4 +10209,945 @@
     invoke-interface {v6, v0, v3, v2}, Lcom/android/server/statusbar/StatusBarManagerInternal;->notificationLightPulse(III)V
 
     goto :goto_1
+.end method
+
+.method private addFlymePackageRemoveByUserNumber(Lcom/android/server/notification/NotificationRecord;I)V
+    .locals 1
+    .param p1, "r"    # Lcom/android/server/notification/NotificationRecord;
+    .param p2, "reason"    # I
+
+    .prologue
+    .line 3073
+    const/16 v0, 0xa
+
+    if-ne p2, v0, :cond_0
+
+    .line 3074
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    invoke-virtual {v0, p1}, Lcom/android/server/notification/RankingHelper;->addPackageRemoveByUserNumber(Lcom/android/server/notification/NotificationRecord;)V
+
+    .line 3072
+    :cond_0
+    return-void
+.end method
+
+.method static checkCallerIsSystemOrSystemUI()V
+    .locals 1
+
+    .prologue
+    .line 3389
+    const-string/jumbo v0, "com.android.systemui"
+
+    invoke-static {v0}, Lcom/android/server/notification/NotificationManagerService;->checkCallerIsSystemOrSameApp(Ljava/lang/String;)V
+
+    .line 3388
+    return-void
+.end method
+
+.method private initFlymeExtraFields()V
+    .locals 3
+
+    .prologue
+    .line 3940
+    new-instance v0, Lcom/android/server/notification/NotificationFirewallImpl;
+
+    invoke-direct {v0}, Lcom/android/server/notification/NotificationFirewallImpl;-><init>()V
+
+    iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeFirewall:Lcom/android/server/notification/NotificationFirewall;
+
+    .line 3941
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    iget-object v1, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeFirewall:Lcom/android/server/notification/NotificationFirewall;
+
+    invoke-virtual {v0, v1}, Lcom/android/server/notification/RankingHelper;->setNotificationFirewall(Lcom/android/server/notification/NotificationFirewall;)V
+
+    .line 3942
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeFirewall:Lcom/android/server/notification/NotificationFirewall;
+
+    invoke-virtual {p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingThread:Landroid/os/HandlerThread;
+
+    invoke-virtual {v2}, Landroid/os/HandlerThread;->getLooper()Landroid/os/Looper;
+
+    move-result-object v2
+
+    invoke-interface {v0, v1, v2}, Lcom/android/server/notification/NotificationFirewall;->initialize(Landroid/content/Context;Landroid/os/Looper;)V
+
+    .line 3944
+    invoke-virtual {p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    const-string/jumbo v1, "power"
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/os/PowerManager;
+
+    iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymePowerManager:Landroid/os/PowerManager;
+
+    .line 3945
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymePowerManager:Landroid/os/PowerManager;
+
+    .line 3947
+    const-string/jumbo v1, "NotificationService"
+
+    .line 3945
+    const v2, 0x3000001a
+
+    invoke-virtual {v0, v2, v1}, Landroid/os/PowerManager;->newWakeLock(ILjava/lang/String;)Landroid/os/PowerManager$WakeLock;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeWakeLock:Landroid/os/PowerManager$WakeLock;
+
+    .line 3948
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeWakeLock:Landroid/os/PowerManager$WakeLock;
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/os/PowerManager$WakeLock;->setReferenceCounted(Z)V
+
+    .line 3938
+    return-void
+.end method
+
+.method private static isSystemApp(Ljava/lang/String;I)Z
+    .locals 6
+    .param p0, "pkg"    # Ljava/lang/String;
+    .param p1, "userId"    # I
+
+    .prologue
+    const/4 v2, 0x1
+
+    const/4 v3, 0x0
+
+    .line 3394
+    :try_start_0
+    invoke-static {}, Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;
+
+    move-result-object v4
+
+    const/4 v5, 0x0
+
+    invoke-interface {v4, p0, v5, p1}, Landroid/content/pm/IPackageManager;->getApplicationInfo(Ljava/lang/String;II)Landroid/content/pm/ApplicationInfo;
+
+    move-result-object v0
+
+    .line 3395
+    .local v0, "ai":Landroid/content/pm/ApplicationInfo;
+    if-nez v0, :cond_0
+
+    .line 3396
+    return v3
+
+    .line 3398
+    :cond_0
+    iget v4, v0, Landroid/content/pm/ApplicationInfo;->flags:I
+
+    and-int/lit8 v4, v4, 0x1
+
+    if-nez v4, :cond_1
+
+    iget v4, v0, Landroid/content/pm/ApplicationInfo;->flags:I
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    and-int/lit16 v4, v4, 0x80
+
+    if-eqz v4, :cond_2
+
+    :cond_1
+    :goto_0
+    return v2
+
+    :cond_2
+    move v2, v3
+
+    goto :goto_0
+
+    .line 3399
+    .end local v0    # "ai":Landroid/content/pm/ApplicationInfo;
+    :catch_0
+    move-exception v1
+
+    .line 3401
+    .local v1, "re":Landroid/os/RemoteException;
+    return v3
+.end method
+
+.method private notifyFlymeWakeupScreen(Lcom/android/server/notification/NotificationRecord;)V
+    .locals 4
+    .param p1, "r"    # Lcom/android/server/notification/NotificationRecord;
+
+    .prologue
+    .line 3952
+    invoke-virtual {p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-direct {p0, v0}, Lcom/android/server/notification/NotificationManagerService;->shouldFlymeNotifyWakeupScreen(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 3953
+    iget-boolean v0, p0, Lcom/android/server/notification/NotificationManagerService;->mScreenOn:Z
+
+    if-nez v0, :cond_0
+
+    iget-boolean v0, p0, Lcom/android/server/notification/NotificationManagerService;->mInCall:Z
+
+    if-eqz v0, :cond_1
+
+    .line 3951
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 3954
+    :cond_1
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeWakeUpScreenRunnable:Ljava/lang/Runnable;
+
+    if-nez v0, :cond_2
+
+    .line 3955
+    new-instance v0, Lcom/android/server/notification/NotificationManagerService$FlymeWakeUpScreenRunnable;
+
+    invoke-direct {v0, p0}, Lcom/android/server/notification/NotificationManagerService$FlymeWakeUpScreenRunnable;-><init>(Lcom/android/server/notification/NotificationManagerService;)V
+
+    iput-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeWakeUpScreenRunnable:Ljava/lang/Runnable;
+
+    .line 3957
+    :cond_2
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mHandler:Lcom/android/server/notification/NotificationManagerService$WorkerHandler;
+
+    iget-object v1, p0, Lcom/android/server/notification/NotificationManagerService;->mFlymeWakeUpScreenRunnable:Ljava/lang/Runnable;
+
+    const-wide/16 v2, 0x12c
+
+    invoke-virtual {v0, v1, v2, v3}, Lcom/android/server/notification/NotificationManagerService$WorkerHandler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    goto :goto_0
+.end method
+
+.method private shouldFlymeNotifyWakeupScreen(Landroid/content/Context;)Z
+    .locals 6
+    .param p1, "context"    # Landroid/content/Context;
+
+    .prologue
+    const/4 v5, 0x1
+
+    const/4 v4, 0x0
+
+    .line 3963
+    invoke-virtual {p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v2
+
+    const-string/jumbo v3, "lock_screen_show_notifications"
+
+    invoke-static {v2, v3, v4}, Landroid/provider/Settings$Secure;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v2
+
+    if-ne v2, v5, :cond_0
+
+    const/4 v0, 0x1
+
+    .line 3964
+    .local v0, "isLockScreenShowNotification":Z
+    :goto_0
+    invoke-virtual {p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v2
+
+    const-string/jumbo v3, "notification_wakeup_screen"
+
+    invoke-static {v2, v3, v4}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v2
+
+    if-ne v2, v5, :cond_1
+
+    const/4 v1, 0x1
+
+    .line 3965
+    .local v1, "isNotifyWakeupScreen":Z
+    :goto_1
+    if-eqz v0, :cond_2
+
+    if-eqz v1, :cond_2
+
+    return v5
+
+    .line 3963
+    .end local v0    # "isLockScreenShowNotification":Z
+    .end local v1    # "isNotifyWakeupScreen":Z
+    :cond_0
+    const/4 v0, 0x0
+
+    .restart local v0    # "isLockScreenShowNotification":Z
+    goto :goto_0
+
+    .line 3964
+    :cond_1
+    const/4 v1, 0x0
+
+    .restart local v1    # "isNotifyWakeupScreen":Z
+    goto :goto_1
+
+    .line 3966
+    :cond_2
+    return v4
+.end method
+
+.method addFlymePackageClickNumber(Ljava/lang/String;)V
+    .locals 2
+    .param p1, "key"    # Ljava/lang/String;
+
+    .prologue
+    .line 1181
+    iget-object v1, p0, Lcom/android/server/notification/NotificationManagerService;->mNotificationsByKey:Landroid/util/ArrayMap;
+
+    invoke-virtual {v1, p1}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/server/notification/NotificationRecord;
+
+    .line 1183
+    .local v0, "r":Lcom/android/server/notification/NotificationRecord;
+    iget-object v1, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    invoke-virtual {v1, v0}, Lcom/android/server/notification/RankingHelper;->addPackageClickNumber(Lcom/android/server/notification/NotificationRecord;)V
+
+    .line 1180
+    return-void
+.end method
+
+.method addFlymePackageSendNumber(Lcom/android/server/notification/NotificationRecord;)V
+    .locals 1
+    .param p1, "r"    # Lcom/android/server/notification/NotificationRecord;
+
+    .prologue
+    .line 2440
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    invoke-virtual {v0, p1}, Lcom/android/server/notification/RankingHelper;->addPackageSendNumber(Lcom/android/server/notification/NotificationRecord;)V
+
+    .line 2438
+    return-void
+.end method
+
+.method addFlymePackageClickNumber(Ljava/lang/String;)V
+    .locals 2
+    .param p1, "key"    # Ljava/lang/String;
+
+    .prologue
+    .line 1181
+    iget-object v1, p0, Lcom/android/server/notification/NotificationManagerService;->mNotificationsByKey:Landroid/util/ArrayMap;
+
+    invoke-virtual {v1, p1}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/android/server/notification/NotificationRecord;
+
+    .line 1183
+    .local v0, "r":Lcom/android/server/notification/NotificationRecord;
+    iget-object v1, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    invoke-virtual {v1, v0}, Lcom/android/server/notification/RankingHelper;->addPackageClickNumber(Lcom/android/server/notification/NotificationRecord;)V
+
+    .line 1180
+    return-void
+.end method
+
+.method addFlymePackageSendNumber(Lcom/android/server/notification/NotificationRecord;)V
+    .locals 1
+    .param p1, "r"    # Lcom/android/server/notification/NotificationRecord;
+
+    .prologue
+    .line 2440
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    invoke-virtual {v0, p1}, Lcom/android/server/notification/RankingHelper;->addPackageSendNumber(Lcom/android/server/notification/NotificationRecord;)V
+
+    .line 2438
+    return-void
+.end method
+
+.method flymeGetFieldRankingHelper()Lcom/android/server/notification/RankingHelper;
+    .locals 1
+
+    .prologue
+    .line 1177
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    return-object v0
+.end method
+
+.method setFlymeNotification(Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;ILandroid/app/Notification;Landroid/os/UserHandle;)Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+    .locals 26
+    .param p1, "pkg"    # Ljava/lang/String;
+    .param p2, "opPkg"    # Ljava/lang/String;
+    .param p3, "callingUid"    # I
+    .param p4, "callingPid"    # I
+    .param p5, "tag"    # Ljava/lang/String;
+    .param p6, "id"    # I
+    .param p7, "notification"    # Landroid/app/Notification;
+    .param p8, "user"    # Landroid/os/UserHandle;
+
+    .prologue
+    .line 2372
+    move-object/from16 v0, p7
+
+    move-object/from16 v1, p1
+
+    invoke-static {v0, v1}, Lcom/android/server/notification/CloudNotificationHelper;->getOrigPackageName(Landroid/app/Notification;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v20
+
+    .line 2373
+    .local v20, "origPkgName":Ljava/lang/String;
+    move-object/from16 v0, p1
+
+    move-object/from16 v1, v20
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_3
+
+    move/from16 v21, p3
+
+    .line 2374
+    .local v21, "origPkgUid":I
+    :goto_0
+    invoke-static/range {v21 .. v21}, Landroid/os/UserHandle;->getUserId(I)I
+
+    move-result v3
+
+    move-object/from16 v0, v20
+
+    invoke-static {v0, v3}, Lcom/android/server/notification/NotificationManagerService;->isSystemApp(Ljava/lang/String;I)Z
+
+    move-result v16
+
+    .line 2375
+    .local v16, "isSystemApp":Z
+    invoke-static/range {p3 .. p3}, Lcom/android/server/notification/NotificationManagerService;->isUidSystem(I)Z
+
+    move-result v3
+
+    if-nez v3, :cond_4
+
+    const-string/jumbo v3, "android"
+
+    move-object/from16 v0, p1
+
+    invoke-virtual {v3, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v17
+
+    .line 2376
+    :goto_1
+    new-instance v2, Landroid/service/notification/StatusBarNotification;
+
+    const/4 v9, 0x0
+
+    move-object/from16 v3, p1
+
+    move-object/from16 v4, p2
+
+    move/from16 v5, p6
+
+    move-object/from16 v6, p5
+
+    move/from16 v7, p3
+
+    move/from16 v8, p4
+
+    move-object/from16 v10, p7
+
+    move-object/from16 v11, p8
+
+    invoke-direct/range {v2 .. v11}, Landroid/service/notification/StatusBarNotification;-><init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;IIILandroid/app/Notification;Landroid/os/UserHandle;)V
+
+    .line 2377
+    .local v2, "temp":Landroid/service/notification/StatusBarNotification;
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/notification/NotificationManagerService;->mNotificationsByKey:Landroid/util/ArrayMap;
+
+    invoke-virtual {v2}, Landroid/service/notification/StatusBarNotification;->getKey()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v4}, Landroid/util/ArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v19
+
+    check-cast v19, Lcom/android/server/notification/NotificationRecord;
+
+    .line 2378
+    .local v19, "old":Lcom/android/server/notification/NotificationRecord;
+    const/4 v12, 0x0
+
+    .line 2379
+    .local v12, "filter":Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+    move-object/from16 v0, p7
+
+    iget v3, v0, Landroid/app/Notification;->flags:I
+
+    and-int/lit8 v3, v3, 0x2
+
+    if-nez v3, :cond_6
+
+    .line 2380
+    move-object/from16 v0, p7
+
+    iget v3, v0, Landroid/app/Notification;->flags:I
+
+    and-int/lit8 v3, v3, 0x20
+
+    if-nez v3, :cond_5
+
+    const/4 v15, 0x1
+
+    .line 2381
+    .local v15, "isClearable":Z
+    :goto_2
+    if-eqz v19, :cond_7
+
+    .line 2382
+    move-object/from16 v0, v19
+
+    iget-object v3, v0, Lcom/android/server/notification/NotificationRecord;->sbn:Landroid/service/notification/StatusBarNotification;
+
+    iget-object v3, v3, Landroid/service/notification/StatusBarNotification;->mFlymeFilter:Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
+    invoke-virtual {v3}, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->copy()Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
+    move-result-object v12
+
+    .line 2388
+    .local v12, "filter":Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+    :goto_3
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    new-instance v4, Lcom/android/server/notification/NotificationRecord;
+
+    const/4 v5, -0x1
+
+    invoke-direct {v4, v2, v5}, Lcom/android/server/notification/NotificationRecord;-><init>(Landroid/service/notification/StatusBarNotification;I)V
+
+    invoke-virtual {v3, v4}, Lcom/android/server/notification/RankingHelper;->getPackageCategoryScore(Lcom/android/server/notification/NotificationRecord;)F
+
+    move-result v22
+
+    .line 2390
+    .local v22, "packageCategoryScore":F
+    move/from16 v0, v22
+
+    iput v0, v12, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->score:F
+
+    .line 2391
+    iget-boolean v3, v12, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->shouldAffectIntercept:Z
+
+    if-eqz v3, :cond_8
+
+    iget v3, v12, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->spamScoreUpperLimit:F
+
+    cmpg-float v3, v22, v3
+
+    if-gez v3, :cond_8
+
+    const/4 v3, 0x1
+
+    :goto_4
+    iput-boolean v3, v12, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->intercept:Z
+
+    .line 2392
+    if-nez v16, :cond_0
+
+    if-eqz v17, :cond_9
+
+    .line 2405
+    :cond_0
+    move-object/from16 v0, p7
+
+    iget-object v3, v0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    const-string/jumbo v4, "headsup"
+
+    const/4 v5, 0x1
+
+    invoke-virtual {v3, v4, v5}, Landroid/os/Bundle;->getInt(Ljava/lang/String;I)I
+
+    move-result v13
+
+    .line 2406
+    .local v13, "flag":I
+    const/4 v3, 0x2
+
+    if-ne v13, v3, :cond_1
+
+    .line 2407
+    move-object/from16 v0, p7
+
+    iget-object v3, v0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    const-string/jumbo v4, "headsup"
+
+    const/4 v5, 0x1
+
+    invoke-virtual {v3, v4, v5}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
+
+    .line 2410
+    .end local v13    # "flag":I
+    :cond_1
+    :goto_5
+    iget-boolean v14, v12, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->intercept:Z
+
+    .line 2411
+    .local v14, "intercept":Z
+    invoke-virtual/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-static {v3}, Lmeizu/space/MSpaceControllerImpl;->getController(Landroid/content/Context;)Lmeizu/space/MSpaceController;
+
+    move-result-object v18
+
+    .line 2412
+    .local v18, "mSpaceController":Lmeizu/space/MSpaceController;
+    move-object/from16 v0, v18
+
+    invoke-interface {v0, v2}, Lmeizu/space/MSpaceController;->isSilenceNotification(Landroid/service/notification/StatusBarNotification;)Z
+
+    move-result v24
+
+    .line 2413
+    .local v24, "silence":Z
+    if-nez v24, :cond_d
+
+    if-nez v14, :cond_d
+
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    move-object/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v3, v0, v1}, Lcom/android/server/notification/RankingHelper;->getPackageRemindEnable(Ljava/lang/String;I)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_d
+
+    .line 2422
+    :goto_6
+    iget-boolean v3, v12, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->shouldAffectRanking:Z
+
+    if-eqz v3, :cond_2
+
+    .line 2423
+    iget v3, v12, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->categoryPriority:I
+
+    iget v4, v12, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->notificationPriority:I
+
+    invoke-static {v3, v4}, Ljava/lang/Math;->max(II)I
+
+    move-result v23
+
+    .line 2424
+    .local v23, "priority":I
+    const/4 v3, -0x2
+
+    move/from16 v0, v23
+
+    if-lt v0, v3, :cond_2
+
+    .line 2425
+    const/4 v3, 0x2
+
+    move/from16 v0, v23
+
+    if-gt v0, v3, :cond_2
+
+    .line 2426
+    move/from16 v0, v23
+
+    move-object/from16 v1, p7
+
+    iput v0, v1, Landroid/app/Notification;->priority:I
+
+    .line 2431
+    .end local v23    # "priority":I
+    :cond_2
+    return-object v12
+
+    .line 2373
+    .end local v2    # "temp":Landroid/service/notification/StatusBarNotification;
+    .end local v12    # "filter":Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+    .end local v14    # "intercept":Z
+    .end local v15    # "isClearable":Z
+    .end local v16    # "isSystemApp":Z
+    .end local v18    # "mSpaceController":Lmeizu/space/MSpaceController;
+    .end local v19    # "old":Lcom/android/server/notification/NotificationRecord;
+    .end local v21    # "origPkgUid":I
+    .end local v22    # "packageCategoryScore":F
+    .end local v24    # "silence":Z
+    :cond_3
+    invoke-virtual/range {p0 .. p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
+
+    move-result-object v3
+
+    invoke-static/range {p3 .. p3}, Landroid/os/UserHandle;->getUserId(I)I
+
+    move-result v4
+
+    move-object/from16 v0, v20
+
+    invoke-static {v3, v0, v4}, Lcom/android/server/notification/CloudNotificationHelper;->getPackageUid(Landroid/content/Context;Ljava/lang/String;I)I
+
+    move-result v21
+
+    .restart local v21    # "origPkgUid":I
+    goto/16 :goto_0
+
+    .line 2375
+    .restart local v16    # "isSystemApp":Z
+    :cond_4
+    const/16 v17, 0x1
+
+    .local v17, "isSystemNotification":Z
+    goto/16 :goto_1
+
+    .line 2380
+    .end local v17    # "isSystemNotification":Z
+    .restart local v2    # "temp":Landroid/service/notification/StatusBarNotification;
+    .local v12, "filter":Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+    .restart local v19    # "old":Lcom/android/server/notification/NotificationRecord;
+    :cond_5
+    const/4 v15, 0x0
+
+    .restart local v15    # "isClearable":Z
+    goto/16 :goto_2
+
+    .line 2379
+    .end local v15    # "isClearable":Z
+    :cond_6
+    const/4 v15, 0x0
+
+    .restart local v15    # "isClearable":Z
+    goto/16 :goto_2
+
+    .line 2384
+    :cond_7
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/notification/NotificationManagerService;->mFlymeFirewall:Lcom/android/server/notification/NotificationFirewall;
+
+    move/from16 v0, v17
+
+    move/from16 v1, v16
+
+    invoke-interface {v3, v2, v0, v1}, Lcom/android/server/notification/NotificationFirewall;->interceptNotification(Landroid/service/notification/StatusBarNotification;ZZ)Z
+
+    .line 2385
+    iget-object v3, v2, Landroid/service/notification/StatusBarNotification;->mFlymeFilter:Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
+    invoke-virtual {v3}, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->copy()Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
+    move-result-object v12
+
+    .local v12, "filter":Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+    goto/16 :goto_3
+
+    .line 2391
+    .restart local v22    # "packageCategoryScore":F
+    :cond_8
+    const/4 v3, 0x0
+
+    goto/16 :goto_4
+
+    .line 2393
+    :cond_9
+    move-object/from16 v0, p0
+
+    iget-object v3, v0, Lcom/android/server/notification/NotificationManagerService;->mRankingHelper:Lcom/android/server/notification/RankingHelper;
+
+    move-object/from16 v0, v20
+
+    move/from16 v1, v21
+
+    invoke-virtual {v3, v0, v1}, Lcom/android/server/notification/RankingHelper;->getPackageHeadsUpVisibility(Ljava/lang/String;I)I
+
+    move-result v25
+
+    .line 2394
+    .local v25, "visibility":I
+    const/4 v3, 0x1
+
+    move/from16 v0, v25
+
+    if-eq v0, v3, :cond_a
+
+    .line 2395
+    if-eqz v15, :cond_b
+
+    .line 2396
+    move-object/from16 v0, p7
+
+    iget-object v3, v0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    const-string/jumbo v4, "headsup"
+
+    move/from16 v0, v25
+
+    invoke-virtual {v3, v4, v0}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
+
+    .line 2401
+    .end local v25    # "visibility":I
+    :cond_a
+    :goto_7
+    iget-boolean v3, v12, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->intercept:Z
+
+    if-eqz v3, :cond_1
+
+    .line 2402
+    move-object/from16 v0, p7
+
+    iget-object v3, v0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    const-string/jumbo v4, "headsup"
+
+    const/4 v5, 0x0
+
+    invoke-virtual {v3, v4, v5}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
+
+    goto/16 :goto_5
+
+    .line 2398
+    .restart local v25    # "visibility":I
+    :cond_b
+    move-object/from16 v0, p7
+
+    iget-object v3, v0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    const-string/jumbo v4, "headsup"
+
+    const/4 v5, 0x2
+
+    move/from16 v0, v25
+
+    if-eq v0, v5, :cond_c
+
+    .end local v25    # "visibility":I
+    :goto_8
+    move/from16 v0, v25
+
+    invoke-virtual {v3, v4, v0}, Landroid/os/Bundle;->putInt(Ljava/lang/String;I)V
+
+    goto :goto_7
+
+    .restart local v25    # "visibility":I
+    :cond_c
+    const/16 v25, 0x1
+
+    goto :goto_8
+
+    .line 2414
+    .end local v25    # "visibility":I
+    .restart local v14    # "intercept":Z
+    .restart local v18    # "mSpaceController":Lmeizu/space/MSpaceController;
+    .restart local v24    # "silence":Z
+    :cond_d
+    const/4 v3, 0x0
+
+    move-object/from16 v0, p7
+
+    iput-object v3, v0, Landroid/app/Notification;->sound:Landroid/net/Uri;
+
+    .line 2415
+    const/4 v3, 0x0
+
+    move-object/from16 v0, p7
+
+    iput-object v3, v0, Landroid/app/Notification;->vibrate:[J
+
+    .line 2416
+    move-object/from16 v0, p7
+
+    iget v3, v0, Landroid/app/Notification;->defaults:I
+
+    and-int/lit8 v3, v3, -0x3
+
+    move-object/from16 v0, p7
+
+    iput v3, v0, Landroid/app/Notification;->defaults:I
+
+    .line 2417
+    move-object/from16 v0, p7
+
+    iget v3, v0, Landroid/app/Notification;->defaults:I
+
+    and-int/lit8 v3, v3, -0x2
+
+    move-object/from16 v0, p7
+
+    iput v3, v0, Landroid/app/Notification;->defaults:I
+
+    .line 2418
+    move-object/from16 v0, p7
+
+    iget v3, v0, Landroid/app/Notification;->defaults:I
+
+    and-int/lit8 v3, v3, -0x5
+
+    move-object/from16 v0, p7
+
+    iput v3, v0, Landroid/app/Notification;->defaults:I
+
+    .line 2419
+    move-object/from16 v0, p7
+
+    iget v3, v0, Landroid/app/Notification;->flags:I
+
+    and-int/lit8 v3, v3, -0x2
+
+    move-object/from16 v0, p7
+
+    iput v3, v0, Landroid/app/Notification;->flags:I
+
+    goto/16 :goto_6
+.end method
+
+.method setFlymeNotificationFilter(Landroid/service/notification/StatusBarNotification;Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;)V
+    .locals 0
+    .param p1, "n"    # Landroid/service/notification/StatusBarNotification;
+    .param p2, "filter"    # Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
+    .prologue
+    .line 2435
+    iput-object p2, p1, Landroid/service/notification/StatusBarNotification;->mFlymeFilter:Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
+    .line 2434
+    return-void
 .end method

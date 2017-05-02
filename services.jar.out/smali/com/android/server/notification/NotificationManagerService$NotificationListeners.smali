@@ -981,6 +981,8 @@
     .end local v8    # "trim":I
     .end local v9    # "update":Landroid/service/notification/NotificationRankingUpdate;
     :cond_8
+    invoke-direct/range {p0 .. p2}, Lcom/android/server/notification/NotificationManagerService$NotificationListeners;->notifyFlymePosted(Landroid/service/notification/StatusBarNotification;Landroid/service/notification/StatusBarNotification;)V
+
     return-void
 .end method
 
@@ -1118,6 +1120,8 @@
     .end local v0    # "info":Lcom/android/server/notification/ManagedServices$ManagedServiceInfo;
     .end local v3    # "update":Landroid/service/notification/NotificationRankingUpdate;
     :cond_1
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/NotificationManagerService$NotificationListeners;->notifyFlymeRemoved(Landroid/service/notification/StatusBarNotification;)V
+
     return-void
 .end method
 
@@ -1251,4 +1255,37 @@
     invoke-virtual {v0, p1}, Landroid/util/ArraySet;->remove(Ljava/lang/Object;)Z
 
     goto :goto_0
+.end method
+
+.method private notifyFlymePosted(Landroid/service/notification/StatusBarNotification;Landroid/service/notification/StatusBarNotification;)V
+    .locals 1
+    .param p1, "sbn"    # Landroid/service/notification/StatusBarNotification;
+    .param p2, "oldSbn"    # Landroid/service/notification/StatusBarNotification;
+
+    .prologue
+    .line 3599
+    invoke-static {}, Lcom/android/server/shrinker/Shrinker;->getInstance()Lcom/android/server/shrinker/Shrinker;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1, p2}, Lcom/android/server/shrinker/Shrinker;->notifyPosted(Landroid/service/notification/StatusBarNotification;Landroid/service/notification/StatusBarNotification;)V
+
+    .line 3597
+    return-void
+.end method
+
+.method private notifyFlymeRemoved(Landroid/service/notification/StatusBarNotification;)V
+    .locals 1
+    .param p1, "sbn"    # Landroid/service/notification/StatusBarNotification;
+
+    .prologue
+    .line 3631
+    invoke-static {}, Lcom/android/server/shrinker/Shrinker;->getInstance()Lcom/android/server/shrinker/Shrinker;
+
+    move-result-object v0
+
+    invoke-virtual {v0, p1}, Lcom/android/server/shrinker/Shrinker;->notifyRemoved(Landroid/service/notification/StatusBarNotification;)V
+
+    .line 3629
+    return-void
 .end method

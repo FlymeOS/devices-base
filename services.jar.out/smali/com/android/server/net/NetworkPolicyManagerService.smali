@@ -6,6 +6,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;,
         Lcom/android/server/net/NetworkPolicyManagerService$AppIdleStateChangeListener;,
         Lcom/android/server/net/NetworkPolicyManagerService$1;,
         Lcom/android/server/net/NetworkPolicyManagerService$2;,
@@ -818,6 +819,12 @@
     .param p0, "template"    # Landroid/net/NetworkTemplate;
 
     .prologue
+    invoke-static/range {p0 .. p0}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->buildFlymeNetworkOverLimitIntent(Landroid/net/NetworkTemplate;)Landroid/content/Intent;
+
+    move-result-object v0
+
+    return-object v0
+
     .line 2664
     new-instance v0, Landroid/content/Intent;
 
@@ -923,6 +930,12 @@
 
     .prologue
     .line 2673
+    invoke-static/range {p0 .. p0}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->buildFlymeViewDataUsageIntent(Landroid/net/NetworkTemplate;)Landroid/content/Intent;
+
+    move-result-object v0
+
+    return-object v0
+
     new-instance v0, Landroid/content/Intent;
 
     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
@@ -4056,6 +4069,8 @@
     .param p3, "persist"    # Z
 
     .prologue
+    invoke-static/range {p0 .. p2}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->updateRulesForUidWifiAndMobileLocked(Lcom/android/server/net/NetworkPolicyManagerService;II)V
+
     .line 1657
     iget-object v0, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mUidPolicy:Landroid/util/SparseIntArray;
 
@@ -9587,6 +9602,10 @@
 
     .line 2389
     .local v3, "oldRules":I
+    invoke-static {p0, p1, v7}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->flymeChangeUidRules(Lcom/android/server/net/NetworkPolicyManagerService;II)I
+
+    move-result v7
+
     if-nez v7, :cond_9
 
     .line 2390
@@ -10180,4 +10199,843 @@
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
 
     goto :goto_3
+.end method
+
+.method private flymeChangeNotification(Landroid/app/Notification$Builder;Landroid/net/NetworkPolicy;J)V
+    .locals 5
+    .param p1, "builder"    # Landroid/app/Notification$Builder;
+    .param p2, "policy"    # Landroid/net/NetworkPolicy;
+    .param p3, "totalBytes"    # J
+
+    .prologue
+    .line 2694
+    iget-object v1, p2, Landroid/net/NetworkPolicy;->template:Landroid/net/NetworkTemplate;
+
+    invoke-static {v1, p2, p3, p4}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->buildFlymeNetworkOverLimitIntent(Landroid/net/NetworkTemplate;Landroid/net/NetworkPolicy;J)Landroid/content/Intent;
+
+    move-result-object v0
+
+    .line 2696
+    .local v0, "intent":Landroid/content/Intent;
+    iget-object v1, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    const/4 v2, 0x0
+
+    const/high16 v3, 0x8000000
+
+    .line 2695
+    invoke-static {v1, v2, v0, v3}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v1
+
+    invoke-virtual {p1, v1}, Landroid/app/Notification$Builder;->setContentIntent(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+
+    .line 2699
+    sget v1, Lcom/flyme/internal/R$drawable;->mz_stat_sys_traffic_warn:I
+
+    invoke-virtual {p1, v1}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
+
+    .line 2700
+    iget-object v1, p1, Landroid/app/Notification$Builder;->mFlymeNotificationBuilder:Landroid/app/NotificationBuilderExt;
+
+    .line 2701
+    sget v2, Lcom/flyme/internal/R$drawable;->mz_status_ic_traffic_warn:I
+
+    .line 2700
+    invoke-virtual {v1, v2}, Landroid/app/NotificationBuilderExt;->setNotificationIcon(I)V
+
+    .line 2693
+    return-void
+.end method
+
+.method private flymeEnqueueNotification(Landroid/net/NetworkPolicy;IJ)V
+    .locals 29
+    .param p1, "policy"    # Landroid/net/NetworkPolicy;
+    .param p2, "type"    # I
+    .param p3, "totalBytes"    # J
+
+    .prologue
+    .line 2710
+    invoke-direct/range {p0 .. p2}, Lcom/android/server/net/NetworkPolicyManagerService;->buildNotificationTag(Landroid/net/NetworkPolicy;I)Ljava/lang/String;
+
+    move-result-object v9
+
+    .line 2711
+    .local v9, "tag":Ljava/lang/String;
+    new-instance v18, Landroid/app/Notification$Builder;
+
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    move-object/from16 v0, v18
+
+    invoke-direct {v0, v6}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;)V
+
+    .line 2712
+    .local v18, "builder":Landroid/app/Notification$Builder;
+    const/4 v6, 0x1
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setOnlyAlertOnce(Z)Landroid/app/Notification$Builder;
+
+    .line 2713
+    const-wide/16 v10, 0x0
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v10, v11}, Landroid/app/Notification$Builder;->setWhen(J)Landroid/app/Notification$Builder;
+
+    .line 2714
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v6
+
+    const v8, #android:color@system_notification_accent_color#t
+
+    invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getColor(I)I
+
+    move-result v6
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setColor(I)Landroid/app/Notification$Builder;
+
+    .line 2716
+    const-string/jumbo v14, "android.net.action.USER_DELETE_SNOOZED_NOTIFICATION"
+
+    .line 2717
+    .local v14, "ACTION_USER_DELETE_SNOOZED_NOTIFICATION":Ljava/lang/String;
+    const-string/jumbo v15, "android.net.NETWORK_POLICY"
+
+    .line 2718
+    .local v15, "EXTRA_NETWORK_POLICY":Ljava/lang/String;
+    const-string/jumbo v16, "android.net.TYPE"
+
+    .line 2721
+    .local v16, "EXTRA_TYPE":Ljava/lang/String;
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v6}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v23
+
+    .line 2722
+    .local v23, "res":Landroid/content/res/Resources;
+    packed-switch p2, :pswitch_data_0
+
+    .line 2830
+    :goto_0
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, v18
+
+    move-object/from16 v2, p1
+
+    move-wide/from16 v3, p3
+
+    invoke-direct {v0, v1, v2, v3, v4}, Lcom/android/server/net/NetworkPolicyManagerService;->flymeChangeNotification(Landroid/app/Notification$Builder;Landroid/net/NetworkPolicy;J)V
+
+    .line 2836
+    :try_start_0
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v6}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+
+    move-result-object v7
+
+    .line 2837
+    .local v7, "packageName":Ljava/lang/String;
+    const/4 v6, 0x1
+
+    new-array v12, v6, [I
+
+    .line 2838
+    .local v12, "idReceived":[I
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mNotifManager:Landroid/app/INotificationManager;
+
+    .line 2839
+    invoke-virtual/range {v18 .. v18}, Landroid/app/Notification$Builder;->getNotification()Landroid/app/Notification;
+
+    move-result-object v11
+
+    const/4 v10, 0x0
+
+    .line 2840
+    const/4 v13, 0x0
+
+    move-object v8, v7
+
+    .line 2838
+    invoke-interface/range {v6 .. v13}, Landroid/app/INotificationManager;->enqueueNotificationWithTag(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILandroid/app/Notification;[II)V
+
+    .line 2841
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mActiveNotifs:Landroid/util/ArraySet;
+
+    invoke-virtual {v6, v9}, Landroid/util/ArraySet;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 2709
+    .end local v7    # "packageName":Ljava/lang/String;
+    .end local v12    # "idReceived":[I
+    :goto_1
+    return-void
+
+    .line 2724
+    :pswitch_0
+    const v6, #android:string@data_usage_warning_title#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v27
+
+    .line 2725
+    .local v27, "title":Ljava/lang/CharSequence;
+    const v6, #android:string@data_usage_warning_body#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+
+    move-result-object v17
+
+    .line 2727
+    .local v17, "body":Ljava/lang/CharSequence;
+    const v6, #android:drawable@stat_notify_error#t
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
+
+    .line 2728
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v27
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setTicker(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    .line 2729
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v27
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    .line 2730
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v17
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setContentText(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    .line 2732
+    move-object/from16 v0, p1
+
+    iget-object v6, v0, Landroid/net/NetworkPolicy;->template:Landroid/net/NetworkTemplate;
+
+    invoke-static {v6}, Lcom/android/server/net/NetworkPolicyManagerService;->buildSnoozeWarningIntent(Landroid/net/NetworkTemplate;)Landroid/content/Intent;
+
+    move-result-object v26
+
+    .line 2734
+    .local v26, "snoozeIntent":Landroid/content/Intent;
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    const/4 v8, 0x0
+
+    const/high16 v10, 0x8000000
+
+    .line 2733
+    move-object/from16 v0, v26
+
+    invoke-static {v6, v8, v0, v10}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v6
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setDeleteIntent(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+
+    .line 2736
+    move-object/from16 v0, p1
+
+    iget-object v6, v0, Landroid/net/NetworkPolicy;->template:Landroid/net/NetworkTemplate;
+
+    invoke-static {v6}, Lcom/android/server/net/NetworkPolicyManagerService;->buildViewDataUsageIntent(Landroid/net/NetworkTemplate;)Landroid/content/Intent;
+
+    move-result-object v28
+
+    .line 2738
+    .local v28, "viewIntent":Landroid/content/Intent;
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    const/4 v8, 0x0
+
+    const/high16 v10, 0x8000000
+
+    .line 2737
+    move-object/from16 v0, v28
+
+    invoke-static {v6, v8, v0, v10}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v6
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setContentIntent(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+
+    goto/16 :goto_0
+
+    .line 2743
+    .end local v17    # "body":Ljava/lang/CharSequence;
+    .end local v26    # "snoozeIntent":Landroid/content/Intent;
+    .end local v27    # "title":Ljava/lang/CharSequence;
+    .end local v28    # "viewIntent":Landroid/content/Intent;
+    :pswitch_1
+    const v6, #android:string@data_usage_limit_body#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v17
+
+    .line 2746
+    .restart local v17    # "body":Ljava/lang/CharSequence;
+    const v21, #android:drawable@stat_notify_disabled_data#t
+
+    .line 2747
+    .local v21, "icon":I
+    move-object/from16 v0, p1
+
+    iget-object v6, v0, Landroid/net/NetworkPolicy;->template:Landroid/net/NetworkTemplate;
+
+    invoke-virtual {v6}, Landroid/net/NetworkTemplate;->getMatchRule()I
+
+    move-result v6
+
+    packed-switch v6, :pswitch_data_1
+
+    .line 2762
+    const/16 v27, 0x0
+
+    .line 2766
+    :goto_2
+    const/4 v6, 0x0
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setOngoing(Z)Landroid/app/Notification$Builder;
+
+    .line 2767
+    move-object/from16 v0, v18
+
+    move/from16 v1, v21
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
+
+    .line 2768
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v27
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setTicker(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    .line 2769
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v27
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    .line 2770
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v17
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setContentText(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    .line 2773
+    new-instance v19, Landroid/content/Intent;
+
+    move-object/from16 v0, v19
+
+    invoke-direct {v0, v14}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 2774
+    .local v19, "deleteIntent":Landroid/content/Intent;
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, p1
+
+    invoke-virtual {v0, v15, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+
+    .line 2775
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, v16
+
+    move/from16 v2, p2
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
+
+    .line 2776
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    const/4 v8, 0x0
+
+    .line 2777
+    const/high16 v10, 0x8000000
+
+    .line 2776
+    move-object/from16 v0, v19
+
+    invoke-static {v6, v8, v0, v10}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v6
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setDeleteIntent(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+
+    .line 2780
+    move-object/from16 v0, p1
+
+    iget-object v6, v0, Landroid/net/NetworkPolicy;->template:Landroid/net/NetworkTemplate;
+
+    invoke-static {v6}, Lcom/android/server/net/NetworkPolicyManagerService;->buildNetworkOverLimitIntent(Landroid/net/NetworkTemplate;)Landroid/content/Intent;
+
+    move-result-object v22
+
+    .line 2782
+    .local v22, "intent":Landroid/content/Intent;
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    const/4 v8, 0x0
+
+    const/high16 v10, 0x8000000
+
+    .line 2781
+    move-object/from16 v0, v22
+
+    invoke-static {v6, v8, v0, v10}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v6
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setContentIntent(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+
+    goto/16 :goto_0
+
+    .line 2749
+    .end local v19    # "deleteIntent":Landroid/content/Intent;
+    .end local v22    # "intent":Landroid/content/Intent;
+    :pswitch_2
+    const v6, #android:string@data_usage_3g_limit_title#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v27
+
+    .restart local v27    # "title":Ljava/lang/CharSequence;
+    goto :goto_2
+
+    .line 2752
+    .end local v27    # "title":Ljava/lang/CharSequence;
+    :pswitch_3
+    const v6, #android:string@data_usage_4g_limit_title#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v27
+
+    .restart local v27    # "title":Ljava/lang/CharSequence;
+    goto :goto_2
+
+    .line 2755
+    .end local v27    # "title":Ljava/lang/CharSequence;
+    :pswitch_4
+    const v6, #android:string@data_usage_mobile_limit_title#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v27
+
+    .restart local v27    # "title":Ljava/lang/CharSequence;
+    goto/16 :goto_2
+
+    .line 2758
+    .end local v27    # "title":Ljava/lang/CharSequence;
+    :pswitch_5
+    const v6, #android:string@data_usage_wifi_limit_title#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v27
+
+    .line 2759
+    .restart local v27    # "title":Ljava/lang/CharSequence;
+    const v21, #android:drawable@stat_notify_error#t
+
+    .line 2760
+    goto/16 :goto_2
+
+    .line 2786
+    .end local v17    # "body":Ljava/lang/CharSequence;
+    .end local v21    # "icon":I
+    .end local v27    # "title":Ljava/lang/CharSequence;
+    :pswitch_6
+    move-object/from16 v0, p1
+
+    iget-wide v10, v0, Landroid/net/NetworkPolicy;->limitBytes:J
+
+    sub-long v24, p3, v10
+
+    .line 2787
+    .local v24, "overBytes":J
+    const/4 v6, 0x1
+
+    new-array v6, v6, [Ljava/lang/Object;
+
+    .line 2788
+    move-object/from16 v0, p0
+
+    iget-object v8, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    move-wide/from16 v0, v24
+
+    invoke-static {v8, v0, v1}, Landroid/text/format/Formatter;->formatFileSize(Landroid/content/Context;J)Ljava/lang/String;
+
+    move-result-object v8
+
+    const/4 v10, 0x0
+
+    aput-object v8, v6, v10
+
+    .line 2787
+    const v8, #android:string@data_usage_limit_snoozed_body#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v8, v6}, Landroid/content/res/Resources;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v17
+
+    .line 2791
+    .restart local v17    # "body":Ljava/lang/CharSequence;
+    move-object/from16 v0, p1
+
+    iget-object v6, v0, Landroid/net/NetworkPolicy;->template:Landroid/net/NetworkTemplate;
+
+    invoke-virtual {v6}, Landroid/net/NetworkTemplate;->getMatchRule()I
+
+    move-result v6
+
+    packed-switch v6, :pswitch_data_2
+
+    .line 2805
+    const/16 v27, 0x0
+
+    .line 2809
+    :goto_3
+    const/4 v6, 0x0
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setOngoing(Z)Landroid/app/Notification$Builder;
+
+    .line 2810
+    const v6, #android:drawable@stat_notify_error#t
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
+
+    .line 2811
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v27
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setTicker(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    .line 2812
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v27
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    .line 2813
+    move-object/from16 v0, v18
+
+    move-object/from16 v1, v17
+
+    invoke-virtual {v0, v1}, Landroid/app/Notification$Builder;->setContentText(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    .line 2816
+    new-instance v19, Landroid/content/Intent;
+
+    move-object/from16 v0, v19
+
+    invoke-direct {v0, v14}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 2817
+    .restart local v19    # "deleteIntent":Landroid/content/Intent;
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, p1
+
+    invoke-virtual {v0, v15, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+
+    .line 2818
+    move-object/from16 v0, v19
+
+    move-object/from16 v1, v16
+
+    move/from16 v2, p2
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
+
+    .line 2819
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    const/4 v8, 0x0
+
+    .line 2820
+    const/high16 v10, 0x8000000
+
+    .line 2819
+    move-object/from16 v0, v19
+
+    invoke-static {v6, v8, v0, v10}, Landroid/app/PendingIntent;->getBroadcast(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v6
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setDeleteIntent(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+
+    .line 2823
+    move-object/from16 v0, p1
+
+    iget-object v6, v0, Landroid/net/NetworkPolicy;->template:Landroid/net/NetworkTemplate;
+
+    invoke-static {v6}, Lcom/android/server/net/NetworkPolicyManagerService;->buildViewDataUsageIntent(Landroid/net/NetworkTemplate;)Landroid/content/Intent;
+
+    move-result-object v22
+
+    .line 2825
+    .restart local v22    # "intent":Landroid/content/Intent;
+    move-object/from16 v0, p0
+
+    iget-object v6, v0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    const/4 v8, 0x0
+
+    const/high16 v10, 0x8000000
+
+    .line 2824
+    move-object/from16 v0, v22
+
+    invoke-static {v6, v8, v0, v10}, Landroid/app/PendingIntent;->getActivity(Landroid/content/Context;ILandroid/content/Intent;I)Landroid/app/PendingIntent;
+
+    move-result-object v6
+
+    move-object/from16 v0, v18
+
+    invoke-virtual {v0, v6}, Landroid/app/Notification$Builder;->setContentIntent(Landroid/app/PendingIntent;)Landroid/app/Notification$Builder;
+
+    goto/16 :goto_0
+
+    .line 2793
+    .end local v19    # "deleteIntent":Landroid/content/Intent;
+    .end local v22    # "intent":Landroid/content/Intent;
+    :pswitch_7
+    const v6, #android:string@data_usage_3g_limit_snoozed_title#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v27
+
+    .restart local v27    # "title":Ljava/lang/CharSequence;
+    goto :goto_3
+
+    .line 2796
+    .end local v27    # "title":Ljava/lang/CharSequence;
+    :pswitch_8
+    const v6, #android:string@data_usage_4g_limit_snoozed_title#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v27
+
+    .restart local v27    # "title":Ljava/lang/CharSequence;
+    goto :goto_3
+
+    .line 2799
+    .end local v27    # "title":Ljava/lang/CharSequence;
+    :pswitch_9
+    const v6, #android:string@data_usage_mobile_limit_snoozed_title#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v27
+
+    .restart local v27    # "title":Ljava/lang/CharSequence;
+    goto/16 :goto_3
+
+    .line 2802
+    .end local v27    # "title":Ljava/lang/CharSequence;
+    :pswitch_a
+    const v6, #android:string@data_usage_wifi_limit_snoozed_title#t
+
+    move-object/from16 v0, v23
+
+    invoke-virtual {v0, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
+
+    move-result-object v27
+
+    .restart local v27    # "title":Ljava/lang/CharSequence;
+    goto/16 :goto_3
+
+    .line 2842
+    .end local v17    # "body":Ljava/lang/CharSequence;
+    .end local v24    # "overBytes":J
+    .end local v27    # "title":Ljava/lang/CharSequence;
+    :catch_0
+    move-exception v20
+
+    .local v20, "e":Landroid/os/RemoteException;
+    goto/16 :goto_1
+
+    .line 2722
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+        :pswitch_1
+        :pswitch_6
+    .end packed-switch
+
+    .line 2747
+    :pswitch_data_1
+    .packed-switch 0x1
+        :pswitch_4
+        :pswitch_2
+        :pswitch_3
+        :pswitch_5
+    .end packed-switch
+
+    .line 2791
+    :pswitch_data_2
+    .packed-switch 0x1
+        :pswitch_9
+        :pswitch_7
+        :pswitch_8
+        :pswitch_a
+    .end packed-switch
+.end method
+
+.method static flymeInvokeMethodIsUidValidForRules(I)Z
+    .locals 1
+    .param p0, "uid"    # I
+
+    .prologue
+    .line 2848
+    invoke-static {p0}, Lcom/android/server/net/NetworkPolicyManagerService;->isUidValidForRules(I)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method private flymeNotifyOverLimitLocked(Landroid/net/NetworkPolicy;J)V
+    .locals 4
+    .param p1, "policy"    # Landroid/net/NetworkPolicy;
+    .param p2, "totalBytes"    # J
+
+    .prologue
+    .line 2682
+    iget-object v1, p1, Landroid/net/NetworkPolicy;->template:Landroid/net/NetworkTemplate;
+
+    .line 2683
+    .local v1, "template":Landroid/net/NetworkTemplate;
+    iget-object v2, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mOverLimitNotified:Landroid/util/ArraySet;
+
+    invoke-virtual {v2, v1}, Landroid/util/ArraySet;->contains(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_0
+
+    .line 2685
+    :try_start_0
+    iget-object v2, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mContext:Landroid/content/Context;
+
+    invoke-static {v1, p1, p2, p3}, Lcom/android/server/net/NetworkPolicyManagerService$FlymeInjector;->buildFlymeNetworkOverLimitIntent(Landroid/net/NetworkTemplate;Landroid/net/NetworkPolicy;J)Landroid/content/Intent;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
+    :try_end_0
+    .catch Landroid/content/ActivityNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 2688
+    :goto_0
+    iget-object v2, p0, Lcom/android/server/net/NetworkPolicyManagerService;->mOverLimitNotified:Landroid/util/ArraySet;
+
+    invoke-virtual {v2, v1}, Landroid/util/ArraySet;->add(Ljava/lang/Object;)Z
+
+    .line 2681
+    :cond_0
+    return-void
+
+    .line 2686
+    :catch_0
+    move-exception v0
+
+    .local v0, "e":Landroid/content/ActivityNotFoundException;
+    goto :goto_0
 .end method
