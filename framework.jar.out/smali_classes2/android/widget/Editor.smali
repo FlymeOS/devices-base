@@ -4301,7 +4301,7 @@
     const/4 v2, 0x0
 
     .line 2058
-    invoke-static {p0}, Landroid/widget/Editor$FlymeInjector;->isFlymeCursorVisible(Landroid/widget/Editor;)Z
+    invoke-static/range {p0 .. p0}, Landroid/widget/Editor$FlymeInjector;->isFlymeCursorVisible(Landroid/widget/Editor;)Z
 
     move-result v3
 
@@ -6703,9 +6703,9 @@
     .line 1499
     invoke-direct {p0, p1, p5}, Landroid/widget/Editor;->drawCursor(Landroid/graphics/Canvas;I)V
 
-    .line 1502
     :cond_flyme_0
 
+    .line 1502
     const/4 p3, 0x0
 
     .line 1505
@@ -8237,6 +8237,7 @@
 
     .line 578
     :cond_3
+
     invoke-static/range {p0 .. p0}, Landroid/widget/Editor$FlymeInjector;->updateBackground(Landroid/widget/Editor;)V
 
     return-void
@@ -8565,9 +8566,9 @@
     .line 1162
     invoke-direct {p0}, Landroid/widget/Editor;->hideCursorControllers()V
 
-    .line 1164
     invoke-static/range {p0 .. p0}, Landroid/widget/Editor$FlymeInjector;->stopDragSelectionMode(Landroid/widget/Editor;)V
 
+    .line 1164
     iget-object v0, p0, Landroid/widget/Editor;->mSelectionModifierCursorController:Landroid/widget/Editor$SelectionModifierCursorController;
 
     if-eqz v0, :cond_0
@@ -8838,6 +8839,7 @@
     .locals 2
 
     .prologue
+
     iget-object v0, p0, Landroid/widget/Editor;->mTextView:Landroid/widget/TextView;
 
     if-eqz v0, :cond_flyme_0
@@ -8893,6 +8895,7 @@
     .locals 1
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/widget/Editor$FlymeInjector;->removeSelectonActionModeRunnable(Landroid/widget/Editor;)V
 
     .line 1954
@@ -8907,6 +8910,7 @@
 
     .line 1953
     :cond_0
+
     invoke-static/range {p0 .. p0}, Landroid/widget/Editor$FlymeInjector;->hideSelectionModifierCursorController(Landroid/widget/Editor;)V
 
     return-void

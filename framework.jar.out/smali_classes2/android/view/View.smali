@@ -7908,6 +7908,7 @@
     .locals 2
 
     .prologue
+
     const/4 v0, 0x0
 
     return v0
@@ -29966,6 +29967,7 @@
 
     .line 13917
     .local v7, "right":I
+
     move-object/from16 v0, p0
 
     invoke-direct {v0, v5}, Landroid/view/View;->flymeSetScrollBarPaddingLeft(I)I
@@ -30115,6 +30117,7 @@
     sub-int v8, v2, v3
 
     .restart local v8    # "bottom":I
+
     move-object/from16 v0, p0
 
     invoke-direct {v0, v6}, Landroid/view/View;->flymeSetScrollBarPaddingTop(I)I

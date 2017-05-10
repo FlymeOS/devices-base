@@ -370,6 +370,7 @@
 
     .line 204
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
+
     invoke-static/range {p0 .. p3}, Lcom/android/internal/app/AlertController$FlymeInjector;->initFlymeExtFields(Lcom/android/internal/app/AlertController;Landroid/content/Context;Landroid/content/DialogInterface;Landroid/view/Window;)V
 
     .line 178

@@ -553,6 +553,7 @@
     .line 968
     :cond_8
     :goto_2
+
     invoke-static/range {p0 .. p1}, Lcom/android/internal/app/AlertController$FlymeInjector;->setFlymeStyleParams(Lcom/android/internal/app/AlertController$AlertParams;Lcom/android/internal/app/AlertController;)V
 
     return-void

@@ -815,7 +815,9 @@
 
     .line 156
     :cond_2
+
     :goto_flyme_0
+
     :try_start_2
     const-string/jumbo v4, "WebViewFactory.getProvider()"
 

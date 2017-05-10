@@ -4952,6 +4952,7 @@
     .param p1, "typeface"    # Landroid/graphics/Typeface;
 
     .prologue
+
     invoke-direct/range {p0 .. p1}, Landroid/graphics/Paint;->setFlymeTypeface(Landroid/graphics/Typeface;)V
 
     .line 1072

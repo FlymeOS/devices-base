@@ -12782,6 +12782,7 @@
 
     .line 10883
     :cond_4
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowManagerService$FlymeInjector;->isFlymeDisableScreenRotation(Lcom/android/server/wm/WindowManagerService;)Z
 
     move-result v0
@@ -16864,6 +16865,7 @@
 
     .line 1875
     :cond_2
+
     move-object/from16 v0, p0
 
     move-object/from16 v1, v28
@@ -27783,6 +27785,7 @@
 
     .line 9375
     :goto_9
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowManagerService$FlymeInjector;->applyFlymeAnimateWallpaper(Lcom/android/server/wm/WindowManagerService;)V
 
     move-object/from16 v0, p0
@@ -28694,7 +28697,7 @@
 
     move-result v0
 
-    if-eqz v0, :code_flyme_0
+    if-eqz v0, :cond_flyme_0
 
     move-object/from16 v0, p0
 
@@ -28706,7 +28709,7 @@
 
     goto :goto_flyme_0
 
-    :code_flyme_0
+    :cond_flyme_0
 
     .line 9527
     move-object/from16 v0, p0
@@ -33996,6 +33999,7 @@
     .restart local v29    # "win":Lcom/android/server/wm/WindowState;
     :cond_1
     :try_start_1
+
     move-object/from16 v0, p0
 
     move/from16 v1, p7
@@ -34243,6 +34247,7 @@
     .restart local v11    # "flagChanges":I
     :cond_8
     :try_start_2
+
     move-object/from16 v0, p0
 
     move-object/from16 v1, p4
@@ -36721,6 +36726,7 @@
     .line 2813
     .end local v1    # "cwin":Lcom/android/server/wm/WindowState;
     :cond_1
+
     invoke-static/range {p0 .. p1}, Lcom/android/server/wm/WindowManagerService$FlymeInjector;->notifyFlymeMoveWin(Lcom/android/server/wm/WindowManagerService;Lcom/android/server/wm/WindowState;)V
 
     iput-boolean v12, p1, Lcom/android/server/wm/WindowState;->mRemoved:Z

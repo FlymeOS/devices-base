@@ -31,10 +31,11 @@
     return-void
 .end method
 
-.method static getPosition(Landroid/widget/AutoCompleteTextView;I)I
+.method static getPosition(Landroid/widget/AutoCompleteTextView;Landroid/view/View;I)I
     .locals 1
     .param p0, "tv"    # Landroid/widget/AutoCompleteTextView;
-    .param p1, "position"    # I
+    .param p1, "selectedView"    # Landroid/view/View;
+    .param p2, "position"    # I
 
     .prologue
     .line 1395
@@ -50,7 +51,7 @@
 
     move-result v0
 
-    sub-int v0, p1, v0
+    sub-int v0, p2, v0
 
     return v0
 .end method

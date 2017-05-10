@@ -37,6 +37,7 @@
     .param p2, "usageStats"    # Lcom/android/server/notification/NotificationUsageStats;
 
     .prologue
+
     invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/PackagePriorityExtractor;->initFlymeExtraFields(Landroid/content/Context;)V
 
     .line 27
@@ -96,6 +97,7 @@
 
     .line 44
     .local v0, "packagePriority":I
+
     invoke-direct/range {p0 .. p1}, Lcom/android/server/notification/PackagePriorityExtractor;->getFlymePackagePriority(Lcom/android/server/notification/NotificationRecord;)I
 
     move-result v0

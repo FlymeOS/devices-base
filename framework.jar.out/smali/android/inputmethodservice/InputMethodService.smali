@@ -781,9 +781,11 @@
     .line 1638
     :cond_1
     :goto_0
+
     invoke-static/range {p0 .. p2}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->hideInputDelayIfNeeded(Landroid/inputmethodservice/InputMethodService;Landroid/view/inputmethod/InputConnection;Landroid/view/inputmethod/EditorInfo;)V
 
     :cond_flyme_0
+
     return-void
 
     .line 1654
@@ -2613,7 +2615,7 @@
     .prologue
     const/4 v10, 0x0
 
-    const v4, 0x103013e
+    sget v4, Lcom/flyme/internal/R$style;->Theme_Flyme_InputMethod:I
 
     const/4 v9, 0x0
 
@@ -2634,10 +2636,6 @@
     const v3, 0x103007f
 
     move v5, v4
-
-    sget v4, Lcom/flyme/internal/R$style;->Theme_Flyme_InputMethod:I
-
-    sget v5, Lcom/flyme/internal/R$style;->Theme_Flyme_InputMethod:I
 
     .line 673
     invoke-static/range {v0 .. v5}, Landroid/content/res/Resources;->selectSystemTheme(IIIIII)I
@@ -3388,6 +3386,7 @@
 
     .line 1853
     :cond_0
+
     invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->isImeInterceptBackKey(Landroid/inputmethodservice/InputMethodService;)Z
 
     move-result v1
@@ -4090,6 +4089,7 @@
     .param p1, "flags"    # I
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/inputmethodservice/InputMethodService$FlymeInjector;->requestHideSelf(Landroid/inputmethodservice/InputMethodService;)Z
 
     move-result v0

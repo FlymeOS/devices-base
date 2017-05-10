@@ -4,6 +4,7 @@
 
 
 # annotations
+
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Landroid/app/Notification$InboxStyle$FlymeInjector;
@@ -21,6 +22,7 @@
 
 
 # instance fields
+
 .field mFlymeSimSlots:Ljava/util/ArrayList;
     .annotation system Ldalvik/annotation/Signature;
         value = {

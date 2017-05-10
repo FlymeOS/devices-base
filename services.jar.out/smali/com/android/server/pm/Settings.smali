@@ -21686,6 +21686,7 @@
 
     .line 3870
     :cond_2
+
     invoke-direct {p0, p1, p2, p6}, Lcom/android/server/pm/Settings;->sendFlymePackageFirstLaunchBroadcast(Lcom/android/server/pm/PackageManagerService;Ljava/lang/String;I)V
 
     const/4 v0, 0x0

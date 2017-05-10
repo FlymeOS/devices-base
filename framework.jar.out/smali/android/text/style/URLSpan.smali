@@ -94,6 +94,7 @@
     .param p1, "widget"    # Landroid/view/View;
 
     .prologue
+
     invoke-direct/range {p0 .. p1}, Landroid/text/style/URLSpan;->onFlymeClick(Landroid/view/View;)Z
 
     move-result v0

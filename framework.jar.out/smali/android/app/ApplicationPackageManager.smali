@@ -2707,6 +2707,13 @@
     .locals 2
 
     .prologue
+
+    invoke-static {}, Landroid/app/ApplicationPackageManager$FlymeInjector;->getFlymeDefaultActivityIcon()Landroid/graphics/drawable/Drawable;
+
+    move-result-object v0
+
+    return-object v0
+
     .line 896
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
@@ -2716,7 +2723,7 @@
     const v1, 0x1080093
 
     .line 896
-    invoke-static {}, Landroid/app/ApplicationPackageManager$FlymeInjector;->getFlymeDefaultActivityIcon()Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
@@ -2773,6 +2780,7 @@
 
     .line 821
     .local v0, "cachedIcon":Landroid/graphics/drawable/Drawable;
+
     invoke-static/range {p1 .. p1}, Landroid/app/ApplicationPackageManager$FlymeInjector;->isFlymeCalendarPkg(Ljava/lang/String;)Z
 
     move-result v7
@@ -2811,6 +2819,10 @@
     .line 836
     .local v6, "r":Landroid/content/res/Resources;
     const/4 v7, 0x0
+
+    invoke-virtual {v6, p2, v7}, Landroid/content/res/Resources;->getDrawable(ILandroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v1
 
     invoke-static/range {p0 .. p3}, Landroid/app/ApplicationPackageManager$FlymeInjector;->getFlymeThemeDrawable(Landroid/app/ApplicationPackageManager;Ljava/lang/String;ILandroid/content/pm/ApplicationInfo;)Landroid/graphics/drawable/Drawable;
 

@@ -1040,19 +1040,12 @@
     .param p2, "subtype"    # Landroid/view/inputmethod/InputMethodSubtype;
 
     .prologue
-    invoke-static {}, Lcom/android/internal/inputmethod/InputMethodUtils;->isTrue()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_flyme_0
 
     invoke-static/range {p0 .. p2}, Lcom/android/internal/inputmethod/InputMethodUtils;->getFlymeImeAndSubtypeDisplayName(Landroid/content/Context;Landroid/view/inputmethod/InputMethodInfo;Landroid/view/inputmethod/InputMethodSubtype;)Ljava/lang/CharSequence;
 
     move-result-object v0
 
     return-object v0
-
-    :cond_flyme_0
 
     .line 741
     invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
@@ -3471,14 +3464,4 @@
     const/4 v1, 0x1
 
     goto :goto_2
-.end method
-
-.method private static isTrue()Z
-    .locals 1
-
-    .prologue
-    .line 775
-    const/4 v0, 0x1
-
-    return v0
 .end method

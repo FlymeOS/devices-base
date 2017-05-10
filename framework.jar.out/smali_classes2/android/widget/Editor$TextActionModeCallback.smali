@@ -609,6 +609,7 @@
     .param p2, "menu"    # Landroid/view/Menu;
 
     .prologue
+
     if-eqz p2, :cond_flyme_0
 
     invoke-virtual/range {p0 .. p2}, Landroid/widget/Editor$TextActionModeCallback;->onCreateActionModeMz(Landroid/view/ActionMode;Landroid/view/Menu;)Z
@@ -757,6 +758,7 @@
 
     .line 3264
     :cond_0
+
     invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$TextActionModeCallback;->flymeOnDestroyActionMode()Z
 
     move-result v1

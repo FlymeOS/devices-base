@@ -569,6 +569,7 @@
     :cond_0
     :goto_0
     :pswitch_0
+
     invoke-direct/range {p0 .. p1}, Landroid/widget/Editor$SelectionModifierCursorController;->flymeTouchEvent(Landroid/view/MotionEvent;)V
 
     return-void

@@ -3319,6 +3319,7 @@
 
     .line 1377
     :cond_d
+
     invoke-static/range {p0 .. p1}, Landroid/widget/TextView$FlymeInjector;->initFlymeExtraFields(Landroid/widget/TextView;Landroid/content/Context;)V
 
     if-nez v54, :cond_e
@@ -9598,6 +9599,7 @@
     .line 4283
     .local v17, "s2":Landroid/text/Spannable;
     :goto_4
+
     invoke-static/range {p0 .. p0}, Landroid/widget/TextView$FlymeInjector;->resetAutoLinkMask(Landroid/widget/TextView;)V
 
     move-object/from16 v0, p0
@@ -22052,6 +22054,7 @@
     .line 8218
     .end local v6    # "sp":Landroid/text/Spannable;
     :cond_2
+
     invoke-static/range {p0 .. p1}, Landroid/widget/TextView$FlymeInjector;->onFocusChanged(Landroid/widget/TextView;Z)V
 
     invoke-direct {p0, p1}, Landroid/widget/TextView;->startStopMarquee(Z)V
@@ -25593,7 +25596,9 @@
 
     if-nez v5, :cond_flyme_0
 
-    return v6
+    const/4 v5, 0x1
+
+    return v5
 
     :cond_flyme_0
 
@@ -26082,6 +26087,7 @@
 
     .line 8344
     :cond_a
+
     invoke-static/range {p0 .. p1}, Landroid/widget/TextView$FlymeInjector;->onTouchUpEventMz(Landroid/widget/TextView;Landroid/view/MotionEvent;)V
 
     invoke-static {}, Landroid/view/inputmethod/InputMethodManager;->peekInstance()Landroid/view/inputmethod/InputMethodManager;
@@ -26115,9 +26121,9 @@
 
     .line 8351
     :cond_b
-    iget-object v7, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
+    #iget-object v7, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
-    invoke-virtual {v7, p1}, Landroid/widget/Editor;->onTouchUpEvent(Landroid/view/MotionEvent;)V
+    #invoke-virtual {v7, p1}, Landroid/widget/Editor;->onTouchUpEvent(Landroid/view/MotionEvent;)V
 
     .line 8353
     const/4 v1, 0x1
@@ -30268,6 +30274,7 @@
 
     .line 4558
     :cond_3
+
     invoke-static/range {p0 .. p0}, Landroid/widget/TextView$FlymeInjector;->updateCurrentCursorVisbilityOnFocusOrInputTypeChangedIfHasFocus(Landroid/widget/TextView;)V
 
     invoke-static {}, Landroid/view/inputmethod/InputMethodManager;->peekInstance()Landroid/view/inputmethod/InputMethodManager;
@@ -32647,6 +32654,7 @@
 
     .line 8104
     :cond_7
+
     invoke-static/range {p0 .. p6}, Landroid/widget/TextView$FlymeInjector;->editorOnSelectionChanged(Landroid/widget/TextView;Landroid/text/Spanned;Ljava/lang/Object;IIII)V
 
     instance-of v5, p2, Landroid/text/style/UpdateAppearance;

@@ -16,6 +16,7 @@
 
 
 # static fields
+
 .field public static final CONFIG_THEME:I = 0x4000
 
 .field public static final CONFIG_TYPEFACE:I = 0x8000
@@ -165,6 +166,7 @@
 
 
 # instance fields
+
 .field public mFlymeActivityInfo:Landroid/content/ActivityInfoExt;
 
 .field public configChanges:I
@@ -364,7 +366,6 @@
     iput v0, p0, Landroid/content/pm/ActivityInfo;->lockTaskLaunchMode:I
 
     invoke-static/range {p0 .. p1}, Landroid/content/pm/ActivityInfo$FlymeInjector;->copyFromActivityInfo(Landroid/content/pm/ActivityInfo;Landroid/content/pm/ActivityInfo;)V
-
 
     .line 708
     return-void

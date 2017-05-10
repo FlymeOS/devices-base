@@ -9463,11 +9463,12 @@
 
     .line 2725
     invoke-virtual {v7, v8, v9}, Landroid/content/BroadcastReceiver;->onReceive(Landroid/content/Context;Landroid/content/Intent;)V
+
+    :cond_flyme_0
+
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    :cond_flyme_0
 
     .line 2737
     sget-object v8, Landroid/app/ActivityThread;->sCurrentBroadcastIntent:Ljava/lang/ThreadLocal;
@@ -18025,7 +18026,9 @@
     .param p4, "reallyResume"    # Z
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/app/ActivityThread$FlymeInjector;->handleFlymeResumeActivity(Landroid/app/ActivityThread;)V
+
     .line 3130
     invoke-virtual {p0}, Landroid/app/ActivityThread;->unscheduleGcIdler()V
 

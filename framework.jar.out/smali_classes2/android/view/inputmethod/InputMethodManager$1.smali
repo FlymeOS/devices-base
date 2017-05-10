@@ -150,6 +150,7 @@
     .param p1, "sequence"    # I
 
     .prologue
+
     invoke-direct/range {p0 .. p1}, Landroid/view/inputmethod/InputMethodManager$1;->hookOnUnbindMethodForOnInputShownChanged(I)Z
 
     move-result v0

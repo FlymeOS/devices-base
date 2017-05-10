@@ -766,6 +766,7 @@
 
     .line 287
     .local v20, "stateResId":I
+
     move-object/from16 v0, p0
 
     move-object/from16 v1, p1

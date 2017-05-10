@@ -1215,6 +1215,7 @@
 
     .line 233
     :cond_0
+
     invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/InputMonitor;->initFlymeSpecialWindow()V
 
     const/4 v2, 0x0

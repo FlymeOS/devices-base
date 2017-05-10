@@ -2052,6 +2052,7 @@
 
     .line 655
     :goto_7
+
     invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowState$FlymeInjector;->computeFrameLw(Lcom/android/server/wm/WindowState;)V
 
     move-object/from16 v0, p0

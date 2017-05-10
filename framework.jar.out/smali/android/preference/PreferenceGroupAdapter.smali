@@ -467,6 +467,7 @@
     .locals 1
 
     .prologue
+
     iget-boolean v0, p0, Landroid/preference/PreferenceGroupAdapter;->mIsFlymeThemeLight:Z
 
     if-eqz v0, :cond_flyme_0

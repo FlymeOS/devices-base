@@ -841,6 +841,7 @@
     .param p1, "method"    # Landroid/text/TextUtils$TruncateAt;
 
     .prologue
+
     invoke-static {}, Landroid/os/BuildExt;->isProductInternational()Z
 
     move-result v0

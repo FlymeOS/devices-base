@@ -311,11 +311,12 @@
 
     .line 557
     :cond_0
+
+    iget-object v0, p0, Lcom/android/server/notification/NotificationManagerService$1;->this$0:Lcom/android/server/notification/NotificationManagerService;
+
+    invoke-virtual {v0, p3}, Lcom/android/server/notification/NotificationManagerService;->addFlymePackageClickNumber(Ljava/lang/String;)V
+
     :try_start_1
-    iget-object v5, p0, Lcom/android/server/notification/NotificationManagerService$1;->this$0:Lcom/android/server/notification/NotificationManagerService;
-
-    invoke-virtual {v5, p3}, Lcom/android/server/notification/NotificationManagerService;->addFlymePackageClickNumber(Ljava/lang/String;)V
-
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     move-result-wide v0

@@ -11860,3 +11860,44 @@
     .line 6864
     return-void
 .end method
+
+.method public overridePendingTransition(Landroid/os/Bundle;)V
+    .locals 5
+    .param p1, "options"    # Landroid/os/Bundle;
+
+    .prologue
+    .line 4711
+    :try_start_0
+    new-instance v1, Landroid/app/FlymeExtIActivityManagerProxy;
+
+    invoke-direct {v1}, Landroid/app/FlymeExtIActivityManagerProxy;-><init>()V
+
+    invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
+
+    move-result-object v2
+
+    invoke-interface {v2}, Landroid/app/IActivityManager;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    iget-object v3, p0, Landroid/app/Activity;->mToken:Landroid/os/IBinder;
+
+    invoke-virtual {p0}, Landroid/app/Activity;->getPackageName()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v1, v2, v3, v4, p1}, Landroid/app/FlymeExtIActivityManagerProxy;->overridePendingTransition(Landroid/os/IBinder;Landroid/os/IBinder;Ljava/lang/String;Landroid/os/Bundle;)V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 4709
+    :goto_0
+    return-void
+
+    .line 4712
+    :catch_0
+    move-exception v0
+
+    .local v0, "e":Landroid/os/RemoteException;
+    goto :goto_0
+.end method

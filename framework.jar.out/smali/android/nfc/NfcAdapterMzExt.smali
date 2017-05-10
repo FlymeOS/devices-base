@@ -48,8 +48,6 @@
 
 .field private static mInstance:Landroid/nfc/NfcAdapterMzExt;
 
-.field private static sService:Landroid/nfc/INfcAdapter;
-
 
 # instance fields
 .field private final mContext:Landroid/content/Context;
@@ -89,9 +87,6 @@
     .line 40
     iput-object p1, p0, Landroid/nfc/NfcAdapterMzExt;->mContext:Landroid/content/Context;
 
-    .line 41
-    invoke-direct {p0}, Landroid/nfc/NfcAdapterMzExt;->initService()V
-
     .line 39
     return-void
 .end method
@@ -105,21 +100,21 @@
 
     monitor-enter v1
 
-    .line 49
+    .line 48
     :try_start_0
     sget-object v0, Landroid/nfc/NfcAdapterMzExt;->mInstance:Landroid/nfc/NfcAdapterMzExt;
 
     if-nez v0, :cond_0
 
-    .line 50
+    .line 49
     new-instance v0, Landroid/nfc/NfcAdapterMzExt;
 
     invoke-direct {v0, p0}, Landroid/nfc/NfcAdapterMzExt;-><init>(Landroid/content/Context;)V
 
     sput-object v0, Landroid/nfc/NfcAdapterMzExt;->mInstance:Landroid/nfc/NfcAdapterMzExt;
 
-    .line 54
-    :goto_0
+    .line 51
+    :cond_0
     sget-object v0, Landroid/nfc/NfcAdapterMzExt;->mInstance:Landroid/nfc/NfcAdapterMzExt;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
@@ -127,17 +122,6 @@
     monitor-exit v1
 
     return-object v0
-
-    .line 52
-    :cond_0
-    :try_start_1
-    sget-object v0, Landroid/nfc/NfcAdapterMzExt;->mInstance:Landroid/nfc/NfcAdapterMzExt;
-
-    invoke-direct {v0}, Landroid/nfc/NfcAdapterMzExt;->initService()V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    goto :goto_0
 
     :catchall_0
     move-exception v0
@@ -147,61 +131,25 @@
     throw v0
 .end method
 
-.method private static getServiceInterface()Landroid/nfc/INfcAdapter;
-    .locals 3
-
-    .prologue
-    const/4 v2, 0x0
-
-    .line 158
-    const-string/jumbo v1, "nfc"
-
-    invoke-static {v1}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
-
-    move-result-object v0
-
-    .line 159
-    .local v0, "b":Landroid/os/IBinder;
-    if-nez v0, :cond_0
-
-    .line 160
-    return-object v2
-
-    .line 162
-    :cond_0
-    invoke-static {v0}, Landroid/nfc/INfcAdapter$Stub;->asInterface(Landroid/os/IBinder;)Landroid/nfc/INfcAdapter;
-
-    move-result-object v1
-
-    return-object v1
-.end method
-
 .method public static hasHceFeature()Z
-    .locals 5
+    .locals 4
 
     .prologue
-    const/4 v4, 0x0
+    const/4 v3, 0x0
 
-    .line 131
+    .line 122
     invoke-static {}, Landroid/app/ActivityThread;->getPackageManager()Landroid/content/pm/IPackageManager;
 
     move-result-object v1
 
-    .line 132
+    .line 123
     .local v1, "pm":Landroid/content/pm/IPackageManager;
     if-nez v1, :cond_0
 
-    .line 133
-    sget-object v2, Landroid/nfc/NfcAdapterMzExt;->TAG:Ljava/lang/String;
+    .line 124
+    return v3
 
-    const-string/jumbo v3, "Cannot get package manager, assuming no NFC feature"
-
-    invoke-static {v2, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 134
-    return v4
-
-    .line 137
+    .line 127
     :cond_0
     :try_start_0
     const-string/jumbo v2, "android.hardware.nfc.hce"
@@ -214,71 +162,23 @@
 
     return v2
 
-    .line 138
+    .line 128
     :catch_0
     move-exception v0
 
-    .line 139
+    .line 129
     .local v0, "e":Landroid/os/RemoteException;
-    sget-object v2, Landroid/nfc/NfcAdapterMzExt;->TAG:Ljava/lang/String;
-
-    const-string/jumbo v3, "Package manager query failed, assuming no NFC feature"
-
-    invoke-static {v2, v3, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 140
-    return v4
-.end method
-
-.method private initService()V
-    .locals 2
-
-    .prologue
-    .line 147
-    invoke-static {}, Landroid/nfc/NfcAdapterMzExt;->getServiceInterface()Landroid/nfc/INfcAdapter;
-
-    move-result-object v0
-
-    sput-object v0, Landroid/nfc/NfcAdapterMzExt;->sService:Landroid/nfc/INfcAdapter;
-
-    .line 148
-    sget-object v0, Landroid/nfc/NfcAdapterMzExt;->sService:Landroid/nfc/INfcAdapter;
-
-    if-nez v0, :cond_0
-
-    .line 149
-    sget-object v0, Landroid/nfc/NfcAdapterMzExt;->TAG:Ljava/lang/String;
-
-    const-string/jumbo v1, "could not retrieve NFC service"
-
-    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 150
-    return-void
-
-    .line 146
-    :cond_0
-    return-void
+    return v3
 .end method
 
 
 # virtual methods
 .method public attemptDeadServiceRecovery(Ljava/lang/Exception;)V
-    .locals 2
+    .locals 0
     .param p1, "e"    # Ljava/lang/Exception;
 
     .prologue
-    .line 192
-    sget-object v0, Landroid/nfc/NfcAdapterMzExt;->TAG:Ljava/lang/String;
-
-    const-string/jumbo v1, "NFC service dead - attempting to recover"
-
-    invoke-static {v0, v1, p1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 193
-    invoke-direct {p0}, Landroid/nfc/NfcAdapterMzExt;->initService()V
-
-    .line 191
+    .line 158
     return-void
 .end method
 
@@ -288,14 +188,7 @@
     .prologue
     const/4 v3, 0x1
 
-    .line 87
-    sget-object v1, Landroid/nfc/NfcAdapterMzExt;->TAG:Ljava/lang/String;
-
-    const-string/jumbo v2, "set MZ_NFCP2P_ON to DB, the value is 1"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 88
+    .line 84
     iget-object v1, p0, Landroid/nfc/NfcAdapterMzExt;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -306,40 +199,33 @@
 
     invoke-static {v1, v2, v3}, Landroid/provider/Settings$Secure;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 90
+    .line 86
     new-instance v0, Landroid/content/Intent;
 
     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
-    .line 92
+    .line 88
     .local v0, "intent":Landroid/content/Intent;
     const-string/jumbo v1, "mz.android.nfc.extra.MZ_NFC_P2P_STATE"
 
     invoke-virtual {v0, v1, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 93
+    .line 89
     const-string/jumbo v1, "mz.android.nfc.action.MZ_NFC_P2P_STATE_CHANGED"
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 94
+    .line 90
     const/high16 v1, 0x10000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 96
+    .line 92
     iget-object v1, p0, Landroid/nfc/NfcAdapterMzExt;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 97
-    sget-object v1, Landroid/nfc/NfcAdapterMzExt;->TAG:Ljava/lang/String;
-
-    const-string/jumbo v2, "sendBroadcast: mz.android.nfc.action.MZ_NFC_P2P_STATE_CHANGED"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 86
+    .line 83
     return-void
 .end method
 
@@ -349,14 +235,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 106
-    sget-object v1, Landroid/nfc/NfcAdapterMzExt;->TAG:Ljava/lang/String;
-
-    const-string/jumbo v2, "set MZ_NFCP2P_ON to DB, the value is 0"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 107
+    .line 101
     iget-object v1, p0, Landroid/nfc/NfcAdapterMzExt;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -367,35 +246,28 @@
 
     invoke-static {v1, v2, v3}, Landroid/provider/Settings$Secure;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 108
+    .line 102
     new-instance v0, Landroid/content/Intent;
 
     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
-    .line 110
+    .line 104
     .local v0, "intent":Landroid/content/Intent;
     const-string/jumbo v1, "mz.android.nfc.extra.MZ_NFC_P2P_STATE"
 
     invoke-virtual {v0, v1, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 111
+    .line 105
     const-string/jumbo v1, "mz.android.nfc.action.MZ_NFC_P2P_STATE_CHANGED"
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 113
+    .line 107
     iget-object v1, p0, Landroid/nfc/NfcAdapterMzExt;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 114
-    sget-object v1, Landroid/nfc/NfcAdapterMzExt;->TAG:Ljava/lang/String;
-
-    const-string/jumbo v2, "sendBroadcast: mz.android.nfc.action.MZ_NFC_P2P_STATE_CHANGED"
-
-    invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 105
+    .line 100
     return-void
 .end method
 
@@ -409,7 +281,7 @@
     .end annotation
 
     .prologue
-    .line 184
+    .line 151
     const-string/jumbo v0, "com.nxp.none_se.ID"
 
     return-object v0
@@ -423,7 +295,7 @@
 
     const/4 v1, 0x0
 
-    .line 125
+    .line 117
     iget-object v2, p0, Landroid/nfc/NfcAdapterMzExt;->mContext:Landroid/content/Context;
 
     invoke-virtual {v2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -432,7 +304,6 @@
 
     const-string/jumbo v3, "mz_nfcp2p_on"
 
-    .line 124
     invoke-static {v2, v3, v1}, Landroid/provider/Settings$Secure;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
 
     move-result v2
@@ -459,6 +330,6 @@
     .end annotation
 
     .prologue
-    .line 173
+    .line 140
     return-void
 .end method

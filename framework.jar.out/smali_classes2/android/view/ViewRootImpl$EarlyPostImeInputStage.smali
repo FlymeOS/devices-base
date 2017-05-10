@@ -47,6 +47,7 @@
 
     .line 4019
     .local v0, "event":Landroid/view/KeyEvent;
+
     invoke-direct {p0, v0}, Landroid/view/ViewRootImpl$EarlyPostImeInputStage;->flymeEnsureTM(Landroid/view/KeyEvent;)Z
 
     move-result v1

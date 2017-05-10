@@ -251,12 +251,12 @@
     iget-object v1, p0, Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperObserver;->mWallpaper:Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperData;
 
     invoke-static {v0, v1}, Lcom/android/server/wallpaper/WallpaperManagerService;->-wrap2(Lcom/android/server/wallpaper/WallpaperManagerService;Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperData;)V
-
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .end local v10    # "written":Z
     :cond_6
+
     invoke-direct {p0, v7}, Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperObserver;->notifyFlymeLockWallpaperChanged(Ljava/io/File;)V
 
     monitor-exit v11

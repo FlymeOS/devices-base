@@ -56,7 +56,7 @@ vendor_modify_images := boot
 #-----------------------------------------------------------------------------
 vendor_saved_apps := Bluetooth KeyChain HTMLViewer UserDictionaryProvider BackupRestoreConfirmation \
                      FusedLocation PrintSpooler SharedStorageBackup  ExternalStorageProvider InputDevices \
-                     ProxyHandler Shell DefaultContainerService
+                     ProxyHandler Shell DefaultContainerService NfcNci
 
 ##############################################################################
 # The value decides which vendor apk you want to modify.

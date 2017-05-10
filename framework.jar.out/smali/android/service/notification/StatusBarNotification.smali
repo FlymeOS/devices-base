@@ -178,7 +178,6 @@
 
     invoke-static/range {p0 .. p1}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->initFlymeExtraFields(Landroid/service/notification/StatusBarNotification;Landroid/os/Parcel;)V
 
-
     .line 75
     return-void
 
@@ -532,9 +531,12 @@
     .locals 12
 
     .prologue
+
     invoke-static/range {p0 .. p0}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->clone(Landroid/service/notification/StatusBarNotification;)Landroid/service/notification/StatusBarNotification;
 
     move-result-object v0
+
+    return-object v0
 
     .line 161
     new-instance v0, Landroid/service/notification/StatusBarNotification;
@@ -1041,6 +1043,8 @@
     iget-wide v0, p0, Landroid/service/notification/StatusBarNotification;->postTime:J
 
     invoke-virtual {p1, v0, v1}, Landroid/os/Parcel;->writeLong(J)V
+
+    invoke-static/range {p0 .. p2}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->writeToParcel(Landroid/service/notification/StatusBarNotification;Landroid/os/Parcel;I)V
 
     .line 111
     return-void

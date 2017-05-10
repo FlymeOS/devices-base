@@ -16582,11 +16582,11 @@
 
     invoke-virtual {v0, v4, v5}, Landroid/view/ViewRootImpl;->setAccessibilityFocus(Landroid/view/View;Landroid/view/accessibility/AccessibilityNodeInfo;)V
 
-    move-object/from16 v0, p0
+    move-object/from16 v4, p0
 
-    move/from16 v1, v21
+    move/from16 v5, v21
 
-    invoke-direct {v0, v1}, Landroid/view/ViewRootImpl;->isFlymeKeyguardAllowed(I)Z
+    invoke-direct {v4, v5}, Landroid/view/ViewRootImpl;->isFlymeKeyguardAllowed(I)Z
 
     move-result v4
 

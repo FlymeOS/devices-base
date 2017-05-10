@@ -108,6 +108,7 @@
 
     .line 4015
     .local v0, "contentView":Landroid/widget/RemoteViews;
+
     invoke-direct {p0, v0}, Landroid/app/Notification$BigPictureStyle;->getFlymeContentView(Landroid/widget/RemoteViews;)Landroid/widget/RemoteViews;
 
     move-result-object v0
