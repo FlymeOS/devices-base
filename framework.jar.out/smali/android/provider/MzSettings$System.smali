@@ -163,6 +163,8 @@
 
 .field public static final MEIZU_SHOPDEMO_TOOL_PLAYTIME_START_DEFAULT_VALUE:Ljava/lang/String; = "0900"
 
+.field public static final MEIZU_SHOPDEMO_TOOL_PLAYVIDEO:Ljava/lang/String; = "meizu_shopdemo_tool_playvideo"
+
 .field public static final MEIZU_WEEK_START:Ljava/lang/String; = "week_start"
 
 .field public static final MMS_SOUND:Ljava/lang/String; = "mms_sound"

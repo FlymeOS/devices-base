@@ -89,19 +89,19 @@
     .end annotation
 
     .prologue
-    .line 1571
+    .line 1573
     .local p3, "list":Ljava/util/List;, "Ljava/util/List<Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;>;"
     invoke-direct {p0}, Landroid/widget/BaseAdapter;-><init>()V
 
-    .line 1568
+    .line 1570
     const/4 v1, -0x1
 
     iput v1, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mLastChosenPosition:I
 
-    .line 1573
+    .line 1575
     iput-object p1, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mContext:Landroid/content/Context;
 
-    .line 1574
+    .line 1576
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
@@ -110,10 +110,10 @@
 
     iput-object v1, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mPm:Landroid/content/pm/PackageManager;
 
-    .line 1575
+    .line 1577
     iput-object p3, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mList:Ljava/util/List;
 
-    .line 1576
+    .line 1578
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mContext:Landroid/content/Context;
 
     const-string/jumbo v2, "activity"
@@ -124,7 +124,7 @@
 
     check-cast v0, Landroid/app/ActivityManager;
 
-    .line 1577
+    .line 1579
     .local v0, "am":Landroid/app/ActivityManager;
     invoke-virtual {v0}, Landroid/app/ActivityManager;->getLauncherLargeIconDensity()I
 
@@ -132,59 +132,30 @@
 
     iput v1, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mIconDpi:I
 
-    .line 1578
+    .line 1580
     iput-object p2, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mIntent:Landroid/content/Intent;
 
-    .line 1579
+    .line 1581
     iput p4, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mLaunchedFromUid:I
 
-    .line 1580
+    .line 1582
     invoke-static {p1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v1
 
     iput-object v1, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mInflater:Landroid/view/LayoutInflater;
 
-    .line 1572
+    .line 1574
     return-void
 .end method
 
 
 # virtual methods
 .method public getCount()I
-    .locals 3
+    .locals 1
 
     .prologue
-    .line 1585
-    const-string/jumbo v0, "MzResolverActivity"
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v2, "getCount : "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mList:Ljava/util/List;
-
-    invoke-interface {v2}, Ljava/util/List;->size()I
-
-    move-result v2
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1586
+    .line 1587
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mList:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->size()I
@@ -200,7 +171,7 @@
     .param p2, "resId"    # I
 
     .prologue
-    .line 1659
+    .line 1657
     :try_start_0
     iget v2, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mIconDpi:I
 
@@ -210,15 +181,15 @@
 
     move-result-object v1
 
-    .line 1663
+    .line 1661
     :goto_0
     return-object v1
 
-    .line 1660
+    .line 1658
     :catch_0
     move-exception v0
 
-    .line 1661
+    .line 1659
     .local v0, "e":Landroid/content/res/Resources$NotFoundException;
     const/4 v1, 0x0
 
@@ -227,34 +198,11 @@
 .end method
 
 .method public getItem(I)Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
-    .locals 3
+    .locals 1
     .param p1, "i"    # I
 
     .prologue
-    .line 1626
-    const-string/jumbo v0, "MzResolverActivity"
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v2, "getItem i : "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1627
+    .line 1625
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mList:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -271,7 +219,7 @@
     .param p1, "i"    # I
 
     .prologue
-    .line 1625
+    .line 1624
     invoke-virtual {p0, p1}, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->getItem(I)Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
 
     move-result-object v0
@@ -280,34 +228,11 @@
 .end method
 
 .method public getItemId(I)J
-    .locals 3
+    .locals 2
     .param p1, "i"    # I
 
     .prologue
     .line 1620
-    const-string/jumbo v0, "MzResolverActivity"
-
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v2, "getView i : "
-
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v1
-
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 1621
     const-wide/16 v0, 0x0
 
     return-wide v0
@@ -319,49 +244,26 @@
     .param p2, "defIntent"    # Landroid/content/Intent;
 
     .prologue
-    .line 1683
+    .line 1681
     return-object p2
 .end method
 
 .method public getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 6
+    .locals 5
     .param p1, "i"    # I
     .param p2, "convertView"    # Landroid/view/View;
     .param p3, "viewGroup"    # Landroid/view/ViewGroup;
 
     .prologue
-    const/4 v5, 0x0
+    const/4 v4, 0x0
 
-    .line 1591
+    .line 1592
     invoke-virtual {p0, p1}, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->getItem(I)Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
 
     move-result-object v0
 
-    .line 1592
-    .local v0, "info":Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
-    const-string/jumbo v2, "MzResolverActivity"
-
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string/jumbo v4, "getView i : "
-
-    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    move-result-object v3
-
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-static {v2, v3}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 1594
+    .local v0, "info":Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
     if-nez p2, :cond_2
 
     .line 1595
@@ -369,7 +271,7 @@
 
     sget v3, Lcom/flyme/internal/R$layout;->mz_resolve_grid_item:I
 
-    invoke-virtual {v2, v3, p3, v5}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    invoke-virtual {v2, v3, p3, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;Z)Landroid/view/View;
 
     move-result-object p2
 
@@ -419,7 +321,7 @@
 
     move-result-object v3
 
-    invoke-static {v5}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v4
 
@@ -464,14 +366,14 @@
     .param p2, "filtered"    # Z
 
     .prologue
-    .line 1671
+    .line 1669
     if-eqz p2, :cond_0
 
     invoke-virtual {p0, p1}, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->getItem(I)Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
 
     move-result-object v1
 
-    .line 1673
+    .line 1671
     .local v1, "dri":Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
     :goto_0
     new-instance v2, Landroid/content/Intent;
@@ -485,37 +387,37 @@
     :goto_1
     invoke-direct {v2, v3}, Landroid/content/Intent;-><init>(Landroid/content/Intent;)V
 
-    .line 1675
+    .line 1673
     .local v2, "intent":Landroid/content/Intent;
     const/high16 v3, 0x3000000
 
     invoke-virtual {v2, v3}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1676
+    .line 1674
     iget-object v3, v1, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
 
     iget-object v0, v3, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    .line 1677
+    .line 1675
     .local v0, "ai":Landroid/content/pm/ActivityInfo;
     new-instance v3, Landroid/content/ComponentName;
 
-    .line 1678
+    .line 1676
     iget-object v4, v0, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v4, v4, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
     iget-object v5, v0, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
 
-    .line 1677
+    .line 1675
     invoke-direct {v3, v4, v5}, Landroid/content/ComponentName;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
     invoke-virtual {v2, v3}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 1679
+    .line 1677
     return-object v2
 
-    .line 1671
+    .line 1669
     .end local v0    # "ai":Landroid/content/pm/ActivityInfo;
     .end local v1    # "dri":Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
     .end local v2    # "intent":Landroid/content/Intent;
@@ -531,7 +433,7 @@
     .restart local v1    # "dri":Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;
     goto :goto_0
 
-    .line 1674
+    .line 1672
     :cond_1
     iget-object v3, v1, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
 
@@ -553,21 +455,21 @@
     .param p1, "ri"    # Landroid/content/pm/ResolveInfo;
 
     .prologue
-    .line 1632
+    .line 1630
     iget-object v3, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mPm:Landroid/content/pm/PackageManager;
 
     invoke-virtual {p1, v3}, Landroid/content/pm/ResolveInfo;->loadIcon(Landroid/content/pm/PackageManager;)Landroid/graphics/drawable/Drawable;
 
     move-result-object v0
 
-    .line 1633
+    .line 1631
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     if-eqz v0, :cond_0
 
-    .line 1634
+    .line 1632
     return-object v0
 
-    .line 1637
+    .line 1635
     :cond_0
     :try_start_0
     iget-object v3, p1, Landroid/content/pm/ResolveInfo;->resolvePackageName:Ljava/lang/String;
@@ -578,7 +480,7 @@
 
     if-eqz v3, :cond_1
 
-    .line 1638
+    .line 1636
     iget-object v3, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mPm:Landroid/content/pm/PackageManager;
 
     iget-object v4, p1, Landroid/content/pm/ResolveInfo;->resolvePackageName:Ljava/lang/String;
@@ -593,23 +495,23 @@
 
     move-result-object v0
 
-    .line 1639
+    .line 1637
     if-eqz v0, :cond_1
 
-    .line 1640
+    .line 1638
     return-object v0
 
-    .line 1643
+    .line 1641
     :cond_1
     invoke-virtual {p1}, Landroid/content/pm/ResolveInfo;->getIconResource()I
 
     move-result v2
 
-    .line 1644
+    .line 1642
     .local v2, "iconRes":I
     if-eqz v2, :cond_2
 
-    .line 1645
+    .line 1643
     iget-object v3, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mPm:Landroid/content/pm/PackageManager;
 
     iget-object v4, p1, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
@@ -626,18 +528,18 @@
 
     move-result-object v0
 
-    .line 1646
+    .line 1644
     if-eqz v0, :cond_2
 
-    .line 1647
+    .line 1645
     return-object v0
 
-    .line 1650
+    .line 1648
     .end local v2    # "iconRes":I
     :catch_0
     move-exception v1
 
-    .line 1653
+    .line 1651
     :cond_2
     iget-object v3, p0, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->mPm:Landroid/content/pm/PackageManager;
 
@@ -654,7 +556,7 @@
     .param p2, "filtered"    # Z
 
     .prologue
-    .line 1667
+    .line 1665
     if-eqz p2, :cond_0
 
     invoke-virtual {p0, p1}, Lcom/android/internal/app/MzResolverActivity$GridViewAdapter;->getItem(I)Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;

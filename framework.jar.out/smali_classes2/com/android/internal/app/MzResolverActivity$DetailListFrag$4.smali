@@ -27,7 +27,7 @@
     .param p1, "this$1"    # Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     .prologue
-    .line 1930
+    .line 1928
     iput-object p1, p0, Lcom/android/internal/app/MzResolverActivity$DetailListFrag$4;->this$1:Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -43,7 +43,7 @@
     .param p2, "to"    # I
 
     .prologue
-    .line 1935
+    .line 1933
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DetailListFrag$4;->this$1:Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     invoke-static {v0}, Lcom/android/internal/app/MzResolverActivity$DetailListFrag;->-get1(Lcom/android/internal/app/MzResolverActivity$DetailListFrag;)Lcom/android/internal/app/MzResolverActivity$ResolveGridAdapter;
@@ -52,7 +52,7 @@
 
     invoke-virtual {v0, p1, p2}, Lcom/android/internal/app/MzResolverActivity$ResolveGridAdapter;->changePosition(II)V
 
-    .line 1936
+    .line 1934
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DetailListFrag$4;->this$1:Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     invoke-static {v0}, Lcom/android/internal/app/MzResolverActivity$DetailListFrag;->-get1(Lcom/android/internal/app/MzResolverActivity$DetailListFrag;)Lcom/android/internal/app/MzResolverActivity$ResolveGridAdapter;
@@ -61,6 +61,6 @@
 
     invoke-virtual {v0}, Lcom/android/internal/app/MzResolverActivity$ResolveGridAdapter;->notifyDataSetChanged()V
 
-    .line 1933
+    .line 1931
     return-void
 .end method

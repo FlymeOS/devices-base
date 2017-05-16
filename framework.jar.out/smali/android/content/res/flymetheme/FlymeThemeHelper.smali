@@ -343,18 +343,18 @@
     .param p1, "newBitmap"    # Landroid/graphics/Bitmap;
 
     .prologue
-    .line 434
+    .line 464
     const/4 v3, 0x0
 
-    .line 435
+    .line 465
     .local v3, "result":Landroid/graphics/Bitmap;
     const/4 v4, 0x0
 
-    .line 436
+    .line 466
     .local v4, "temp":Landroid/graphics/Bitmap;
     const/4 v2, 0x0
 
-    .line 438
+    .line 468
     .local v2, "resBitmap":Landroid/graphics/Bitmap;
     :try_start_0
     sget-object v5, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_MASK:Ljava/lang/String;
@@ -363,11 +363,11 @@
 
     move-result-object v0
 
-    .line 439
+    .line 469
     .local v0, "border":Landroid/graphics/drawable/Drawable;
     if-nez v0, :cond_0
 
-    .line 440
+    .line 470
     sget v5, Lcom/flyme/internal/R$drawable;->calendar_mask:I
 
     invoke-virtual {p0, v5}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
@@ -377,14 +377,14 @@
 
     move-result-object v0
 
-    .line 442
+    .line 472
     :cond_0
     if-nez v0, :cond_3
 
-    .line 443
+    .line 473
     move-object v3, p1
 
-    .line 452
+    .line 482
     .end local v0    # "border":Landroid/graphics/drawable/Drawable;
     .end local v2    # "resBitmap":Landroid/graphics/Bitmap;
     .end local v4    # "temp":Landroid/graphics/Bitmap;
@@ -398,7 +398,7 @@
 
     if-eqz v5, :cond_4
 
-    .line 456
+    .line 486
     :cond_1
     :goto_1
     if-eqz v2, :cond_2
@@ -409,12 +409,12 @@
 
     if-eqz v5, :cond_5
 
-    .line 461
+    .line 491
     :cond_2
     :goto_2
     return-object v3
 
-    .line 445
+    .line 475
     .restart local v0    # "border":Landroid/graphics/drawable/Drawable;
     .restart local v2    # "resBitmap":Landroid/graphics/Bitmap;
     .local v3, "result":Landroid/graphics/Bitmap;
@@ -428,7 +428,7 @@
 
     move-result-object v4
 
-    .line 446
+    .line 476
     .local v4, "temp":Landroid/graphics/Bitmap;
     invoke-virtual {p1}, Landroid/graphics/Bitmap;->getWidth()I
 
@@ -442,7 +442,7 @@
 
     move-result-object v2
 
-    .line 447
+    .line 477
     .local v2, "resBitmap":Landroid/graphics/Bitmap;
     const/4 v5, 0x1
 
@@ -456,41 +456,41 @@
     .local v3, "result":Landroid/graphics/Bitmap;
     goto :goto_0
 
-    .line 453
+    .line 483
     .end local v2    # "resBitmap":Landroid/graphics/Bitmap;
     .end local v4    # "temp":Landroid/graphics/Bitmap;
     :cond_4
     invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 454
+    .line 484
     const/4 v4, 0x0
 
     .local v4, "temp":Landroid/graphics/Bitmap;
     goto :goto_1
 
-    .line 457
+    .line 487
     .end local v4    # "temp":Landroid/graphics/Bitmap;
     :cond_5
     invoke-virtual {v2}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 458
+    .line 488
     :goto_3
     const/4 v2, 0x0
 
     .local v2, "resBitmap":Landroid/graphics/Bitmap;
     goto :goto_2
 
-    .line 449
+    .line 479
     .end local v2    # "resBitmap":Landroid/graphics/Bitmap;
     .local v3, "result":Landroid/graphics/Bitmap;
     :catch_0
     move-exception v1
 
-    .line 450
+    .line 480
     .local v1, "e":Ljava/lang/Exception;
     move-object v3, p1
 
-    .line 452
+    .line 482
     .local v3, "result":Landroid/graphics/Bitmap;
     if-eqz v4, :cond_6
 
@@ -500,7 +500,7 @@
 
     if-eqz v5, :cond_7
 
-    .line 456
+    .line 486
     :cond_6
     :goto_4
     if-eqz v2, :cond_2
@@ -511,29 +511,29 @@
 
     if-nez v5, :cond_2
 
-    .line 457
+    .line 487
     invoke-virtual {v2}, Landroid/graphics/Bitmap;->recycle()V
 
     goto :goto_3
 
-    .line 453
+    .line 483
     :cond_7
     invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 454
+    .line 484
     const/4 v4, 0x0
 
     .restart local v4    # "temp":Landroid/graphics/Bitmap;
     goto :goto_4
 
-    .line 451
+    .line 481
     .end local v1    # "e":Ljava/lang/Exception;
     .end local v4    # "temp":Landroid/graphics/Bitmap;
     .local v3, "result":Landroid/graphics/Bitmap;
     :catchall_0
     move-exception v5
 
-    .line 452
+    .line 482
     if-eqz v4, :cond_8
 
     invoke-virtual {v4}, Landroid/graphics/Bitmap;->isRecycled()Z
@@ -542,7 +542,7 @@
 
     if-eqz v6, :cond_a
 
-    .line 456
+    .line 486
     :cond_8
     :goto_5
     if-eqz v2, :cond_9
@@ -553,27 +553,27 @@
 
     if-eqz v6, :cond_b
 
-    .line 451
+    .line 481
     :cond_9
     :goto_6
     throw v5
 
-    .line 453
+    .line 483
     :cond_a
     invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 454
+    .line 484
     const/4 v4, 0x0
 
     .restart local v4    # "temp":Landroid/graphics/Bitmap;
     goto :goto_5
 
-    .line 457
+    .line 487
     .end local v4    # "temp":Landroid/graphics/Bitmap;
     :cond_b
     invoke-virtual {v2}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 458
+    .line 488
     const/4 v2, 0x0
 
     .restart local v2    # "resBitmap":Landroid/graphics/Bitmap;
@@ -1101,17 +1101,17 @@
     .param p0, "dr"    # Landroid/graphics/drawable/Drawable;
 
     .prologue
-    .line 389
+    .line 388
     const/4 v15, 0x0
 
-    .line 391
+    .line 390
     .local v15, "newBitmap":Landroid/graphics/Bitmap;
     :try_start_0
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
     move-result-object v19
 
-    .line 392
+    .line 391
     .local v19, "resources":Landroid/content/res/Resources;
     move-object/from16 v0, p0
 
@@ -1119,7 +1119,7 @@
 
     move-object v10, v0
 
-    .line 393
+    .line 392
     .local v10, "bd":Landroid/graphics/drawable/BitmapDrawable;
     invoke-virtual {v10}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
 
@@ -1133,25 +1133,25 @@
 
     move-result-object v15
 
-    .line 394
+    .line 393
     .local v15, "newBitmap":Landroid/graphics/Bitmap;
     new-instance v11, Landroid/graphics/Canvas;
 
     invoke-direct {v11, v15}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 395
+    .line 394
     .local v11, "canvas":Landroid/graphics/Canvas;
     new-instance v4, Landroid/text/TextPaint;
 
     invoke-direct {v4}, Landroid/text/TextPaint;-><init>()V
 
-    .line 396
+    .line 395
     .local v4, "textPaint":Landroid/text/TextPaint;
     const/4 v5, 0x1
 
     invoke-virtual {v4, v5}, Landroid/text/TextPaint;->setAntiAlias(Z)V
 
-    .line 397
+    .line 396
     invoke-virtual {v15}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v5
@@ -1164,7 +1164,7 @@
 
     invoke-virtual {v4, v5}, Landroid/text/TextPaint;->setTextSize(F)V
 
-    .line 399
+    .line 398
     sget v5, Lcom/flyme/internal/R$color;->calendar_dayofweek_color:I
 
     move-object/from16 v0, v19
@@ -1177,7 +1177,7 @@
 
     move-result v12
 
-    .line 401
+    .line 400
     .local v12, "color":I
     :try_start_1
     sget-object v5, Landroid/content/res/flymetheme/FlymeThemeHelper;->LAUNCHER_CONFIG_CALENDAR_DAY_COLOR:Ljava/lang/String;
@@ -1186,7 +1186,7 @@
 
     move-result-object v18
 
-    .line 402
+    .line 401
     .local v18, "resColor":Ljava/lang/String;
     if-nez v18, :cond_1
 
@@ -1200,18 +1200,18 @@
 
     if-eqz v5, :cond_1
 
-    .line 409
+    .line 408
     .end local v18    # "resColor":Ljava/lang/String;
     :goto_0
     :try_start_2
     invoke-virtual {v4, v12}, Landroid/text/TextPaint;->setColor(I)V
 
-    .line 410
+    .line 409
     invoke-static/range {v19 .. v19}, Landroid/content/res/flymetheme/FlymeThemeHelper;->getDayOfWeek(Landroid/content/res/Resources;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 411
+    .line 410
     .local v3, "date":Ljava/lang/String;
     new-instance v2, Landroid/text/StaticLayout;
 
@@ -1219,7 +1219,7 @@
 
     move-result v5
 
-    .line 412
+    .line 411
     sget-object v6, Landroid/text/Layout$Alignment;->ALIGN_CENTER:Landroid/text/Layout$Alignment;
 
     const/high16 v7, 0x3f800000    # 1.0f
@@ -1228,10 +1228,10 @@
 
     const/4 v9, 0x0
 
-    .line 411
+    .line 410
     invoke-direct/range {v2 .. v9}, Landroid/text/StaticLayout;-><init>(Ljava/lang/CharSequence;Landroid/text/TextPaint;ILandroid/text/Layout$Alignment;FFZ)V
 
-    .line 413
+    .line 412
     .local v2, "sl":Landroid/text/StaticLayout;
     invoke-virtual {v15}, Landroid/graphics/Bitmap;->getHeight()I
 
@@ -1243,7 +1243,7 @@
 
     mul-float v21, v5, v6
 
-    .line 414
+    .line 413
     .local v21, "tanslateY":F
     const/4 v5, 0x0
 
@@ -1251,10 +1251,10 @@
 
     invoke-virtual {v11, v5, v0}, Landroid/graphics/Canvas;->translate(FF)V
 
-    .line 415
+    .line 414
     invoke-virtual {v2, v11}, Landroid/text/StaticLayout;->draw(Landroid/graphics/Canvas;)V
 
-    .line 416
+    .line 415
     new-instance v20, Landroid/graphics/drawable/BitmapDrawable;
 
     move-object/from16 v0, v19
@@ -1273,7 +1273,7 @@
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 424
+    .line 423
     .local v20, "result":Landroid/graphics/drawable/Drawable;
     if-eqz v15, :cond_0
 
@@ -1283,7 +1283,7 @@
 
     if-eqz v5, :cond_2
 
-    .line 430
+    .line 429
     .end local v2    # "sl":Landroid/text/StaticLayout;
     .end local v3    # "date":Ljava/lang/String;
     .end local v4    # "textPaint":Landroid/text/TextPaint;
@@ -1297,7 +1297,7 @@
     :goto_1
     return-object v20
 
-    .line 403
+    .line 402
     .end local v20    # "result":Landroid/graphics/drawable/Drawable;
     .restart local v4    # "textPaint":Landroid/text/TextPaint;
     .restart local v10    # "bd":Landroid/graphics/drawable/BitmapDrawable;
@@ -1330,7 +1330,7 @@
 
     move-result-wide v16
 
-    .line 404
+    .line 403
     .local v16, "l":J
     move-wide/from16 v0, v16
 
@@ -1338,13 +1338,13 @@
 
     goto :goto_0
 
-    .line 406
+    .line 405
     .end local v16    # "l":J
     .end local v18    # "resColor":Ljava/lang/String;
     :catch_0
     move-exception v13
 
-    .line 407
+    .line 406
     .local v13, "e":Ljava/lang/Exception;
     :try_start_4
     sget v5, Lcom/flyme/internal/R$color;->calendar_dayofweek_color:I
@@ -1369,7 +1369,7 @@
     :cond_2
     move-object/from16 v5, v20
 
-    .line 425
+    .line 424
     check-cast v5, Landroid/graphics/drawable/BitmapDrawable;
 
     invoke-virtual {v5}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
@@ -1378,10 +1378,10 @@
 
     if-eq v15, v5, :cond_0
 
-    .line 426
+    .line 425
     invoke-virtual {v15}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 427
+    .line 426
     .end local v2    # "sl":Landroid/text/StaticLayout;
     .end local v3    # "date":Ljava/lang/String;
     .end local v4    # "textPaint":Landroid/text/TextPaint;
@@ -1397,23 +1397,23 @@
     .local v15, "newBitmap":Landroid/graphics/Bitmap;
     goto :goto_1
 
-    .line 420
+    .line 419
     .end local v15    # "newBitmap":Landroid/graphics/Bitmap;
     .end local v20    # "result":Landroid/graphics/drawable/Drawable;
     :catch_1
     move-exception v13
 
-    .line 421
+    .line 420
     .restart local v13    # "e":Ljava/lang/Exception;
     :try_start_5
     invoke-virtual {v13}, Ljava/lang/Exception;->printStackTrace()V
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
-    .line 422
+    .line 421
     move-object/from16 v20, p0
 
-    .line 424
+    .line 423
     .restart local v20    # "result":Landroid/graphics/drawable/Drawable;
     if-eqz v15, :cond_0
 
@@ -1425,7 +1425,7 @@
 
     move-object/from16 v5, v20
 
-    .line 425
+    .line 424
     check-cast v5, Landroid/graphics/drawable/BitmapDrawable;
 
     invoke-virtual {v5}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
@@ -1434,28 +1434,28 @@
 
     if-eq v15, v5, :cond_0
 
-    .line 426
+    .line 425
     invoke-virtual {v15}, Landroid/graphics/Bitmap;->recycle()V
 
     goto :goto_2
 
-    .line 417
+    .line 416
     .end local v13    # "e":Ljava/lang/Exception;
     .end local v20    # "result":Landroid/graphics/drawable/Drawable;
     :catch_2
     move-exception v14
 
-    .line 418
+    .line 417
     .local v14, "er":Ljava/lang/OutOfMemoryError;
     :try_start_6
     invoke-virtual {v14}, Ljava/lang/OutOfMemoryError;->printStackTrace()V
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_0
 
-    .line 419
+    .line 418
     move-object/from16 v20, p0
 
-    .line 424
+    .line 423
     .restart local v20    # "result":Landroid/graphics/drawable/Drawable;
     if-eqz v15, :cond_0
 
@@ -1467,7 +1467,7 @@
 
     move-object/from16 v5, v20
 
-    .line 425
+    .line 424
     check-cast v5, Landroid/graphics/drawable/BitmapDrawable;
 
     invoke-virtual {v5}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
@@ -1476,12 +1476,12 @@
 
     if-eq v15, v5, :cond_0
 
-    .line 426
+    .line 425
     invoke-virtual {v15}, Landroid/graphics/Bitmap;->recycle()V
 
     goto :goto_2
 
-    .line 423
+    .line 422
     .end local v14    # "er":Ljava/lang/OutOfMemoryError;
     .end local v20    # "result":Landroid/graphics/drawable/Drawable;
     :catchall_0
@@ -1489,7 +1489,7 @@
 
     move-object v6, v5
 
-    .line 424
+    .line 423
     if-eqz v15, :cond_3
 
     invoke-virtual {v15}, Landroid/graphics/Bitmap;->isRecycled()Z
@@ -1498,16 +1498,16 @@
 
     if-eqz v5, :cond_4
 
-    .line 423
+    .line 422
     :cond_3
     :goto_3
     throw v6
 
-    .line 388
+    .line 387
     :cond_4
     const/4 v5, 0x0
 
-    .line 425
+    .line 424
     check-cast v5, Landroid/graphics/drawable/BitmapDrawable;
 
     invoke-virtual {v5}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
@@ -1516,14 +1516,215 @@
 
     if-eq v15, v5, :cond_3
 
-    .line 426
+    .line 425
     invoke-virtual {v15}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 427
+    .line 426
     const/4 v15, 0x0
 
     .restart local v15    # "newBitmap":Landroid/graphics/Bitmap;
     goto :goto_3
+.end method
+
+.method public static addMutilLaunchAppMarkToIcon(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+    .locals 12
+    .param p0, "srcDrawable"    # Landroid/graphics/drawable/Drawable;
+
+    .prologue
+    .line 434
+    const/4 v4, 0x0
+
+    .line 436
+    .local v4, "newBitmap":Landroid/graphics/Bitmap;
+    :try_start_0
+    invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
+
+    move-result-object v5
+
+    .line 437
+    .local v5, "resources":Landroid/content/res/Resources;
+    move-object v0, p0
+
+    check-cast v0, Landroid/graphics/drawable/BitmapDrawable;
+
+    move-object v7, v0
+
+    .line 439
+    .local v7, "srcBitmapDrawable":Landroid/graphics/drawable/BitmapDrawable;
+    invoke-virtual {v7}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+
+    move-result-object v8
+
+    sget-object v9, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    const/4 v10, 0x1
+
+    invoke-virtual {v8, v9, v10}, Landroid/graphics/Bitmap;->copy(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
+
+    move-result-object v4
+
+    .line 440
+    .local v4, "newBitmap":Landroid/graphics/Bitmap;
+    new-instance v1, Landroid/graphics/Canvas;
+
+    invoke-direct {v1, v4}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
+
+    .line 443
+    .local v1, "canvas":Landroid/graphics/Canvas;
+    sget v8, Lcom/flyme/internal/R$drawable;->mutil_launch_app_mark:I
+
+    invoke-virtual {v5, v8}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    move-result-object v3
+
+    .line 444
+    .local v3, "mutilLaunchAppIconDrawable":Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v8
+
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v9
+
+    const/4 v10, 0x0
+
+    const/4 v11, 0x0
+
+    invoke-virtual {v3, v10, v11, v8, v9}, Landroid/graphics/drawable/Drawable;->setBounds(IIII)V
+
+    .line 445
+    invoke-virtual {v3, v1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
+
+    .line 447
+    new-instance v6, Landroid/graphics/drawable/BitmapDrawable;
+
+    invoke-direct {v6, v5, v4}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 452
+    .local v6, "resultIconDrawable":Landroid/graphics/drawable/Drawable;
+    if-eqz v4, :cond_0
+
+    .line 453
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->isRecycled()Z
+
+    move-result v8
+
+    if-eqz v8, :cond_1
+
+    .line 460
+    .end local v1    # "canvas":Landroid/graphics/Canvas;
+    .end local v3    # "mutilLaunchAppIconDrawable":Landroid/graphics/drawable/Drawable;
+    .end local v4    # "newBitmap":Landroid/graphics/Bitmap;
+    .end local v5    # "resources":Landroid/content/res/Resources;
+    .end local v7    # "srcBitmapDrawable":Landroid/graphics/drawable/BitmapDrawable;
+    :cond_0
+    :goto_0
+    return-object v6
+
+    .line 454
+    .restart local v1    # "canvas":Landroid/graphics/Canvas;
+    .restart local v3    # "mutilLaunchAppIconDrawable":Landroid/graphics/drawable/Drawable;
+    .restart local v4    # "newBitmap":Landroid/graphics/Bitmap;
+    .restart local v5    # "resources":Landroid/content/res/Resources;
+    .restart local v7    # "srcBitmapDrawable":Landroid/graphics/drawable/BitmapDrawable;
+    :cond_1
+    if-eqz v6, :cond_0
+
+    move-object v8, v6
+
+    .line 455
+    check-cast v8, Landroid/graphics/drawable/BitmapDrawable;
+
+    invoke-virtual {v8}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+
+    move-result-object v8
+
+    if-eq v4, v8, :cond_0
+
+    .line 456
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
+
+    .line 457
+    .end local v1    # "canvas":Landroid/graphics/Canvas;
+    .end local v3    # "mutilLaunchAppIconDrawable":Landroid/graphics/drawable/Drawable;
+    .end local v4    # "newBitmap":Landroid/graphics/Bitmap;
+    .end local v5    # "resources":Landroid/content/res/Resources;
+    .end local v7    # "srcBitmapDrawable":Landroid/graphics/drawable/BitmapDrawable;
+    :goto_1
+    const/4 v4, 0x0
+
+    .local v4, "newBitmap":Landroid/graphics/Bitmap;
+    goto :goto_0
+
+    .line 448
+    .end local v4    # "newBitmap":Landroid/graphics/Bitmap;
+    .end local v6    # "resultIconDrawable":Landroid/graphics/drawable/Drawable;
+    :catch_0
+    move-exception v2
+
+    .line 449
+    .local v2, "e":Ljava/lang/Exception;
+    :try_start_1
+    invoke-virtual {v2}, Ljava/lang/Exception;->printStackTrace()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 450
+    move-object v6, p0
+
+    .line 452
+    .restart local v6    # "resultIconDrawable":Landroid/graphics/drawable/Drawable;
+    if-eqz v4, :cond_0
+
+    .line 453
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->isRecycled()Z
+
+    move-result v8
+
+    if-nez v8, :cond_0
+
+    .line 454
+    if-eqz v6, :cond_0
+
+    move-object v8, v6
+
+    .line 455
+    check-cast v8, Landroid/graphics/drawable/BitmapDrawable;
+
+    invoke-virtual {v8}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+
+    move-result-object v8
+
+    if-eq v4, v8, :cond_0
+
+    .line 456
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
+
+    goto :goto_1
+
+    .line 451
+    .end local v2    # "e":Ljava/lang/Exception;
+    .end local v6    # "resultIconDrawable":Landroid/graphics/drawable/Drawable;
+    :catchall_0
+    move-exception v8
+
+    .line 452
+    if-eqz v4, :cond_2
+
+    .line 453
+    invoke-virtual {v4}, Landroid/graphics/Bitmap;->isRecycled()Z
+
+    move-result v9
+
+    if-eqz v9, :cond_2
+
+    .line 451
+    :cond_2
+    throw v8
 .end method
 
 .method public static clean()V
@@ -1532,24 +1733,24 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 812
+    .line 842
     sget-object v0, Landroid/content/res/flymetheme/FlymeThemeHelper;->mZipThemeManager:Landroid/content/res/flymetheme/MtpkManager;
 
     if-eqz v0, :cond_0
 
-    .line 813
+    .line 843
     sget-object v0, Landroid/content/res/flymetheme/FlymeThemeHelper;->mZipThemeManager:Landroid/content/res/flymetheme/MtpkManager;
 
     invoke-virtual {v0}, Landroid/content/res/flymetheme/MtpkManager;->clean()V
 
-    .line 814
+    .line 844
     sput-object v1, Landroid/content/res/flymetheme/FlymeThemeHelper;->mZipThemeManager:Landroid/content/res/flymetheme/MtpkManager;
 
-    .line 816
+    .line 846
     :cond_0
     sput-object v1, Landroid/content/res/flymetheme/FlymeThemeHelper;->mLauncherHelper:Landroid/content/res/flymetheme/LauncherConfigHelper;
 
-    .line 811
+    .line 841
     return-void
 .end method
 
@@ -1638,12 +1839,12 @@
     .locals 3
 
     .prologue
-    .line 781
+    .line 811
     const/4 v1, 0x3
 
     new-array v0, v1, [Landroid/graphics/Bitmap;
 
-    .line 782
+    .line 812
     .local v0, "themeBitmap":[Landroid/graphics/Bitmap;
     const-string/jumbo v1, "icon_mask.png"
 
@@ -1657,18 +1858,18 @@
 
     if-eqz v1, :cond_0
 
-    .line 783
+    .line 813
     sget v1, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
     or-int/lit8 v1, v1, 0x4
 
     sput v1, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
-    .line 786
+    .line 816
     :cond_0
     const-string/jumbo v1, "icon_background.png"
 
-    .line 785
+    .line 815
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeResource;->getThemeIcon(Ljava/lang/String;)Landroid/graphics/Bitmap;
 
     move-result-object v1
@@ -1679,14 +1880,14 @@
 
     if-eqz v1, :cond_1
 
-    .line 787
+    .line 817
     sget v1, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
     or-int/lit8 v1, v1, 0x2
 
     sput v1, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
-    .line 789
+    .line 819
     :cond_1
     const-string/jumbo v1, "icon_border.png"
 
@@ -1700,14 +1901,14 @@
 
     if-eqz v1, :cond_2
 
-    .line 790
+    .line 820
     sget v1, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
     or-int/lit8 v1, v1, 0x1
 
     sput v1, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
-    .line 792
+    .line 822
     :cond_2
     return-object v0
 .end method
@@ -1787,28 +1988,28 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 827
+    .line 857
     :try_start_0
     sget-object v3, Landroid/content/res/flymetheme/FlymeThemeHelper;->mZipThemeManager:Landroid/content/res/flymetheme/MtpkManager;
 
     if-nez v3, :cond_0
 
-    .line 828
+    .line 858
     new-instance v3, Landroid/content/res/flymetheme/MtpkManager;
 
     invoke-direct {v3}, Landroid/content/res/flymetheme/MtpkManager;-><init>()V
 
     sput-object v3, Landroid/content/res/flymetheme/FlymeThemeHelper;->mZipThemeManager:Landroid/content/res/flymetheme/MtpkManager;
 
-    .line 830
+    .line 860
     :cond_0
     const/4 v1, 0x0
 
-    .line 831
+    .line 861
     .local v1, "is":Ljava/io/InputStream;
     const-string/jumbo v2, "config.xml"
 
-    .line 832
+    .line 862
     .local v2, "resPath":Ljava/lang/String;
     sget-object v3, Landroid/content/res/flymetheme/FlymeThemeHelper;->mZipThemeManager:Landroid/content/res/flymetheme/MtpkManager;
 
@@ -1820,21 +2021,21 @@
 
     move-result-object v1
 
-    .line 833
+    .line 863
     .local v1, "is":Ljava/io/InputStream;
     return-object v1
 
-    .line 834
+    .line 864
     .end local v1    # "is":Ljava/io/InputStream;
     .end local v2    # "resPath":Ljava/lang/String;
     :catch_0
     move-exception v0
 
-    .line 835
+    .line 865
     .local v0, "e":Ljava/lang/Exception;
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
 
-    .line 836
+    .line 866
     return-object v5
 .end method
 
@@ -1990,27 +2191,27 @@
     .prologue
     const/high16 v6, 0x431c0000    # 156.0f
 
-    .line 490
+    .line 520
     const/4 v0, 0x0
 
-    .line 491
+    .line 521
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     packed-switch p1, :pswitch_data_0
 
-    .line 527
+    .line 557
     .end local v0    # "dr":Landroid/graphics/drawable/Drawable;
     :goto_0
     :pswitch_0
     if-nez v0, :cond_0
 
-    .line 528
+    .line 558
     invoke-static {p0, p1}, Landroid/content/res/flymetheme/FlymeThemeHelper;->getSystemDefDateImage(Landroid/content/res/Resources;C)Landroid/graphics/Bitmap;
 
     move-result-object v2
 
     return-object v2
 
-    .line 493
+    .line 523
     .restart local v0    # "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_1
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_0:Ljava/lang/String;
@@ -2022,7 +2223,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 496
+    .line 526
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_2
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_1:Ljava/lang/String;
@@ -2034,7 +2235,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 499
+    .line 529
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_3
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_2:Ljava/lang/String;
@@ -2046,7 +2247,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 502
+    .line 532
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_4
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_3:Ljava/lang/String;
@@ -2058,7 +2259,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 505
+    .line 535
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_5
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_4:Ljava/lang/String;
@@ -2070,7 +2271,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 508
+    .line 538
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_6
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_5:Ljava/lang/String;
@@ -2082,7 +2283,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 511
+    .line 541
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_7
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_6:Ljava/lang/String;
@@ -2094,7 +2295,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 514
+    .line 544
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_8
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_7:Ljava/lang/String;
@@ -2106,7 +2307,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 517
+    .line 547
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_9
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_8:Ljava/lang/String;
@@ -2118,7 +2319,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 520
+    .line 550
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     :pswitch_a
     sget-object v2, Landroid/content/res/flymetheme/drawable/CalendarDrawable;->CALENDAR_9:Ljava/lang/String;
@@ -2130,7 +2331,7 @@
     .local v0, "dr":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 530
+    .line 560
     .end local v0    # "dr":Landroid/graphics/drawable/Drawable;
     :cond_0
     invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
@@ -2145,7 +2346,7 @@
 
     if-le v2, p2, :cond_2
 
-    .line 531
+    .line 561
     :cond_1
     check-cast v0, Landroid/graphics/drawable/BitmapDrawable;
 
@@ -2153,7 +2354,7 @@
 
     move-result-object v2
 
-    .line 532
+    .line 562
     int-to-float v3, p3
 
     const/high16 v4, 0x42280000    # 42.0f
@@ -2174,16 +2375,16 @@
 
     float-to-int v4, v4
 
-    .line 531
+    .line 561
     invoke-static {v2, v3, v4}, Landroid/content/res/flymetheme/FlymeThemeHelper;->zoomBitmap(Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
 
     move-result-object v1
 
-    .line 533
+    .line 563
     .local v1, "resBitmap":Landroid/graphics/Bitmap;
     return-object v1
 
-    .line 535
+    .line 565
     .end local v1    # "resBitmap":Landroid/graphics/Bitmap;
     :cond_2
     check-cast v0, Landroid/graphics/drawable/BitmapDrawable;
@@ -2194,7 +2395,7 @@
 
     return-object v2
 
-    .line 491
+    .line 521
     nop
 
     :pswitch_data_0
@@ -2217,29 +2418,29 @@
     .locals 4
 
     .prologue
-    .line 465
+    .line 495
     new-instance v2, Ljava/util/Date;
 
     invoke-direct {v2}, Ljava/util/Date;-><init>()V
 
-    .line 466
+    .line 496
     .local v2, "today":Ljava/util/Date;
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v1
 
-    .line 467
+    .line 497
     .local v1, "cal":Ljava/util/Calendar;
     invoke-virtual {v1, v2}, Ljava/util/Calendar;->setTime(Ljava/util/Date;)V
 
-    .line 468
+    .line 498
     const/4 v3, 0x5
 
     invoke-virtual {v1, v3}, Ljava/util/Calendar;->get(I)I
 
     move-result v0
 
-    .line 469
+    .line 499
     .local v0, "aDate":I
     invoke-static {v0}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
@@ -2255,22 +2456,22 @@
     .prologue
     const/4 v8, 0x0
 
-    .line 474
+    .line 504
     sget v5, Lcom/flyme/internal/R$array;->calendar_week_title:I
 
-    .line 473
+    .line 503
     invoke-virtual {p0, v5}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
     move-result-object v4
 
-    .line 476
+    .line 506
     .local v4, "weekDays":[Ljava/lang/String;
     :try_start_0
     invoke-static {}, Ljava/util/Calendar;->getInstance()Ljava/util/Calendar;
 
     move-result-object v0
 
-    .line 477
+    .line 507
     .local v0, "cal":Ljava/util/Calendar;
     new-instance v1, Ljava/util/Date;
 
@@ -2280,11 +2481,11 @@
 
     invoke-direct {v1, v6, v7}, Ljava/util/Date;-><init>(J)V
 
-    .line 478
+    .line 508
     .local v1, "curDate":Ljava/util/Date;
     invoke-virtual {v0, v1}, Ljava/util/Calendar;->setTime(Ljava/util/Date;)V
 
-    .line 479
+    .line 509
     const/4 v5, 0x7
 
     invoke-virtual {v0, v5}, Ljava/util/Calendar;->get(I)I
@@ -2293,14 +2494,14 @@
 
     add-int/lit8 v3, v5, -0x1
 
-    .line 480
+    .line 510
     .local v3, "w":I
     if-gez v3, :cond_0
 
-    .line 481
+    .line 511
     const/4 v3, 0x0
 
-    .line 482
+    .line 512
     :cond_0
     aget-object v5, v4, v3
     :try_end_0
@@ -2308,20 +2509,20 @@
 
     return-object v5
 
-    .line 483
+    .line 513
     .end local v0    # "cal":Ljava/util/Calendar;
     .end local v1    # "curDate":Ljava/util/Date;
     .end local v3    # "w":I
     :catch_0
     move-exception v2
 
-    .line 484
+    .line 514
     .local v2, "e":Ljava/lang/Exception;
     const-string/jumbo v5, " getDayOfWeek: "
 
     invoke-static {v5, v2}, Landroid/content/res/flymetheme/FlymeLogUtil;->exception(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    .line 485
+    .line 515
     aget-object v5, v4, v8
 
     return-object v5
@@ -2384,57 +2585,57 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 879
+    .line 909
     :try_start_0
     sget-object v3, Landroid/content/res/flymetheme/FlymeThemeHelper;->mZipThemeManager:Landroid/content/res/flymetheme/MtpkManager;
 
     if-nez v3, :cond_0
 
-    .line 880
+    .line 910
     new-instance v3, Landroid/content/res/flymetheme/MtpkManager;
 
     invoke-direct {v3}, Landroid/content/res/flymetheme/MtpkManager;-><init>()V
 
     sput-object v3, Landroid/content/res/flymetheme/FlymeThemeHelper;->mZipThemeManager:Landroid/content/res/flymetheme/MtpkManager;
 
-    .line 882
+    .line 912
     :cond_0
     const/4 v1, 0x0
 
-    .line 883
+    .line 913
     .local v1, "is":Ljava/io/InputStream;
     const-string/jumbo v2, "filter_config.xml"
 
-    .line 884
+    .line 914
     .local v2, "resPath":Ljava/lang/String;
     sget-object v3, Landroid/content/res/flymetheme/FlymeThemeHelper;->mZipThemeManager:Landroid/content/res/flymetheme/MtpkManager;
 
     const-string/jumbo v4, "icons"
 
-    .line 885
+    .line 915
     const/4 v5, 0x0
 
-    .line 884
+    .line 914
     invoke-virtual {v3, v4, v2, v5}, Landroid/content/res/flymetheme/MtpkManager;->getStreamFromPackage(Ljava/lang/String;Ljava/lang/String;Landroid/util/TypedValue;)Ljava/io/InputStream;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     move-result-object v1
 
-    .line 886
+    .line 916
     .local v1, "is":Ljava/io/InputStream;
     return-object v1
 
-    .line 887
+    .line 917
     .local v1, "is":Ljava/io/InputStream;
     :catch_0
     move-exception v0
 
-    .line 888
+    .line 918
     .local v0, "e":Ljava/lang/Exception;
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
 
-    .line 889
+    .line 919
     return-object v6
 .end method
 
@@ -2491,14 +2692,14 @@
     .param p1, "date"    # C
 
     .prologue
-    .line 541
+    .line 571
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_0:I
 
-    .line 542
+    .line 572
     .local v0, "dr":I
     packed-switch p1, :pswitch_data_0
 
-    .line 578
+    .line 608
     :goto_0
     :pswitch_0
     invoke-static {p0, v0}, Landroid/graphics/BitmapFactory;->decodeResource(Landroid/content/res/Resources;I)Landroid/graphics/Bitmap;
@@ -2507,67 +2708,67 @@
 
     return-object v1
 
-    .line 544
+    .line 574
     :pswitch_1
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_0:I
 
     goto :goto_0
 
-    .line 547
+    .line 577
     :pswitch_2
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_1:I
 
     goto :goto_0
 
-    .line 550
+    .line 580
     :pswitch_3
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_2:I
 
     goto :goto_0
 
-    .line 553
+    .line 583
     :pswitch_4
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_3:I
 
     goto :goto_0
 
-    .line 556
+    .line 586
     :pswitch_5
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_4:I
 
     goto :goto_0
 
-    .line 559
+    .line 589
     :pswitch_6
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_5:I
 
     goto :goto_0
 
-    .line 562
+    .line 592
     :pswitch_7
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_6:I
 
     goto :goto_0
 
-    .line 565
+    .line 595
     :pswitch_8
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_7:I
 
     goto :goto_0
 
-    .line 568
+    .line 598
     :pswitch_9
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_8:I
 
     goto :goto_0
 
-    .line 571
+    .line 601
     :pswitch_a
     sget v0, Lcom/flyme/internal/R$drawable;->ic_launcher_calendar_9:I
 
     goto :goto_0
 
-    .line 542
+    .line 572
     :pswitch_data_0
     .packed-switch 0x30
         :pswitch_1
@@ -2592,35 +2793,35 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 801
+    .line 831
     instance-of v1, p1, Landroid/graphics/drawable/BitmapDrawable;
 
     if-nez v1, :cond_0
 
-    .line 802
+    .line 832
     return-object p1
 
-    .line 803
+    .line 833
     :cond_0
     invoke-static {}, Landroid/content/res/flymetheme/FlymeThemeResource;->getDefaultActivityIcon()Landroid/graphics/Bitmap;
 
     move-result-object v0
 
-    .line 804
+    .line 834
     .local v0, "defIcon":Landroid/graphics/Bitmap;
     if-eqz v0, :cond_1
 
-    .line 805
+    .line 835
     new-instance p1, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local p1    # "srcDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {p1, p0, v0}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 806
+    .line 836
     .restart local p1    # "srcDrawable":Landroid/graphics/drawable/Drawable;
     return-object p1
 
-    .line 808
+    .line 838
     :cond_1
     invoke-static {p0, p1, v2}, Landroid/content/res/flymetheme/FlymeThemeHelper;->makeThemeIcon(Landroid/content/res/Resources;Landroid/graphics/drawable/Drawable;Landroid/content/pm/ApplicationInfo;)Landroid/graphics/drawable/Drawable;
 
@@ -2736,10 +2937,10 @@
     .param p0, "src"    # Landroid/graphics/Bitmap;
 
     .prologue
-    .line 895
+    .line 925
     const/4 v4, 0x0
 
-    .line 897
+    .line 927
     .local v4, "resultBmp":Landroid/graphics/Bitmap;
     :try_start_0
     invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
@@ -2752,16 +2953,16 @@
 
     if-nez v5, :cond_0
 
-    .line 898
+    .line 928
     invoke-static {}, Landroid/content/res/flymetheme/FlymeThemeHelper;->getIconFilterConfig()Ljava/io/InputStream;
 
     move-result-object v3
 
-    .line 899
+    .line 929
     .local v3, "is":Ljava/io/InputStream;
     if-eqz v3, :cond_0
 
-    .line 900
+    .line 930
     invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
 
     move-result-object v5
@@ -2771,7 +2972,7 @@
     .catch Ljava/lang/OutOfMemoryError; {:try_start_0 .. :try_end_0} :catch_1
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_2
 
-    .line 902
+    .line 932
     :try_start_1
     invoke-virtual {v3}, Ljava/io/InputStream;->close()V
     :try_end_1
@@ -2779,7 +2980,7 @@
     .catch Ljava/lang/OutOfMemoryError; {:try_start_1 .. :try_end_1} :catch_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_2
 
-    .line 909
+    .line 939
     .end local v3    # "is":Ljava/io/InputStream;
     :cond_0
     :goto_0
@@ -2792,7 +2993,7 @@
 
     move-result-object v4
 
-    .line 910
+    .line 940
     .local v4, "resultBmp":Landroid/graphics/Bitmap;
     invoke-static {}, Landroid/content/res/flymetheme/iconfilter/IconFilter;->getInstance()Landroid/content/res/flymetheme/iconfilter/IconFilter;
 
@@ -2802,17 +3003,17 @@
 
     move-result-object v4
 
-    .line 919
+    .line 949
     :goto_1
     return-object v4
 
-    .line 903
+    .line 933
     .restart local v3    # "is":Ljava/io/InputStream;
     .local v4, "resultBmp":Landroid/graphics/Bitmap;
     :catch_0
     move-exception v0
 
-    .line 904
+    .line 934
     .local v0, "e":Ljava/io/IOException;
     invoke-virtual {v0}, Ljava/io/IOException;->printStackTrace()V
     :try_end_2
@@ -2821,34 +3022,34 @@
 
     goto :goto_0
 
-    .line 911
+    .line 941
     .end local v0    # "e":Ljava/io/IOException;
     .end local v3    # "is":Ljava/io/InputStream;
     .end local v4    # "resultBmp":Landroid/graphics/Bitmap;
     :catch_1
     move-exception v2
 
-    .line 912
+    .line 942
     .local v2, "er":Ljava/lang/OutOfMemoryError;
     invoke-virtual {v2}, Ljava/lang/OutOfMemoryError;->printStackTrace()V
 
-    .line 913
+    .line 943
     move-object v4, p0
 
     .local v4, "resultBmp":Landroid/graphics/Bitmap;
     goto :goto_1
 
-    .line 914
+    .line 944
     .end local v2    # "er":Ljava/lang/OutOfMemoryError;
     .end local v4    # "resultBmp":Landroid/graphics/Bitmap;
     :catch_2
     move-exception v1
 
-    .line 915
+    .line 945
     .local v1, "e":Ljava/lang/Exception;
     invoke-virtual {v1}, Ljava/lang/Exception;->printStackTrace()V
 
-    .line 916
+    .line 946
     move-object v4, p0
 
     .restart local v4    # "resultBmp":Landroid/graphics/Bitmap;
@@ -2984,58 +3185,58 @@
 
     const/4 v8, 0x0
 
-    .line 588
+    .line 618
     instance-of v7, p1, Landroid/graphics/drawable/BitmapDrawable;
 
     if-nez v7, :cond_0
 
-    .line 589
+    .line 619
     return-object p1
 
-    .line 590
+    .line 620
     :cond_0
     const/4 v2, 0x0
 
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     move-object v7, p1
 
-    .line 591
+    .line 621
     check-cast v7, Landroid/graphics/drawable/BitmapDrawable;
 
     invoke-virtual {v7}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
 
     move-result-object v3
 
-    .line 592
+    .line 622
     .local v3, "src":Landroid/graphics/Bitmap;
     const/4 v4, 0x0
 
-    .line 593
+    .line 623
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     const/4 v5, 0x0
 
-    .line 594
+    .line 624
     .local v5, "step2Bitmap":Landroid/graphics/Bitmap;
     const/4 v1, 0x0
 
-    .line 596
+    .line 626
     .local v1, "result":Landroid/graphics/Bitmap;
     invoke-static {v3}, Landroid/content/res/flymetheme/FlymeThemeHelper;->makeFilterBitmap(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
 
     move-result-object v3
 
-    .line 598
+    .line 628
     invoke-static {}, Landroid/content/res/flymetheme/FlymeThemeHelper;->generateThemeBitmap()[Landroid/graphics/Bitmap;
 
     move-result-object v6
 
-    .line 599
+    .line 629
     .local v6, "themeBitmap":[Landroid/graphics/Bitmap;
     sget v7, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
     packed-switch v7, :pswitch_data_0
 
-    .line 658
+    .line 688
     .end local v1    # "result":Landroid/graphics/Bitmap;
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     .end local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3049,7 +3250,7 @@
 
     if-eqz v7, :cond_5
 
-    .line 662
+    .line 692
     :cond_1
     :goto_1
     if-eqz v5, :cond_2
@@ -3060,7 +3261,7 @@
 
     if-eqz v7, :cond_6
 
-    .line 667
+    .line 697
     :cond_2
     :goto_2
     array-length v9, v6
@@ -3072,7 +3273,7 @@
 
     aget-object v0, v6, v7
 
-    .line 668
+    .line 698
     .local v0, "bitmap":Landroid/graphics/Bitmap;
     if-eqz v0, :cond_3
 
@@ -3082,7 +3283,7 @@
 
     if-eqz v8, :cond_7
 
-    .line 667
+    .line 697
     .end local v0    # "bitmap":Landroid/graphics/Bitmap;
     :cond_3
     :goto_4
@@ -3090,7 +3291,7 @@
 
     goto :goto_3
 
-    .line 601
+    .line 631
     .restart local v1    # "result":Landroid/graphics/Bitmap;
     .restart local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     .restart local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3102,7 +3303,7 @@
 
     move-result-object v4
 
-    .line 602
+    .line 632
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v9
 
@@ -3110,7 +3311,7 @@
 
     move-result-object v5
 
-    .line 603
+    .line 633
     .local v5, "step2Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v10
 
@@ -3118,18 +3319,18 @@
 
     move-result-object v1
 
-    .line 604
+    .line 634
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 605
+    .line 635
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 609
+    .line 639
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3141,7 +3342,7 @@
 
     move-result-object v4
 
-    .line 610
+    .line 640
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v9
 
@@ -3149,18 +3350,18 @@
 
     move-result-object v1
 
-    .line 611
+    .line 641
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 612
+    .line 642
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 616
+    .line 646
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3171,7 +3372,7 @@
 
     move-result-object v4
 
-    .line 617
+    .line 647
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v10
 
@@ -3179,18 +3380,18 @@
 
     move-result-object v1
 
-    .line 618
+    .line 648
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 619
+    .line 649
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 623
+    .line 653
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3201,7 +3402,7 @@
 
     move-result-object v4
 
-    .line 624
+    .line 654
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v10
 
@@ -3209,18 +3410,18 @@
 
     move-result-object v1
 
-    .line 625
+    .line 655
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 626
+    .line 656
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 630
+    .line 660
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3231,18 +3432,18 @@
 
     move-result-object v1
 
-    .line 631
+    .line 661
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 632
+    .line 662
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 636
+    .line 666
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     :pswitch_5
@@ -3252,18 +3453,18 @@
 
     move-result-object v1
 
-    .line 637
+    .line 667
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 638
+    .line 668
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto/16 :goto_0
 
-    .line 642
+    .line 672
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     :pswitch_6
@@ -3273,18 +3474,18 @@
 
     move-result-object v1
 
-    .line 643
+    .line 673
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 644
+    .line 674
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto/16 :goto_0
 
-    .line 648
+    .line 678
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     :pswitch_7
@@ -3296,10 +3497,10 @@
 
     if-nez v7, :cond_4
 
-    .line 649
+    .line 679
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
-    .line 650
+    .line 680
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     iget-object v7, p2, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
@@ -3307,14 +3508,14 @@
 
     move-result-object v7
 
-    .line 649
+    .line 679
     invoke-direct {v2, p0, v7}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 648
+    .line 678
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto/16 :goto_0
 
-    .line 652
+    .line 682
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     :cond_4
     move-object v2, p1
@@ -3322,7 +3523,7 @@
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto/16 :goto_0
 
-    .line 659
+    .line 689
     .end local v1    # "result":Landroid/graphics/Bitmap;
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     .end local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3330,36 +3531,36 @@
     :cond_5
     invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 660
+    .line 690
     const/4 v4, 0x0
 
     .restart local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
     goto/16 :goto_1
 
-    .line 663
+    .line 693
     .end local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
     :cond_6
     invoke-virtual {v5}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 664
+    .line 694
     const/4 v5, 0x0
 
     .restart local v5    # "step2Bitmap":Landroid/graphics/Bitmap;
     goto/16 :goto_2
 
-    .line 669
+    .line 699
     .end local v5    # "step2Bitmap":Landroid/graphics/Bitmap;
     .restart local v0    # "bitmap":Landroid/graphics/Bitmap;
     :cond_7
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 670
+    .line 700
     const/4 v0, 0x0
 
     .local v0, "bitmap":Landroid/graphics/Bitmap;
     goto/16 :goto_4
 
-    .line 674
+    .line 704
     .end local v0    # "bitmap":Landroid/graphics/Bitmap;
     :cond_8
     sget v7, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
@@ -3368,10 +3569,10 @@
 
     sput v7, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
-    .line 676
+    .line 706
     return-object v2
 
-    .line 599
+    .line 629
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_7
@@ -3398,58 +3599,58 @@
 
     const/4 v8, 0x0
 
-    .line 686
+    .line 716
     instance-of v7, p1, Landroid/graphics/drawable/BitmapDrawable;
 
     if-nez v7, :cond_0
 
-    .line 687
+    .line 717
     return-object p1
 
-    .line 688
+    .line 718
     :cond_0
     const/4 v2, 0x0
 
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     move-object v7, p1
 
-    .line 689
+    .line 719
     check-cast v7, Landroid/graphics/drawable/BitmapDrawable;
 
     invoke-virtual {v7}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
 
     move-result-object v3
 
-    .line 690
+    .line 720
     .local v3, "src":Landroid/graphics/Bitmap;
     const/4 v4, 0x0
 
-    .line 691
+    .line 721
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     const/4 v5, 0x0
 
-    .line 692
+    .line 722
     .local v5, "step2Bitmap":Landroid/graphics/Bitmap;
     const/4 v1, 0x0
 
-    .line 694
+    .line 724
     .local v1, "result":Landroid/graphics/Bitmap;
     invoke-static {v3}, Landroid/content/res/flymetheme/FlymeThemeHelper;->makeFilterBitmap(Landroid/graphics/Bitmap;)Landroid/graphics/Bitmap;
 
     move-result-object v3
 
-    .line 696
+    .line 726
     invoke-static {}, Landroid/content/res/flymetheme/FlymeThemeHelper;->generateThemeBitmap()[Landroid/graphics/Bitmap;
 
     move-result-object v6
 
-    .line 697
+    .line 727
     .local v6, "themeBitmap":[Landroid/graphics/Bitmap;
     sget v7, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
     packed-switch v7, :pswitch_data_0
 
-    .line 756
+    .line 786
     .end local v1    # "result":Landroid/graphics/Bitmap;
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     .end local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3463,7 +3664,7 @@
 
     if-eqz v7, :cond_5
 
-    .line 760
+    .line 790
     :cond_1
     :goto_1
     if-eqz v5, :cond_2
@@ -3474,7 +3675,7 @@
 
     if-eqz v7, :cond_6
 
-    .line 765
+    .line 795
     :cond_2
     :goto_2
     array-length v9, v6
@@ -3486,7 +3687,7 @@
 
     aget-object v0, v6, v7
 
-    .line 766
+    .line 796
     .local v0, "bitmap":Landroid/graphics/Bitmap;
     if-eqz v0, :cond_3
 
@@ -3496,7 +3697,7 @@
 
     if-eqz v8, :cond_7
 
-    .line 765
+    .line 795
     .end local v0    # "bitmap":Landroid/graphics/Bitmap;
     :cond_3
     :goto_4
@@ -3504,7 +3705,7 @@
 
     goto :goto_3
 
-    .line 699
+    .line 729
     .restart local v1    # "result":Landroid/graphics/Bitmap;
     .restart local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     .restart local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3516,7 +3717,7 @@
 
     move-result-object v4
 
-    .line 700
+    .line 730
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v9
 
@@ -3524,7 +3725,7 @@
 
     move-result-object v5
 
-    .line 701
+    .line 731
     .local v5, "step2Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v10
 
@@ -3532,18 +3733,18 @@
 
     move-result-object v1
 
-    .line 702
+    .line 732
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 703
+    .line 733
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 707
+    .line 737
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3555,7 +3756,7 @@
 
     move-result-object v4
 
-    .line 708
+    .line 738
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v9
 
@@ -3563,18 +3764,18 @@
 
     move-result-object v1
 
-    .line 709
+    .line 739
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 710
+    .line 740
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 714
+    .line 744
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3585,7 +3786,7 @@
 
     move-result-object v4
 
-    .line 715
+    .line 745
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v10
 
@@ -3593,18 +3794,18 @@
 
     move-result-object v1
 
-    .line 716
+    .line 746
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 717
+    .line 747
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 721
+    .line 751
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3615,7 +3816,7 @@
 
     move-result-object v4
 
-    .line 722
+    .line 752
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
     aget-object v7, v6, v10
 
@@ -3623,18 +3824,18 @@
 
     move-result-object v1
 
-    .line 723
+    .line 753
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 724
+    .line 754
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 728
+    .line 758
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     .local v4, "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3645,18 +3846,18 @@
 
     move-result-object v1
 
-    .line 729
+    .line 759
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 730
+    .line 760
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto :goto_0
 
-    .line 734
+    .line 764
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     :pswitch_5
@@ -3666,18 +3867,18 @@
 
     move-result-object v1
 
-    .line 735
+    .line 765
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 736
+    .line 766
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto/16 :goto_0
 
-    .line 740
+    .line 770
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     :pswitch_6
@@ -3687,18 +3888,18 @@
 
     move-result-object v1
 
-    .line 741
+    .line 771
     .local v1, "result":Landroid/graphics/Bitmap;
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     invoke-direct {v2, p0, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 742
+    .line 772
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto/16 :goto_0
 
-    .line 746
+    .line 776
     .local v1, "result":Landroid/graphics/Bitmap;
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     :pswitch_7
@@ -3710,10 +3911,10 @@
 
     if-nez v7, :cond_4
 
-    .line 747
+    .line 777
     new-instance v2, Landroid/graphics/drawable/BitmapDrawable;
 
-    .line 748
+    .line 778
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     iget-object v7, p2, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
@@ -3721,14 +3922,14 @@
 
     move-result-object v7
 
-    .line 747
+    .line 777
     invoke-direct {v2, p0, v7}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
 
-    .line 746
+    .line 776
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto/16 :goto_0
 
-    .line 750
+    .line 780
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     :cond_4
     move-object v2, p1
@@ -3736,7 +3937,7 @@
     .local v2, "retDrawable":Landroid/graphics/drawable/Drawable;
     goto/16 :goto_0
 
-    .line 757
+    .line 787
     .end local v1    # "result":Landroid/graphics/Bitmap;
     .end local v2    # "retDrawable":Landroid/graphics/drawable/Drawable;
     .end local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
@@ -3744,36 +3945,36 @@
     :cond_5
     invoke-virtual {v4}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 758
+    .line 788
     const/4 v4, 0x0
 
     .restart local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
     goto/16 :goto_1
 
-    .line 761
+    .line 791
     .end local v4    # "step1Bitmap":Landroid/graphics/Bitmap;
     :cond_6
     invoke-virtual {v5}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 762
+    .line 792
     const/4 v5, 0x0
 
     .restart local v5    # "step2Bitmap":Landroid/graphics/Bitmap;
     goto/16 :goto_2
 
-    .line 767
+    .line 797
     .end local v5    # "step2Bitmap":Landroid/graphics/Bitmap;
     .restart local v0    # "bitmap":Landroid/graphics/Bitmap;
     :cond_7
     invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 768
+    .line 798
     const/4 v0, 0x0
 
     .local v0, "bitmap":Landroid/graphics/Bitmap;
     goto/16 :goto_4
 
-    .line 772
+    .line 802
     .end local v0    # "bitmap":Landroid/graphics/Bitmap;
     :cond_8
     sget v7, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
@@ -3782,10 +3983,10 @@
 
     sput v7, Landroid/content/res/flymetheme/FlymeThemeHelper;->mMBBFlag:I
 
-    .line 774
+    .line 804
     return-object v2
 
-    .line 697
+    .line 727
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_7
@@ -3805,14 +4006,14 @@
     .param p1, "packageName"    # Ljava/lang/String;
 
     .prologue
-    .line 847
+    .line 877
     const/4 v10, 0x0
 
-    .line 848
+    .line 878
     .local v10, "resizeBmp":Landroid/graphics/Bitmap;
     const/4 v11, 0x0
 
-    .line 849
+    .line 879
     .local v11, "resultBmp":Landroid/graphics/Bitmap;
     invoke-static {p1}, Landroid/content/res/flymetheme/FlymeThemeUtils;->isInWhiteList(Ljava/lang/String;)Z
 
@@ -3820,17 +4021,17 @@
 
     if-eqz v0, :cond_1
 
-    .line 850
+    .line 880
     move-object v11, p0
 
-    .line 874
+    .line 904
     .end local v10    # "resizeBmp":Landroid/graphics/Bitmap;
     .local v11, "resultBmp":Landroid/graphics/Bitmap;
     :cond_0
     :goto_0
     return-object v11
 
-    .line 853
+    .line 883
     .restart local v10    # "resizeBmp":Landroid/graphics/Bitmap;
     .local v11, "resultBmp":Landroid/graphics/Bitmap;
     :cond_1
@@ -3843,33 +4044,33 @@
 
     move-result v1
 
-    .line 854
+    .line 884
     sget-object v2, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
 
-    .line 853
+    .line 883
     invoke-static {v0, v1, v2}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     move-result-object v11
 
-    .line 855
+    .line 885
     .local v11, "resultBmp":Landroid/graphics/Bitmap;
     new-instance v9, Landroid/graphics/Paint;
 
     invoke-direct {v9}, Landroid/graphics/Paint;-><init>()V
 
-    .line 856
+    .line 886
     .local v9, "paint":Landroid/graphics/Paint;
     new-instance v7, Landroid/graphics/Canvas;
 
     invoke-direct {v7, v11}, Landroid/graphics/Canvas;-><init>(Landroid/graphics/Bitmap;)V
 
-    .line 857
+    .line 887
     .local v7, "canvas":Landroid/graphics/Canvas;
     new-instance v5, Landroid/graphics/Matrix;
 
     invoke-direct {v5}, Landroid/graphics/Matrix;-><init>()V
 
-    .line 858
+    .line 888
     .local v5, "matrix":Landroid/graphics/Matrix;
     sget v0, Landroid/content/res/flymetheme/FlymeThemeHelper;->SCALE_VALUE:F
 
@@ -3877,32 +4078,32 @@
 
     invoke-virtual {v5, v0, v1}, Landroid/graphics/Matrix;->postScale(FF)Z
 
-    .line 859
+    .line 889
     invoke-virtual {p0}, Landroid/graphics/Bitmap;->getWidth()I
 
     move-result v3
 
-    .line 860
+    .line 890
     invoke-virtual {p0}, Landroid/graphics/Bitmap;->getHeight()I
 
     move-result v4
 
-    .line 859
+    .line 889
     const/4 v1, 0x0
 
     const/4 v2, 0x0
 
-    .line 860
+    .line 890
     const/4 v6, 0x1
 
     move-object v0, p0
 
-    .line 859
+    .line 889
     invoke-static/range {v0 .. v6}, Landroid/graphics/Bitmap;->createBitmap(Landroid/graphics/Bitmap;IIIILandroid/graphics/Matrix;Z)Landroid/graphics/Bitmap;
 
     move-result-object v10
 
-    .line 861
+    .line 891
     .local v10, "resizeBmp":Landroid/graphics/Bitmap;
     invoke-virtual {v11}, Landroid/graphics/Bitmap;->getWidth()I
 
@@ -3916,7 +4117,7 @@
 
     div-int/lit8 v12, v0, 0x2
 
-    .line 862
+    .line 892
     .local v12, "x":I
     invoke-virtual {v11}, Landroid/graphics/Bitmap;->getHeight()I
 
@@ -3930,7 +4131,7 @@
 
     div-int/lit8 v13, v0, 0x2
 
-    .line 863
+    .line 893
     .local v13, "y":I
     int-to-float v0, v12
 
@@ -3941,7 +4142,7 @@
     .catch Ljava/lang/OutOfMemoryError; {:try_start_0 .. :try_end_0} :catch_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 868
+    .line 898
     if-eqz v10, :cond_0
 
     invoke-virtual {v10}, Landroid/graphics/Bitmap;->isRecycled()Z
@@ -3950,10 +4151,10 @@
 
     if-nez v0, :cond_0
 
-    .line 869
+    .line 899
     invoke-virtual {v10}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 870
+    .line 900
     .end local v5    # "matrix":Landroid/graphics/Matrix;
     .end local v7    # "canvas":Landroid/graphics/Canvas;
     .end local v9    # "paint":Landroid/graphics/Paint;
@@ -3966,23 +4167,23 @@
     .local v10, "resizeBmp":Landroid/graphics/Bitmap;
     goto :goto_0
 
-    .line 864
+    .line 894
     .end local v10    # "resizeBmp":Landroid/graphics/Bitmap;
     .end local v11    # "resultBmp":Landroid/graphics/Bitmap;
     :catch_0
     move-exception v8
 
-    .line 865
+    .line 895
     .local v8, "error":Ljava/lang/OutOfMemoryError;
     :try_start_1
     invoke-virtual {v8}, Ljava/lang/OutOfMemoryError;->printStackTrace()V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 866
+    .line 896
     move-object v11, p0
 
-    .line 868
+    .line 898
     .restart local v11    # "resultBmp":Landroid/graphics/Bitmap;
     if-eqz v10, :cond_0
 
@@ -3992,18 +4193,18 @@
 
     if-nez v0, :cond_0
 
-    .line 869
+    .line 899
     invoke-virtual {v10}, Landroid/graphics/Bitmap;->recycle()V
 
     goto :goto_1
 
-    .line 867
+    .line 897
     .end local v8    # "error":Ljava/lang/OutOfMemoryError;
     .end local v11    # "resultBmp":Landroid/graphics/Bitmap;
     :catchall_0
     move-exception v0
 
-    .line 868
+    .line 898
     if-eqz v10, :cond_2
 
     invoke-virtual {v10}, Landroid/graphics/Bitmap;->isRecycled()Z
@@ -4012,16 +4213,16 @@
 
     if-eqz v1, :cond_3
 
-    .line 867
+    .line 897
     :cond_2
     :goto_2
     throw v0
 
-    .line 869
+    .line 899
     :cond_3
     invoke-virtual {v10}, Landroid/graphics/Bitmap;->recycle()V
 
-    .line 870
+    .line 900
     const/4 v10, 0x0
 
     .restart local v10    # "resizeBmp":Landroid/graphics/Bitmap;

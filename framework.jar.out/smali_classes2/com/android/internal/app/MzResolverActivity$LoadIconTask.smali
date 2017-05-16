@@ -35,7 +35,7 @@
     .param p1, "this$0"    # Lcom/android/internal/app/MzResolverActivity;
 
     .prologue
-    .line 1716
+    .line 1714
     iput-object p1, p0, Lcom/android/internal/app/MzResolverActivity$LoadIconTask;->this$0:Lcom/android/internal/app/MzResolverActivity;
 
     invoke-direct {p0}, Landroid/os/AsyncTask;-><init>()V
@@ -50,18 +50,18 @@
     .param p1, "params"    # [Lcom/android/internal/app/MzResolverActivity$DisplayResolveInfo;
 
     .prologue
-    .line 1719
+    .line 1717
     const/4 v1, 0x0
 
     aget-object v0, p1, v1
 
-    .line 1720
+    .line 1718
     .local v0, "info":Lcom/android/internal/app/MzResolverActivity$DisplayResolveInfo;
     iget-object v1, v0, Lcom/android/internal/app/MzResolverActivity$DisplayResolveInfo;->displayIcon:Landroid/graphics/drawable/Drawable;
 
     if-nez v1, :cond_0
 
-    .line 1721
+    .line 1719
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$LoadIconTask;->this$0:Lcom/android/internal/app/MzResolverActivity;
 
     iget-object v2, v0, Lcom/android/internal/app/MzResolverActivity$DisplayResolveInfo;->ri:Landroid/content/pm/ResolveInfo;
@@ -72,7 +72,7 @@
 
     iput-object v1, v0, Lcom/android/internal/app/MzResolverActivity$DisplayResolveInfo;->displayIcon:Landroid/graphics/drawable/Drawable;
 
-    .line 1723
+    .line 1721
     :cond_0
     return-object v0
 .end method
@@ -82,7 +82,7 @@
     .param p1, "params"    # [Ljava/lang/Object;
 
     .prologue
-    .line 1718
+    .line 1716
     check-cast p1, [Lcom/android/internal/app/MzResolverActivity$DisplayResolveInfo;
 
     .end local p1    # "params":[Ljava/lang/Object;
@@ -98,7 +98,7 @@
     .param p1, "info"    # Lcom/android/internal/app/MzResolverActivity$DisplayResolveInfo;
 
     .prologue
-    .line 1728
+    .line 1726
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$LoadIconTask;->this$0:Lcom/android/internal/app/MzResolverActivity;
 
     invoke-static {v0}, Lcom/android/internal/app/MzResolverActivity;->-get2(Lcom/android/internal/app/MzResolverActivity;)Lcom/android/internal/app/MzResolverActivity$ResolveGridAdapter;
@@ -107,7 +107,7 @@
 
     invoke-virtual {v0}, Lcom/android/internal/app/MzResolverActivity$ResolveGridAdapter;->notifyDataSetChanged()V
 
-    .line 1727
+    .line 1725
     return-void
 .end method
 
@@ -116,7 +116,7 @@
     .param p1, "info"    # Ljava/lang/Object;
 
     .prologue
-    .line 1727
+    .line 1725
     check-cast p1, Lcom/android/internal/app/MzResolverActivity$DisplayResolveInfo;
 
     .end local p1    # "info":Ljava/lang/Object;

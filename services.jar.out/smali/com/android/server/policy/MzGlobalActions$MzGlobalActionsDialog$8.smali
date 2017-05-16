@@ -3,12 +3,12 @@
 .source "MzGlobalActions.java"
 
 # interfaces
-.implements Landroid/animation/Animator$AnimatorListener;
+.implements Ljava/lang/Runnable;
 
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->prepareAnimators()V
+    value = Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->confirmPassword(Ljava/lang/Runnable;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -27,7 +27,7 @@
     .param p1, "this$1"    # Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
     .prologue
-    .line 576
+    .line 457
     iput-object p1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -37,38 +37,21 @@
 
 
 # virtual methods
-.method public onAnimationCancel(Landroid/animation/Animator;)V
-    .locals 0
-    .param p1, "animation"    # Landroid/animation/Animator;
+.method public run()V
+    .locals 2
 
     .prologue
-    .line 598
-    return-void
-.end method
+    .line 460
+    iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$8;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
-.method public onAnimationEnd(Landroid/animation/Animator;)V
-    .locals 0
-    .param p1, "animation"    # Landroid/animation/Animator;
+    invoke-static {v0}, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->-get6(Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;)Landroid/os/Handler;
 
-    .prologue
-    .line 590
-    return-void
-.end method
+    move-result-object v0
 
-.method public onAnimationRepeat(Landroid/animation/Animator;)V
-    .locals 0
-    .param p1, "animation"    # Landroid/animation/Animator;
+    const/4 v1, 0x0
 
-    .prologue
-    .line 584
-    return-void
-.end method
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->sendEmptyMessage(I)Z
 
-.method public onAnimationStart(Landroid/animation/Animator;)V
-    .locals 0
-    .param p1, "animation"    # Landroid/animation/Animator;
-
-    .prologue
-    .line 579
+    .line 459
     return-void
 .end method

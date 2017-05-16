@@ -234,7 +234,7 @@
 
     const/4 v1, 0x0
 
-    .line 77
+    .line 78
     invoke-direct {p0}, Landroid/content/res/flymetheme/IFlymeThemeManager$Stub;-><init>()V
 
     .line 26
@@ -333,17 +333,17 @@
 
     iput-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 92
+    .line 93
     new-instance v0, Landroid/content/res/flymetheme/FlymeThemeService$2;
 
     invoke-direct {v0, p0}, Landroid/content/res/flymetheme/FlymeThemeService$2;-><init>(Landroid/content/res/flymetheme/FlymeThemeService;)V
 
     iput-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
-    .line 78
+    .line 79
     iput-object p1, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
 
-    .line 77
+    .line 78
     return-void
 
     :cond_0
@@ -357,7 +357,7 @@
     .locals 4
 
     .prologue
-    .line 231
+    .line 232
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
@@ -372,13 +372,13 @@
 
     move-result-object v0
 
-    .line 232
+    .line 233
     .local v0, "mClient":Ljava/lang/String;
     iget-boolean v1, p0, Landroid/content/res/flymetheme/FlymeThemeService;->DEBUG:Z
 
     if-eqz v1, :cond_0
 
-    .line 233
+    .line 234
     const-string/jumbo v1, "FlymeThemeService"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -415,7 +415,7 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 235
+    .line 236
     :cond_0
     invoke-direct {p0, v0}, Landroid/content/res/flymetheme/FlymeThemeService;->isSystemApp(Ljava/lang/String;)Z
 
@@ -425,46 +425,46 @@
 .end method
 
 .method private isNeedSendCCScreenOffBroadcast()Z
-    .locals 10
+    .locals 12
 
     .prologue
-    const-wide/16 v8, 0x0
+    const/4 v6, 0x1
 
-    const/4 v4, 0x1
+    const-wide/16 v10, 0x0
 
-    const/4 v5, 0x0
+    const/4 v7, 0x0
 
     .line 67
-    sget v6, Landroid/os/Build$VERSION;->SDK_INT:I
+    sget v8, Landroid/os/Build$VERSION;->SDK_INT:I
 
-    const/16 v7, 0x15
+    const/16 v9, 0x15
 
-    if-lt v6, v7, :cond_1
+    if-lt v8, v9, :cond_2
 
     .line 68
-    iget-object v6, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
+    iget-object v8, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v6}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
-    move-result-object v6
+    move-result-object v8
 
-    sget-object v7, Landroid/content/res/flymetheme/FlymeThemeManager;->SEND_CC_SCREEN_OFF_BROADCAST_MIN_TIME_INTERVAL:Ljava/lang/String;
+    sget-object v9, Landroid/content/res/flymetheme/FlymeThemeManager;->SEND_CC_SCREEN_OFF_BROADCAST_MIN_TIME_INTERVAL:Ljava/lang/String;
 
-    invoke-static {v6, v7, v8, v9}, Landroid/provider/Settings$System;->getLong(Landroid/content/ContentResolver;Ljava/lang/String;J)J
+    invoke-static {v8, v9, v10, v11}, Landroid/provider/Settings$System;->getLong(Landroid/content/ContentResolver;Ljava/lang/String;J)J
 
     move-result-wide v2
 
     .line 69
     .local v2, "minTimeInterval":J
-    iget-object v6, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
+    iget-object v8, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
 
-    invoke-virtual {v6}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
-    move-result-object v6
+    move-result-object v8
 
-    sget-object v7, Landroid/content/res/flymetheme/FlymeThemeManager;->LAST_TIME_SEND_CC_SCREEN_OFF_BROADCAST:Ljava/lang/String;
+    sget-object v9, Landroid/content/res/flymetheme/FlymeThemeManager;->LAST_TIME_SEND_CC_SCREEN_OFF_BROADCAST:Ljava/lang/String;
 
-    invoke-static {v6, v7, v8, v9}, Landroid/provider/Settings$System;->getLong(Landroid/content/ContentResolver;Ljava/lang/String;J)J
+    invoke-static {v8, v9, v10, v11}, Landroid/provider/Settings$System;->getLong(Landroid/content/ContentResolver;Ljava/lang/String;J)J
 
     move-result-wide v0
 
@@ -472,42 +472,50 @@
     .local v0, "lastTime":J
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    move-result-wide v6
+    move-result-wide v8
 
-    sub-long/2addr v6, v0
-
-    cmp-long v6, v6, v2
-
-    if-ltz v6, :cond_1
+    sub-long v4, v8, v0
 
     .line 71
-    iget-object v6, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
+    .local v4, "timeInterval":J
+    cmp-long v8, v4, v2
 
-    invoke-virtual {v6}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    if-gez v8, :cond_0
 
-    move-result-object v6
+    cmp-long v8, v4, v10
 
-    sget-object v7, Landroid/content/res/flymetheme/FlymeThemeManager;->IS_NEED_SEND_CC_SCREEN_OFF_BROADCAST:Ljava/lang/String;
+    if-gez v8, :cond_2
 
-    invoke-static {v6, v7, v5}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+    .line 72
+    :cond_0
+    iget-object v8, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
 
-    move-result v6
+    invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
-    if-ne v6, v4, :cond_0
+    move-result-object v8
+
+    sget-object v9, Landroid/content/res/flymetheme/FlymeThemeManager;->IS_NEED_SEND_CC_SCREEN_OFF_BROADCAST:Ljava/lang/String;
+
+    invoke-static {v8, v9, v7}, Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
+
+    move-result v8
+
+    if-ne v8, v6, :cond_1
 
     :goto_0
-    return v4
+    return v6
 
-    :cond_0
-    move v4, v5
+    :cond_1
+    move v6, v7
 
     goto :goto_0
 
-    .line 74
+    .line 75
     .end local v0    # "lastTime":J
     .end local v2    # "minTimeInterval":J
-    :cond_1
-    return v5
+    .end local v4    # "timeInterval":J
+    :cond_2
+    return v7
 .end method
 
 .method private isSystemApp(Ljava/lang/String;)Z
@@ -519,19 +527,19 @@
 
     const/4 v4, 0x0
 
-    .line 239
+    .line 240
     const/4 v1, 0x0
 
-    .line 240
+    .line 241
     .local v1, "info":Landroid/content/pm/ApplicationInfo;
     iget-object v2, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
 
     if-nez v2, :cond_0
 
-    .line 241
+    .line 242
     return v4
 
-    .line 244
+    .line 245
     :cond_0
     :try_start_0
     iget-object v2, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
@@ -546,7 +554,7 @@
 
     move-result-object v1
 
-    .line 245
+    .line 246
     .local v1, "info":Landroid/content/pm/ApplicationInfo;
     iget v2, v1, Landroid/content/pm/ApplicationInfo;->flags:I
 
@@ -554,10 +562,10 @@
 
     if-eqz v2, :cond_1
 
-    .line 246
+    .line 247
     return v5
 
-    .line 247
+    .line 248
     :cond_1
     iget v2, v1, Landroid/content/pm/ApplicationInfo;->flags:I
     :try_end_0
@@ -567,22 +575,22 @@
 
     if-eqz v2, :cond_2
 
-    .line 248
+    .line 249
     return v5
 
-    .line 250
+    .line 251
     .end local v1    # "info":Landroid/content/pm/ApplicationInfo;
     :catch_0
     move-exception v0
 
-    .line 251
+    .line 252
     .local v0, "e1":Ljava/lang/Exception;
     invoke-virtual {v0}, Ljava/lang/Exception;->printStackTrace()V
 
-    .line 252
+    .line 253
     return v4
 
-    .line 254
+    .line 255
     .end local v0    # "e1":Ljava/lang/Exception;
     .restart local v1    # "info":Landroid/content/pm/ApplicationInfo;
     :cond_2
@@ -593,25 +601,25 @@
     .locals 3
 
     .prologue
-    .line 87
+    .line 88
     new-instance v0, Landroid/content/IntentFilter;
 
     invoke-direct {v0}, Landroid/content/IntentFilter;-><init>()V
 
-    .line 88
+    .line 89
     .local v0, "intentFilter":Landroid/content/IntentFilter;
     const-string/jumbo v1, "android.intent.action.SCREEN_OFF"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 89
+    .line 90
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mContext:Landroid/content/Context;
 
     iget-object v2, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
     invoke-virtual {v1, v2, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    .line 86
+    .line 87
     return-void
 .end method
 
@@ -626,19 +634,19 @@
     .end annotation
 
     .prologue
-    .line 221
+    .line 222
     iget-boolean v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    .line 222
+    .line 223
     const-string/jumbo v0, "FlymeThemeService"
 
     const-string/jumbo v1, "cancelChangeWallpaper------"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 224
+    .line 225
     :cond_0
     invoke-direct {p0}, Landroid/content/res/flymetheme/FlymeThemeService;->checkSystemApp()Z
 
@@ -646,10 +654,10 @@
 
     if-nez v0, :cond_1
 
-    .line 225
+    .line 226
     return-void
 
-    .line 227
+    .line 228
     :cond_1
     iget-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
@@ -657,7 +665,7 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 220
+    .line 221
     return-void
 .end method
 
@@ -667,19 +675,19 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 278
+    .line 279
     iget-boolean v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    .line 279
+    .line 280
     const-string/jumbo v0, "FlymeThemeService"
 
     const-string/jumbo v1, "cancelFontWakeUpTrialService------"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 281
+    .line 282
     :cond_0
     invoke-direct {p0}, Landroid/content/res/flymetheme/FlymeThemeService;->checkSystemApp()Z
 
@@ -687,10 +695,10 @@
 
     if-nez v0, :cond_1
 
-    .line 282
+    .line 283
     return-void
 
-    .line 284
+    .line 285
     :cond_1
     iget-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
@@ -698,23 +706,23 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 285
+    .line 286
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mTrialFontStartTime:J
 
-    .line 286
+    .line 287
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mFontPackageName:Ljava/lang/String;
 
-    .line 287
+    .line 288
     iput v2, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mFontWakeUpCount:I
 
-    .line 288
+    .line 289
     iput v2, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mFontIntervalTime:I
 
-    .line 277
+    .line 278
     return-void
 .end method
 
@@ -724,19 +732,19 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 178
+    .line 179
     iget-boolean v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    .line 179
+    .line 180
     const-string/jumbo v0, "FlymeThemeService"
 
     const-string/jumbo v1, "canceWakeUpTrialService------"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 181
+    .line 182
     :cond_0
     invoke-direct {p0}, Landroid/content/res/flymetheme/FlymeThemeService;->checkSystemApp()Z
 
@@ -744,10 +752,10 @@
 
     if-nez v0, :cond_1
 
-    .line 182
+    .line 183
     return-void
 
-    .line 184
+    .line 185
     :cond_1
     iget-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
@@ -755,23 +763,23 @@
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 185
+    .line 186
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mTrialThemeStartTime:J
 
-    .line 186
+    .line 187
     const/4 v0, 0x0
 
     iput-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mThemePackageName:Ljava/lang/String;
 
-    .line 187
+    .line 188
     iput v2, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mThemeWakeUpCount:I
 
-    .line 188
+    .line 189
     iput v2, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mThemeIntervalTime:I
 
-    .line 177
+    .line 178
     return-void
 .end method
 
@@ -789,12 +797,12 @@
     .prologue
     const/16 v4, 0x3ea
 
-    .line 200
+    .line 201
     iget-boolean v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    .line 201
+    .line 202
     const-string/jumbo v0, "FlymeThemeService"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -837,7 +845,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 204
+    .line 205
     :cond_0
     invoke-direct {p0}, Landroid/content/res/flymetheme/FlymeThemeService;->checkSystemApp()Z
 
@@ -845,32 +853,32 @@
 
     if-nez v0, :cond_1
 
-    .line 205
+    .line 206
     return-void
 
-    .line 207
+    .line 208
     :cond_1
     iget-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 208
+    .line 209
     iput-wide p3, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mChangeWallpaperTime:J
 
-    .line 209
+    .line 210
     iput-object p1, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mChangeWallpaperIntent:Ljava/lang/String;
 
-    .line 210
+    .line 211
     iput-object p2, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mChangeWallpaperType:Ljava/lang/String;
 
-    .line 211
+    .line 212
     iget-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
     iget-wide v2, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mChangeWallpaperTime:J
 
     invoke-virtual {v0, v4, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 199
+    .line 200
     return-void
 .end method
 
@@ -878,19 +886,19 @@
     .locals 2
 
     .prologue
-    .line 295
+    .line 296
     iget-boolean v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->DEBUG:Z
 
     if-eqz v0, :cond_0
 
-    .line 296
+    .line 297
     const-string/jumbo v0, "FlymeThemeService"
 
     const-string/jumbo v1, "isTrialFontAvailable------"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 298
+    .line 299
     :cond_0
     invoke-direct {p0}, Landroid/content/res/flymetheme/FlymeThemeService;->checkSystemApp()Z
 
@@ -898,12 +906,12 @@
 
     if-nez v0, :cond_1
 
-    .line 299
+    .line 300
     const/4 v0, 0x0
 
     return v0
 
-    .line 301
+    .line 302
     :cond_1
     const/4 v0, 0x1
 
@@ -920,35 +928,35 @@
     .prologue
     const/16 v4, 0x3eb
 
-    .line 262
+    .line 263
     invoke-direct {p0}, Landroid/content/res/flymetheme/FlymeThemeService;->checkSystemApp()Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 263
+    .line 264
     return-void
 
-    .line 265
+    .line 266
     :cond_0
     iget-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 266
+    .line 267
     iput-wide p1, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mTrialFontStartTime:J
 
-    .line 267
+    .line 268
     iput-object p3, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mFontPackageName:Ljava/lang/String;
 
-    .line 268
+    .line 269
     iput p4, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mFontWakeUpCount:I
 
-    .line 269
+    .line 270
     iput p5, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mFontIntervalTime:I
 
-    .line 270
+    .line 271
     iget-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
     iget v1, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mFontIntervalTime:I
@@ -957,14 +965,14 @@
 
     invoke-virtual {v0, v4, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 271
+    .line 272
     iget v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mFontWakeUpCount:I
 
     add-int/lit8 v0, v0, -0x1
 
     iput v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mFontWakeUpCount:I
 
-    .line 261
+    .line 262
     return-void
 .end method
 
@@ -978,35 +986,35 @@
     .prologue
     const/16 v4, 0x3e9
 
-    .line 159
+    .line 160
     invoke-direct {p0}, Landroid/content/res/flymetheme/FlymeThemeService;->checkSystemApp()Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    .line 160
+    .line 161
     return-void
 
-    .line 162
+    .line 163
     :cond_0
     iget-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
     invoke-virtual {v0, v4}, Landroid/os/Handler;->removeMessages(I)V
 
-    .line 163
+    .line 164
     iput-wide p1, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mTrialThemeStartTime:J
 
-    .line 164
+    .line 165
     iput-object p3, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mThemePackageName:Ljava/lang/String;
 
-    .line 165
+    .line 166
     iput p4, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mThemeWakeUpCount:I
 
-    .line 166
+    .line 167
     iput p5, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mThemeIntervalTime:I
 
-    .line 167
+    .line 168
     iget-object v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mHandler:Landroid/os/Handler;
 
     iget v1, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mThemeIntervalTime:I
@@ -1015,14 +1023,14 @@
 
     invoke-virtual {v0, v4, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 168
+    .line 169
     iget v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mThemeWakeUpCount:I
 
     add-int/lit8 v0, v0, -0x1
 
     iput v0, p0, Landroid/content/res/flymetheme/FlymeThemeService;->mThemeWakeUpCount:I
 
-    .line 158
+    .line 159
     return-void
 .end method
 
@@ -1030,16 +1038,16 @@
     .locals 2
 
     .prologue
-    .line 82
+    .line 83
     const-string/jumbo v0, "FlymeThemeService"
 
     const-string/jumbo v1, "systemReady"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 83
+    .line 84
     invoke-direct {p0}, Landroid/content/res/flymetheme/FlymeThemeService;->registerBroadcastReceiver()V
 
-    .line 81
+    .line 82
     return-void
 .end method

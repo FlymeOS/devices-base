@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Landroid/content/res/flymetheme/FlymeThemeService;
 
     .prologue
-    .line 92
+    .line 93
     iput-object p1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -41,20 +41,20 @@
     .prologue
     const/16 v6, 0x20
 
-    .line 95
+    .line 96
     invoke-super {p0, p1}, Landroid/os/Handler;->handleMessage(Landroid/os/Message;)V
 
-    .line 96
+    .line 97
     iget v1, p1, Landroid/os/Message;->what:I
 
     packed-switch v1, :pswitch_data_0
 
-    .line 94
+    .line 95
     :cond_0
     :goto_0
     return-void
 
-    .line 98
+    .line 99
     :pswitch_0
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
@@ -64,7 +64,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 99
+    .line 100
     const-string/jumbo v1, "FlymeThemeService"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -93,34 +93,34 @@
 
     move-result-object v2
 
-    .line 100
+    .line 101
     iget-object v3, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v3}, Landroid/content/res/flymetheme/FlymeThemeService;->-get12(Landroid/content/res/flymetheme/FlymeThemeService;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 99
+    .line 100
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    .line 100
+    .line 101
     const-string/jumbo v3, "   "
 
-    .line 99
+    .line 100
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    .line 100
+    .line 101
     iget-object v3, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v3}, Landroid/content/res/flymetheme/FlymeThemeService;->-get16(Landroid/content/res/flymetheme/FlymeThemeService;)J
 
     move-result-wide v4
 
-    .line 99
+    .line 100
     invoke-virtual {v2, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -131,7 +131,7 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 102
+    .line 103
     :cond_1
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
@@ -139,40 +139,40 @@
 
     move-result-object v1
 
-    .line 103
+    .line 104
     sget-object v2, Landroid/content/res/flymetheme/FlymeThemeManager;->FLYME_THEME_TRAIL_PACKAGENAME_EXTRA:Ljava/lang/String;
 
-    .line 104
+    .line 105
     iget-object v3, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v3}, Landroid/content/res/flymetheme/FlymeThemeService;->-get12(Landroid/content/res/flymetheme/FlymeThemeService;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 102
+    .line 103
     invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 105
+    .line 106
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get14(Landroid/content/res/flymetheme/FlymeThemeService;)Landroid/content/Intent;
 
     move-result-object v1
 
-    .line 106
+    .line 107
     sget-object v2, Landroid/content/res/flymetheme/FlymeThemeManager;->FLYME_THEME_TRAIL_START_TIME_EXTRA:Ljava/lang/String;
 
-    .line 107
+    .line 108
     iget-object v3, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v3}, Landroid/content/res/flymetheme/FlymeThemeService;->-get16(Landroid/content/res/flymetheme/FlymeThemeService;)J
 
     move-result-wide v4
 
-    .line 105
+    .line 106
     invoke-virtual {v1, v2, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
 
-    .line 108
+    .line 109
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get14(Landroid/content/res/flymetheme/FlymeThemeService;)Landroid/content/Intent;
@@ -181,7 +181,7 @@
 
     invoke-virtual {v1, v6}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 109
+    .line 110
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get5(Landroid/content/res/flymetheme/FlymeThemeService;)Landroid/content/Context;
@@ -196,7 +196,7 @@
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 110
+    .line 111
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get13(Landroid/content/res/flymetheme/FlymeThemeService;)I
@@ -205,14 +205,14 @@
 
     if-lez v1, :cond_0
 
-    .line 111
+    .line 112
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get10(Landroid/content/res/flymetheme/FlymeThemeService;)Landroid/os/Handler;
 
     move-result-object v1
 
-    .line 112
+    .line 113
     iget-object v2, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v2}, Landroid/content/res/flymetheme/FlymeThemeService;->-get11(Landroid/content/res/flymetheme/FlymeThemeService;)I
@@ -221,12 +221,12 @@
 
     int-to-long v2, v2
 
-    .line 111
+    .line 112
     const/16 v4, 0x3e9
 
     invoke-virtual {v1, v4, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 113
+    .line 114
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get13(Landroid/content/res/flymetheme/FlymeThemeService;)I
@@ -239,7 +239,7 @@
 
     goto/16 :goto_0
 
-    .line 117
+    .line 118
     :pswitch_1
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
@@ -249,14 +249,14 @@
 
     if-eqz v1, :cond_2
 
-    .line 118
+    .line 119
     const-string/jumbo v1, "FlymeThemeService"
 
     const-string/jumbo v2, "CHANGE_WALLPAPER_MESSAGE------TimeOut"
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 120
+    .line 121
     :cond_2
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
@@ -266,7 +266,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 121
+    .line 122
     new-instance v0, Landroid/content/Intent;
 
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
@@ -277,7 +277,7 @@
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 122
+    .line 123
     .local v0, "changeWallpaperIntent":Landroid/content/Intent;
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
@@ -301,7 +301,7 @@
 
     if-eqz v1, :cond_4
 
-    .line 127
+    .line 128
     :cond_3
     :goto_1
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
@@ -314,7 +314,7 @@
 
     goto/16 :goto_0
 
-    .line 123
+    .line 124
     :cond_4
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
@@ -322,22 +322,22 @@
 
     move-result-object v1
 
-    .line 124
+    .line 125
     iget-object v2, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v2}, Landroid/content/res/flymetheme/FlymeThemeService;->-get3(Landroid/content/res/flymetheme/FlymeThemeService;)J
 
     move-result-wide v2
 
-    .line 123
+    .line 124
     invoke-virtual {v0, v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
 
-    .line 125
+    .line 126
     invoke-virtual {v0, v6}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
     goto :goto_1
 
-    .line 131
+    .line 132
     .end local v0    # "changeWallpaperIntent":Landroid/content/Intent;
     :pswitch_2
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
@@ -348,7 +348,7 @@
 
     if-eqz v1, :cond_5
 
-    .line 132
+    .line 133
     const-string/jumbo v1, "FlymeThemeService"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -371,42 +371,42 @@
 
     move-result-object v2
 
-    .line 133
+    .line 134
     const-string/jumbo v3, "    "
 
-    .line 132
+    .line 133
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    .line 133
+    .line 134
     iget-object v3, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v3}, Landroid/content/res/flymetheme/FlymeThemeService;->-get7(Landroid/content/res/flymetheme/FlymeThemeService;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 132
+    .line 133
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    .line 133
+    .line 134
     const-string/jumbo v3, "   "
 
-    .line 132
+    .line 133
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object v2
 
-    .line 133
+    .line 134
     iget-object v3, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v3}, Landroid/content/res/flymetheme/FlymeThemeService;->-get15(Landroid/content/res/flymetheme/FlymeThemeService;)J
 
     move-result-wide v4
 
-    .line 132
+    .line 133
     invoke-virtual {v2, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
     move-result-object v2
@@ -417,7 +417,7 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 135
+    .line 136
     :cond_5
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
@@ -425,7 +425,7 @@
 
     move-result-object v1
 
-    .line 136
+    .line 137
     sget-object v2, Landroid/content/res/flymetheme/FlymeThemeManager;->FLYME_FONT_TRAIL_PACKAGENAME_EXTRA:Ljava/lang/String;
 
     iget-object v3, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
@@ -434,10 +434,10 @@
 
     move-result-object v3
 
-    .line 135
+    .line 136
     invoke-virtual {v1, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 137
+    .line 138
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get9(Landroid/content/res/flymetheme/FlymeThemeService;)Landroid/content/Intent;
@@ -446,17 +446,17 @@
 
     sget-object v2, Landroid/content/res/flymetheme/FlymeThemeManager;->FLYME_FONT_TRAIL_START_TIME_EXTRA:Ljava/lang/String;
 
-    .line 138
+    .line 139
     iget-object v3, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v3}, Landroid/content/res/flymetheme/FlymeThemeService;->-get15(Landroid/content/res/flymetheme/FlymeThemeService;)J
 
     move-result-wide v4
 
-    .line 137
+    .line 138
     invoke-virtual {v1, v2, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
 
-    .line 139
+    .line 140
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get9(Landroid/content/res/flymetheme/FlymeThemeService;)Landroid/content/Intent;
@@ -465,7 +465,7 @@
 
     invoke-virtual {v1, v6}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 140
+    .line 141
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get5(Landroid/content/res/flymetheme/FlymeThemeService;)Landroid/content/Context;
@@ -480,7 +480,7 @@
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 141
+    .line 142
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get8(Landroid/content/res/flymetheme/FlymeThemeService;)I
@@ -489,14 +489,14 @@
 
     if-lez v1, :cond_0
 
-    .line 142
+    .line 143
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get10(Landroid/content/res/flymetheme/FlymeThemeService;)Landroid/os/Handler;
 
     move-result-object v1
 
-    .line 143
+    .line 144
     iget-object v2, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v2}, Landroid/content/res/flymetheme/FlymeThemeService;->-get6(Landroid/content/res/flymetheme/FlymeThemeService;)I
@@ -505,12 +505,12 @@
 
     int-to-long v2, v2
 
-    .line 142
+    .line 143
     const/16 v4, 0x3eb
 
     invoke-virtual {v1, v4, v2, v3}, Landroid/os/Handler;->sendEmptyMessageDelayed(IJ)Z
 
-    .line 144
+    .line 145
     iget-object v1, p0, Landroid/content/res/flymetheme/FlymeThemeService$2;->this$0:Landroid/content/res/flymetheme/FlymeThemeService;
 
     invoke-static {v1}, Landroid/content/res/flymetheme/FlymeThemeService;->-get8(Landroid/content/res/flymetheme/FlymeThemeService;)I
@@ -523,7 +523,7 @@
 
     goto/16 :goto_0
 
-    .line 96
+    .line 97
     :pswitch_data_0
     .packed-switch 0x3e9
         :pswitch_0
