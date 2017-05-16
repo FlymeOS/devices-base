@@ -87,9 +87,8 @@ vendor_modify_jars := framework services telephony-common wifi-service
 # The value decides which board system file you want to save.
 # The default value is nothing.
 # You can configure the board system file path which relative to the system directory in the board release.
-# You should add "lib64/libwebviewchromium.so" for 64 bit system.
 #-----------------------------------------------------------------------------
-board_saved_files := lib/libwebviewchromium.so
+#board_saved_files :=
 
 ##############################################################################
 # The value decides which board system apk you want to remove.
@@ -119,7 +118,7 @@ board_saved_files := lib/libwebviewchromium.so
 # The command idtoname how to use: first use "apktool d source/system/framework/framework-res.apk other/TMP/framework-res",
 # and then use "idtoname other/TMP/framework-res/res/values/public_master.xml XXXX/smali"(XXXX is the directory where you decode board system jar).
 #-----------------------------------------------------------------------------
-#board_modify_jars := android.policy
+#board_modify_jars :=
 
 ##############################################################################
 # The value decides which property you will override in the build.prop.
@@ -138,8 +137,8 @@ override_property += \
 # The default value is Unofficial.
 # You should configure the property according to your ID, ie, replace "Unofficial" with your ID.
 # The property ro.product.model_romer decide your ID on the backend server which statistical data for your device.
-# The default value is Nexus-5_Unofficial.
-# You should configure the property according to your device and your ID with replace the "Nexus-5_Unofficial".
+# The default value is Nexus-6P_Unofficial.
+# You should configure the property according to your device and your ID with replace the "Nexus-6P_Unofficial".
 override_property += \
     ro.flyme.romer=Unofficial \
     ro.product.model_romer=Nexus-6P_Unofficial
@@ -180,5 +179,16 @@ override_property += \
 #-----------------------------------------------------------------------------
 #PRODUCE_BLOCK_BASED_OTA := false
 
+##############################################################################
+# Defines whether build an international version of package.
+# Default: false
+#-----------------------------------------------------------------------------
+#PRODUCE_INTERNATIONAL_ROM := true
+
+##############################################################################
+# Defines whether use sepolicy inject.
+# Default: true
+#-----------------------------------------------------------------------------
+#PRODUCE_SEPOLICY_INJECT := false
 
 include $(PORT_BUILD)/main.mk
