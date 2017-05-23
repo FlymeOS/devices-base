@@ -7,7 +7,7 @@
 .method public abstract decreaseScore(Lmeizu/notification/RankingDaily;)F
 .end method
 
-.method public abstract getRankingScoreBase(II)F
+.method public abstract getRankingScoreBase(Ljava/lang/String;II)F
 .end method
 
 .method public abstract increaseScore(Lmeizu/notification/RankingDaily;)F

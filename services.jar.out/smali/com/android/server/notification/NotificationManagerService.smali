@@ -11151,3 +11151,21 @@
     .line 2434
     return-void
 .end method
+
+.method callFlymeReplyIntent(Landroid/service/notification/StatusBarNotification;)V
+    .locals 2
+    .param p1, "n"    # Landroid/service/notification/StatusBarNotification;
+
+    .prologue
+    .line 2449
+    invoke-virtual {p0}, Lcom/android/server/notification/NotificationManagerService;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    const/4 v1, -0x2
+
+    invoke-static {v0, p1, v1}, Lcom/android/server/notification/CloudNotificationHelper;->callReplyIntent(Landroid/content/Context;Landroid/service/notification/StatusBarNotification;I)V
+
+    .line 2447
+    return-void
+.end method

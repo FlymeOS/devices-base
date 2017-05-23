@@ -380,19 +380,6 @@
     return v1
 .end method
 
-.method static isRestartFavoriteApp(Lcom/android/server/am/ProcessRecord;)Z
-    .locals 1
-    .param p0, "app"    # Lcom/android/server/am/ProcessRecord;
-
-    .prologue
-    .line 21098
-    invoke-static {p0}, Lcom/android/server/am/Ams_Interface;->isRestartFavoriteApp(Lcom/android/server/am/ProcessRecord;)Z
-
-    move-result v0
-
-    return v0
-.end method
-
 .method static isSystemUid()Z
     .locals 2
 

@@ -157,13 +157,13 @@
     .param p1, "preDaily"    # Lmeizu/notification/RankingDaily;
 
     .prologue
-    .line 131
+    .line 132
     :try_start_0
     iget-object v2, p0, Lcom/android/server/notification/NotificationFirewallImpl;->remoteService:Lmeizu/notification/INotificationFilterService;
 
     if-eqz v2, :cond_0
 
-    .line 132
+    .line 133
     iget-object v2, p0, Lcom/android/server/notification/NotificationFirewallImpl;->remoteService:Lmeizu/notification/INotificationFilterService;
 
     invoke-interface {v2, p1}, Lmeizu/notification/INotificationFilterService;->decreaseScore(Lmeizu/notification/RankingDaily;)F
@@ -175,11 +175,11 @@
 
     return v2
 
-    .line 137
+    .line 138
     :catch_0
     move-exception v1
 
-    .line 138
+    .line 139
     .local v1, "throwable":Ljava/lang/Throwable;
     sget-object v2, Lcom/android/server/notification/NotificationFirewallImpl;->TAG:Ljava/lang/String;
 
@@ -187,10 +187,10 @@
 
     invoke-static {v2, v3, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 139
+    .line 140
     invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
 
-    .line 141
+    .line 142
     .end local v1    # "throwable":Ljava/lang/Throwable;
     :cond_0
     :goto_0
@@ -198,11 +198,11 @@
 
     return v2
 
-    .line 134
+    .line 135
     :catch_1
     move-exception v0
 
-    .line 135
+    .line 136
     .local v0, "e":Landroid/os/RemoteException;
     sget-object v2, Lcom/android/server/notification/NotificationFirewallImpl;->TAG:Ljava/lang/String;
 
@@ -210,16 +210,17 @@
 
     invoke-static {v2, v3, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 136
+    .line 137
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
     goto :goto_0
 .end method
 
-.method public getRankingScoreBase(II)F
+.method public getRankingScoreBase(Ljava/lang/String;II)F
     .locals 4
-    .param p1, "notificationPriority"    # I
-    .param p2, "categoryPriority"    # I
+    .param p1, "packageName"    # Ljava/lang/String;
+    .param p2, "notificationPriority"    # I
+    .param p3, "categoryPriority"    # I
 
     .prologue
     .line 148
@@ -231,7 +232,7 @@
     .line 149
     iget-object v2, p0, Lcom/android/server/notification/NotificationFirewallImpl;->remoteService:Lmeizu/notification/INotificationFilterService;
 
-    invoke-interface {v2, p1, p2}, Lmeizu/notification/INotificationFilterService;->getRankingScoreBase(II)F
+    invoke-interface {v2, p1, p2, p3}, Lmeizu/notification/INotificationFilterService;->getRankingScoreBase(Ljava/lang/String;II)F
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_1
     .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
@@ -286,13 +287,13 @@
     .param p1, "preDaily"    # Lmeizu/notification/RankingDaily;
 
     .prologue
-    .line 115
+    .line 116
     :try_start_0
     iget-object v2, p0, Lcom/android/server/notification/NotificationFirewallImpl;->remoteService:Lmeizu/notification/INotificationFilterService;
 
     if-eqz v2, :cond_0
 
-    .line 116
+    .line 117
     iget-object v2, p0, Lcom/android/server/notification/NotificationFirewallImpl;->remoteService:Lmeizu/notification/INotificationFilterService;
 
     invoke-interface {v2, p1}, Lmeizu/notification/INotificationFilterService;->increaseScore(Lmeizu/notification/RankingDaily;)F
@@ -304,11 +305,11 @@
 
     return v2
 
-    .line 121
+    .line 122
     :catch_0
     move-exception v1
 
-    .line 122
+    .line 123
     .local v1, "throwable":Ljava/lang/Throwable;
     sget-object v2, Lcom/android/server/notification/NotificationFirewallImpl;->TAG:Ljava/lang/String;
 
@@ -316,10 +317,10 @@
 
     invoke-static {v2, v3, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 123
+    .line 124
     invoke-virtual {v1}, Ljava/lang/Throwable;->printStackTrace()V
 
-    .line 125
+    .line 126
     .end local v1    # "throwable":Ljava/lang/Throwable;
     :cond_0
     :goto_0
@@ -327,11 +328,11 @@
 
     return v2
 
-    .line 118
+    .line 119
     :catch_1
     move-exception v0
 
-    .line 119
+    .line 120
     .local v0, "e":Landroid/os/RemoteException;
     sget-object v2, Lcom/android/server/notification/NotificationFirewallImpl;->TAG:Ljava/lang/String;
 
@@ -339,7 +340,7 @@
 
     invoke-static {v2, v3, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 120
+    .line 121
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
     goto :goto_0
@@ -382,7 +383,7 @@
 
     if-eqz p2, :cond_1
 
-    .line 109
+    .line 110
     :cond_0
     :goto_0
     const/4 v3, 0x0
@@ -471,11 +472,18 @@
     .line 99
     iget-object v3, p1, Landroid/service/notification/StatusBarNotification;->mFlymeFilter:Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
 
+    iget v4, v1, Lmeizu/notification/FilterResult;->correct_score:F
+
+    iput v4, v3, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->correct_score:F
+
+    .line 100
+    iget-object v3, p1, Landroid/service/notification/StatusBarNotification;->mFlymeFilter:Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
     iget v4, v1, Lmeizu/notification/FilterResult;->spamScoreUpperLimit:F
 
     iput v4, v3, Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;->spamScoreUpperLimit:F
 
-    .line 100
+    .line 101
     iget-boolean v3, v1, Lmeizu/notification/FilterResult;->intercept:Z
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_1
@@ -483,12 +491,12 @@
 
     return v3
 
-    .line 104
+    .line 105
     .end local v1    # "result":Lmeizu/notification/FilterResult;
     :catch_0
     move-exception v2
 
-    .line 105
+    .line 106
     .local v2, "throwable":Ljava/lang/Throwable;
     sget-object v3, Lcom/android/server/notification/NotificationFirewallImpl;->TAG:Ljava/lang/String;
 
@@ -496,17 +504,17 @@
 
     invoke-static {v3, v4, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 106
+    .line 107
     invoke-virtual {v2}, Ljava/lang/Throwable;->printStackTrace()V
 
     goto :goto_0
 
-    .line 101
+    .line 102
     .end local v2    # "throwable":Ljava/lang/Throwable;
     :catch_1
     move-exception v0
 
-    .line 102
+    .line 103
     .local v0, "e":Landroid/os/RemoteException;
     sget-object v3, Lcom/android/server/notification/NotificationFirewallImpl;->TAG:Ljava/lang/String;
 
@@ -514,7 +522,7 @@
 
     invoke-static {v3, v4, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 103
+    .line 104
     invoke-virtual {v0}, Landroid/os/RemoteException;->printStackTrace()V
 
     goto :goto_0

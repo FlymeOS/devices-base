@@ -541,6 +541,12 @@
 
     if-ge v3, v4, :cond_b
 
+    move-object/from16 v0, p0
+
+    iget-object v4, v0, Lcom/android/server/notification/NotificationManagerService$8;->this$0:Lcom/android/server/notification/NotificationManagerService;
+
+    invoke-virtual {v4, v2}, Lcom/android/server/notification/NotificationManagerService;->callFlymeReplyIntent(Landroid/service/notification/StatusBarNotification;)V
+
     monitor-exit v23
 
     .line 2169

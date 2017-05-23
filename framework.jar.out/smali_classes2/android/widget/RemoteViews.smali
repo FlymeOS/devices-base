@@ -4107,3 +4107,106 @@
     :cond_2
     return-void
 .end method
+
+.method public getViewsText()Ljava/util/List;
+    .locals 7
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    const/4 v6, 0x0
+
+    .line 2929
+    iget-object v5, p0, Landroid/widget/RemoteViews;->mActions:Ljava/util/ArrayList;
+
+    if-eqz v5, :cond_2
+
+    .line 2930
+    new-instance v3, Ljava/util/ArrayList;
+
+    invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
+
+    .line 2931
+    .local v3, "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    iget-object v5, p0, Landroid/widget/RemoteViews;->mActions:Ljava/util/ArrayList;
+
+    invoke-interface {v5}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    .local v1, "action$iterator":Ljava/util/Iterator;
+    :cond_0
+    :goto_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/widget/RemoteViews$Action;
+
+    .line 2932
+    .local v0, "action":Landroid/widget/RemoteViews$Action;
+    instance-of v5, v0, Landroid/widget/RemoteViews$ReflectionAction;
+
+    if-eqz v5, :cond_0
+
+    move-object v4, v0
+
+    .line 2933
+    check-cast v4, Landroid/widget/RemoteViews$ReflectionAction;
+
+    .line 2934
+    .local v4, "reflectionAction":Landroid/widget/RemoteViews$ReflectionAction;
+    iget-object v2, v4, Landroid/widget/RemoteViews$ReflectionAction;->methodName:Ljava/lang/String;
+
+    .line 2935
+    .local v2, "actionName":Ljava/lang/String;
+    iget-object v5, v4, Landroid/widget/RemoteViews$ReflectionAction;->value:Ljava/lang/Object;
+
+    if-eqz v5, :cond_0
+
+    .line 2936
+    const-string/jumbo v5, "setText"
+
+    invoke-virtual {v5, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_0
+
+    .line 2937
+    iget-object v5, v4, Landroid/widget/RemoteViews$ReflectionAction;->value:Ljava/lang/Object;
+
+    invoke-virtual {v5}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-interface {v3, v5}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    goto :goto_0
+
+    .line 2942
+    .end local v0    # "action":Landroid/widget/RemoteViews$Action;
+    .end local v2    # "actionName":Ljava/lang/String;
+    .end local v4    # "reflectionAction":Landroid/widget/RemoteViews$ReflectionAction;
+    :cond_1
+    return-object v3
+
+    .line 2944
+    .end local v1    # "action$iterator":Ljava/util/Iterator;
+    .end local v3    # "list":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    :cond_2
+    return-object v6
+.end method
