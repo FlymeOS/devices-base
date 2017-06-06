@@ -3,6 +3,16 @@
 .source "MzIccProvider.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/internal/telephony/meizu/MzIccProvider$ReadOnlyCursorWrapper;,
+        Lcom/android/internal/telephony/meizu/MzIccProvider$SortCursor;,
+        Lcom/android/internal/telephony/meizu/MzIccProvider$SortEntry;
+    }
+.end annotation
+
+
 # static fields
 .field private static final ADDRESS_BOOK_COLUMN_NAMES:[Ljava/lang/String;
 
@@ -48,90 +58,103 @@
 
 .field private static final TAG:Ljava/lang/String; = "MzIccProvider"
 
-.field private static mIsColumnIndexInited:Z
 
-.field private static mSimContactsNum:I
+# instance fields
+.field private mHasAdditionalNumber:Z
+
+.field private mHasEmail:Z
+
+.field private mIsColumnIndexInited:Z
+
+.field private mIsUsimorCsim:Z
+
+.field private mSimContactsNum:I
 
 
 # direct methods
+.method static synthetic -get0()I
+    .locals 1
+
+    sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->SORT_KEY_COLUMN_INDEX:I
+
+    return v0
+.end method
+
 .method static constructor <clinit>()V
     .locals 5
 
     .prologue
-    const/4 v4, 0x0
+    const/4 v4, 0x5
 
     const/4 v3, -0x1
 
-    .line 34
+    .line 44
     const/4 v0, 0x6
 
     new-array v0, v0, [Ljava/lang/String;
 
-    .line 35
+    .line 45
     const-string/jumbo v1, "name"
 
-    aput-object v1, v0, v4
+    const/4 v2, 0x0
 
-    .line 36
+    aput-object v1, v0, v2
+
+    .line 46
     const-string/jumbo v1, "number"
 
     const/4 v2, 0x1
 
     aput-object v1, v0, v2
 
-    .line 37
+    .line 47
     const-string/jumbo v1, "emails"
 
     const/4 v2, 0x2
 
     aput-object v1, v0, v2
 
-    .line 38
+    .line 48
     const-string/jumbo v1, "_id"
 
     const/4 v2, 0x3
 
     aput-object v1, v0, v2
 
-    .line 39
+    .line 49
     const-string/jumbo v1, "second_number"
 
     const/4 v2, 0x4
 
     aput-object v1, v0, v2
 
-    .line 40
+    .line 50
     const-string/jumbo v1, "sort_key"
 
-    const/4 v2, 0x5
-
-    aput-object v1, v0, v2
-
-    .line 34
-    sput-object v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->ADDRESS_BOOK_COLUMN_NAMES:[Ljava/lang/String;
-
-    .line 43
-    sput v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->NAME_COLUMN_INDEX:I
+    aput-object v1, v0, v4
 
     .line 44
+    sput-object v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->ADDRESS_BOOK_COLUMN_NAMES:[Ljava/lang/String;
+
+    .line 53
+    sput v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->NAME_COLUMN_INDEX:I
+
+    .line 54
     sput v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->NUMBER_COLUMN_INDEX:I
 
-    .line 45
+    .line 55
     sput v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->EMAILS_COLUMN_INDEX:I
 
-    .line 46
+    .line 56
     sput v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->ID_COLUMN_INDEX:I
 
-    .line 47
+    .line 57
     sput v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->SECOND_NUMBER_COLUMN_INDEX:I
 
-    .line 48
-    sput v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->SORT_KEY_COLUMN_INDEX:I
+    .line 58
+    sput v4, Lcom/android/internal/telephony/meizu/MzIccProvider;->SORT_KEY_COLUMN_INDEX:I
 
-    .line 50
-    sput-boolean v4, Lcom/android/internal/telephony/meizu/MzIccProvider;->mIsColumnIndexInited:Z
-
-    .line 22
+    .line 32
     return-void
 .end method
 
@@ -139,7 +162,7 @@
     .locals 0
 
     .prologue
-    .line 22
+    .line 32
     invoke-direct {p0}, Lcom/android/internal/telephony/IccProvider;-><init>()V
 
     return-void
@@ -150,12 +173,12 @@
     .param p1, "cursor"    # Landroid/database/Cursor;
 
     .prologue
-    .line 88
-    sget-boolean v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mIsColumnIndexInited:Z
+    .line 108
+    iget-boolean v0, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mIsColumnIndexInited:Z
 
     if-nez v0, :cond_0
 
-    .line 89
+    .line 109
     const-string/jumbo v0, "name"
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
@@ -164,7 +187,7 @@
 
     sput v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->NAME_COLUMN_INDEX:I
 
-    .line 90
+    .line 110
     const-string/jumbo v0, "number"
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
@@ -173,7 +196,7 @@
 
     sput v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->NUMBER_COLUMN_INDEX:I
 
-    .line 91
+    .line 111
     const-string/jumbo v0, "emails"
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
@@ -182,7 +205,7 @@
 
     sput v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->EMAILS_COLUMN_INDEX:I
 
-    .line 92
+    .line 112
     const-string/jumbo v0, "_id"
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
@@ -191,7 +214,7 @@
 
     sput v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->ID_COLUMN_INDEX:I
 
-    .line 93
+    .line 113
     const-string/jumbo v0, "second_number"
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
@@ -200,21 +223,12 @@
 
     sput v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->SECOND_NUMBER_COLUMN_INDEX:I
 
-    .line 94
-    const-string/jumbo v0, "sort_key"
-
-    invoke-interface {p1, v0}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
-
-    move-result v0
-
-    sput v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->SORT_KEY_COLUMN_INDEX:I
-
-    .line 95
+    .line 114
     const/4 v0, 0x1
 
-    sput-boolean v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mIsColumnIndexInited:Z
+    iput-boolean v0, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mIsColumnIndexInited:Z
 
-    .line 87
+    .line 107
     :cond_0
     return-void
 .end method
@@ -224,14 +238,14 @@
     .param p1, "cursor"    # Landroid/database/Cursor;
 
     .prologue
-    .line 116
+    .line 135
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->EMAILS_COLUMN_INDEX:I
 
     const/4 v1, -0x1
 
     if-eq v0, v1, :cond_0
 
-    .line 117
+    .line 136
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->EMAILS_COLUMN_INDEX:I
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -240,7 +254,7 @@
 
     return-object v0
 
-    .line 120
+    .line 139
     :cond_0
     const-string/jumbo v0, ""
 
@@ -254,12 +268,12 @@
     .prologue
     const/4 v1, -0x1
 
-    .line 124
+    .line 143
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->ID_COLUMN_INDEX:I
 
     if-eq v0, v1, :cond_0
 
-    .line 125
+    .line 144
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->ID_COLUMN_INDEX:I
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getInt(I)I
@@ -268,7 +282,7 @@
 
     return v0
 
-    .line 128
+    .line 147
     :cond_0
     return v1
 .end method
@@ -278,14 +292,14 @@
     .param p1, "cursor"    # Landroid/database/Cursor;
 
     .prologue
-    .line 100
+    .line 119
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->NAME_COLUMN_INDEX:I
 
     const/4 v1, -0x1
 
     if-eq v0, v1, :cond_0
 
-    .line 101
+    .line 120
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->NAME_COLUMN_INDEX:I
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -294,7 +308,7 @@
 
     return-object v0
 
-    .line 104
+    .line 123
     :cond_0
     const-string/jumbo v0, ""
 
@@ -306,14 +320,14 @@
     .param p1, "cursor"    # Landroid/database/Cursor;
 
     .prologue
-    .line 108
+    .line 127
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->NUMBER_COLUMN_INDEX:I
 
     const/4 v1, -0x1
 
     if-eq v0, v1, :cond_0
 
-    .line 109
+    .line 128
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->NUMBER_COLUMN_INDEX:I
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -322,7 +336,7 @@
 
     return-object v0
 
-    .line 112
+    .line 131
     :cond_0
     const-string/jumbo v0, ""
 
@@ -334,14 +348,14 @@
     .param p1, "cursor"    # Landroid/database/Cursor;
 
     .prologue
-    .line 132
+    .line 151
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->SECOND_NUMBER_COLUMN_INDEX:I
 
     const/4 v1, -0x1
 
     if-eq v0, v1, :cond_0
 
-    .line 133
+    .line 152
     sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->SECOND_NUMBER_COLUMN_INDEX:I
 
     invoke-interface {p1, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
@@ -350,41 +364,131 @@
 
     return-object v0
 
-    .line 136
+    .line 155
     :cond_0
     const-string/jumbo v0, ""
 
     return-object v0
 .end method
 
-.method private getContactsSortKey(Landroid/database/Cursor;)I
-    .locals 2
-    .param p1, "cursor"    # Landroid/database/Cursor;
+.method private getContactsSortKey(Ljava/lang/String;)Ljava/lang/String;
+    .locals 7
+    .param p1, "displayName"    # Ljava/lang/String;
 
     .prologue
-    .line 140
-    sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->SORT_KEY_COLUMN_INDEX:I
+    const/16 v6, 0x20
 
-    const/4 v1, -0x1
+    .line 159
+    invoke-static {}, Lcom/android/internal/telephony/meizu/HanziToPinyin;->getInstance()Lcom/android/internal/telephony/meizu/HanziToPinyin;
 
-    if-eq v0, v1, :cond_0
+    move-result-object v4
 
-    .line 141
-    sget v0, Lcom/android/internal/telephony/meizu/MzIccProvider;->SORT_KEY_COLUMN_INDEX:I
+    invoke-virtual {v4, p1}, Lcom/android/internal/telephony/meizu/HanziToPinyin;->get(Ljava/lang/String;)Ljava/util/ArrayList;
 
-    invoke-interface {p1, v0}, Landroid/database/Cursor;->getInt(I)I
+    move-result-object v3
 
-    move-result v0
+    .line 160
+    .local v3, "tokens":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Lcom/android/internal/telephony/meizu/HanziToPinyin$Token;>;"
+    if-eqz v3, :cond_4
 
-    return v0
+    invoke-virtual {v3}, Ljava/util/ArrayList;->size()I
 
-    .line 144
+    move-result v4
+
+    if-lez v4, :cond_4
+
+    .line 161
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 162
+    .local v0, "sb":Ljava/lang/StringBuilder;
+    invoke-interface {v3}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v2
+
+    .local v2, "token$iterator":Ljava/util/Iterator;
+    :goto_0
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_3
+
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/internal/telephony/meizu/HanziToPinyin$Token;
+
+    .line 165
+    .local v1, "token":Lcom/android/internal/telephony/meizu/HanziToPinyin$Token;
+    iget v4, v1, Lcom/android/internal/telephony/meizu/HanziToPinyin$Token;->type:I
+
+    const/4 v5, 0x2
+
+    if-ne v5, v4, :cond_1
+
+    .line 166
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->length()I
+
+    move-result v4
+
+    if-lez v4, :cond_0
+
+    .line 167
+    invoke-virtual {v0, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 169
     :cond_0
-    invoke-direct {p0, p1}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsId(Landroid/database/Cursor;)I
+    iget-object v4, v1, Lcom/android/internal/telephony/meizu/HanziToPinyin$Token;->target:Ljava/lang/String;
 
-    move-result v0
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    return v0
+    .line 170
+    invoke-virtual {v0, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 171
+    iget-object v4, v1, Lcom/android/internal/telephony/meizu/HanziToPinyin$Token;->source:Ljava/lang/String;
+
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    goto :goto_0
+
+    .line 173
+    :cond_1
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->length()I
+
+    move-result v4
+
+    if-lez v4, :cond_2
+
+    .line 174
+    invoke-virtual {v0, v6}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 176
+    :cond_2
+    iget-object v4, v1, Lcom/android/internal/telephony/meizu/HanziToPinyin$Token;->source:Ljava/lang/String;
+
+    invoke-virtual {v0, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    goto :goto_0
+
+    .line 179
+    .end local v1    # "token":Lcom/android/internal/telephony/meizu/HanziToPinyin$Token;
+    :cond_3
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v4
+
+    return-object v4
+
+    .line 181
+    .end local v0    # "sb":Ljava/lang/StringBuilder;
+    .end local v2    # "token$iterator":Ljava/util/Iterator;
+    :cond_4
+    return-object p1
 .end method
 
 
@@ -396,7 +500,7 @@
     .param p3, "whereArgs"    # [Ljava/lang/String;
 
     .prologue
-    .line 155
+    .line 192
     invoke-super {p0, p1, p2, p3}, Lcom/android/internal/telephony/IccProvider;->delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0
@@ -410,7 +514,7 @@
     .param p2, "initialValues"    # Landroid/content/ContentValues;
 
     .prologue
-    .line 149
+    .line 186
     const-string/jumbo v0, "tag"
 
     const-string/jumbo v1, "name"
@@ -421,7 +525,7 @@
 
     invoke-virtual {p2, v0, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 150
+    .line 187
     invoke-super {p0, p1, p2}, Lcom/android/internal/telephony/IccProvider;->insert(Landroid/net/Uri;Landroid/content/ContentValues;)Landroid/net/Uri;
 
     move-result-object v0
@@ -430,7 +534,7 @@
 .end method
 
 .method public query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    .locals 5
+    .locals 7
     .param p1, "url"    # Landroid/net/Uri;
     .param p2, "projection"    # [Ljava/lang/String;
     .param p3, "selection"    # Ljava/lang/String;
@@ -438,132 +542,229 @@
     .param p5, "sort"    # Ljava/lang/String;
 
     .prologue
-    const/4 v3, 0x0
-
-    .line 63
+    .line 76
     invoke-super/range {p0 .. p5}, Lcom/android/internal/telephony/IccProvider;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
-    move-result-object v1
+    move-result-object v2
 
-    .line 65
-    .local v1, "cursor":Landroid/database/Cursor;
-    if-eqz v1, :cond_1
+    .line 78
+    .local v2, "cursor":Landroid/database/Cursor;
+    if-eqz v2, :cond_3
 
-    .line 66
-    invoke-direct {p0, v1}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getColumnIndexAndNum(Landroid/database/Cursor;)V
+    .line 79
+    invoke-direct {p0, v2}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getColumnIndexAndNum(Landroid/database/Cursor;)V
 
-    .line 67
-    invoke-interface {v1}, Landroid/database/Cursor;->getCount()I
+    .line 80
+    invoke-interface {v2}, Landroid/database/Cursor;->getCount()I
 
-    move-result v3
+    move-result v5
 
-    sput v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->mSimContactsNum:I
+    iput v5, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mSimContactsNum:I
 
-    .line 68
-    new-instance v2, Landroid/database/MatrixCursor;
+    .line 81
+    new-instance v3, Landroid/database/MatrixCursor;
 
-    sget-object v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->ADDRESS_BOOK_COLUMN_NAMES:[Ljava/lang/String;
+    sget-object v5, Lcom/android/internal/telephony/meizu/MzIccProvider;->ADDRESS_BOOK_COLUMN_NAMES:[Ljava/lang/String;
 
-    sget v4, Lcom/android/internal/telephony/meizu/MzIccProvider;->mSimContactsNum:I
+    iget v6, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mSimContactsNum:I
 
-    invoke-direct {v2, v3, v4}, Landroid/database/MatrixCursor;-><init>([Ljava/lang/String;I)V
+    invoke-direct {v3, v5, v6}, Landroid/database/MatrixCursor;-><init>([Ljava/lang/String;I)V
 
-    .line 69
-    .local v2, "newCursor":Landroid/database/MatrixCursor;
+    .line 82
+    .local v3, "newCursor":Landroid/database/MatrixCursor;
     :goto_0
-    invoke-interface {v1}, Landroid/database/Cursor;->moveToNext()Z
+    invoke-interface {v2}, Landroid/database/Cursor;->moveToNext()Z
 
-    move-result v3
+    move-result v5
 
-    if-eqz v3, :cond_0
+    if-eqz v5, :cond_2
 
-    .line 70
-    sget-object v3, Lcom/android/internal/telephony/meizu/MzIccProvider;->ADDRESS_BOOK_COLUMN_NAMES:[Ljava/lang/String;
+    .line 83
+    sget-object v5, Lcom/android/internal/telephony/meizu/MzIccProvider;->ADDRESS_BOOK_COLUMN_NAMES:[Ljava/lang/String;
 
-    array-length v3, v3
+    array-length v5, v5
 
-    new-array v0, v3, [Ljava/lang/Object;
+    new-array v1, v5, [Ljava/lang/Object;
 
-    .line 71
-    .local v0, "contact":[Ljava/lang/Object;
-    invoke-direct {p0, v1}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsName(Landroid/database/Cursor;)Ljava/lang/String;
+    .line 84
+    .local v1, "contact":[Ljava/lang/Object;
+    invoke-direct {p0, v2}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsName(Landroid/database/Cursor;)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    const/4 v4, 0x0
+    const/4 v6, 0x0
 
-    aput-object v3, v0, v4
+    aput-object v5, v1, v6
 
-    .line 72
-    invoke-direct {p0, v1}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsNumber(Landroid/database/Cursor;)Ljava/lang/String;
+    .line 85
+    invoke-direct {p0, v2}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsNumber(Landroid/database/Cursor;)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    const/4 v4, 0x1
+    const/4 v6, 0x1
 
-    aput-object v3, v0, v4
+    aput-object v5, v1, v6
 
-    .line 73
-    invoke-direct {p0, v1}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsEmails(Landroid/database/Cursor;)Ljava/lang/String;
+    .line 86
+    invoke-direct {p0, v2}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsEmails(Landroid/database/Cursor;)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    const/4 v4, 0x2
+    const/4 v6, 0x2
 
-    aput-object v3, v0, v4
+    aput-object v5, v1, v6
 
-    .line 74
-    invoke-direct {p0, v1}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsId(Landroid/database/Cursor;)I
+    .line 87
+    invoke-direct {p0, v2}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsId(Landroid/database/Cursor;)I
 
-    move-result v3
+    move-result v5
 
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    move-result-object v3
+    move-result-object v5
 
-    const/4 v4, 0x3
+    const/4 v6, 0x3
 
-    aput-object v3, v0, v4
+    aput-object v5, v1, v6
 
-    .line 75
-    invoke-direct {p0, v1}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsSecondNumber(Landroid/database/Cursor;)Ljava/lang/String;
+    .line 88
+    invoke-direct {p0, v2}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsSecondNumber(Landroid/database/Cursor;)Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v5
 
-    const/4 v4, 0x4
+    const/4 v6, 0x4
 
-    aput-object v3, v0, v4
+    aput-object v5, v1, v6
 
-    .line 76
-    invoke-direct {p0, v1}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsSortKey(Landroid/database/Cursor;)I
+    .line 89
+    const/4 v5, 0x0
 
-    move-result v3
+    aget-object v5, v1, v5
 
-    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    check-cast v5, Ljava/lang/String;
 
-    move-result-object v3
+    invoke-direct {p0, v5}, Lcom/android/internal/telephony/meizu/MzIccProvider;->getContactsSortKey(Ljava/lang/String;)Ljava/lang/String;
 
-    const/4 v4, 0x5
+    move-result-object v5
 
-    aput-object v3, v0, v4
+    const/4 v6, 0x5
 
-    .line 77
-    invoke-virtual {v2, v0}, Landroid/database/MatrixCursor;->addRow([Ljava/lang/Object;)V
+    aput-object v5, v1, v6
+
+    .line 90
+    iget-boolean v6, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mHasEmail:Z
+
+    const/4 v5, 0x2
+
+    aget-object v5, v1, v5
+
+    check-cast v5, Ljava/lang/String;
+
+    invoke-static {v5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_0
+
+    const/4 v5, 0x0
+
+    :goto_1
+    or-int/2addr v5, v6
+
+    iput-boolean v5, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mHasEmail:Z
+
+    .line 91
+    iget-boolean v6, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mHasAdditionalNumber:Z
+
+    const/4 v5, 0x4
+
+    aget-object v5, v1, v5
+
+    check-cast v5, Ljava/lang/String;
+
+    invoke-static {v5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v5
+
+    if-eqz v5, :cond_1
+
+    const/4 v5, 0x0
+
+    :goto_2
+    or-int/2addr v5, v6
+
+    iput-boolean v5, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mHasAdditionalNumber:Z
+
+    .line 92
+    invoke-virtual {v3, v1}, Landroid/database/MatrixCursor;->addRow([Ljava/lang/Object;)V
 
     goto :goto_0
 
-    .line 79
-    .end local v0    # "contact":[Ljava/lang/Object;
+    .line 90
     :cond_0
-    invoke-interface {v1}, Landroid/database/Cursor;->close()V
+    const/4 v5, 0x1
 
-    .line 81
-    return-object v2
+    goto :goto_1
 
-    .line 84
-    .end local v2    # "newCursor":Landroid/database/MatrixCursor;
+    .line 91
     :cond_1
-    return-object v3
+    const/4 v5, 0x1
+
+    goto :goto_2
+
+    .line 94
+    .end local v1    # "contact":[Ljava/lang/Object;
+    :cond_2
+    invoke-interface {v2}, Landroid/database/Cursor;->close()V
+
+    .line 95
+    new-instance v4, Lcom/android/internal/telephony/meizu/MzIccProvider$SortCursor;
+
+    invoke-direct {v4, p0, v3}, Lcom/android/internal/telephony/meizu/MzIccProvider$SortCursor;-><init>(Lcom/android/internal/telephony/meizu/MzIccProvider;Landroid/database/Cursor;)V
+
+    .line 97
+    .local v4, "sortCursor":Lcom/android/internal/telephony/meizu/MzIccProvider$SortCursor;
+    new-instance v0, Landroid/os/Bundle;
+
+    invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
+
+    .line 98
+    .local v0, "bundle":Landroid/os/Bundle;
+    const-string/jumbo v5, "is_usim_key"
+
+    iget-boolean v6, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mIsUsimorCsim:Z
+
+    invoke-virtual {v0, v5, v6}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V
+
+    .line 99
+    const-string/jumbo v5, "has_additional_number"
+
+    iget-boolean v6, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mHasAdditionalNumber:Z
+
+    invoke-virtual {v0, v5, v6}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V
+
+    .line 100
+    const-string/jumbo v5, "has_email"
+
+    iget-boolean v6, p0, Lcom/android/internal/telephony/meizu/MzIccProvider;->mHasEmail:Z
+
+    invoke-virtual {v0, v5, v6}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V
+
+    .line 101
+    new-instance v5, Lcom/android/internal/telephony/meizu/MzIccProvider$ReadOnlyCursorWrapper;
+
+    invoke-direct {v5, p0, v4, v0}, Lcom/android/internal/telephony/meizu/MzIccProvider$ReadOnlyCursorWrapper;-><init>(Lcom/android/internal/telephony/meizu/MzIccProvider;Landroid/database/Cursor;Landroid/os/Bundle;)V
+
+    return-object v5
+
+    .line 104
+    .end local v0    # "bundle":Landroid/os/Bundle;
+    .end local v3    # "newCursor":Landroid/database/MatrixCursor;
+    .end local v4    # "sortCursor":Lcom/android/internal/telephony/meizu/MzIccProvider$SortCursor;
+    :cond_3
+    const/4 v5, 0x0
+
+    return-object v5
 .end method
 
 .method public update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
@@ -574,7 +775,7 @@
     .param p4, "whereArgs"    # [Ljava/lang/String;
 
     .prologue
-    .line 160
+    .line 197
     const-string/jumbo v0, "tag"
 
     const-string/jumbo v1, "name"
@@ -585,7 +786,7 @@
 
     invoke-virtual {p2, v0, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 161
+    .line 198
     invoke-super {p0, p1, p2, p3, p4}, Lcom/android/internal/telephony/IccProvider;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
     move-result v0

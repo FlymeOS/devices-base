@@ -2110,7 +2110,7 @@
 
     .prologue
     .line 837
-    const-string/jumbo v0, "/system/framework/flyme-res/flyme-res.apk"
+    const-string v0, "/system/framework/flyme-res/flyme-res.jar"
 
     invoke-virtual {p0, v0}, Landroid/content/res/AssetManager;->addAssetPath(Ljava/lang/String;)I
 
