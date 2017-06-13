@@ -846,8 +846,6 @@
     .line 3809
     iput-boolean v10, p0, Landroid/widget/Editor$HandleView;->mIsDragging:Z
 
-    invoke-direct/range {p0 .. p0}, Landroid/widget/Editor$HandleView;->flymeHideOptionWrapper()V
-
     .line 3810
     const/4 v8, -0x1
 

@@ -27,7 +27,7 @@
     .param p1, "this$0"    # Landroid/widget/Editor;
 
     .prologue
-    .line 6556
+    .line 6547
     iput-object p1, p0, Landroid/widget/Editor$FlymeStartSelectionActionModeRunnable;->this$0:Landroid/widget/Editor;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 6559
+    .line 6550
     iget-object v0, p0, Landroid/widget/Editor$FlymeStartSelectionActionModeRunnable;->this$0:Landroid/widget/Editor;
 
     invoke-virtual {v0}, Landroid/widget/Editor;->startSelectionActionMode()Z
 
-    .line 6558
+    .line 6549
     return-void
 .end method

@@ -27,7 +27,7 @@
     .param p1, "this$0"    # Landroid/widget/Editor;
 
     .prologue
-    .line 6672
+    .line 6663
     iput-object p1, p0, Landroid/widget/Editor$FlymeShowSuggestionsRunnable;->this$0:Landroid/widget/Editor;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,11 +41,11 @@
     .locals 1
 
     .prologue
-    .line 6674
+    .line 6665
     iget-object v0, p0, Landroid/widget/Editor$FlymeShowSuggestionsRunnable;->this$0:Landroid/widget/Editor;
 
     invoke-virtual {v0}, Landroid/widget/Editor;->showSuggestions()V
 
-    .line 6673
+    .line 6664
     return-void
 .end method

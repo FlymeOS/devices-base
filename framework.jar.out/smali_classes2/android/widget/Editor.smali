@@ -5899,9 +5899,9 @@
     if-nez v1, :cond_1
 
     .line 1980
-    new-instance v1, Landroid/widget/Editor$FlymeInsertionPointCursorController;
+    new-instance v1, Landroid/widget/Editor$InsertionPointCursorController;
 
-    invoke-direct {v1, p0}, Landroid/widget/Editor$FlymeInsertionPointCursorController;-><init>(Landroid/widget/Editor;)V
+    invoke-direct {v1, p0, v2}, Landroid/widget/Editor$InsertionPointCursorController;-><init>(Landroid/widget/Editor;Landroid/widget/Editor$InsertionPointCursorController;)V
 
     iput-object v1, p0, Landroid/widget/Editor;->mInsertionPointCursorController:Landroid/widget/Editor$InsertionPointCursorController;
 

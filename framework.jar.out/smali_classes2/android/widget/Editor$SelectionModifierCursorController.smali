@@ -1913,42 +1913,41 @@
 
     if-eqz v14, :cond_8
 
-    .line 5415
     move-object/from16 v0, p0
 
     iget-object v14, v0, Landroid/widget/Editor$SelectionModifierCursorController;->this$0:Landroid/widget/Editor;
 
     invoke-virtual {v14}, Landroid/widget/Editor;->stopTextActionMode()V
 
-    .line 5417
+    move-object/from16 v0, p0
+
+    iget-object v14, v0, Landroid/widget/Editor$SelectionModifierCursorController;->this$0:Landroid/widget/Editor;
+
+    invoke-virtual {v14}, Landroid/widget/Editor;->hideInsertionPointCursorController()V
+
     move-object/from16 v0, p0
 
     iget v14, v0, Landroid/widget/Editor$SelectionModifierCursorController;->mMinTouchOffset:I
 
     if-ge v14, v10, :cond_6
 
-    .line 5418
     move-object/from16 v0, p0
 
     iget v11, v0, Landroid/widget/Editor$SelectionModifierCursorController;->mMinTouchOffset:I
 
-    .line 5419
     move v7, v10
 
-    .line 5420
     const/4 v14, 0x0
 
     move-object/from16 v0, p0
 
     iput-boolean v14, v0, Landroid/widget/Editor$SelectionModifierCursorController;->mIsFlymeDragSelectionToTop:Z
 
-    .line 5427
     :goto_1
     if-ltz v11, :cond_8
 
     if-ltz v7, :cond_8
 
-    .line 5428
     move-object/from16 v0, p0
 
     iget-object v14, v0, Landroid/widget/Editor$SelectionModifierCursorController;->this$0:Landroid/widget/Editor;

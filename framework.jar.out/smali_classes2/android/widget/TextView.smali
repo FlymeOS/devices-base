@@ -20046,8 +20046,6 @@
 
     .line 5257
     :cond_1
-    invoke-static/range {p0 ..p0}, Landroid/widget/TextView$FlymeInjector;->onAttachedToWindow(Landroid/widget/TextView;)V
-
     return-void
 .end method
 
@@ -20524,10 +20522,7 @@
     :cond_1
     invoke-super {p0}, Landroid/view/View;->onDetachedFromWindowInternal()V
 
-    invoke-static/range {p0 .. p0}, Landroid/widget/TextView$FlymeInjector;->onDetachedFromWindowInternal(Landroid/widget/TextView;)V
-
     .line 5272
-
     return-void
 .end method
 
@@ -22054,9 +22049,6 @@
     .line 8218
     .end local v6    # "sp":Landroid/text/Spannable;
     :cond_2
-
-    invoke-static/range {p0 .. p1}, Landroid/widget/TextView$FlymeInjector;->onFocusChanged(Landroid/widget/TextView;Z)V
-
     invoke-direct {p0, p1}, Landroid/widget/TextView;->startStopMarquee(Z)V
 
     .line 8220
@@ -25846,7 +25838,7 @@
     .line 8292
     iget-object v7, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
-    invoke-virtual {v7, p1}, Landroid/widget/Editor;->onTouchEventMz(Landroid/view/MotionEvent;)Z
+    invoke-virtual {v7, p1}, Landroid/widget/Editor;->onTouchEvent(Landroid/view/MotionEvent;)V
 
     .line 8294
     iget-object v7, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
@@ -26087,9 +26079,6 @@
 
     .line 8344
     :cond_a
-
-    invoke-static/range {p0 .. p1}, Landroid/widget/TextView$FlymeInjector;->onTouchUpEventMz(Landroid/widget/TextView;Landroid/view/MotionEvent;)V
-
     invoke-static {}, Landroid/view/inputmethod/InputMethodManager;->peekInstance()Landroid/view/inputmethod/InputMethodManager;
 
     move-result-object v2
@@ -26121,9 +26110,9 @@
 
     .line 8351
     :cond_b
-    #iget-object v7, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
+    iget-object v7, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
-    #invoke-virtual {v7, p1}, Landroid/widget/Editor;->onTouchUpEvent(Landroid/view/MotionEvent;)V
+    invoke-virtual {v7, p1}, Landroid/widget/Editor;->onTouchUpEvent(Landroid/view/MotionEvent;)V
 
     .line 8353
     const/4 v1, 0x1
@@ -26247,8 +26236,6 @@
     .prologue
     .line 8229
     invoke-super {p0, p1}, Landroid/view/View;->onWindowFocusChanged(Z)V
-
-    invoke-static/range {p0 .. p1}, Landroid/widget/TextView$FlymeInjector;->onFocusChanged(Landroid/widget/TextView;Z)V
 
     .line 8231
     iget-object v0, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
@@ -26750,7 +26737,7 @@
     .line 9230
     iget-object v1, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
-    invoke-static {p0, v0}, Landroid/widget/TextView$FlymeInjector;->performLongClickMz(Landroid/widget/TextView;Z)Z
+    invoke-virtual {v1, v0}, Landroid/widget/Editor;->performLongClick(Z)Z
 
     move-result v1
 
@@ -30274,9 +30261,6 @@
 
     .line 4558
     :cond_3
-
-    invoke-static/range {p0 .. p0}, Landroid/widget/TextView$FlymeInjector;->updateCurrentCursorVisbilityOnFocusOrInputTypeChangedIfHasFocus(Landroid/widget/TextView;)V
-
     invoke-static {}, Landroid/view/inputmethod/InputMethodManager;->peekInstance()Landroid/view/inputmethod/InputMethodManager;
 
     move-result-object v1
@@ -33535,25 +33519,19 @@
 .end method
 
 .method mzIsCursorVisible()Z
-    .locals 2
+    .locals 1
 
     .prologue
+    iget-object v0, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
+
+    if-nez v0, :cond_0
+
     const/4 v0, 0x0
 
-    .line 10431
-    iget-object v1, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
-
-    if-nez v1, :cond_1
-
-    :cond_0
     :goto_0
     return v0
 
-    :cond_1
-    iget-boolean v1, p0, Landroid/widget/TextView;->mFlymeCurrentCursorVisible:Z
-
-    if-eqz v1, :cond_0
-
+    :cond_0
     iget-object v0, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
     invoke-virtual {v0}, Landroid/widget/Editor;->isCursorVisible()Z
@@ -33568,10 +33546,8 @@
     .param p1, "value"    # Z
 
     .prologue
-    .line 10293
     iput-boolean p1, p0, Landroid/widget/TextView;->mFlymeAutoLinkMaskIncludeDateTime:Z
 
-    .line 10292
     return-void
 .end method
 
@@ -33580,17 +33556,14 @@
     .param p1, "enabled"    # Z
 
     .prologue
-    .line 10383
     iget-object v0, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
     if-eqz v0, :cond_0
 
-    .line 10384
     iget-object v0, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
     invoke-virtual {v0, p1}, Landroid/widget/Editor;->setEnableDragSelection(Z)V
 
-    .line 10382
     :cond_0
     return-void
 .end method
@@ -33601,7 +33574,6 @@
     .param p2, "force"    # Z
 
     .prologue
-    .line 10478
     iget-object v0, p0, Landroid/widget/TextView;->mTextPaint:Landroid/text/TextPaint;
 
     invoke-virtual {v0}, Landroid/text/TextPaint;->getTypeface()Landroid/graphics/Typeface;
@@ -33612,27 +33584,21 @@
 
     if-eqz p2, :cond_1
 
-    .line 10479
     :cond_0
     iget-object v0, p0, Landroid/widget/TextView;->mTextPaint:Landroid/text/TextPaint;
 
     invoke-virtual {v0, p1}, Landroid/text/TextPaint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
 
-    .line 10481
     iget-object v0, p0, Landroid/widget/TextView;->mLayout:Landroid/text/Layout;
 
     if-eqz v0, :cond_1
 
-    .line 10482
     invoke-direct {p0}, Landroid/widget/TextView;->nullLayouts()V
 
-    .line 10483
     invoke-virtual {p0}, Landroid/widget/TextView;->requestLayout()V
 
-    .line 10484
     invoke-virtual {p0}, Landroid/widget/TextView;->invalidate()V
 
-    .line 10477
     :cond_1
     return-void
 .end method
@@ -33641,7 +33607,6 @@
     .locals 3
 
     .prologue
-    .line 10278
     iget-object v1, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
     if-eqz v1, :cond_0
@@ -33656,6 +33621,7 @@
 
     if-eq v1, v2, :cond_0
 
+    .line 10431
     .line 10279
     iget-object v1, p0, Landroid/widget/TextView;->mEditor:Landroid/widget/Editor;
 
