@@ -5338,7 +5338,7 @@
     .line 3229
     .local v15, "outerDepth":I
     :cond_20
-    invoke-static {v14}, Landroid/content/pm/PackageParser$FlymeInjector;->parseAccessMetaFromResource(Landroid/content/pm/PackageParser$Activity;)V
+    invoke-static/range {v14 .. v14}, Landroid/content/pm/PackageParser$FlymeInjector;->parseAccessMetaFromResource(Landroid/content/pm/PackageParser$Activity;)V
 
     :goto_7
     invoke-interface/range {p3 .. p3}, Lorg/xmlpull/v1/XmlPullParser;->next()I

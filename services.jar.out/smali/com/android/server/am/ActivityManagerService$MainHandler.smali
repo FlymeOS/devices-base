@@ -860,13 +860,7 @@
 
     if-eqz v4, :cond_flyme_0
 
-    move-object/from16 v0, p0
-
-    iget-object v4, v0, Lcom/android/server/am/ActivityManagerService$MainHandler;->this$0:Lcom/android/server/am/ActivityManagerService;
-
-    move-object/from16 v0, p1
-
-    invoke-virtual {v4, v0}, Lcom/android/server/am/ActivityManagerService;->forceStopFlymePackageLocked(Landroid/os/Message;)V
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/am/ActivityManagerService$MainHandler;->forceStopFlymePackageLocked(Landroid/os/Message;)V
 
     monitor-exit v15
 
@@ -3119,4 +3113,16 @@
         :pswitch_25
         :pswitch_8
     .end packed-switch
+.end method
+
+.method private forceStopFlymePackageLocked(Landroid/os/Message;)V
+    .locals 1
+    .param p1, "msg"    # Landroid/os/Message;
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/am/ActivityManagerService$MainHandler;->this$0:Lcom/android/server/am/ActivityManagerService;
+
+    invoke-virtual {v0, p1}, Lcom/android/server/am/ActivityManagerService;->forceStopFlymePackageLocked(Landroid/os/Message;)V
+
+    return-void
 .end method

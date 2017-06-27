@@ -124,13 +124,8 @@
     :cond_0
     :goto_0
     :pswitch_0
-    move-object/from16 v0, p0
 
-    iget-object v2, v0, Lcom/android/server/wm/WindowManagerService$H;->this$0:Lcom/android/server/wm/WindowManagerService;
-
-    move-object/from16 v0, p1
-
-    invoke-static {v2, v0}, Lcom/android/server/wm/WindowManagerService$FlymeInjector;->handleFlymeMessage(Lcom/android/server/wm/WindowManagerService;Landroid/os/Message;)V
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/wm/WindowManagerService$H;->handleFlymeMessage(Landroid/os/Message;)V
 
     return-void
 
@@ -2749,4 +2744,16 @@
         :pswitch_23
         :pswitch_24
     .end packed-switch
+.end method
+
+.method private handleFlymeMessage(Landroid/os/Message;)V
+    .locals 1
+    .param p1, "msg"    # Landroid/os/Message;
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/wm/WindowManagerService$H;->this$0:Lcom/android/server/wm/WindowManagerService;
+
+    invoke-static {v0, p1}, Lcom/android/server/wm/WindowManagerService$FlymeInjector;->handleFlymeMessage(Lcom/android/server/wm/WindowManagerService;Landroid/os/Message;)V
+
+    return-void
 .end method

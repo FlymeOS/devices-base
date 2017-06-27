@@ -3403,7 +3403,7 @@
     .restart local v2    # "handled":Z
     :goto_1
 
-    invoke-static {p0, p1}, Lcom/android/internal/policy/PhoneWindow$FlymeInjector;->flymeDispatchKeyEvent(Lcom/android/internal/policy/PhoneWindow$DecorView;Landroid/view/KeyEvent;)Z
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/PhoneWindow$FlymeInjector;->flymeDispatchKeyEvent(Lcom/android/internal/policy/PhoneWindow$DecorView;Landroid/view/KeyEvent;)Z
 
     move-result v5
 

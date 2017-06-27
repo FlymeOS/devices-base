@@ -756,7 +756,7 @@
     .param p1, "resId"    # I
 
     .prologue
-    invoke-direct {p0, p1}, Landroid/app/Notification$Builder;->applyStandardTemplateFlyme(I)Landroid/widget/RemoteViews;
+    invoke-direct/range {p0 .. p1}, Landroid/app/Notification$Builder;->applyStandardTemplateFlyme(I)Landroid/widget/RemoteViews;
 
     move-result-object v0
 
