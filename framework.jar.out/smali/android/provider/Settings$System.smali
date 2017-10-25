@@ -4683,6 +4683,13 @@
 
     invoke-interface {v0, v1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
 
+    .line 3344
+    sget-object v0, Landroid/provider/Settings$System;->PUBLIC_SETTINGS:Ljava/util/Set;
+
+    sget-object v1, Landroid/provider/MzSettings$System;->PUBLIC_SETTINGS:Ljava/util/Set;
+
+    invoke-interface {v0, v1}, Ljava/util/Set;->addAll(Ljava/util/Collection;)Z
+
     .line 3338
     return-void
 .end method
