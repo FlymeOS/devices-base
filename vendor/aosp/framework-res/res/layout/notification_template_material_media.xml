@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/status_bar_latest_event_content" android:tag="media" android:background="#00000000" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include android:layout_width="fill_parent" android:layout_height="53.0dip" layout="@layout/notification_template_header" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/notification_main_column" android:tag="media" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/notification_content_margin_top" android:layout_marginStart="@dimen/notification_content_margin_start">
+        <LinearLayout android:layout_gravity="fill_vertical" android:orientation="vertical" android:id="@id/notification_content_container" android:paddingBottom="@dimen/notification_content_margin_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/notification_min_content_height" android:layout_weight="1.0">
+            <include layout="@layout/notification_template_part_line1" />
+            <include layout="@layout/notification_template_text" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="end|bottom|center" android:orientation="horizontal" android:id="@id/media_actions" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="12.0dip" android:layoutDirection="ltr" android:layout_marginStart="10.0dip" />
+    </LinearLayout>
+    <include layout="@layout/notification_template_right_icon" />
+</FrameLayout>

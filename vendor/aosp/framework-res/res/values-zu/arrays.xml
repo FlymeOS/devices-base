@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>Ekhaya</item>
+        <item>Umsebenzi</item>
+        <item>Okunye</item>
+        <item>Ngokwezifiso</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>i-AIM</item>
+        <item>I-Windows Live</item>
+        <item>i-Yahoo</item>
+        <item>i-Skype</item>
+        <item>i-QQ</item>
+        <item>Ingxoxo ye-Google</item>
+        <item>i-ICQ</item>
+        <item>I-Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>Umsebenzi</item>
+        <item>Okunye</item>
+        <item>Ngokwezifiso</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>Ekhaya</item>
+        <item>Iselula</item>
+        <item>Umsebenzi</item>
+        <item>Ifeksi Yasemsebenzini</item>
+        <item>Ifeksi Yasekhaya</item>
+        <item>Isicingo</item>
+        <item>Okunye</item>
+        <item>Ngokwezifiso</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>Ekhaya</item>
+        <item>Umsebenzi</item>
+        <item>Okunye</item>
+        <item>Ngokwezifiso</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorAlertMessages">
+        <item>Ukuze wenze amakholi uphinde uthumele imilayezo nge-Wi-FI, qala ucele inkampani yakho yenethiwekhi ukuthi isethe le divayisi. Bese uvula ukushaya kwe-Wi-FI futhi kusukela kuzilungiselelo.</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorNotificationMessages">
+        <item>Bhalisa ngenkampani yakho yenethiwekhi</item>
+    </string-array>
+    <string-array name="wfcSpnFormats">
+        <item>%s</item>
+        <item>%s ukushaya kwe-Wi-Fi</item>
+    </string-array>
+    <array name="fingerprint_acquired_vendor" />
+    <array name="fingerprint_error_vendor" />
+    <string-array name="imAddressTypes">
+        <item>Ekhaya</item>
+        <item>Umsebenzi</item>
+        <item>Okunye</item>
+        <item>Ngokwezifiso</item>
+    </string-array>
+    <string-array name="network_switch_type_name">
+        <item>idatha yeselula</item>
+        <item>I-Wi-Fi</item>
+        <item>I-Bluetooth</item>
+        <item>I-Ethernet</item>
+        <item>I-VPN</item>
+    </string-array>
+</resources>

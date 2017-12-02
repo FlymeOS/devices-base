@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="config_alertDialogSelectionScrollOffset">@dimen/screen_percentage_15</item>
+    <item type="dimen" name="preference_fragment_padding_vertical_material">@dimen/screen_percentage_15</item>
+    <item type="dimen" name="list_item_padding_horizontal_material">@dimen/screen_percentage_15</item>
+    <item type="dimen" name="list_item_padding_start_material">@dimen/screen_percentage_15</item>
+    <item type="dimen" name="list_item_padding_end_material">@dimen/screen_percentage_10</item>
+    <item type="dimen" name="dialog_padding_material">@dimen/screen_percentage_15</item>
+    <item type="dimen" name="dialog_list_padding_top_no_title">@dimen/screen_percentage_15</item>
+    <item type="dimen" name="dialog_list_padding_bottom_no_buttons">@dimen/screen_percentage_15</item>
+    <item type="dimen" name="select_dialog_padding_start_material">@dimen/screen_percentage_15</item>
+    <dimen name="select_dialog_drawable_padding_start_material">8.0dip</dimen>
+    <dimen name="input_extract_action_button_width">32.0dip</dimen>
+    <dimen name="input_extract_action_button_height">32.0dip</dimen>
+    <dimen name="input_extract_action_icon_padding">5.0dip</dimen>
+</resources>

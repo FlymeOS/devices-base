@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="config_mobile_hotspot_provision_app">
+        <item>com.google.android.carrierentitlement</item>
+        <item>com.google.android.carrierentitlement.CarrierEntitlementActivity</item>
+    </string-array>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>Casa</item>
+        <item>Lavoro</item>
+        <item>Altro</item>
+        <item>Personalizzato</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>AIM</item>
+        <item>Windows Live</item>
+        <item>Yahoo</item>
+        <item>Skype</item>
+        <item>QQ</item>
+        <item>Google Talk</item>
+        <item>ICQ</item>
+        <item>Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>Lavoro</item>
+        <item>Altro</item>
+        <item>Personalizzato</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>Casa</item>
+        <item>Cellulare</item>
+        <item>Lavoro</item>
+        <item>Fax lavoro</item>
+        <item>Fax casa</item>
+        <item>Cercapersone</item>
+        <item>Altro</item>
+        <item>Personalizzato</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>Casa</item>
+        <item>Lavoro</item>
+        <item>Altro</item>
+        <item>Personalizzato</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorAlertMessages">
+        <item>"Per effettuare chiamate e inviare messaggi tramite Wi-Fi, è necessario prima chiedere all'operatore telefonico di attivare il servizio. Successivamente, riattiva le chiamate Wi-Fi dalle Impostazioni."</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorNotificationMessages">
+        <item>Registrati con il tuo operatore</item>
+    </string-array>
+    <string-array name="wfcSpnFormats">
+        <item>%s</item>
+        <item>Chiamata Wi-Fi %s</item>
+    </string-array>
+    <array name="fingerprint_acquired_vendor" />
+    <array name="fingerprint_error_vendor" />
+    <string-array name="imAddressTypes">
+        <item>Casa</item>
+        <item>Lavoro</item>
+        <item>Altro</item>
+        <item>Personalizzato</item>
+    </string-array>
+    <string-array name="network_switch_type_name">
+        <item>rete dati</item>
+        <item>Wi-Fi</item>
+        <item>Bluetooth</item>
+        <item>Ethernet</item>
+        <item>VPN</item>
+    </string-array>
+</resources>

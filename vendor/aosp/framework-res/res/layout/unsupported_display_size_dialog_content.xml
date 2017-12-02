@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingLeft="?dialogPreferredPadding" android:paddingTop="?dialogPreferredPadding" android:paddingRight="?dialogPreferredPadding" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:layout_gravity="start" android:id="@id/ask_checkbox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/unsupported_display_size_show" />
+</FrameLayout>

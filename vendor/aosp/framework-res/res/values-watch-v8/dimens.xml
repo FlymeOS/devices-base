@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="config_viewConfigurationTouchSlop">4.0dip</dimen>
+    <dimen name="config_viewMinFlingVelocity">500.0dip</dimen>
+    <dimen name="config_viewMaxFlingVelocity">8000.0dip</dimen>
+    <item type="dimen" name="config_screen_magnification_scaling_threshold">0.1</item>
+    <dimen name="alert_dialog_title_height">0.0dip</dimen>
+    <dimen name="alert_dialog_button_bar_height">0.0dip</dimen>
+    <dimen name="text_size_display_4_material">71.0sp</dimen>
+    <dimen name="text_size_display_3_material">44.0sp</dimen>
+    <dimen name="text_size_display_2_material">36.0sp</dimen>
+    <dimen name="text_size_display_1_material">27.0sp</dimen>
+    <dimen name="text_size_headline_material">18.0sp</dimen>
+    <dimen name="text_size_title_material">16.0sp</dimen>
+    <dimen name="text_size_subhead_material">16.0sp</dimen>
+    <dimen name="text_size_title_material_toolbar">16.0dip</dimen>
+    <dimen name="text_size_subtitle_material_toolbar">16.0dip</dimen>
+    <dimen name="text_size_menu_material">16.0sp</dimen>
+    <dimen name="text_size_menu_header_material">14.0sp</dimen>
+    <dimen name="text_size_body_2_material">14.0sp</dimen>
+    <dimen name="text_size_body_1_material">14.0sp</dimen>
+    <dimen name="text_size_caption_material">12.0sp</dimen>
+    <dimen name="text_size_button_material">14.0sp</dimen>
+    <dimen name="text_size_large_material">16.0sp</dimen>
+    <dimen name="text_size_medium_material">14.0sp</dimen>
+    <dimen name="text_size_small_material">12.0sp</dimen>
+    <item type="dimen" name="text_line_spacing_multiplier_material">1.2</item>
+    <dimen name="picker_top_margin">1.0dip</dimen>
+    <dimen name="picker_bottom_margin">1.0dip</dimen>
+    <dimen name="progress_bar_size_small">16.0dip</dimen>
+    <dimen name="progress_bar_size_medium">32.0dip</dimen>
+    <dimen name="progress_bar_size_large">64.0dip</dimen>
+</resources>

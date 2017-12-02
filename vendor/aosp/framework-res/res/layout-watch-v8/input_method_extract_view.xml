@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.inputmethodservice.CompactExtractEditLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.inputmethodservice.ExtractEditText android:textSize="18.0dip" android:textColor="@color/primary_text_material_dark" android:textColorHighlight="@color/accent_material_dark" android:textColorHint="@color/secondary_text_material_dark" android:gravity="bottom|center|right" android:id="@id/inputExtractEditText" android:background="@null" android:layout_width="0.0dip" android:layout_height="24.0dip" android:singleLine="true" android:layout_weight="1.0" android:inputType="text" android:fontFamily="sans-serif-condensed-light" />
+    <FrameLayout android:id="@id/inputExtractAccessories" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip">
+        <ImageButton android:id="@id/inputExtractAction" android:background="@drawable/input_extract_action_bg_material_dark" android:padding="@dimen/input_extract_action_icon_padding" android:layout_width="@dimen/input_extract_action_button_width" android:layout_height="@dimen/input_extract_action_button_width" android:scaleType="centerInside" />
+    </FrameLayout>
+</android.inputmethodservice.CompactExtractEditLayout>

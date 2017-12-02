@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="dialog_min_width_major">45.000004%</item>
+    <item type="dimen" name="dialog_min_width_minor">72.0%</item>
+    <dimen name="password_keyboard_key_height_alpha">75.0dip</dimen>
+    <dimen name="password_keyboard_key_height_numeric">75.0dip</dimen>
+    <dimen name="password_keyboard_height">48.0mm</dimen>
+</resources>

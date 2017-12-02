@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="wfcOperatorErrorAlertMessages">
+        <item>Wi-Fi дуудлага хийх болон зурвас илгээх бол эхлээд оператор компаниасаа энэ төхөөрөмжийг тохируулахыг хүснэ үү. Дараа нь Тохиргооноос Wi-Fi дуудлага хийх үйлдлийг асаана уу.</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorNotificationMessages">
+        <item>Оператор компанидаа бүртгүүлэх</item>
+    </string-array>
+</resources>

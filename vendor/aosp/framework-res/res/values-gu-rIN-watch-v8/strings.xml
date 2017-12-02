@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="candidates_style"><font color="#80cbc4">ઉમેદવારો</font></string>
+    <string name="permgrouplab_sensors">સેન્સર્સ</string>
+    <string name="android_upgrading_apk">%2$d માંથી %1$d ઍપ્લિકેશન.</string>
+</resources>

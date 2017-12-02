@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="config_tether_apndata">
+        <item>Tethering Internet,web.omnitel.it,,,,,,,,,222,10,,DUN</item>
+    </string-array>
+</resources>

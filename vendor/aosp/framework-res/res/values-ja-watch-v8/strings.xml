@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="candidates_style"><font color="#80cbc4">候補</font></string>
+    <string name="permgrouplab_sensors">センサー</string>
+    <string name="android_upgrading_apk">アプリ%1$d/%2$d</string>
+</resources>

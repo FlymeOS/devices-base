@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="candidates_style"><font color="#80cbc4">מועמדים</font></string>
+    <string name="permgrouplab_sensors">חיישנים</string>
+    <string name="android_upgrading_apk">אפליקציה %1$d מתוך %2$d.</string>
+</resources>

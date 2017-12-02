@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pointer-icon android:bitmap="@drawable/pointer_context_menu" android:hotSpotX="4.0dip" android:hotSpotY="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_focused="true">
+        <layer-list>
+            <item android:gravity="bottom" android:height="10.0dip">
+                <shape android:tint="?textColorPrimaryInverse" android:shape="line">
+                    <stroke android:width="2.0dip" android:color="@color/white" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+    <item android:drawable="@color/transparent" />
+</selector>

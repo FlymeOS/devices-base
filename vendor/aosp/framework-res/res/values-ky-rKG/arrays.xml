@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>Үй</item>
+        <item>Жумуш</item>
+        <item>Башка</item>
+        <item>Өзгөчө</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>AIM</item>
+        <item>Windows Live</item>
+        <item>Yahoo</item>
+        <item>Skype</item>
+        <item>QQ</item>
+        <item>Google Talk</item>
+        <item>ICQ</item>
+        <item>Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>Жумуш</item>
+        <item>Башка</item>
+        <item>Өзгөчө</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>Үй</item>
+        <item>Мобилдик</item>
+        <item>Жумуш</item>
+        <item>Жумуш факсы</item>
+        <item>Үй факсы</item>
+        <item>Пейжер</item>
+        <item>Башка</item>
+        <item>Өзгөчө</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>Үй</item>
+        <item>Жумуш</item>
+        <item>Башка</item>
+        <item>Өзгөчө</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorAlertMessages">
+        <item>Wi-Fi аркылуу чалууларды аткарып жана билдирүүлөрдү жөнөтүү үчүн адегенде операторуңуздан бул кызматты орнотушун сураныңыз. Андан соң, Жөндөөлөрдөн Wi-Fi чалууну кайра күйгүзүңүз.</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorNotificationMessages">
+        <item>Операторуңузга катталыңыз</item>
+    </string-array>
+    <string-array name="wfcSpnFormats">
+        <item>%s</item>
+        <item>%s Wi-Fi Чалуу</item>
+    </string-array>
+    <array name="fingerprint_acquired_vendor" />
+    <array name="fingerprint_error_vendor" />
+    <string-array name="imAddressTypes">
+        <item>Үй</item>
+        <item>Жумуш</item>
+        <item>Башка</item>
+        <item>Өзгөчө</item>
+    </string-array>
+    <string-array name="network_switch_type_name">
+        <item>мобилдик дайындар</item>
+        <item>Wi-Fi</item>
+        <item>Bluetooth</item>
+        <item>Ethernet</item>
+        <item>VPN</item>
+    </string-array>
+</resources>

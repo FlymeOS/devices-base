@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>මුල් පිටුව</item>
+        <item>කාර්යාලය</item>
+        <item>වෙනත්</item>
+        <item>අභිරුචි</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>AIM</item>
+        <item>Windows Live</item>
+        <item>Yahoo</item>
+        <item>Skype</item>
+        <item>QQ</item>
+        <item>Google Talk</item>
+        <item>ICQ</item>
+        <item>Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>කාර්යාලය</item>
+        <item>වෙනත්</item>
+        <item>අභිරුචි</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>නිවස</item>
+        <item>ජංගම</item>
+        <item>කාර්යාලය</item>
+        <item>කාර්යාල ෆැක්ස්</item>
+        <item>නිවසේ ෆැක්ස්</item>
+        <item>පේජරය</item>
+        <item>වෙනත්</item>
+        <item>අභිරුචි</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>නිවස</item>
+        <item>කාර්යාලය</item>
+        <item>වෙනත්</item>
+        <item>අභිරුචි</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorAlertMessages">
+        <item>Wi-Fi හරහා ඇමතුම් සිදු කිරීමට සහ පණිවිඩ යැවීමට, පළමුව මෙම සේවාව පිහිටුවන ලෙස ඔබේ වාහකයෙන් ඉල්ලන්න. අනතුරුව සැකසීම් වෙතින් Wi-Fi ඇමතුම නැවත ක්‍රියාත්මක කරන්න.</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorNotificationMessages">
+        <item>ඔබගේ වාහකය සමඟ ලියාපදිංචි වන්න</item>
+    </string-array>
+    <string-array name="wfcSpnFormats">
+        <item>%s</item>
+        <item>%s Wi-Fi අමතමින්</item>
+    </string-array>
+    <array name="fingerprint_acquired_vendor" />
+    <array name="fingerprint_error_vendor" />
+    <string-array name="imAddressTypes">
+        <item>නිවස</item>
+        <item>කාර්යාලය</item>
+        <item>වෙනත්</item>
+        <item>අභිරුචි</item>
+    </string-array>
+    <string-array name="network_switch_type_name">
+        <item>සෙලියුලර් දත්ත</item>
+        <item>Wi-Fi</item>
+        <item>බ්ලූටූත්</item>
+        <item>ඊතර්නෙට්</item>
+        <item>VPN</item>
+    </string-array>
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>ఇల్లు</item>
+        <item>కార్యాలయం</item>
+        <item>ఇతరం</item>
+        <item>అనుకూలం</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>AIM</item>
+        <item>Windows Live</item>
+        <item>Yahoo</item>
+        <item>Skype</item>
+        <item>QQ</item>
+        <item>Google Talk</item>
+        <item>ICQ</item>
+        <item>Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>కార్యాలయం</item>
+        <item>ఇతరం</item>
+        <item>అనుకూలం</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>ఇల్లు</item>
+        <item>మొబైల్</item>
+        <item>కార్యాలయం</item>
+        <item>కార్యాలయ ఫ్యాక్స్</item>
+        <item>ఇంటి ఫ్యాక్స్</item>
+        <item>పేజర్</item>
+        <item>ఇతరం</item>
+        <item>అనుకూలం</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>ఇల్లు</item>
+        <item>కార్యాలయం</item>
+        <item>ఇతరం</item>
+        <item>అనుకూలం</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorAlertMessages">
+        <item>Wi-Fiలో కాల్‌లు చేయడం మరియు సందేశాలు పంపడం కోసం ముందుగా ఈ సేవను సెటప్ చేయడానికి మీ క్యారియర్‌ను అడగండి. ఆపై సెట్టింగ్‌ల నుండి మళ్లీ Wi-Fi కాలింగ్‌ను ఆన్ చేయండి.</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorNotificationMessages">
+        <item>మీ క్యారియర్‌తో నమోదు చేయండి</item>
+    </string-array>
+    <string-array name="wfcSpnFormats">
+        <item>%s</item>
+        <item>%s Wi-Fi కాలింగ్</item>
+    </string-array>
+    <array name="fingerprint_acquired_vendor" />
+    <array name="fingerprint_error_vendor" />
+    <string-array name="imAddressTypes">
+        <item>ఇల్లు</item>
+        <item>కార్యాలయం</item>
+        <item>ఇతరం</item>
+        <item>అనుకూలం</item>
+    </string-array>
+    <string-array name="network_switch_type_name">
+        <item>సెల్యులార్ డేటా</item>
+        <item>Wi-Fi</item>
+        <item>బ్లూటూత్</item>
+        <item>ఈథర్‌నెట్</item>
+        <item>VPN</item>
+    </string-array>
+</resources>

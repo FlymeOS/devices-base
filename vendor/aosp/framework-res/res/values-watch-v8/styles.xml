@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.DeviceDefault" parent="@style/Theme.DeviceDefaultBase">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.NoActionBar" parent="@style/Theme.Material.NoActionBar">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.NoActionBar.Fullscreen" parent="@style/Theme.Material.NoActionBar.Fullscreen">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Dialog" parent="@style/Theme.Material.Dialog">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="textAppearance">@style/TextAppearance.DeviceDefault</item>
+        <item name="textAppearanceInverse">@style/TextAppearance.DeviceDefault.Inverse</item>
+        <item name="windowIsFloating">false</item>
+        <item name="windowTitleStyle">@style/DialogWindowTitle.DeviceDefault</item>
+        <item name="windowAnimationStyle">@style/Animation.DeviceDefault.Dialog</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="borderlessButtonStyle">@style/Widget.DeviceDefault.Button.Borderless.Small</item>
+        <item name="buttonBarStyle">@style/DeviceDefault.ButtonBar.AlertDialog</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Dialog.MinWidth" parent="@style/Theme.Material.Dialog.MinWidth">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="windowIsFloating">false</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Dialog.NoActionBar" parent="@style/Theme.Material.Dialog.NoActionBar">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="windowIsFloating">false</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Dialog.NoActionBar.MinWidth" parent="@style/Theme.Material.Dialog.NoActionBar.MinWidth">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="windowIsFloating">false</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.DialogWhenLarge" parent="@style/Theme.Material.DialogWhenLarge">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.DialogWhenLarge.NoActionBar" parent="@style/Theme.Material.DialogWhenLarge.NoActionBar">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Panel" parent="@style/Theme.Material.Panel">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Wallpaper" parent="@style/Theme.Material.Wallpaper">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Wallpaper.NoTitleBar" parent="@style/Theme.Material.Wallpaper.NoTitleBar">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.InputMethod" parent="@style/Theme.DeviceDefault.Panel">
+        <item name="windowAnimationStyle">@style/Animation.InputMethod</item>
+        <item name="imeFullscreenBackground">?colorBackground</item>
+        <item name="imeExtractEnterAnimation">@anim/input_method_extract_enter</item>
+        <item name="windowSwipeToDismiss">false</item>
+    </style>
+    <style name="Theme.DeviceDefault.NoActionBar.Overscan" parent="@style/Theme.Material.NoActionBar.Overscan">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.NoActionBar.TranslucentDecor" parent="@style/Theme.Material.NoActionBar.TranslucentDecor">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Settings" parent="@style/Theme.DeviceDefault" />
+    <style name="Theme.Material.Dialog" parent="@style/Theme.Material.BaseDialog">
+        <item name="colorBackground">@color/background_material_dark</item>
+        <item name="windowIsFloating">false</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_material_dark</item>
+    </style>
+    <style name="Theme.Material.InputMethod" parent="@style/Theme.Material.Panel">
+        <item name="windowAnimationStyle">@style/Animation.InputMethod</item>
+        <item name="imeFullscreenBackground">?colorBackground</item>
+        <item name="imeExtractEnterAnimation">@anim/input_method_extract_enter</item>
+        <item name="windowSwipeToDismiss">false</item>
+    </style>
+    <style name="Theme.Material.Settings" parent="@style/Theme.Material" />
+    <style name="Theme.Material.Light.Dialog" parent="@style/Theme.Material.Light.BaseDialog">
+        <item name="colorBackground">@color/background_material_light</item>
+        <item name="windowIsFloating">false</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_material_light</item>
+        <item name="colorBackgroundFloating">@color/background_floating_material_light</item>
+    </style>
+    <style name="Widget.Material.TextView" parent="@style/Widget.TextView">
+        <item name="breakStrategy">balanced</item>
+    </style>
+    <style name="Theme.DeviceDefault.Dialog.Alert" parent="@style/Theme.Material.Dialog.Alert">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="windowTitleStyle">@style/DialogWindowTitle.DeviceDefault</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="ThemeOverlay.Material.Dialog" parent="@style/ThemeOverlay.Material.BaseDialog">
+        <item name="windowIsFloating">false</item>
+    </style>
+    <style name="Widget.Material.NumberPicker" parent="@style/Widget.NumberPicker">
+        <item name="descendantFocusability">blocksDescendants</item>
+        <item name="solidColor">@color/transparent</item>
+        <item name="internalLayout">@layout/number_picker_material</item>
+        <item name="selectionDivider">@drawable/numberpicker_selection_divider</item>
+        <item name="selectionDividerHeight">2.0dip</item>
+        <item name="selectionDividersDistance">24.0dip</item>
+        <item name="internalMaxHeight">90.0dip</item>
+        <item name="internalMinWidth">32.0dip</item>
+        <item name="virtualButtonPressedDrawable">?selectableItemBackground</item>
+    </style>
+    <style name="PreferenceFragment.Material" parent="@style/BasePreferenceFragment">
+        <item name="divider">@empty</item>
+    </style>
+    <style name="Preference.Material.PreferenceScreen" parent="@style/Preference.Material.BasePreferenceScreen">
+        <item name="divider">@empty</item>
+    </style>
+    <style name="TextAppearance.Material.NumberPicker" parent="@style/TextAppearance.Material.Body1">
+        <item name="textSize">@dimen/text_size_medium_material</item>
+    </style>
+    <style name="TextAppearance.Material.ListItem" parent="@style/TextAppearance.Material.Body1" />
+    <style name="TextAppearance.Material.ListItemSecondary" parent="@style/TextAppearance.Material.Caption" />
+    <style name="Widget.Material.Button.ButtonBar.AlertDialog" parent="@style/Widget.Material.Button.Borderless.Small">
+        <item name="gravity">center|left</item>
+        <item name="minWidth">64.0dip</item>
+        <item name="minHeight">@dimen/alert_dialog_button_bar_height</item>
+        <item name="drawablePadding">8.0dip</item>
+        <item name="paddingStart">@dimen/list_item_padding_start_material</item>
+        <item name="paddingEnd">@dimen/list_item_padding_end_material</item>
+    </style>
+    <style name="Animation.Material.Activity" parent="@style/Animation.Activity">
+        <item name="activityOpenEnterAnimation">@anim/slide_in_enter_micro</item>
+        <item name="activityOpenExitAnimation">@anim/slide_in_exit_micro</item>
+        <item name="activityCloseEnterAnimation">@null</item>
+        <item name="activityCloseExitAnimation">@anim/slide_out_micro</item>
+        <item name="taskOpenEnterAnimation">@anim/slide_in_enter_micro</item>
+        <item name="taskOpenExitAnimation">@anim/slide_in_exit_micro</item>
+        <item name="taskCloseEnterAnimation">@null</item>
+        <item name="taskCloseExitAnimation">@anim/slide_out_micro</item>
+        <item name="taskToFrontEnterAnimation">@anim/slide_in_enter_micro</item>
+        <item name="taskToFrontExitAnimation">@anim/slide_in_exit_micro</item>
+        <item name="taskToBackEnterAnimation">@null</item>
+        <item name="taskToBackExitAnimation">@anim/slide_out_micro</item>
+        <item name="wallpaperOpenEnterAnimation">@null</item>
+        <item name="wallpaperOpenExitAnimation">@anim/slide_out_micro</item>
+        <item name="wallpaperCloseEnterAnimation">@anim/slide_in_enter_micro</item>
+        <item name="wallpaperCloseExitAnimation">@anim/slide_in_exit_micro</item>
+        <item name="wallpaperIntraOpenEnterAnimation">@null</item>
+        <item name="wallpaperIntraOpenExitAnimation">@anim/slide_out_micro</item>
+        <item name="wallpaperIntraCloseEnterAnimation">@anim/slide_in_enter_micro</item>
+        <item name="wallpaperIntraCloseExitAnimation">@anim/slide_in_exit_micro</item>
+        <item name="activityOpenRemoteViewsEnterAnimation">@anim/slide_in_enter_micro</item>
+    </style>
+    <style name="DialogWindowTitle.Material" parent="@style/DialogWindowTitle">
+        <item name="textAppearance">@style/TextAppearance.Material.DialogWindowTitle</item>
+        <item name="ellipsize">end</item>
+        <item name="gravity">center|top</item>
+        <item name="maxLines">@empty</item>
+        <item name="scrollHorizontally">false</item>
+    </style>
+    <style name="Theme.Dialog.AppError" parent="@style/Theme.DeviceDefault.Dialog.Alert">
+        <item name="windowCloseOnTouchOutside">false</item>
+        <item name="windowContentTransitions">false</item>
+        <item name="windowActivityTransitions">false</item>
+    </style>
+    <style name="Theme.Material.Settings.Dialog.Alert" parent="@style/Theme.Material.Settings.Dialog.BaseAlert" />
+    <style name="Theme.Material.Settings.Dialog" parent="@style/Theme.Material.Settings.BaseDialog" />
+    <style name="Theme.DeviceDefault.Dialog.Presentation" parent="@style/Theme.Material.Dialog.Presentation">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.VoiceInteractionSession" parent="@style/Theme.Material.VoiceInteractionSession">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.SearchBar" parent="@style/Theme.Material.SearchBar">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Dialog.NoFrame" parent="@style/Theme.Material.Dialog.NoFrame">
+        <item name="colorBackground">?colorBackgroundFloating</item>
+        <item name="windowIsFloating">false</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Settings.Dialog" parent="@style/Theme.DeviceDefault.Settings.BaseDialog" />
+    <style name="Theme.DeviceDefault.Settings.DialogWhenLarge" parent="@style/Theme.DeviceDefault.DialogWhenLarge" />
+    <style name="Theme.DeviceDefault.Settings.Dialog.Alert" parent="@style/Theme.Material.Dialog.Alert">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="windowIsFloating">false</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+    <style name="Theme.DeviceDefault.Resolver" parent="@style/Theme.DeviceDefault">
+        <item name="listPreferredItemPaddingStart">?dialogPreferredPadding</item>
+        <item name="listPreferredItemPaddingEnd">?dialogPreferredPadding</item>
+        <item name="colorControlActivated">?colorControlHighlight</item>
+    </style>
+    <style name="Theme.DeviceDefault.System" parent="@style/Theme.DeviceDefault" />
+    <style name="Theme.Material.Settings.NoActionBar" parent="@style/Theme.Material" />
+    <style name="Theme.Material.Settings.BaseDialog" parent="@style/Theme.Material.Dialog" />
+    <style name="Theme.Material.Settings.Dialog.BaseAlert" parent="@style/Theme.Material.Dialog.BaseAlert" />
+    <style name="Theme.Material.Settings.DialogWhenLarge" parent="@style/Theme.Material.DialogWhenLarge" />
+    <style name="Theme.Material.Settings.DialogWhenLarge.NoActionBar" parent="@style/Theme.Material.DialogWhenLarge.NoActionBar" />
+    <style name="Theme.Material.Settings.Dialog.Presentation" parent="@style/Theme.Material.Dialog.Presentation" />
+    <style name="Theme.Material.Settings.SearchBar" parent="@style/Theme.Material.SearchBar" />
+    <style name="Theme.Material.Settings.CompactMenu" parent="@style/Theme.Material.CompactMenu" />
+    <style name="Theme.DeviceDefault.Settings.NoActionBar" parent="@style/Theme.DeviceDefault" />
+    <style name="Theme.DeviceDefault.Settings.BaseDialog" parent="@style/Theme.DeviceDefault.Dialog" />
+    <style name="Theme.DeviceDefault.Settings.DialogWhenLarge.NoActionBar" parent="@style/Theme.DeviceDefault.DialogWhenLarge.NoActionBar" />
+    <style name="Theme.DeviceDefault.Settings.Dialog.Presentation" parent="@style/Theme.DeviceDefault.Dialog.Presentation" />
+    <style name="Theme.DeviceDefault.Settings.SearchBar" parent="@style/Theme.DeviceDefault.SearchBar" />
+    <style name="Theme.DeviceDefault.Settings.CompactMenu" parent="@style/Theme.Material.CompactMenu">
+        <item name="colorBackground">@color/background_device_default_dark</item>
+        <item name="windowIsFloating">false</item>
+        <item name="colorBackgroundCacheHint">@color/background_cache_hint_selector_device_default</item>
+        <item name="colorButtonNormal">@color/button_normal_device_default_dark</item>
+        <item name="colorPrimary">@color/primary_device_default_dark</item>
+        <item name="colorPrimaryDark">@color/primary_dark_device_default_dark</item>
+        <item name="colorAccent">@color/accent_device_default_dark</item>
+        <item name="colorBackgroundFloating">@color/background_floating_device_default_dark</item>
+    </style>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="preference_fragment_padding_vertical_material">8.0dip</dimen>
+    <dimen name="list_item_padding_horizontal_material">8.0dip</dimen>
+    <dimen name="list_item_padding_start_material">8.0dip</dimen>
+    <dimen name="list_item_padding_end_material">8.0dip</dimen>
+    <dimen name="dialog_padding_material">8.0dip</dimen>
+    <dimen name="dialog_list_padding_top_no_title">0.0dip</dimen>
+    <dimen name="dialog_list_padding_bottom_no_buttons">0.0dip</dimen>
+    <dimen name="select_dialog_padding_start_material">8.0dip</dimen>
+    <dimen name="select_dialog_drawable_padding_start_material">8.0dip</dimen>
+    <dimen name="input_extract_action_button_width">24.0dip</dimen>
+    <dimen name="input_extract_action_button_height">24.0dip</dimen>
+    <dimen name="input_extract_action_icon_padding">3.0dip</dimen>
+</resources>
