@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>መነሻ</item>
+        <item>ስራ</item>
+        <item>ሌላ</item>
+        <item>ብጁ</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>AIM</item>
+        <item>Windows ቀጥታ ስርጭት</item>
+        <item>Yahoo</item>
+        <item>Skype</item>
+        <item>QQ</item>
+        <item>Google Talk</item>
+        <item>ICQ</item>
+        <item>Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>ስራ</item>
+        <item>ሌላ</item>
+        <item>ብጁ</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>መነሻ</item>
+        <item>ተንቀሳቃሽ</item>
+        <item>ስራ</item>
+        <item>የስራ ፋክስ</item>
+        <item>የቤት ፋክስ</item>
+        <item>"ምልክት  ማድረጊያ"</item>
+        <item>ሌላ</item>
+        <item>ብጁ</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>መነሻ</item>
+        <item>ስራ</item>
+        <item>ሌላ</item>
+        <item>ብጁ</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorAlertMessages">
+        <item>በWi-Fi ላይ ጥሪዎችን ለማድረግ እና መልዕክቶችን ለመላክ መጀመሪያ የአገልግሎት አቅራቢዎ ይህን አገልግሎት እንዲያዘጋጅልዎ መጠየቅ አለብዎት። ከዚያ ከቅንብሮች ሆነው እንደገና የWi-Fi ጥሪን ያብሩ።</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorNotificationMessages">
+        <item>የአገልግሎት አቅራቢዎ ጋር ይመዝገቡ</item>
+    </string-array>
+    <string-array name="wfcSpnFormats">
+        <item>%s</item>
+        <item>የ%s Wi-Fi ጥሪ</item>
+    </string-array>
+    <array name="fingerprint_acquired_vendor" />
+    <array name="fingerprint_error_vendor" />
+    <string-array name="imAddressTypes">
+        <item>መነሻ</item>
+        <item>ስራ</item>
+        <item>ሌላ</item>
+        <item>ብጁ</item>
+    </string-array>
+    <string-array name="network_switch_type_name">
+        <item>የተንቀሳቃሽ ስልክ ውሂብ</item>
+        <item>Wi-Fi</item>
+        <item>ብሉቱዝ</item>
+        <item>ኤተርኔት</item>
+        <item>VPN</item>
+    </string-array>
+</resources>

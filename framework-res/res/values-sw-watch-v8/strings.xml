@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="candidates_style"><font color="#80cbc4">yanayopendekezwa</font></string>
+    <string name="permgrouplab_sensors">Vihisi</string>
+    <string name="android_upgrading_apk">Programu ya %1$d kati ya %2$d.</string>
+</resources>

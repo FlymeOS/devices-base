@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Mayroon kang %d na natitirang pagsubok bago ma-lock ang SIM.</item>
+        <item quantity="one">Mayroon kang %d natitirang pagsubok bago ma-lock ang SIM.</item>
+    </plurals>
+    <plurals name="ssl_ca_cert_warning">
+        <item quantity="other">May mga naka-install na certificate authority</item>
+        <item quantity="one">May mga naka-install na certificate authority</item>
+    </plurals>
+    <plurals name="bugreport_countdown">
+        <item quantity="other">Kukuha ng screenshot para sa ulat ng bug sa loob ng %d na segundo.</item>
+        <item quantity="one">Kukuha ng screenshot para sa ulat ng bug sa loob ng %d segundo.</item>
+    </plurals>
+    <plurals name="last_num_days">
+        <item quantity="other">Huling %d na araw</item>
+        <item quantity="one">Huling %d araw</item>
+    </plurals>
+    <plurals name="duration_seconds">
+        <item quantity="other">%d na segundo</item>
+        <item quantity="one">%d segundo</item>
+    </plurals>
+    <plurals name="duration_minutes">
+        <item quantity="other">%d na minuto</item>
+        <item quantity="one">%d minuto</item>
+    </plurals>
+    <plurals name="duration_hours">
+        <item quantity="other">%d na oras</item>
+        <item quantity="one">%d oras</item>
+    </plurals>
+    <plurals name="duration_minutes_shortest">
+        <item quantity="other">%dm</item>
+        <item quantity="one">%dm</item>
+    </plurals>
+    <plurals name="duration_hours_shortest">
+        <item quantity="other">%dh</item>
+        <item quantity="one">%dh</item>
+    </plurals>
+    <plurals name="duration_days_shortest">
+        <item quantity="other">%dd</item>
+        <item quantity="one">%dd</item>
+    </plurals>
+    <plurals name="duration_years_shortest">
+        <item quantity="other">%dy</item>
+        <item quantity="one">%dy</item>
+    </plurals>
+    <plurals name="duration_minutes_shortest_future">
+        <item quantity="other">sa loob ng %dm</item>
+        <item quantity="one">sa loob ng %dm</item>
+    </plurals>
+    <plurals name="duration_hours_shortest_future">
+        <item quantity="other">sa loob ng %dh</item>
+        <item quantity="one">sa loob ng %dh</item>
+    </plurals>
+    <plurals name="duration_days_shortest_future">
+        <item quantity="other">sa loob ng %dd</item>
+        <item quantity="one">sa loob ng %dd</item>
+    </plurals>
+    <plurals name="duration_years_shortest_future">
+        <item quantity="other">sa loob ng %dy</item>
+        <item quantity="one">sa loob ng %dy</item>
+    </plurals>
+    <plurals name="duration_minutes_relative">
+        <item quantity="other">%d na minuto na ang nakakalipas</item>
+        <item quantity="one">%d minuto na ang nakakalipas</item>
+    </plurals>
+    <plurals name="duration_hours_relative">
+        <item quantity="other">%d na oras na ang nakakalipas</item>
+        <item quantity="one">%d oras na ang nakakalipas</item>
+    </plurals>
+    <plurals name="duration_days_relative">
+        <item quantity="other">%d na araw na ang nakakalipas</item>
+        <item quantity="one">%d araw na ang nakakalipas</item>
+    </plurals>
+    <plurals name="duration_years_relative">
+        <item quantity="other">%d na taon na ang nakakalipas</item>
+        <item quantity="one">%d taon na ang nakakalipas</item>
+    </plurals>
+    <plurals name="duration_minutes_relative_future">
+        <item quantity="other">pagkalipas ng %d na minuto</item>
+        <item quantity="one">pagkalipas ng %d minuto</item>
+    </plurals>
+    <plurals name="duration_hours_relative_future">
+        <item quantity="other">pagkalipas ng %d na oras</item>
+        <item quantity="one">pagkalipas ng %d oras</item>
+    </plurals>
+    <plurals name="duration_days_relative_future">
+        <item quantity="other">pagkalipas ng %d na araw</item>
+        <item quantity="one">pagkalipas ng %d araw</item>
+    </plurals>
+    <plurals name="duration_years_relative_future">
+        <item quantity="other">pagkalipas ng %d na taon</item>
+        <item quantity="one">pagkalipas ng %d taon</item>
+    </plurals>
+    <plurals name="wifi_available">
+        <item quantity="other">Available ang mga Wi-Fi network</item>
+        <item quantity="one">Available ang mga Wi-Fi network</item>
+    </plurals>
+    <plurals name="wifi_available_detailed">
+        <item quantity="other">Available ang mga bukas na Wi-Fi network</item>
+        <item quantity="one">Available ang mga bukas na Wi-Fi network</item>
+    </plurals>
+    <plurals name="matches_found">
+        <item quantity="other">%1$d ng %2$d</item>
+        <item quantity="one">%1$d ng %2$d</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Subukang muli sa loob ng %d na segundo</item>
+        <item quantity="one">Subukang muli sa loob ng %d segundo</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary">
+        <item quantity="other">Sa loob ng %1$d na minuto (hanggang %2$s)</item>
+        <item quantity="one">Sa loob ng %1$d minuto (hanggang %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_summary_short">
+        <item quantity="other">Sa loob ng %1$d na min (hanggang %2$s)</item>
+        <item quantity="one">Sa loob ng %1$d min (hanggang %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary">
+        <item quantity="other">Sa loob ng %1$d na oras (hanggang %2$s)</item>
+        <item quantity="one">Sa loob ng %1$d oras (hanggang %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_summary_short">
+        <item quantity="other">Sa loob ng %1$d na oras (hanggang %2$s)</item>
+        <item quantity="one">Sa loob ng %1$d oras (hanggang %2$s)</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes">
+        <item quantity="other">Sa loob ng %d na minuto</item>
+        <item quantity="one">Sa loob ng %d minuto</item>
+    </plurals>
+    <plurals name="zen_mode_duration_minutes_short">
+        <item quantity="other">Sa loob ng %d na min</item>
+        <item quantity="one">Sa loob ng %d min</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours">
+        <item quantity="other">Sa loob ng %d na oras</item>
+        <item quantity="one">Sa loob ng %d oras</item>
+    </plurals>
+    <plurals name="zen_mode_duration_hours_short">
+        <item quantity="other">Sa loob ng %d na oras</item>
+        <item quantity="one">Sa loob ng %d oras</item>
+    </plurals>
+    <plurals name="selected_count">
+        <item quantity="other">%1$d ang napili</item>
+        <item quantity="one">%1$d ang napili</item>
+    </plurals>
+</resources>

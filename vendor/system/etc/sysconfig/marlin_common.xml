@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- These are configurations that should exist on Google's 2016 Nexus devices only. -->
+<config>
+    <!-- Disable Hangouts by default until a Fi SIM is inserted. -->
+    <disabled-until-used-preinstalled-carrier-associated-app
+        package="com.google.android.talk"
+        carrierAppPackage="com.google.android.apps.tycho" />
+</config>

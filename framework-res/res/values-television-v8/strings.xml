@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="config_defaultPictureInPictureBounds">1328 54 1808 324</string>
+</resources>

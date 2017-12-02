@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="candidates_style"><font color="#80cbc4">ผู้สมัคร</font></string>
+    <string name="permgrouplab_sensors">เซ็นเซอร์</string>
+    <string name="android_upgrading_apk">แอป %1$d จาก %2$d แอป</string>
+</resources>

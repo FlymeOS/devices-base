@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center|top" android:orientation="vertical" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:adjustViewBounds="true" android:minHeight="@dimen/screen_percentage_15">
+        <ImageView android:layout_gravity="center_horizontal" android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/screen_percentage_10" android:src="@null" android:adjustViewBounds="true" android:maxWidth="24.0dip" android:maxHeight="24.0dip" />
+    </FrameLayout>
+    <TextView android:id="@id/alertTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?android:attr/windowTitleStyle" />
+</LinearLayout>

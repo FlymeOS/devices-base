@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/status_bar_latest_event_content" android:tag="messaging" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/notification_template_header" />
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/notification_action_list_margin_target" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/notification_content_margin_top">
+        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/notification_main_column" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/notification_min_content_height" android:paddingStart="@dimen/notification_content_margin_start" android:paddingEnd="@dimen/notification_content_margin_end">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/notification_template_part_line1" />
+            <com.android.internal.widget.MessagingLinearLayout android:id="@id/notification_messaging" android:paddingBottom="@dimen/notification_content_margin_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:spacing="@dimen/notification_messaging_spacing" android:maxHeight="165.0dip">
+                <com.android.internal.widget.ImageFloatingTextView android:id="@id/inbox_text0" style="@style/Widget.Material.Notification.MessagingText" />
+                <com.android.internal.widget.ImageFloatingTextView android:id="@id/inbox_text1" style="@style/Widget.Material.Notification.MessagingText" />
+                <com.android.internal.widget.ImageFloatingTextView android:id="@id/inbox_text2" style="@style/Widget.Material.Notification.MessagingText" />
+                <com.android.internal.widget.ImageFloatingTextView android:id="@id/inbox_text3" style="@style/Widget.Material.Notification.MessagingText" />
+                <com.android.internal.widget.ImageFloatingTextView android:id="@id/inbox_text4" style="@style/Widget.Material.Notification.MessagingText" />
+                <com.android.internal.widget.ImageFloatingTextView android:id="@id/inbox_text5" style="@style/Widget.Material.Notification.MessagingText" />
+                <com.android.internal.widget.ImageFloatingTextView android:id="@id/inbox_text6" style="@style/Widget.Material.Notification.MessagingText" />
+            </com.android.internal.widget.MessagingLinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/notification_material_action_list" />
+    <include layout="@layout/notification_template_right_icon" />
+</FrameLayout>

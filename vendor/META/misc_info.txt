@@ -1,0 +1,17 @@
+recovery_api_version=3
+fstab_version=2
+blocksize=131072
+boot_size=0x02000000
+system_size=0x80000000
+userdata_size=10737418240
+extfs_sparse_flag=-s
+squashfs_sparse_flag=-s
+tool_extensions=.
+default_system_dev_certificate=build/security/testkey
+use_set_metadata=1
+multistage_support=1
+update_rename_support=1
+fs_type=ext4
+selinux_fc=out/target/product/sailfish/root/file_contexts.bin
+system_root_image=true
+ab_update=true

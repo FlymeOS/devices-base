@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_percentage_05">12.0dip</dimen>
+    <dimen name="screen_percentage_10">24.0dip</dimen>
+    <dimen name="screen_percentage_15">36.0dip</dimen>
+</resources>

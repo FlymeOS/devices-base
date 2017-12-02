@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="config_mobile_hotspot_provision_app">
+        <item>com.google.android.carrierentitlement</item>
+        <item>com.google.android.carrierentitlement.CarrierEntitlementActivity</item>
+    </string-array>
+    <string-array name="config_tether_apndata">
+        <item>[ApnSettingV3]HOT mobile PC,pc.hotm,,,,,,,,,204,04,,DUN,,,true,0,,,,,,,spn,HOT mobile</item>
+    </string-array>
+    <string-array name="config_default_vm_number">
+        <item>*86;BAE0000000000000</item>
+    </string-array>
+    <string-array name="dial_string_replace">
+        <item>*611:+19085594899,BAE0000000000000</item>
+        <item>*86:+1MDN,BAE0000000000000</item>
+    </string-array>
+    <string-array name="config_sms_convert_destination_number_support">
+        <item>true;BAE0000000000000</item>
+        <item>false</item>
+    </string-array>
+</resources>

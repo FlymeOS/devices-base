@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <fraction name="input_extract_layout_height">25.199997%</fraction>
+    <fraction name="input_extract_layout_padding_left">7.500005%</fraction>
+    <item type="fraction" name="input_extract_layout_padding_left_no_action">@fraction/input_extract_layout_padding_right</item>
+    <fraction name="input_extract_layout_padding_right">21.399998%</fraction>
+    <fraction name="input_extract_text_margin_bottom">5.4999948%</fraction>
+    <fraction name="input_extract_action_margin_bottom">2.1000028%</fraction>
+</resources>

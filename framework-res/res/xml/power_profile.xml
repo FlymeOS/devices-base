@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<device name="Android">
+    <item name="none">0</item>
+    <item name="screen.on">129.388</item>
+    <item name="screen.full">148.51</item>
+    <item name="bluetooth.active">0</item>
+    <item name="bluetooth.on">0</item>
+    <item name="wifi.on">20.5048</item>
+    <item name="wifi.active">8.71016</item>
+    <item name="wifi.scan">366.954</item>
+    <item name="dsp.audio">0</item>
+    <item name="gps.on">31.6648</item>
+    <item name="radio.active">64.8882</item>
+    <item name="radio.scanning">2.34129</item>
+    <array name="radio.on">
+        <value>9.23215</value>
+        <value>2.09043</value>
+        <value>5.20192</value>
+        <value>4.73961</value>
+        <value>4.65342</value>
+    </array>
+    <array name="cpu.speeds.cluster0">
+        <value>307200</value>
+        <value>384000</value>
+        <value>460800</value>
+        <value>537600</value>
+        <value>614400</value>
+        <value>691200</value>
+        <value>768000</value>
+        <value>844800</value>
+        <value>902600</value>
+        <value>979200</value>
+        <value>1056000</value>
+        <value>1132800</value>
+        <value>1209600</value>
+        <value>1286400</value>
+        <value>1363200</value>
+        <value>1440000</value>
+        <value>1516800</value>
+        <value>1593600</value>
+        <value>2188800</value>
+    </array>
+    <array name="cpu.speeds.cluster1">
+        <value>307200</value>
+        <value>384000</value>
+        <value>460800</value>
+        <value>537600</value>
+        <value>614400</value>
+        <value>691200</value>
+        <value>748800</value>
+        <value>825600</value>
+        <value>902400</value>
+        <value>979200</value>
+        <value>1056000</value>
+        <value>1132800</value>
+        <value>1209600</value>
+        <value>1286400</value>
+        <value>1363200</value>
+        <value>1440000</value>
+        <value>1516800</value>
+        <value>1593600</value>
+        <value>1670400</value>
+        <value>1747200</value>
+        <value>1824000</value>
+        <value>1900800</value>
+        <value>1977600</value>
+        <value>2054400</value>
+        <value>2150400</value>
+        <value>2246400</value>
+        <value>2342400</value>
+    </array>
+    <item name="cpu.idle">3.09496</item>
+    <item name="cpu.awake">2.30213</item>
+    <array name="cpu.active.cluster0">
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+    </array>
+    <array name="cpu.active.cluster1">
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+        <value>180.978</value>
+    </array>
+    <array name="cpu.clusters.cores">
+        <value>2</value>
+        <value>2</value>
+    </array>
+    <item name="battery.capacity">2770</item>
+    <array name="wifi.batchedscan">
+        <value>0</value>
+        <value>0</value>
+        <value>0</value>
+        <value>0</value>
+        <value>0</value>
+    </array>
+</device>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="candidates_style"><font color="#80cbc4">ແຄນດິເດດ</font></string>
+    <string name="permgrouplab_sensors">ເຊັນເຊີ</string>
+    <string name="android_upgrading_apk">ແອັບ %1$d ໃນ %2$d.</string>
+</resources>

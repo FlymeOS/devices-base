@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item type="dimen" name="dialog_min_width_major">55.000008%</item>
+    <item type="dimen" name="dialog_min_width_minor">79.99999%</item>
+    <dimen name="config_prefDialogWidth">440.0dip</dimen>
+    <dimen name="password_keyboard_key_height_alpha">75.0dip</dimen>
+    <dimen name="password_keyboard_key_height_numeric">75.0dip</dimen>
+    <dimen name="preference_widget_width">56.0dip</dimen>
+    <dimen name="password_keyboard_height">48.0mm</dimen>
+</resources>

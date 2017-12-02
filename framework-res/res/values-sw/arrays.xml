@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="emailAddressTypes">
+        <item>Nyumbani</item>
+        <item>Kazi</item>
+        <item>Nyinginezo</item>
+        <item>Maalum</item>
+    </string-array>
+    <string-array name="imProtocols">
+        <item>AIM</item>
+        <item>Windows Live</item>
+        <item>Yahoo</item>
+        <item>Skype</item>
+        <item>QQ</item>
+        <item>Google Talk</item>
+        <item>ICQ</item>
+        <item>Jabber</item>
+    </string-array>
+    <string-array name="organizationTypes">
+        <item>Kazi</item>
+        <item>Nyinginezo</item>
+        <item>Maalum</item>
+    </string-array>
+    <string-array name="phoneTypes">
+        <item>Nyumbani</item>
+        <item>Simu ya mkononi</item>
+        <item>Kazi</item>
+        <item>Pepesi ya Kazini</item>
+        <item>Pepesi ya Nyumbani</item>
+        <item>Kurasa anwani</item>
+        <item>Nyinginezo</item>
+        <item>Maalum</item>
+    </string-array>
+    <string-array name="postalAddressTypes">
+        <item>Nyumbani</item>
+        <item>Kazi</item>
+        <item>Nyinginezo</item>
+        <item>Maalum</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorAlertMessages">
+        <item>Ili upige simu na kutuma ujumbe kupitia Wi-Fi, mwambie mtoa huduma wako asanidi huduma hii kwanza. Kisha uwashe tena upigaji simu kwa Wi-Fi kutoka kwenye Mipangilio.</item>
+    </string-array>
+    <string-array name="wfcOperatorErrorNotificationMessages">
+        <item>Jisajili na mtoa huduma wako</item>
+    </string-array>
+    <array name="fingerprint_acquired_vendor" />
+    <array name="fingerprint_error_vendor" />
+    <string-array name="imAddressTypes">
+        <item>Nyumbani</item>
+        <item>Kazi</item>
+        <item>Nyinginezo</item>
+        <item>Maalum</item>
+    </string-array>
+    <string-array name="network_switch_type_name">
+        <item>data ya simu za mkononi</item>
+        <item>Wi-Fi</item>
+        <item>Bluetooth</item>
+        <item>Ethaneti</item>
+        <item>VPN</item>
+    </string-array>
+</resources>

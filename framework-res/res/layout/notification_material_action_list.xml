@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_gravity="bottom" android:id="@id/actions_container" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.android.internal.widget.NotificationActionListLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/actions" android:background="@color/notification_action_list" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/notification_action_list_height" android:paddingEnd="4.0dip" />
+</FrameLayout>

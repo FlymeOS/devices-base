@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/status_bar_latest_event_content" android:tag="bigText" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/notification_template_header" />
+    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/notification_action_list_margin_target" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/notification_content_margin_top" android:layout_marginBottom="@dimen/notification_action_list_height">
+        <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:id="@id/notification_main_column" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/notification_min_content_height" android:paddingStart="@dimen/notification_content_margin_start" android:paddingEnd="@dimen/notification_content_margin_end">
+            <include layout="@layout/notification_template_part_line1" />
+            <include layout="@layout/notification_template_progress" />
+            <com.android.internal.widget.ImageFloatingTextView android:textAppearance="@style/TextAppearance.Material.Notification" android:gravity="top" android:id="@id/big_text" android:paddingBottom="@dimen/notification_content_margin_bottom" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="@dimen/notification_text_margin_top" android:singleLine="false" android:layout_weight="1.0" />
+        </LinearLayout>
+        <ViewStub android:id="@id/notification_material_reply_container" android:layout="@layout/notification_material_reply_text" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <include layout="@layout/notification_material_action_list" />
+    <include layout="@layout/notification_template_right_icon" />
+</FrameLayout>

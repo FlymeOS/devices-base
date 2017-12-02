@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:tint="@color/decor_button_light_color" android:height="32.0dip" android:width="32.0dip" android:viewportWidth="32.0" android:viewportHeight="32.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:scaleX="0.5" android:scaleY="0.5" android:translateX="8.0" android:translateY="8.0">
+        <path android:fillColor="@color/white" android:pathData="M6.9,4.0l-2.9,2.9 9.1,9.1 -9.1,9.200001 2.9,2.799999 9.1,-9.1 9.1,9.1 2.9,-2.799999 -9.1,-9.200001 9.1,-9.1 -2.9,-2.9 -9.1,9.2z" />
+    </group>
+</vector>

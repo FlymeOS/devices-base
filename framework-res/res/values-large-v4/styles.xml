@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Holo.DialogWhenLarge" parent="@style/Theme.Holo.Dialog.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+    <style name="Theme.Holo.DialogWhenLarge.NoActionBar" parent="@style/Theme.Holo.Dialog.NoActionBar.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+    <style name="Theme.Holo.Light.DialogWhenLarge" parent="@style/Theme.Holo.Light.Dialog.FixedSize" />
+    <style name="Theme.Holo.Light.DialogWhenLarge.NoActionBar" parent="@style/Theme.Holo.Light.Dialog.NoActionBar.FixedSize" />
+    <style name="Theme.DeviceDefault.DialogWhenLarge" parent="@style/Theme.DeviceDefault.Dialog.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+    <style name="Theme.DeviceDefault.DialogWhenLarge.NoActionBar" parent="@style/Theme.DeviceDefault.Dialog.NoActionBar.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+    <style name="Theme.DeviceDefault.Light.DialogWhenLarge" parent="@style/Theme.DeviceDefault.Light.Dialog.FixedSize" />
+    <style name="Theme.DeviceDefault.Light.DialogWhenLarge.NoActionBar" parent="@style/Theme.DeviceDefault.Light.Dialog.NoActionBar.FixedSize" />
+    <style name="Theme.Material.DialogWhenLarge" parent="@style/Theme.Material.Dialog.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+    <style name="Theme.Material.DialogWhenLarge.NoActionBar" parent="@style/Theme.Material.Dialog.NoActionBar.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+    <style name="Theme.Material.Light.DialogWhenLarge" parent="@style/Theme.Material.Light.Dialog.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+    <style name="Theme.Material.Light.DialogWhenLarge.NoActionBar" parent="@style/Theme.Material.Light.Dialog.NoActionBar.FixedSize">
+        <item name="preferencePanelStyle">@style/PreferencePanel.Dialog</item>
+    </style>
+</resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:padding="@dimen/dialog_padding" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="@style/TextAppearance.Material.Title" android:id="@id/unlaunchable_app_title" android:paddingBottom="@dimen/dialog_padding" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/dialog_padding" />
+    <TextView android:textAppearance="@style/TextAppearance.Material.Subhead" android:textColor="?textColorSecondary" android:id="@id/unlaunchable_app_message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/dialog_padding" />
+</LinearLayout>

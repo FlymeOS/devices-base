@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="candidates_style"><font color="#80cbc4">අපේක්ෂකයන්</font></string>
+    <string name="permgrouplab_sensors">සංවේදක</string>
+    <string name="android_upgrading_apk">%1$d හි %2$d යෙදුම.</string>
+</resources>
