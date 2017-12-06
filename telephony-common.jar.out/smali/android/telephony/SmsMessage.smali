@@ -1927,3 +1927,59 @@
     .line 112
     return-void
 .end method
+
+.method public constructor <init>()V
+    .locals 1
+
+    .prologue
+    .line 913
+    invoke-static {}, Landroid/telephony/SmsMessage;->getFlymeSmsFacility()Lcom/android/internal/telephony/SmsMessageBase;
+
+    move-result-object v0
+
+    invoke-direct {p0, v0}, Landroid/telephony/SmsMessage;-><init>(Lcom/android/internal/telephony/SmsMessageBase;)V
+
+    .line 912
+    return-void
+.end method
+
+.method private static final getFlymeSmsFacility()Lcom/android/internal/telephony/SmsMessageBase;
+    .locals 1
+
+    .prologue
+    .line 900
+    invoke-static {}, Landroid/telephony/SmsMessage;->isCdmaVoice()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 901
+    new-instance v0, Lcom/android/internal/telephony/cdma/SmsMessage;
+
+    invoke-direct {v0}, Lcom/android/internal/telephony/cdma/SmsMessage;-><init>()V
+
+    return-object v0
+
+    .line 903
+    :cond_0
+    new-instance v0, Lcom/android/internal/telephony/gsm/SmsMessage;
+
+    invoke-direct {v0}, Lcom/android/internal/telephony/gsm/SmsMessage;-><init>()V
+
+    return-object v0
+.end method
+
+.method public getFlymeDestinationAddress()Ljava/lang/String;
+    .locals 1
+
+    .prologue
+    .line 924
+    iget-object v0, p0, Landroid/telephony/SmsMessage;->mWrappedSmsMessage:Lcom/android/internal/telephony/SmsMessageBase;
+
+    invoke-virtual {v0}, Lcom/android/internal/telephony/SmsMessageBase;->getFlymeDestinationAddress()Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
