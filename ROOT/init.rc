@@ -659,3 +659,7 @@ on property:ro.debuggable=1
 service flash_recovery /system/bin/install-recovery.sh
     class main
     oneshot
+
+service flymed /system/bin/flymed
+    class main
+    socket flymed stream 0660 root system

@@ -399,6 +399,8 @@
 /sys/power/wake_unlock	u:object_r:sysfs_wake_lock:s0
 /sys/kernel/uevent_helper	u:object_r:usermodehelper:s0
 /sys/kernel/debug/tracing/trace_marker	u:object_r:debugfs_trace_marker:s0
+/dev/socket/flymed	u:object_r:flymed_socket:s0
+/system/bin/flymed	u:object_r:flymed_exec:s0
 /dsp	u:object_r:rootfs:s0
 /dev/diag	u:object_r:diag_device:s0
 /dev/pn551	u:object_r:nfc_device:s0
