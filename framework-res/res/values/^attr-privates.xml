@@ -230,4 +230,5 @@
     <attr name="alwaysFocusable" format="boolean" />
     <attr name="minimalWidth" format="dimension" />
     <attr name="minimalHeight" format="dimension" />
+    <attr name="needAccessControl" format="boolean" />
 </resources>

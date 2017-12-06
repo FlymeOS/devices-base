@@ -382,6 +382,29 @@
     <protected-broadcast android:name="android.intent.action.MANAGED_PROFILE_UNAVAILABLE"/>
     <protected-broadcast android:name="com.android.server.pm.DISABLE_QUIET_MODE_AFTER_UNLOCK"/>
     <protected-broadcast android:name="com.android.server.retaildemo.ACTION_RESET_DEMO"/>
+    <protected-broadcast android:name="com.meizu.safe.ACTION_BLOCK_LOCKED_SCREEN_SHOW"/>
+    <protected-broadcast android:name="meizu.intent.action.BATTERY_LOW_WRANING_DIALOG"/>
+    <protected-broadcast android:name="flyme.intent.action.ACTION_SHOW_LOCK_HOME"/>
+    <protected-broadcast android:name="com.android.server.notification"/>
+    <protected-broadcast android:name="com.meizu.action.DISABLE_TETHER"/>
+    <protected-broadcast android:name="com.meizu.power.powerexception.enter_idle_mode"/>
+    <protected-broadcast android:name="com.meizu.power.powerexception"/>
+    <protected-broadcast android:name="com.meizu.safe.alphame.pure.UPDATE_FINISHED"/>
+    <protected-broadcast android:name="com.meizu.safe.alphame.data_broadcast"/>
+    <protected-broadcast android:name="com.meizu.blockservice.NOTIFICATION_DELETED_ACTION_INCALL"/>
+    <protected-broadcast android:name="com.meizu.blockservice.NOTIFICATION_DELETED_ACTION_MMS"/>
+    <protected-broadcast android:name="com.meizu.safe.permission.lsvm.NOTIFICATION_ACTION_ALLOW_SHOW_ON_LOCKED_SCREEN"/>
+    <protected-broadcast android:name="com.meizu.safe.permission.lsvm.NOTIFICATION_ACTION_FORBID_SHOW_ON_LOCKED_SCREEN"/>
+    <protected-broadcast android:name="com.meizu.safe.permission.lsvm.NOTIFICATION_ACTION_GO_SETTING"/>
+    <protected-broadcast android:name="com.meizu.safe.permission.lsvm.NOTIFICATION_ACTION_IGNORE"/>
+    <protected-broadcast android:name="traffic_action_idle_start_alarm_sim1"/>
+    <protected-broadcast android:name="traffic_action_idle_start_alarm_sim2"/>
+    <protected-broadcast android:name="traffic_action_idle_end_alarm_sim1"/>
+    <protected-broadcast android:name="traffic_action_idle_end_alarm_sim2"/>
+    <protected-broadcast android:name="traffic_action_24_clock_alarm"/>
+    <protected-broadcast android:name="traffic_correct_alarm_sim1"/>
+    <protected-broadcast android:name="traffic_correct_alarm_sim2"/>
+    <protected-broadcast android:name="android.com.meizu.safe.provider.SafeWidgetProvider"/>
     <eat-comment/>
     <eat-comment/>
     <permission-group android:description="@string/permgroupdesc_contacts" android:icon="@drawable/perm_group_contacts" android:label="@string/permgrouplab_contacts" android:name="android.permission-group.CONTACTS" android:priority="100"/>
@@ -601,6 +624,9 @@
     <permission android:name="android.permission.RECOVERY" android:protectionLevel="system|signature"/>
     <permission android:name="android.permission.BIND_JOB_SERVICE" android:protectionLevel="signature"/>
     <uses-permission android:name="android.permission.BIND_JOB_SERVICE"/>
+    <uses-permission android:name="com.meizu.safe.permission.ACCESS_APP_SHOW_ON_LOCKED_SCREED_PROVIDER"/>
+    <permission android:name="flyme.permission.send.MEIZU_DATASAVE_MODE_CHANGED" android:protectionLevel="signatureOrSystem"/>
+    <permission android:name="flyme.permission.MEIZU_CONTROL_PACKAGE_PERMISSIONS" android:protectionLevel="signatureOrSystem"/>
     <permission android:name="android.permission.UPDATE_CONFIG" android:protectionLevel="system|signature"/>
     <permission android:name="android.permission.RESET_SHORTCUT_MANAGER_THROTTLING" android:protectionLevel="signature"/>
     <eat-comment/>
@@ -783,7 +809,7 @@
     <permission android:name="android.permission.UPDATE_LOCK_TASK_PACKAGES" android:protectionLevel="setup|signature"/>
     <permission android:name="android.permission.SUBSTITUTE_NOTIFICATION_APP_NAME" android:protectionLevel="system|signature"/>
     <application android:allowClearUserData="false" android:backupAgent="com.android.server.backup.SystemBackupAgent" android:defaultToDeviceProtectedStorage="true" android:directBootAware="true" android:hasCode="false" android:icon="@drawable/ic_launcher_android" android:killAfterRestore="false" android:label="@string/android_system_label" android:persistent="true" android:process="system" android:supportsRtl="true" android:theme="@style/Theme.DeviceDefault.Light.DarkActionBar">
-        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:documentLaunchMode="never" android:excludeFromRecents="true" android:finishOnCloseSystemDialogs="true" android:name="com.android.internal.app.ChooserActivity" android:process=":ui" android:relinquishTaskIdentity="true" android:theme="@style/Theme.DeviceDefault.Resolver">
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:documentLaunchMode="never" android:excludeFromRecents="true" android:finishOnCloseSystemDialogs="true" android:name="com.android.internal.app.MzChooserActivity" android:process=":ui" android:relinquishTaskIdentity="true" android:theme="@style/Theme.DeviceDefault.Resolver">
             <intent-filter>
                 <action android:name="android.intent.action.CHOOSER"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -878,6 +904,7 @@
         <receiver android:name="com.android.server.MasterClearReceiver" android:permission="android.permission.MASTER_CLEAR">
             <intent-filter android:priority="100">
                 <action android:name="android.intent.action.MASTER_CLEAR"/>
+                <action android:name="android.intent.action.MZ_UPDATE"/>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
                 <category android:name="android.intent.category.MASTER_CLEAR"/>
             </intent-filter>
@@ -894,5 +921,17 @@
         <service android:name="com.android.server.content.SyncJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
         <service android:exported="true" android:name="com.android.server.pm.BackgroundDexOptService" android:permission="android.permission.BIND_JOB_SERVICE"/>
         <service android:name="com.android.server.storage.DiskStatsLoggingService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:excludeFromRecents="true" android:finishOnCloseSystemDialogs="false" android:name="com.android.internal.app.RecommendActivity" android:process=":ui" android:theme="@style/Theme.Holo.Dialog.Alert">
+            <intent-filter>
+                <action android:name="android.intent.action.RECOMMEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="orientation|screenSize" android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTask" android:name="com.meizu.app.AccessApplication" android:needAccessControl="false" android:screenOrientation="portrait" android:theme="@style/Theme.Wallpaper.NoTitleBar.Fullscreen" android:uiOptions="splitActionBarWhenNarrow" android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.content.pm.CONFIRM_ACCESS_APPCATONS"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

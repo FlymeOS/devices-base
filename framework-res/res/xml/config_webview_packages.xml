@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <webviewproviders>
+    <webviewprovider description="Android WebView" packageName="com.android.webview" availableByDefault="true" />
     <webviewprovider description="Chrome Stable" packageName="com.android.chrome" availableByDefault="true" />
     <webviewprovider description="Google WebView" packageName="com.google.android.webview" availableByDefault="true" isFallback="true" />
     <webviewprovider description="Chrome Beta" packageName="com.chrome.beta">
