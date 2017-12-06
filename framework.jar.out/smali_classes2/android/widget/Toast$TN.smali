@@ -34,6 +34,9 @@
 
 
 # instance fields
+
+.field mFlymeToastType:I
+
 .field mDuration:I
 
 .field mGravity:I
@@ -117,7 +120,7 @@
     iput v1, v0, Landroid/view/WindowManager$LayoutParams;->format:I
 
     .line 389
-    const v1, 0x1030004
+    const v1, #android:style@Animation.Toast#t
 
     iput v1, v0, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
 
@@ -140,6 +143,9 @@
     iput-object p1, p0, Landroid/widget/Toast$TN;->mPackageName:Ljava/lang/String;
 
     .line 382
+
+    invoke-direct {p0, v0}, Landroid/widget/Toast$TN;->initFlymeExtraFields(Landroid/view/WindowManager$LayoutParams;)V
+
     return-void
 .end method
 
@@ -269,6 +275,9 @@
 
     .line 480
     :cond_1
+
+    invoke-static {}, Landroid/widget/Toast$FlymeInjector;->resetFlymeExtraFields()V
+
     return-void
 .end method
 
@@ -455,6 +464,8 @@
 
     iput-object p1, v4, Landroid/view/WindowManager$LayoutParams;->token:Landroid/os/IBinder;
 
+    invoke-direct/range {p0 .. p0}, Landroid/widget/Toast$TN;->hookFlymeToastType()V
+
     .line 454
     iget-object v4, p0, Landroid/widget/Toast$TN;->mView:Landroid/view/View;
 
@@ -541,3 +552,41 @@
     .line 403
     return-void
 .end method
+
+.method private hookFlymeToastType()V
+    .locals 2
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/Toast$TN;->mParams:Landroid/view/WindowManager$LayoutParams;
+
+    iget v1, p0, Landroid/widget/Toast$TN;->mFlymeToastType:I
+
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->type:I
+
+    return-void
+.end method
+
+.method private initFlymeExtraFields(Landroid/view/WindowManager$LayoutParams;)V
+    .locals 2
+    .param p1, "params"    # Landroid/view/WindowManager$LayoutParams;
+
+    .prologue
+    const/16 v0, 0x7d5
+
+    iput v0, p0, Landroid/widget/Toast$TN;->mFlymeToastType:I
+
+    sget v0, Lcom/flyme/internal/R$style;->Animation_Flyme_MzToast:I
+
+    iput v0, p1, Landroid/view/WindowManager$LayoutParams;->windowAnimations:I
+
+    iget-object v0, p1, Landroid/view/WindowManager$LayoutParams;->meizuParams:Landroid/view/MeizuLayoutParams;
+
+    iget v1, v0, Landroid/view/MeizuLayoutParams;->flags:I
+
+    or-int/lit8 v1, v1, 0x40
+
+    iput v1, v0, Landroid/view/MeizuLayoutParams;->flags:I
+
+    return-void
+.end method
+

@@ -9,6 +9,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/AlertDialog$FlymeInjector;,
         Landroid/app/AlertDialog$Builder;
     }
 .end annotation
@@ -125,6 +126,9 @@
     iput-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
 
     .line 199
+
+    invoke-static/range {p0 .. p0}, Landroid/app/AlertDialog$FlymeInjector;->setIsThemeDeviceDefaultLight(Landroid/app/AlertDialog;)V
+
     return-void
 
     .line 200
@@ -162,13 +166,18 @@
     .param p1, "themeResId"    # I
 
     .prologue
+
+    invoke-static/range {p0 .. p1}, Landroid/app/AlertDialog$FlymeInjector;->getFlymeAlertDialogTheme(Landroid/content/Context;I)I
+
+    move-result p1
+
     const/4 v3, 0x1
 
     .line 208
     if-ne p1, v3, :cond_0
 
     .line 209
-    const v1, 0x103047a
+    const v1, #android:style@Theme.Dialog.Alert#t
 
     return v1
 
@@ -179,7 +188,7 @@
     if-ne p1, v1, :cond_1
 
     .line 211
-    const v1, 0x1030483
+    const v1, #android:style@Theme.Holo.Dialog.Alert#t
 
     return v1
 
@@ -190,7 +199,7 @@
     if-ne p1, v1, :cond_2
 
     .line 213
-    const v1, 0x1030484
+    const v1, #android:style@Theme.Holo.Light.Dialog.Alert#t
 
     return v1
 
@@ -201,7 +210,7 @@
     if-ne p1, v1, :cond_3
 
     .line 215
-    const v1, 0x10302d1
+    const v1, #android:style@Theme.DeviceDefault.Dialog.Alert#t
 
     return v1
 
@@ -212,7 +221,7 @@
     if-ne p1, v1, :cond_4
 
     .line 217
-    const v1, 0x10302d2
+    const v1, #android:style@Theme.DeviceDefault.Light.Dialog.Alert#t
 
     return v1
 
@@ -237,7 +246,7 @@
 
     move-result-object v1
 
-    const v2, 0x1010309
+    const v2, #android:attr@alertDialogTheme#t
 
     invoke-virtual {v1, v2, v0, v3}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
 
@@ -292,6 +301,9 @@
     invoke-virtual {v0}, Lcom/android/internal/app/AlertController;->installContent()V
 
     .line 421
+
+    invoke-direct/range {p0 .. p0}, Landroid/app/AlertDialog;->applyFlymeStyle()V
+
     return-void
 .end method
 
@@ -662,5 +674,221 @@
     invoke-virtual/range {v0 .. v5}, Lcom/android/internal/app/AlertController;->setView(Landroid/view/View;IIII)V
 
     .line 285
+    return-void
+.end method
+
+.method private applyFlymeStyle()V
+    .locals 0
+
+    .prologue
+    invoke-virtual {p0, p0}, Landroid/app/AlertDialog;->applyMeizuStyle(Landroid/app/AlertDialog;)V
+
+    return-void
+.end method
+
+.method protected applyMeizuStyle(Landroid/app/AlertDialog;)V
+    .locals 1
+    .param p1, "dialog"    # Landroid/app/AlertDialog;
+
+    .prologue
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/app/AlertControllerExt;->setDialog(Landroid/app/Dialog;)V
+
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0}, Lcom/android/internal/app/AlertControllerExt;->applyMeizuStyle()V
+
+    return-void
+.end method
+
+.method flymeGetFieldAlert()Lcom/android/internal/app/AlertController;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    return-object v0
+.end method
+
+.method public onContentChanged()V
+    .locals 1
+
+    .prologue
+    invoke-super {p0}, Landroid/app/Dialog;->onContentChanged()V
+
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0}, Lcom/android/internal/app/AlertControllerExt;->onAlertContentChanged()V
+
+    return-void
+.end method
+
+.method public onTouchEvent(Landroid/view/MotionEvent;)Z
+    .locals 2
+    .param p1, "event"    # Landroid/view/MotionEvent;
+
+    .prologue
+    iget-boolean v0, p0, Landroid/app/AlertDialog;->mCancelable:Z
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p0}, Landroid/app/AlertDialog;->isShowing()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/app/AlertDialog;->mWindow:Landroid/view/Window;
+
+    iget-object v1, p0, Landroid/app/AlertDialog;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v0, v1, p1}, Landroid/view/Window;->shouldCloseOnTouchNoSlop(Landroid/content/Context;Landroid/view/MotionEvent;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {p0}, Landroid/app/AlertDialog;->cancel()V
+
+    const/4 v0, 0x1
+
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public setAutoShowSoftInput(Z)V
+    .locals 1
+    .param p1, "show"    # Z
+
+    .prologue
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/app/AlertControllerExt;->setAutoShowSoftInput(Z)V
+
+    return-void
+.end method
+
+.method public setButtonTextColor(II)V
+    .locals 1
+    .param p1, "whichButton"    # I
+    .param p2, "textColorId"    # I
+
+    .prologue
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0, p1, p2}, Lcom/android/internal/app/AlertControllerExt;->setButtonTextColor(II)V
+
+    return-void
+.end method
+
+.method public setCustEditViewHasMargin(Z)V
+    .locals 1
+    .param p1, "flag"    # Z
+
+    .prologue
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/app/AlertControllerExt;->setCustEditViewHasMargin(Z)V
+
+    return-void
+.end method
+
+.method public setMaxHeight(I)V
+    .locals 1
+    .param p1, "maxHeight"    # I
+
+    .prologue
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/app/AlertControllerExt;->setMaxHeight(I)V
+
+    return-void
+.end method
+
+.method public setMessage(Ljava/lang/CharSequence;I)V
+    .locals 1
+    .param p1, "message"    # Ljava/lang/CharSequence;
+    .param p2, "alignType"    # I
+
+    .prologue
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/app/AlertController;->setMessage(Ljava/lang/CharSequence;)V
+
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0, p2}, Lcom/android/internal/app/AlertControllerExt;->setMsgAlignType(I)V
+
+    return-void
+.end method
+
+.method public setTitleStyle(I)V
+    .locals 1
+    .param p1, "style"    # I
+
+    .prologue
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/app/AlertControllerExt;->setTitleStyle(I)V
+
+    return-void
+.end method
+
+.method public setWidth(I)V
+    .locals 1
+    .param p1, "width"    # I
+
+    .prologue
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0, p1}, Lcom/android/internal/app/AlertControllerExt;->setWidth(I)V
+
+    return-void
+.end method
+
+.method public show()V
+    .locals 1
+
+    .prologue
+    invoke-virtual {p0}, Landroid/app/AlertDialog;->isShowing()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
+
+    iget-object v0, v0, Lcom/android/internal/app/AlertController;->mAlertExt:Lcom/android/internal/app/AlertControllerExt;
+
+    invoke-virtual {v0}, Lcom/android/internal/app/AlertControllerExt;->onShowingCheck()V
+
+    :cond_0
+    invoke-super {p0}, Landroid/app/Dialog;->show()V
+
     return-void
 .end method

@@ -331,6 +331,9 @@
 
     .line 1469
     :cond_0
+
+    invoke-direct/range {p0 .. p1}, Landroid/app/ActivityThread$H;->handleFlymeMessage(Landroid/os/Message;)V
+
     return-void
 
     .line 1473
@@ -1812,5 +1815,44 @@
         :pswitch_34
         :pswitch_35
         :pswitch_36
+    .end packed-switch
+.end method
+
+.method private handleFlymeMessage(Landroid/os/Message;)V
+    .locals 2
+    .param p1, "msg"    # Landroid/os/Message;
+
+    .prologue
+    iget v0, p1, Landroid/os/Message;->what:I
+
+    packed-switch v0, :pswitch_data_0
+
+    :goto_0
+    return-void
+
+    :pswitch_0
+    iget-object v0, p0, Landroid/app/ActivityThread$H;->this$0:Landroid/app/ActivityThread;
+
+    iget v1, p1, Landroid/os/Message;->arg1:I
+
+    invoke-virtual {v0, v1}, Landroid/app/ActivityThread;->handleShrinkMemory(I)V
+
+    goto :goto_0
+
+    :pswitch_1
+    iget-object v1, p0, Landroid/app/ActivityThread$H;->this$0:Landroid/app/ActivityThread;
+
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    check-cast v0, Landroid/app/ActivityThread$FlymeInjector$ScrollActivityData;
+
+    invoke-virtual {v1, v0}, Landroid/app/ActivityThread;->handleScrollActivity(Landroid/app/ActivityThread$FlymeInjector$ScrollActivityData;)V
+
+    goto :goto_0
+
+    :pswitch_data_0
+    .packed-switch 0xcb
+        :pswitch_0
+        :pswitch_1
     .end packed-switch
 .end method

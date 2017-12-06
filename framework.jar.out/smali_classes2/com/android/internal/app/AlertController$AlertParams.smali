@@ -21,6 +21,9 @@
 
 
 # instance fields
+
+.field public mAlertParamsExt:Lcom/android/internal/app/AlertControllerExt$AlertParamsExt;
+
 .field public mAdapter:Landroid/widget/ListAdapter;
 
 .field public mCancelable:Z
@@ -150,6 +153,9 @@
     iput-object v0, p0, Lcom/android/internal/app/AlertController$AlertParams;->mInflater:Landroid/view/LayoutInflater;
 
     .line 990
+
+    invoke-static/range {p0 .. p0}, Lcom/android/internal/app/AlertController$FlymeInjector;->initFlymeExtFields(Lcom/android/internal/app/AlertController$AlertParams;)V
+
     return-void
 .end method
 
@@ -272,6 +278,9 @@
     iput-object v6, p1, Lcom/android/internal/app/AlertController;->mListView:Landroid/widget/ListView;
 
     .line 1056
+
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/app/AlertController$FlymeInjector;->setupListView(Lcom/android/internal/app/AlertController$AlertParams;Lcom/android/internal/app/AlertController;)V
+
     return-void
 
     .line 1078
@@ -547,6 +556,9 @@
     .line 996
     :cond_8
     :goto_2
+
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/app/AlertController$FlymeInjector;->setFlymeStyleParams(Lcom/android/internal/app/AlertController$AlertParams;Lcom/android/internal/app/AlertController;)V
+
     return-void
 
     .line 1000

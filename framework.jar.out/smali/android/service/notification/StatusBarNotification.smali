@@ -9,6 +9,8 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/service/notification/StatusBarNotification$FlymeInjector;,
+        Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;,
         Landroid/service/notification/StatusBarNotification$1;
     }
 .end annotation
@@ -28,6 +30,9 @@
 
 
 # instance fields
+
+.field public mFlymeFilter:Landroid/service/notification/StatusBarNotification$FlymeNotificationFilter;
+
 .field private groupKey:Ljava/lang/String;
 
 .field private final id:I
@@ -183,6 +188,9 @@
     iput-object v0, p0, Landroid/service/notification/StatusBarNotification;->groupKey:Ljava/lang/String;
 
     .line 95
+
+    invoke-static/range {p0 .. p1}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->initFlymeExtraFields(Landroid/service/notification/StatusBarNotification;Landroid/os/Parcel;)V
+
     return-void
 
     .line 102
@@ -322,6 +330,9 @@
     iput-object v0, p0, Landroid/service/notification/StatusBarNotification;->groupKey:Ljava/lang/String;
 
     .line 78
+
+    invoke-static/range {p0 .. p0}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->initFlymeExtraFields(Landroid/service/notification/StatusBarNotification;)V
+
     return-void
 .end method
 
@@ -407,6 +418,9 @@
     iput-object v0, p0, Landroid/service/notification/StatusBarNotification;->groupKey:Ljava/lang/String;
 
     .line 58
+
+    invoke-static/range {p0 .. p0}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->initFlymeExtraFields(Landroid/service/notification/StatusBarNotification;)V
+
     return-void
 .end method
 
@@ -719,6 +733,13 @@
     .locals 12
 
     .prologue
+
+    invoke-static/range {p0 .. p0}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->clone(Landroid/service/notification/StatusBarNotification;)Landroid/service/notification/StatusBarNotification;
+
+    move-result-object v0
+
+    return-object v0
+
     .line 218
     new-instance v0, Landroid/service/notification/StatusBarNotification;
 
@@ -813,6 +834,10 @@
 
     .line 211
     invoke-direct/range {v0 .. v11}, Landroid/service/notification/StatusBarNotification;-><init>(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;IILandroid/app/Notification;Landroid/os/UserHandle;Ljava/lang/String;J)V
+
+    invoke-static {p0, v0}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->cloneLight(Landroid/service/notification/StatusBarNotification;Landroid/service/notification/StatusBarNotification;)Landroid/service/notification/StatusBarNotification;
+
+    move-result-object v0
 
     return-object v0
 .end method
@@ -1308,6 +1333,9 @@
 
     .line 163
     :goto_1
+
+    invoke-static/range {p0 .. p2}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->writeToParcel(Landroid/service/notification/StatusBarNotification;Landroid/os/Parcel;I)V
+
     return-void
 
     .line 171
@@ -1321,4 +1349,53 @@
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeInt(I)V
 
     goto :goto_1
+.end method
+
+.method public getOrigPackageName()Ljava/lang/String;
+    .locals 4
+
+    .prologue
+    const-string/jumbo v0, "com.meizu.cloud"
+
+    .local v0, "CLOUD_PACKAGE_NAME":Ljava/lang/String;
+    iget-object v2, p0, Landroid/service/notification/StatusBarNotification;->pkg:Ljava/lang/String;
+
+    invoke-virtual {v0, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    iget-object v2, p0, Landroid/service/notification/StatusBarNotification;->notification:Landroid/app/Notification;
+
+    iget-object v2, v2, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    if-eqz v2, :cond_0
+
+    iget-object v2, p0, Landroid/service/notification/StatusBarNotification;->notification:Landroid/app/Notification;
+
+    iget-object v2, v2, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    const-string/jumbo v3, "android.originalPackageName"
+
+    invoke-virtual {v2, v3}, Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    .local v1, "originalName":Ljava/lang/String;
+    if-eqz v1, :cond_0
+
+    invoke-virtual {v1}, Ljava/lang/String;->length()I
+
+    move-result v2
+
+    if-lez v2, :cond_0
+
+    return-object v1
+
+    .end local v1    # "originalName":Ljava/lang/String;
+    :cond_0
+    iget-object v2, p0, Landroid/service/notification/StatusBarNotification;->pkg:Ljava/lang/String;
+
+    return-object v2
 .end method

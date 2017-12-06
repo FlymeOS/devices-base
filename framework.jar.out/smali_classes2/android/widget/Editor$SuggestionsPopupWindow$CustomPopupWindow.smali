@@ -151,7 +151,7 @@
 
     move-result-object v0
 
-    invoke-virtual {v0}, Landroid/widget/Editor$InsertionPointCursorController;->show()V
+    #invoke-virtual {v0}, Landroid/widget/Editor$InsertionPointCursorController;->show()V
 
     goto :goto_0
 .end method

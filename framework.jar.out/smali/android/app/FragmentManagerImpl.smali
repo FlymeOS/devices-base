@@ -9,6 +9,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/app/FragmentManagerImpl$FlymeInjector;,
         Landroid/app/FragmentManagerImpl$1;,
         Landroid/app/FragmentManagerImpl$AnimateOnHWLayerIfNeededListener;
     }
@@ -4221,7 +4222,7 @@
 
     move-result-object v5
 
-    invoke-static {v5, v0}, Landroid/animation/AnimatorInflater;->loadAnimator(Landroid/content/Context;I)Landroid/animation/Animator;
+    invoke-static {v5, v0}, Landroid/app/FragmentManagerImpl$FlymeInjector;->loadAnimator(Landroid/content/Context;I)Landroid/animation/Animator;
 
     move-result-object v5
 

@@ -366,6 +366,9 @@
     .end annotation
 
     .prologue
+
+    invoke-direct/range {p0 .. p0}, Landroid/media/MediaRecorder;->enforceFlymeMediaPermission()V
+
     const-wide/16 v2, 0x0
 
     .line 835
@@ -1308,4 +1311,33 @@
             Ljava/lang/IllegalStateException;
         }
     .end annotation
+.end method
+
+.method private enforceFlymeMediaPermission()V
+    .locals 2
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    .prologue
+    const/16 v0, 0x1b
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    new-instance v0, Ljava/io/IOException;
+
+    const-string/jumbo v1, "Permission deny!"
+
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v0
+
+    :cond_0
+    return-void
 .end method

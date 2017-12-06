@@ -1737,3 +1737,25 @@
 
     goto :goto_0
 .end method
+
+.method public markAsEmergencyMz()V
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/internal/telephony/CallerInfo;->mIsEmergency:Z
+
+    return-void
+.end method
+
+.method public markAsVoiceMailMz()V
+    .locals 1
+
+    .prologue
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lcom/android/internal/telephony/CallerInfo;->mIsVoiceMail:Z
+
+    return-void
+.end method

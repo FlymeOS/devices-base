@@ -370,6 +370,13 @@
     .param p1, "type"    # I
 
     .prologue
+
+    invoke-static/range {p0 .. p1}, Landroid/media/MzRingtoneManager;->getActualDefaultRingtoneUri(Landroid/content/Context;I)Landroid/net/Uri;
+
+    move-result-object v0
+
+    return-object v0
+
     const/4 v2, 0x0
 
     .line 644
@@ -1251,6 +1258,9 @@
     .end local v0    # "cacheUri":Landroid/net/Uri;
     .end local v1    # "e":Ljava/io/IOException;
     :cond_4
+
+    invoke-static/range {p0 .. p2}, Landroid/media/RingtoneManager;->setFlymeActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
+
     return-void
 
     :cond_5
@@ -1826,6 +1836,129 @@
     invoke-virtual {v0}, Landroid/media/Ringtone;->stop()V
 
     .line 330
+    :cond_0
+    return-void
+.end method
+
+.method public static isRingtoneExist(Landroid/content/Context;Landroid/net/Uri;)Z
+    .locals 7
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "uri"    # Landroid/net/Uri;
+
+    .prologue
+    if-nez p1, :cond_0
+
+    const/4 v5, 0x0
+
+    return v5
+
+    :cond_0
+    const/4 v2, 0x0
+
+    .local v2, "exist":Z
+    :try_start_0
+    invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
+    move-result-object v5
+
+    const-string/jumbo v6, "r"
+
+    invoke-virtual {v5, p1, v6}, Landroid/content/ContentResolver;->openAssetFileDescriptor(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+
+    move-result-object v3
+
+    .local v3, "fd":Landroid/content/res/AssetFileDescriptor;
+    if-nez v3, :cond_2
+
+    const/4 v2, 0x0
+
+    .end local v2    # "exist":Z
+    .end local v3    # "fd":Landroid/content/res/AssetFileDescriptor;
+    :cond_1
+    :goto_0
+    return v2
+
+    .restart local v2    # "exist":Z
+    .restart local v3    # "fd":Landroid/content/res/AssetFileDescriptor;
+    :cond_2
+    invoke-virtual {v3}, Landroid/content/res/AssetFileDescriptor;->close()V
+    :try_end_0
+    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+
+    const/4 v2, 0x1
+
+    goto :goto_0
+
+    .end local v3    # "fd":Landroid/content/res/AssetFileDescriptor;
+    :catch_0
+    move-exception v1
+
+    .local v1, "e":Ljava/io/IOException;
+    const/4 v2, 0x1
+
+    goto :goto_0
+
+    .end local v1    # "e":Ljava/io/IOException;
+    :catch_1
+    move-exception v0
+
+    .local v0, "e":Ljava/io/FileNotFoundException;
+    invoke-virtual {p1}, Landroid/net/Uri;->getPath()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-static {v5}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_3
+
+    new-instance v4, Ljava/io/File;
+
+    invoke-virtual {p1}, Landroid/net/Uri;->getPath()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-direct {v4, v5}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    .local v4, "file":Ljava/io/File;
+    if-eqz v4, :cond_1
+
+    invoke-virtual {v4}, Ljava/io/File;->exists()Z
+
+    move-result v2
+
+    .local v2, "exist":Z
+    goto :goto_0
+
+    .end local v4    # "file":Ljava/io/File;
+    .local v2, "exist":Z
+    :cond_3
+    const/4 v2, 0x0
+
+    goto :goto_0
+.end method
+
+.method private static setFlymeActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
+    .locals 1
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "type"    # I
+    .param p2, "ringtoneUri"    # Landroid/net/Uri;
+
+    .prologue
+    const/4 v0, 0x1
+
+    if-ne p1, v0, :cond_0
+
+    const/16 v0, 0x800
+
+    invoke-static {p0, v0, p2}, Landroid/media/MzRingtoneManager;->setActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
+
+    const/16 v0, 0x1000
+
+    invoke-static {p0, v0, p2}, Landroid/media/MzRingtoneManager;->setActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
+
     :cond_0
     return-void
 .end method

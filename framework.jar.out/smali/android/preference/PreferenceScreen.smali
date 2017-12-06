@@ -10,12 +10,16 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Landroid/preference/PreferenceScreen$FlymeInjector;,
         Landroid/preference/PreferenceScreen$SavedState;
     }
 .end annotation
 
 
 # instance fields
+
+.field mFlymeShowBottomDivider:Z
+
 .field private mDialog:Landroid/app/Dialog;
 
 .field private mDividerDrawable:Landroid/graphics/drawable/Drawable;
@@ -291,6 +295,8 @@
 
     invoke-virtual {p1, v0}, Landroid/widget/ListView;->setAdapter(Landroid/widget/ListAdapter;)V
 
+    invoke-static/range {p0 .. p1}, Landroid/preference/PreferenceScreen$FlymeInjector;->bindFlymeListView(Landroid/preference/PreferenceScreen;Landroid/widget/ListView;)V
+
     .line 169
     invoke-virtual {p0}, Landroid/preference/PreferenceScreen;->onAttachedToActivity()V
 
@@ -461,6 +467,9 @@
 
     .line 249
     .local v1, "preference":Landroid/preference/Preference;
+
+    invoke-static/range {p0 .. p3}, Landroid/preference/PreferenceScreen$FlymeInjector;->setFlymePreferenceView(Landroid/preference/PreferenceScreen;Landroid/widget/AdapterView;Landroid/view/View;I)V
+
     invoke-virtual {v1, p0}, Landroid/preference/Preference;->performClick(Landroid/preference/PreferenceScreen;)V
 
     .line 240
@@ -571,4 +580,23 @@
     .end local v1    # "myState":Landroid/preference/PreferenceScreen$SavedState;
     :cond_0
     return-object v2
+.end method
+
+.method flymeGetFieldRootAdapter()Landroid/widget/ListAdapter;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/preference/PreferenceScreen;->mRootAdapter:Landroid/widget/ListAdapter;
+
+    return-object v0
+.end method
+
+.method public showBottomDivider(Z)V
+    .locals 0
+    .param p1, "show"    # Z
+
+    .prologue
+    iput-boolean p1, p0, Landroid/preference/PreferenceScreen;->mFlymeShowBottomDivider:Z
+
+    return-void
 .end method

@@ -10,6 +10,7 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
+        Lcom/android/internal/policy/DecorView$FlymeInjector;,
         Lcom/android/internal/policy/DecorView$ActionModeCallback2Wrapper;,
         Lcom/android/internal/policy/DecorView$ColorViewState;
     }
@@ -29,6 +30,9 @@
 
 
 # instance fields
+
+.field mFlymeStableInsetTop:I
+
 .field private mAllowUpdateElevation:Z
 
 .field private mApplyFloatingHorizontalInsets:Z
@@ -325,7 +329,7 @@
     const/4 v5, 0x5
 
     .line 168
-    const v7, 0x102002f
+    const v7, #android:id@statusBarBackground#t
 
     .line 169
     const/16 v8, 0x400
@@ -354,7 +358,7 @@
     const/4 v5, 0x3
 
     .line 174
-    const v7, 0x1020030
+    const v7, #android:id@navigationBarBackground#t
 
     .line 175
     const/4 v8, 0x0
@@ -493,7 +497,7 @@
     iput p2, p0, Lcom/android/internal/policy/DecorView;->mFeatureId:I
 
     .line 239
-    const v0, 0x10c000e
+    const v0, #android:interpolator@linear_out_slow_in#t
 
     .line 238
     invoke-static {p1, v0}, Landroid/view/animation/AnimationUtils;->loadInterpolator(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
@@ -503,7 +507,7 @@
     iput-object v0, p0, Lcom/android/internal/policy/DecorView;->mShowInterpolator:Landroid/view/animation/Interpolator;
 
     .line 241
-    const v0, 0x10c000f
+    const v0, #android:interpolator@fast_out_linear_in#t
 
     .line 240
     invoke-static {p1, v0}, Landroid/view/animation/AnimationUtils;->loadInterpolator(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
@@ -518,7 +522,7 @@
     move-result-object v0
 
     .line 244
-    const v1, 0x10e00ce
+    const v1, #android:integer@dock_enter_exit_duration#t
 
     .line 243
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
@@ -527,13 +531,19 @@
 
     iput v0, p0, Lcom/android/internal/policy/DecorView;->mBarEnterExitDuration:I
 
+    invoke-static/range {p1 .. p1}, Lcom/android/internal/policy/DecorView$FlymeInjector;->isStatusBarTintEnable(Landroid/content/Context;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_flyme_0
+
     .line 245
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v0
 
     .line 246
-    const v1, 0x11200b0
+    const v1, #android:bool@config_forceWindowDrawsStatusBarBackground#t
 
     .line 245
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
@@ -565,7 +575,7 @@
     move-result-object v0
 
     .line 249
-    const v1, 0x1060074
+    const v1, #android:color@system_bar_background_semi_transparent#t
 
     const/4 v2, 0x0
 
@@ -591,7 +601,7 @@
     move-result-object v0
 
     .line 258
-    const v1, 0x10500c2
+    const v1, #android:dimen@resize_shadow_size#t
 
     .line 257
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
@@ -614,6 +624,9 @@
 
     .line 245
     :cond_1
+
+    :cond_flyme_0
+
     const/4 v0, 0x0
 
     goto :goto_0
@@ -1089,7 +1102,7 @@
 
     .line 1607
     .local v2, "baseTheme":Landroid/content/res/Resources$Theme;
-    const v7, 0x1010431
+    const v7, #android:attr@actionBarTheme#t
 
     invoke-virtual {v2, v7, v5, v8}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
 
@@ -1146,7 +1159,7 @@
     new-instance v7, Landroid/widget/PopupWindow;
 
     .line 1623
-    const v10, 0x116001e
+    const v10, #android:^attr-private@actionModePopupWindowStyle#t
 
     .line 1622
     invoke-direct {v7, v0, v11, v10}, Landroid/widget/PopupWindow;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
@@ -1182,7 +1195,7 @@
     move-result-object v7
 
     .line 1630
-    const v10, 0x10102eb
+    const v10, #android:attr@actionBarSize#t
 
     .line 1629
     invoke-virtual {v7, v10, v5, v8}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
@@ -1240,7 +1253,7 @@
     .end local v2    # "baseTheme":Landroid/content/res/Resources$Theme;
     .end local v5    # "outValue":Landroid/util/TypedValue;
     :cond_3
-    const v7, 0x10203ef
+    const v7, #android:id@action_mode_bar_stub#t
 
     invoke-virtual {p0, v7}, Lcom/android/internal/policy/DecorView;->findViewById(I)Landroid/view/View;
 
@@ -2048,7 +2061,7 @@
     move-result-object p1
 
     .line 1892
-    const v2, 0x109004e
+    const v2, #android:layout@decor_caption#t
 
     .line 1893
     const/4 v3, 0x0
@@ -2080,7 +2093,7 @@
     move-result-object v0
 
     .line 2097
-    const v1, 0x1060075
+    const v1, #android:color@resize_shadow_start_color#t
 
     const/4 v2, 0x0
 
@@ -2098,7 +2111,7 @@
     move-result-object v0
 
     .line 2099
-    const v1, 0x1060076
+    const v1, #android:color@resize_shadow_end_color#t
 
     const/4 v2, 0x0
 
@@ -2471,7 +2484,7 @@
     move-result-object v0
 
     .line 1849
-    const v1, 0x1080255
+    const v1, #android:drawable@decor_caption_title_focused#t
 
     .line 1848
     invoke-virtual {v0, v1}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;
@@ -2564,27 +2577,27 @@
 
     .prologue
     .line 1937
-    const v0, 0x1020364
+    const v0, #android:id@maximize_window#t
 
     invoke-virtual {p1, v0}, Lcom/android/internal/widget/DecorCaptionView;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     .line 1938
-    const v1, 0x1080259
+    const v1, #android:drawable@decor_maximize_button_dark#t
 
     .line 1937
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
 
     .line 1939
-    const v0, 0x1020365
+    const v0, #android:id@close_window#t
 
     invoke-virtual {p1, v0}, Lcom/android/internal/widget/DecorCaptionView;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     .line 1940
-    const v1, 0x1080257
+    const v1, #android:drawable@decor_close_button_dark#t
 
     .line 1939
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
@@ -2621,7 +2634,7 @@
 
     move-result-object v2
 
-    const v3, 0x1010433
+    const v3, #android:attr@colorPrimary#t
 
     const/4 v4, 0x1
 
@@ -2881,27 +2894,27 @@
 
     .prologue
     .line 1930
-    const v0, 0x1020364
+    const v0, #android:id@maximize_window#t
 
     invoke-virtual {p1, v0}, Lcom/android/internal/widget/DecorCaptionView;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     .line 1931
-    const v1, 0x108025a
+    const v1, #android:drawable@decor_maximize_button_light#t
 
     .line 1930
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
 
     .line 1932
-    const v0, 0x1020365
+    const v0, #android:id@close_window#t
 
     invoke-virtual {p1, v0}, Lcom/android/internal/widget/DecorCaptionView;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     .line 1933
-    const v1, 0x1080258
+    const v1, #android:drawable@decor_close_button_light#t
 
     .line 1932
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
@@ -3353,6 +3366,11 @@
     .param p9, "force"    # Z
 
     .prologue
+
+    invoke-static/range {p0 .. p4}, Lcom/android/internal/policy/DecorView$FlymeInjector;->flymeGetDisplayMetricsHeight(Lcom/android/internal/policy/DecorView;Lcom/android/internal/policy/DecorView$ColorViewState;III)I
+
+    move-result p4
+
     .line 1162
     move-object/from16 v0, p1
 
@@ -4240,7 +4258,7 @@
     iget-object v3, p0, Lcom/android/internal/policy/DecorView;->mContext:Landroid/content/Context;
 
     .line 1351
-    const v4, 0x1060032
+    const v4, #android:color@input_method_navigation_guard#t
 
     .line 1350
     invoke-virtual {v3, v4}, Landroid/content/Context;->getColor(I)I
@@ -4443,7 +4461,7 @@
     iget-object v9, p0, Lcom/android/internal/policy/DecorView;->mContext:Landroid/content/Context;
 
     .line 1289
-    const v10, 0x1060032
+    const v10, #android:color@input_method_navigation_guard#t
 
     .line 1288
     invoke-virtual {v9, v10}, Landroid/content/Context;->getColor(I)I
@@ -4889,6 +4907,19 @@
     .line 322
     .restart local v2    # "handled":Z
     :goto_1
+
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/DecorView$FlymeInjector;->flymeDispatchKeyEvent(Lcom/android/internal/policy/DecorView;Landroid/view/KeyEvent;)Z
+
+    move-result v6
+
+    if-eqz v6, :cond_flyme_0
+
+    const/4 v6, 0x1
+
+    return v6
+
+    :cond_flyme_0
+
     if-eqz v2, :cond_4
 
     .line 323
@@ -5251,6 +5282,9 @@
 
     .line 753
     :cond_0
+
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/DecorView$FlymeInjector;->flymeDrawStatusBarBackground(Lcom/android/internal/policy/DecorView;Landroid/graphics/Canvas;)V
+
     return-void
 .end method
 
@@ -8404,6 +8438,18 @@
 
     if-eqz v1, :cond_1
 
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/DecorView$FlymeInjector;->flymeSuperDispatchKeyEvent(Lcom/android/internal/policy/DecorView;Landroid/view/KeyEvent;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_flyme_0
+
+    const/4 v1, 0x1
+
+    return v1
+
+    :cond_flyme_0
+
     .line 399
     if-ne v0, v3, :cond_0
 
@@ -8619,6 +8665,8 @@
 
     .line 1024
     if-eqz p1, :cond_0
+
+    invoke-static/range {p0 .. p1}, Lcom/android/internal/policy/DecorView$FlymeInjector;->setFlymeStableInsetTop(Lcom/android/internal/policy/DecorView;Landroid/view/WindowInsets;)V
 
     .line 1025
     invoke-virtual/range {p1 .. p1}, Landroid/view/WindowInsets;->getStableInsetTop()I
@@ -9619,4 +9667,31 @@
     const/4 v0, 0x0
 
     goto :goto_0
+.end method
+
+.method flymeGetFieldActionMode()Landroid/view/ActionMode;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/DecorView;->mPrimaryActionMode:Landroid/view/ActionMode;
+
+    return-object v0
+.end method
+
+.method flymeGetFieldStatusColorViewState()Lcom/android/internal/policy/DecorView$ColorViewState;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/DecorView;->mStatusColorViewState:Lcom/android/internal/policy/DecorView$ColorViewState;
+
+    return-object v0
+.end method
+
+.method flymeGetFieldWindow()Lcom/android/internal/policy/PhoneWindow;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/internal/policy/DecorView;->mWindow:Lcom/android/internal/policy/PhoneWindow;
+
+    return-object v0
 .end method

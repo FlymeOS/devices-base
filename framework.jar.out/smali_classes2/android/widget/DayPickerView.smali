@@ -18,7 +18,7 @@
 
 .field private static final DEFAULT_END_YEAR:I = 0x834
 
-.field private static final DEFAULT_LAYOUT:I = 0x109004d
+.field private static final DEFAULT_LAYOUT:I = #android:layout@day_picker_content_material#t
 
 .field private static final DEFAULT_START_YEAR:I = 0x76c
 
@@ -109,7 +109,7 @@
 
     new-array v0, v0, [I
 
-    const v1, 0x1010098
+    const v1, #android:attr@textColor#t
 
     const/4 v2, 0x0
 
@@ -142,7 +142,7 @@
 
     .prologue
     .line 68
-    const v0, 0x101035d
+    const v0, #android:attr@calendarViewStyle#t
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/DayPickerView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
@@ -302,7 +302,7 @@
     const/16 v4, 0xd
 
     .line 93
-    const v5, 0x1030423
+    const v5, #android:style@TextAppearance.Material.Widget.Calendar.Month#t
 
     .line 91
     invoke-virtual {v10, v4, v5}, Landroid/content/res/TypedArray;->getResourceId(II)I
@@ -314,7 +314,7 @@
     const/16 v4, 0xb
 
     .line 96
-    const v5, 0x1030422
+    const v5, #android:style@TextAppearance.Material.Widget.Calendar.DayOfWeek#t
 
     .line 94
     invoke-virtual {v10, v4, v5}, Landroid/content/res/TypedArray;->getResourceId(II)I
@@ -326,7 +326,7 @@
     const/16 v4, 0xc
 
     .line 99
-    const v5, 0x1030421
+    const v5, #android:style@TextAppearance.Material.Widget.Calendar.Day#t
 
     .line 97
     invoke-virtual {v10, v4, v5}, Landroid/content/res/TypedArray;->getResourceId(II)I
@@ -350,9 +350,9 @@
     new-instance v4, Landroid/widget/DayPickerPagerAdapter;
 
     .line 108
-    const v5, 0x109004b
+    const v5, #android:layout@date_picker_month_item_material#t
 
-    const v26, 0x102035d
+    const v26, #android:id@month_view#t
 
     .line 107
     move-object/from16 v0, p1
@@ -402,7 +402,7 @@
 
     .line 115
     .local v17, "inflater":Landroid/view/LayoutInflater;
-    const v4, 0x109004d
+    const v4, #android:layout@day_picker_content_material#t
 
     const/4 v5, 0x0
 
@@ -448,7 +448,7 @@
     .line 124
     .end local v11    # "child":Landroid/view/View;
     :cond_0
-    const v4, 0x1020356
+    const v4, #android:id@prev#t
 
     move-object/from16 v0, p0
 
@@ -474,7 +474,7 @@
     invoke-virtual {v4, v5}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 127
-    const v4, 0x1020362
+    const v4, #android:id@next#t
 
     move-object/from16 v0, p0
 
@@ -500,7 +500,7 @@
     invoke-virtual {v4, v5}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 130
-    const v4, 0x1020361
+    const v4, #android:id@day_picker_view_pager#t
 
     move-object/from16 v0, p0
 
