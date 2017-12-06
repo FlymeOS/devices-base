@@ -2349,3 +2349,90 @@
     :cond_2
     return-void
 .end method
+
+.method setFlymeNotification(Landroid/app/Notification;)V
+    .locals 5
+    .param p1, "localForegroundNoti"    # Landroid/app/Notification;
+
+    .prologue
+    .line 556
+    sget v0, Lcom/flyme/internal/R$layout;->notification_template_base:I
+
+    .line 557
+    .local v0, "NOTIFICATION_TEMPLATE_BASE":I
+    iget-object v3, p1, Landroid/app/Notification;->contentView:Landroid/widget/RemoteViews;
+
+    if-eqz v3, :cond_0
+
+    iget-object v3, p1, Landroid/app/Notification;->contentView:Landroid/widget/RemoteViews;
+
+    invoke-virtual {v3}, Landroid/widget/RemoteViews;->getLayoutId()I
+
+    move-result v3
+
+    if-ne v3, v0, :cond_0
+
+    .line 558
+    iget-object v3, p1, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    const-string/jumbo v4, "android.title"
+
+    invoke-virtual {v3, v4}, Landroid/os/Bundle;->getCharSequence(Ljava/lang/String;)Ljava/lang/CharSequence;
+
+    move-result-object v2
+
+    .line 559
+    .local v2, "title":Ljava/lang/CharSequence;
+    iget-object v3, p1, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    const-string/jumbo v4, "android.text"
+
+    invoke-virtual {v3, v4}, Landroid/os/Bundle;->getCharSequence(Ljava/lang/String;)Ljava/lang/CharSequence;
+
+    move-result-object v1
+
+    .line 560
+    .local v1, "text":Ljava/lang/CharSequence;
+    invoke-virtual {p1}, Landroid/app/Notification;->getSmallIcon()Landroid/graphics/drawable/Icon;
+
+    move-result-object v3
+
+    if-eqz v3, :cond_0
+
+    if-nez v2, :cond_0
+
+    if-nez v1, :cond_0
+
+    .line 561
+    iget v3, p1, Landroid/app/Notification;->flags:I
+
+    const/high16 v4, 0x10000000
+
+    or-int/2addr v3, v4
+
+    iput v3, p1, Landroid/app/Notification;->flags:I
+
+    .line 555
+    .end local v1    # "text":Ljava/lang/CharSequence;
+    .end local v2    # "title":Ljava/lang/CharSequence;
+    :cond_0
+    return-void
+.end method
+
+.method setFlymeNotificationFlag(Landroid/app/Notification;)V
+    .locals 2
+    .param p1, "localForegroundNoti"    # Landroid/app/Notification;
+
+    .prologue
+    .line 552
+    iget v0, p1, Landroid/app/Notification;->flags:I
+
+    const/high16 v1, 0x10000000
+
+    or-int/2addr v0, v1
+
+    iput v0, p1, Landroid/app/Notification;->flags:I
+
+    .line 551
+    return-void
+.end method

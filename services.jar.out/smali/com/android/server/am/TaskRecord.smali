@@ -8372,3 +8372,59 @@
     :cond_a
     return-void
 .end method
+
+.method public getHomeThumbnail()Landroid/app/ActivityManager$TaskThumbnail;
+    .locals 4
+
+    .prologue
+    const/4 v3, 0x0
+
+    .line 1821
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->stack:Lcom/android/server/am/ActivityStack;
+
+    if-eqz v2, :cond_0
+
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->stack:Lcom/android/server/am/ActivityStack;
+
+    invoke-virtual {v2}, Lcom/android/server/am/ActivityStack;->isHomeStack()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 1822
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->stack:Lcom/android/server/am/ActivityStack;
+
+    iget-object v0, v2, Lcom/android/server/am/ActivityStack;->mResumedActivity:Lcom/android/server/am/ActivityRecord;
+
+    .line 1823
+    .local v0, "resumedActivity":Lcom/android/server/am/ActivityRecord;
+    if-eqz v0, :cond_0
+
+    iget-object v2, v0, Lcom/android/server/am/ActivityRecord;->task:Lcom/android/server/am/TaskRecord;
+
+    if-ne v2, p0, :cond_0
+
+    invoke-virtual {v0}, Lcom/android/server/am/ActivityRecord;->isHomeActivity()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    .line 1824
+    invoke-virtual {p0, v3}, Lcom/android/server/am/TaskRecord;->setLastThumbnailLocked(Landroid/graphics/Bitmap;)Z
+
+    .line 1827
+    .end local v0    # "resumedActivity":Lcom/android/server/am/ActivityRecord;
+    :cond_0
+    new-instance v1, Landroid/app/ActivityManager$TaskThumbnail;
+
+    invoke-direct {v1}, Landroid/app/ActivityManager$TaskThumbnail;-><init>()V
+
+    .line 1828
+    .local v1, "taskThumbnail":Landroid/app/ActivityManager$TaskThumbnail;
+    invoke-virtual {p0, v1}, Lcom/android/server/am/TaskRecord;->getLastThumbnail(Landroid/app/ActivityManager$TaskThumbnail;)V
+
+    .line 1829
+    return-object v1
+.end method

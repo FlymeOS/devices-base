@@ -84,13 +84,13 @@
     invoke-static {}, Landroid/security/keystore/AndroidKeyStoreProvider;->install()V
 
     .line 168
-    new-instance v0, Lcom/android/server/LockSettingsService;
+    new-instance v0, Lcom/android/server/FlymeExtLockSettingsService;
 
     invoke-virtual {p0}, Lcom/android/server/LockSettingsService$Lifecycle;->getContext()Landroid/content/Context;
 
     move-result-object v1
 
-    invoke-direct {v0, v1}, Lcom/android/server/LockSettingsService;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, v1}, Lcom/android/server/FlymeExtLockSettingsService;-><init>(Landroid/content/Context;)V
 
     iput-object v0, p0, Lcom/android/server/LockSettingsService$Lifecycle;->mLockSettingsService:Lcom/android/server/LockSettingsService;
 

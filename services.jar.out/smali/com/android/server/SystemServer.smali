@@ -3,6 +3,14 @@
 .source "SystemServer.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/server/SystemServer$FlymeInjector;
+    }
+.end annotation
+
+
 # static fields
 .field private static final ACCOUNT_SERVICE_CLASS:Ljava/lang/String; = "com.android.server.accounts.AccountManagerService$Lifecycle"
 
@@ -70,6 +78,8 @@
 
 
 # instance fields
+.field mFlymeWallpaperLifeService:Lcom/android/server/SystemService;
+
 .field private mActivityManagerService:Lcom/android/server/am/ActivityManagerService;
 
 .field private mContentResolver:Landroid/content/ContentResolver;
@@ -2201,13 +2211,13 @@
 
     .line 780
     :try_start_b
-    new-instance v80, Lcom/android/server/statusbar/StatusBarManagerService;
+    new-instance v80, Lcom/android/server/statusbar/FlymeExtStatusBarManagerService;
 
     move-object/from16 v0, v80
 
     move-object/from16 v1, v88
 
-    invoke-direct {v0, v6, v1}, Lcom/android/server/statusbar/StatusBarManagerService;-><init>(Landroid/content/Context;Lcom/android/server/wm/WindowManagerService;)V
+    invoke-direct {v0, v6, v1}, Lcom/android/server/statusbar/FlymeExtStatusBarManagerService;-><init>(Landroid/content/Context;Lcom/android/server/wm/WindowManagerService;)V
     :try_end_b
     .catch Ljava/lang/Throwable; {:try_start_b .. :try_end_b} :catch_7
 
@@ -2220,6 +2230,8 @@
     move-object/from16 v0, v80
 
     invoke-static {v4, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+
+    invoke-static {}, Lcom/android/server/SystemServer$FlymeInjector;->addFlymeStatusBarManagerService()V
     :try_end_c
     .catch Ljava/lang/Throwable; {:try_start_c .. :try_end_c} :catch_30
 
@@ -2283,6 +2295,8 @@
     move-object/from16 v0, v66
 
     invoke-static {v4, v0}, Landroid/os/ServiceManager;->addService(Ljava/lang/String;Landroid/os/IBinder;)V
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/SystemServer$FlymeInjector;->addNetworkManagementServiceFlyme(Lcom/android/server/SystemServer;)V
     :try_end_e
     .catch Ljava/lang/Throwable; {:try_start_e .. :try_end_e} :catch_9
 
@@ -2818,6 +2832,12 @@
     const-string/jumbo v5, "com.android.server.wallpaper.WallpaperManagerService$Lifecycle"
 
     invoke-virtual {v4, v5}, Lcom/android/server/SystemServiceManager;->startService(Ljava/lang/String;)Lcom/android/server/SystemService;
+
+    move-result-object v4
+
+    move-object/from16 v0, p0
+
+    iput-object v4, v0, Lcom/android/server/SystemServer;->mFlymeWallpaperLifeService:Lcom/android/server/SystemService;
 
     .line 957
     const-wide/32 v4, 0x80000
@@ -3387,6 +3407,8 @@
 
     .line 1116
     :cond_27
+    goto/16 :goto_flyme_0
+
     if-nez v40, :cond_28
 
     .line 1117
@@ -3427,6 +3449,7 @@
 
     .line 1127
     :cond_28
+    :goto_flyme_0
     if-nez v40, :cond_29
 
     .line 1128
@@ -3799,6 +3822,12 @@
 
     .line 1218
     .local v20, "mmsService":Lcom/android/server/MmsServiceBroker;
+    move-object/from16 v4, p0
+
+    move-object/from16 v5, v88
+
+    invoke-static {v4, v5}, Lcom/android/server/SystemServer$FlymeInjector;->addFlymeServices(Lcom/android/server/SystemServer;Lcom/android/server/wm/WindowManagerService;)V
+
     move-object/from16 v0, p0
 
     iget-object v4, v0, Lcom/android/server/SystemServer;->mContentResolver:Landroid/content/ContentResolver;
@@ -5474,4 +5503,24 @@
 
     .line 1467
     return-void
+.end method
+
+.method flymeGetFieldPackageManagerService()Lcom/android/server/pm/PackageManagerService;
+    .locals 1
+
+    .prologue
+    .line 1513
+    iget-object v0, p0, Lcom/android/server/SystemServer;->mPackageManagerService:Lcom/android/server/pm/PackageManagerService;
+
+    return-object v0
+.end method
+
+.method flymeGetFieldSystemContext()Landroid/content/Context;
+    .locals 1
+
+    .prologue
+    .line 1519
+    iget-object v0, p0, Lcom/android/server/SystemServer;->mSystemContext:Landroid/content/Context;
+
+    return-object v0
 .end method

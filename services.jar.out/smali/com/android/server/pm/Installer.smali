@@ -1491,3 +1491,37 @@
     .line 75
     return-void
 .end method
+
+.method public copyDataFiles(Ljava/lang/String;Ljava/lang/String;)V
+    .locals 4
+    .param p1, "srcPath"    # Ljava/lang/String;
+    .param p2, "targetPath"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Lcom/android/internal/os/InstallerConnection$InstallerException;
+        }
+    .end annotation
+
+    .prologue
+    .line 249
+    iget-object v0, p0, Lcom/android/server/pm/Installer;->mInstaller:Lcom/android/internal/os/InstallerConnection;
+
+    const-string/jumbo v1, "copyfiles"
+
+    const/4 v2, 0x2
+
+    new-array v2, v2, [Ljava/lang/Object;
+
+    const/4 v3, 0x0
+
+    aput-object p1, v2, v3
+
+    const/4 v3, 0x1
+
+    aput-object p2, v2, v3
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/internal/os/InstallerConnection;->execute(Ljava/lang/String;[Ljava/lang/Object;)[Ljava/lang/String;
+
+    .line 248
+    return-void
+.end method

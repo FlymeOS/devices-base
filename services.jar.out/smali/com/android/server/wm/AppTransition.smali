@@ -6,6 +6,14 @@
 .implements Lcom/android/internal/util/DumpUtils$Dump;
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/server/wm/AppTransition$FlymeInjector;
+    }
+.end annotation
+
+
 # static fields
 .field private static final APP_STATE_IDLE:I = 0x0
 
@@ -95,6 +103,8 @@
 
 
 # instance fields
+.field private mFlymeCustomTransition:Landroid/app/CustomTransition;
+
 .field private mAnimationFinishedCallback:Landroid/os/IRemoteCallback;
 
 .field private mAppTransitionState:I
@@ -2842,7 +2852,7 @@
     if-eqz v0, :cond_1
 
     .line 531
-    invoke-static {v1, v0}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+    invoke-static {v1, v0}, Lcom/android/server/wm/AppTransition$FlymeInjector;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
     move-result-object v3
 
@@ -3221,11 +3231,18 @@
 
     if-eq v2, v3, :cond_0
 
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/AppTransition;->hasFlymeCustomTransition()Z
+
+    move-result v2
+
+    if-nez v2, :cond_flyme_0
+
     .line 1425
     :goto_0
     return v0
 
     :cond_0
+    :cond_flyme_0
     move v0, v1
 
     .line 1427
@@ -3268,6 +3285,8 @@
 
     .line 416
     iput-boolean v2, p0, Lcom/android/server/wm/AppTransition;->mProlongedAnimationsEnded:Z
+
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/wm/AppTransition;->clearFlymeCustomTransition()V
 
     .line 409
     return-void
@@ -7222,7 +7241,7 @@
     if-eqz v0, :cond_1
 
     .line 503
-    invoke-static {v1, v0}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+    invoke-static {v1, v0}, Lcom/android/server/wm/AppTransition$FlymeInjector;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
     move-result-object v3
 
@@ -7262,7 +7281,7 @@
 
     .line 515
     :cond_0
-    invoke-static {v0, p2}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
+    invoke-static {v0, p2}, Lcom/android/server/wm/AppTransition$FlymeInjector;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
     move-result-object v2
 
@@ -8196,4 +8215,235 @@
     move-result-object v0
 
     return-object v0
+.end method
+
+.method private clearFlymeCustomTransition()V
+    .locals 2
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 2084
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    if-eqz v0, :cond_0
+
+    .line 2085
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    invoke-virtual {v0}, Landroid/app/CustomTransition;->clear()V
+
+    .line 2086
+    iput-object v1, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    .line 2083
+    :cond_0
+    return-void
+.end method
+
+.method private hasFlymeCustomTransition()Z
+    .locals 1
+
+    .prologue
+    .line 2091
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method applyAnimateWallpaper()Z
+    .locals 1
+
+    .prologue
+    .line 2072
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    invoke-virtual {v0}, Landroid/app/CustomTransition;->animateWallpaper()Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method createCustomAnimationLocked(Landroid/view/DisplayInfo;IZI)Landroid/view/animation/Animation;
+    .locals 1
+    .param p1, "displayInfo"    # Landroid/view/DisplayInfo;
+    .param p2, "transit"    # I
+    .param p3, "enter"    # Z
+    .param p4, "orientation"    # I
+
+    .prologue
+    .line 2080
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    invoke-virtual {v0, p1, p2, p3, p4}, Landroid/app/CustomTransition;->createAnimation(Landroid/view/DisplayInfo;IZI)Landroid/view/animation/Animation;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method createCustomThumbnailAnimationLocked(Landroid/view/DisplayInfo;I)Landroid/view/animation/Animation;
+    .locals 1
+    .param p1, "displayInfo"    # Landroid/view/DisplayInfo;
+    .param p2, "transit"    # I
+
+    .prologue
+    .line 2076
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    invoke-virtual {v0, p1, p2}, Landroid/app/CustomTransition;->createThumbnailAnimation(Landroid/view/DisplayInfo;I)Landroid/view/animation/Animation;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method isCustomTransition()Z
+    .locals 1
+
+    .prologue
+    .line 2068
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    if-eqz v0, :cond_0
+
+    const/4 v0, 0x1
+
+    :goto_0
+    return v0
+
+    :cond_0
+    const/4 v0, 0x0
+
+    goto :goto_0
+.end method
+
+.method overridePendingAppTransition(Ljava/lang/String;Landroid/os/Bundle;)V
+    .locals 6
+    .param p1, "packageName"    # Ljava/lang/String;
+    .param p2, "options"    # Landroid/os/Bundle;
+
+    .prologue
+    const/4 v0, 0x0
+
+    .line 2047
+    invoke-virtual {p0}, Lcom/android/server/wm/AppTransition;->isTransitionSet()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_3
+
+    .line 2048
+    iget v1, p0, Lcom/android/server/wm/AppTransition;->mNextAppTransitionType:I
+
+    if-nez v1, :cond_0
+
+    const/4 v0, 0x1
+
+    :cond_0
+    invoke-static {p2, v0}, Landroid/app/CustomTransition;->parse(Landroid/os/Bundle;Z)Landroid/app/CustomTransition;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    .line 2049
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    if-eqz v0, :cond_2
+
+    .line 2050
+    iput-object p1, p0, Lcom/android/server/wm/AppTransition;->mNextAppTransitionPackage:Ljava/lang/String;
+
+    .line 2051
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    invoke-virtual {v0}, Landroid/app/CustomTransition;->getThumbnail()Landroid/graphics/Bitmap;
+
+    move-result-object v5
+
+    .line 2052
+    .local v5, "thumbnail":Landroid/graphics/Bitmap;
+    if-eqz v5, :cond_1
+
+    .line 2053
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mTmpRect:Landroid/graphics/Rect;
+
+    iget-object v1, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    invoke-virtual {v1}, Landroid/app/CustomTransition;->getStartingX()I
+
+    move-result v1
+
+    iput v1, v0, Landroid/graphics/Rect;->left:I
+
+    .line 2054
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mTmpRect:Landroid/graphics/Rect;
+
+    iget-object v1, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    invoke-virtual {v1}, Landroid/app/CustomTransition;->getStartingY()I
+
+    move-result v1
+
+    iput v1, v0, Landroid/graphics/Rect;->right:I
+
+    .line 2055
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mTmpRect:Landroid/graphics/Rect;
+
+    iget v1, v0, Landroid/graphics/Rect;->left:I
+
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mTmpRect:Landroid/graphics/Rect;
+
+    iget v2, v0, Landroid/graphics/Rect;->right:I
+
+    .line 2056
+    invoke-virtual {v5}, Landroid/graphics/Bitmap;->getWidth()I
+
+    move-result v3
+
+    invoke-virtual {v5}, Landroid/graphics/Bitmap;->getHeight()I
+
+    move-result v4
+
+    move-object v0, p0
+
+    .line 2055
+    invoke-direct/range {v0 .. v5}, Lcom/android/server/wm/AppTransition;->putDefaultNextAppTransitionCoordinates(IIIILandroid/graphics/Bitmap;)V
+
+    .line 2059
+    :cond_1
+    invoke-virtual {p0}, Lcom/android/server/wm/AppTransition;->postAnimationCallback()V
+
+    .line 2060
+    iget-object v0, p0, Lcom/android/server/wm/AppTransition;->mFlymeCustomTransition:Landroid/app/CustomTransition;
+
+    invoke-virtual {v0}, Landroid/app/CustomTransition;->getRemoteCallback()Landroid/os/IRemoteCallback;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/server/wm/AppTransition;->mNextAppTransitionCallback:Landroid/os/IRemoteCallback;
+
+    .line 2046
+    .end local v5    # "thumbnail":Landroid/graphics/Bitmap;
+    :cond_2
+    :goto_0
+    return-void
+
+    .line 2063
+    :cond_3
+    invoke-virtual {p0}, Lcom/android/server/wm/AppTransition;->postAnimationCallback()V
+
+    goto :goto_0
 .end method

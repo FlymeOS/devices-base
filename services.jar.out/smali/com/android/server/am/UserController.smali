@@ -6080,6 +6080,11 @@
     .end annotation
 
     .prologue
+
+    invoke-direct/range {p0 .. p1}, Lcom/android/server/am/UserController;->startFlymeUser(Landroid/util/Pair;)V
+
+    return-void
+
     .line 1043
     .local p1, "fromToUserPair":Landroid/util/Pair;, "Landroid/util/Pair<Landroid/content/pm/UserInfo;Landroid/content/pm/UserInfo;>;"
     new-instance v0, Lcom/android/server/am/UserSwitchingDialog;
@@ -6730,6 +6735,8 @@
 
     invoke-virtual {v4, v0, v5}, Lcom/android/server/wm/WindowManagerService;->setCurrentUser(I[I)V
 
+    goto :goto_flyme_0
+
     .line 851
     move-object/from16 v0, p0
 
@@ -6743,6 +6750,7 @@
 
     .line 862
     :goto_0
+    :goto_flyme_0
     move-object/from16 v0, v30
 
     iget v4, v0, Lcom/android/server/am/UserState;->state:I
@@ -8209,4 +8217,34 @@
     .end local p1    # "userId":I
     :cond_1
     return p1
+.end method
+
+.method private startFlymeUser(Landroid/util/Pair;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/util/Pair",
+            "<",
+            "Landroid/content/pm/UserInfo;",
+            "Landroid/content/pm/UserInfo;",
+            ">;)V"
+        }
+    .end annotation
+
+    .prologue
+    .line 1060
+    .local p1, "fromToUserPair":Landroid/util/Pair;, "Landroid/util/Pair<Landroid/content/pm/UserInfo;Landroid/content/pm/UserInfo;>;"
+    iget-object v0, p1, Landroid/util/Pair;->second:Ljava/lang/Object;
+
+    check-cast v0, Landroid/content/pm/UserInfo;
+
+    iget v0, v0, Landroid/content/pm/UserInfo;->id:I
+
+    const/4 v1, 0x1
+
+    invoke-virtual {p0, v0, v1}, Lcom/android/server/am/UserController;->startUser(IZ)Z
+
+    .line 1059
+    return-void
 .end method

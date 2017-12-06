@@ -28,9 +28,9 @@
     invoke-direct {p0, p1}, Lcom/android/server/SystemService;-><init>(Landroid/content/Context;)V
 
     .line 793
-    new-instance v0, Lcom/android/server/InputMethodManagerService;
+    new-instance v0, Lcom/android/server/MzInputMethodManagerService;
 
-    invoke-direct {v0, p1}, Lcom/android/server/InputMethodManagerService;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p1}, Lcom/android/server/MzInputMethodManagerService;-><init>(Landroid/content/Context;)V
 
     iput-object v0, p0, Lcom/android/server/InputMethodManagerService$Lifecycle;->mService:Lcom/android/server/InputMethodManagerService;
 

@@ -3,6 +3,14 @@
 .source "WindowStateAnimator.java"
 
 
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;
+    }
+.end annotation
+
+
 # static fields
 .field static final COMMIT_DRAW_PENDING:I = 0x2
 
@@ -1281,6 +1289,12 @@
     .line 1194
     .local v0, "cropToDecor":Z
     :goto_1
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->isInFlymeMovedMode(Lcom/android/server/wm/WindowStateAnimator;)Z
+
+    move-result v9
+
+    if-eqz v9, :cond_flyme_0
+
     if-eqz v0, :cond_1
 
     .line 1196
@@ -1308,6 +1322,9 @@
 
     .line 1206
     :cond_1
+    :cond_flyme_0
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->setSystemDecorRectTop(Lcom/android/server/wm/WindowStateAnimator;)V
+
     iget-boolean v9, v7, Lcom/android/server/wm/WindowState;->mEnforceSizeCompat:Z
 
     if-eqz v9, :cond_2
@@ -1518,6 +1535,8 @@
 
     .line 1814
     .local v0, "shown":Z
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->showWindow(Lcom/android/server/wm/WindowStateAnimator;)V
+
     if-nez v0, :cond_1
 
     .line 1815
@@ -2056,6 +2075,8 @@
 
     .line 1228
     .local v2, "displayInfo":Landroid/view/DisplayInfo;
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->updateSurfaceWindowCrop(Lcom/android/server/wm/WindowStateAnimator;)V
+
     invoke-virtual {v5}, Lcom/android/server/wm/WindowState;->isDefaultDisplay()Z
 
     move-result v6
@@ -2268,6 +2289,9 @@
     .line 1215
     :cond_4
     :goto_4
+
+    invoke-static/range {p0 .. p1}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->setSystemDecorRect(Lcom/android/server/wm/WindowStateAnimator;Landroid/graphics/Rect;)V
+
     return-void
 
     .line 1235
@@ -4141,6 +4165,8 @@
 
     .line 1151
     :cond_1b
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->moveShownFrameIfNeed(Lcom/android/server/wm/WindowStateAnimator;)V
+
     move-object/from16 v0, p0
 
     iget v0, v0, Lcom/android/server/wm/WindowStateAnimator;->mAlpha:F
@@ -5128,6 +5154,8 @@
 
     invoke-virtual {v4, v8}, Lcom/android/server/wm/WindowSurfaceController;->setShown(Z)V
 
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->destoryWindow(Lcom/android/server/wm/WindowStateAnimator;)V
+
     .line 901
     :cond_6
     iput-object v7, p0, Lcom/android/server/wm/WindowStateAnimator;->mSurfaceController:Lcom/android/server/wm/WindowSurfaceController;
@@ -6077,6 +6105,8 @@
     iget-object v0, p0, Lcom/android/server/wm/WindowStateAnimator;->mSurfaceController:Lcom/android/server/wm/WindowSurfaceController;
 
     invoke-virtual {v0, p1}, Lcom/android/server/wm/WindowSurfaceController;->hideInTransaction(Ljava/lang/String;)V
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/wm/WindowStateAnimator$FlymeInjector;->hideWindow(Lcom/android/server/wm/WindowStateAnimator;)V
 
     .line 580
     :cond_0
@@ -9434,4 +9464,14 @@
     invoke-virtual {v0, p3}, Lcom/android/server/wm/WindowSurfaceController;->clearCropInTransaction(Z)V
 
     goto :goto_0
+.end method
+
+.method flymeGetFieldSystemDecorRect()Landroid/graphics/Rect;
+    .locals 1
+
+    .prologue
+    .line 2191
+    iget-object v0, p0, Lcom/android/server/wm/WindowStateAnimator;->mSystemDecorRect:Landroid/graphics/Rect;
+
+    return-object v0
 .end method

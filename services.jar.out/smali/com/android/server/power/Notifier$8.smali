@@ -100,6 +100,21 @@
 
     invoke-interface {v0, v1}, Landroid/view/WindowManagerPolicy;->finishedGoingToSleep(I)V
 
+    invoke-direct/range {p0 .. p0}, Lcom/android/server/power/Notifier$8;->notifyAccessControlGotoSleep()V
+
     .line 460
+    return-void
+.end method
+
+.method private notifyAccessControlGotoSleep()V
+    .locals 2
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/power/Notifier$8;->this$0:Lcom/android/server/power/Notifier;
+
+    iget v1, p0, Lcom/android/server/power/Notifier$8;->val$why:I
+
+    invoke-virtual {v0, v1}, Lcom/android/server/power/Notifier;->notifyAccessControlGotoSleep(I)V
+
     return-void
 .end method

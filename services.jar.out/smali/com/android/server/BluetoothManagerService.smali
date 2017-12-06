@@ -5029,7 +5029,7 @@
     if-nez v0, :cond_2
 
     .line 715
-    invoke-direct {p0}, Lcom/android/server/BluetoothManagerService;->checkIfCallerIsForegroundUser()Z
+    invoke-direct {p0}, Lcom/android/server/BluetoothManagerService;->hook_checkIfCallerIsForegroundUser()Z
 
     move-result v4
 
@@ -6845,4 +6845,31 @@
     invoke-static {v4, v5}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     goto :goto_0
+.end method
+
+.method private hook_checkIfCallerIsForegroundUser()Z
+    .locals 1
+
+    .prologue
+    .line 1783
+    const/16 v0, 0x4d
+
+    invoke-static {v0}, Lmeizu/security/FlymePermissionManager;->isFlymePermissionGranted(I)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 1784
+    invoke-direct {p0}, Lcom/android/server/BluetoothManagerService;->checkIfCallerIsForegroundUser()Z
+
+    move-result v0
+
+    return v0
+
+    .line 1786
+    :cond_0
+    const/4 v0, 0x0
+
+    return v0
 .end method
