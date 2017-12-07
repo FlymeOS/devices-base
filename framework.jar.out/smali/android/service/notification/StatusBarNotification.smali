@@ -187,10 +187,9 @@
 
     iput-object v0, p0, Landroid/service/notification/StatusBarNotification;->groupKey:Ljava/lang/String;
 
-    .line 95
-
     invoke-static/range {p0 .. p1}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->initFlymeExtraFields(Landroid/service/notification/StatusBarNotification;Landroid/os/Parcel;)V
 
+    .line 95
     return-void
 
     .line 102
@@ -329,10 +328,9 @@
 
     iput-object v0, p0, Landroid/service/notification/StatusBarNotification;->groupKey:Ljava/lang/String;
 
-    .line 78
-
     invoke-static/range {p0 .. p0}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->initFlymeExtraFields(Landroid/service/notification/StatusBarNotification;)V
 
+    .line 78
     return-void
 .end method
 
@@ -417,10 +415,9 @@
 
     iput-object v0, p0, Landroid/service/notification/StatusBarNotification;->groupKey:Ljava/lang/String;
 
-    .line 58
-
     invoke-static/range {p0 .. p0}, Landroid/service/notification/StatusBarNotification$FlymeInjector;->initFlymeExtraFields(Landroid/service/notification/StatusBarNotification;)V
 
+    .line 58
     return-void
 .end method
 
@@ -538,6 +535,10 @@
     move-result-object v2
 
     iget-object v3, p0, Landroid/service/notification/StatusBarNotification;->pkg:Ljava/lang/String;
+
+    invoke-virtual/range {p0 .. p0}, Landroid/service/notification/StatusBarNotification;->getOrigPackageName()Ljava/lang/String;
+
+    move-result-object v3
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 

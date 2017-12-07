@@ -300,9 +300,7 @@
     invoke-virtual {v5, v6, v8, v9}, Landroid/widget/AbsListView;->postDelayed(Ljava/lang/Runnable;J)Z
 
     :goto_flyme_0
-    iget-object v5, p0, Landroid/widget/AbsListView$CheckForTap;->this$0:Landroid/widget/AbsListView;
-
-    invoke-static/range {v5 ..v5}, Landroid/widget/AbsListView$FlymeInjector;->setFlymeShowPressed(Landroid/widget/AbsListView;)V
+    invoke-direct/range {p0 .. p0}, Landroid/widget/AbsListView$CheckForTap;->setFlymeShowPressed()V
 
     goto/16 :goto_0
 
@@ -334,4 +332,15 @@
     iput v11, v5, Landroid/widget/AbsListView;->mTouchMode:I
 
     goto/16 :goto_0
+.end method
+
+.method private setFlymeShowPressed()V
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Landroid/widget/AbsListView$CheckForTap;->this$0:Landroid/widget/AbsListView;
+
+    invoke-static {v0}, Landroid/widget/AbsListView$FlymeInjector;->setFlymeShowPressed(Landroid/widget/AbsListView;)V
+
+    return-void
 .end method

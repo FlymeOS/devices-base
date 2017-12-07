@@ -1697,10 +1697,9 @@
 
     invoke-interface {v0, p1}, Landroid/widget/Spinner$SpinnerPopup;->setHorizontalOffset(I)V
 
-    .line 394
-
     invoke-direct/range {p0 .. p1}, Landroid/widget/Spinner;->setFlymeDropDownHorizontalOffset(I)V
 
+    .line 394
     return-void
 .end method
 

@@ -159,7 +159,7 @@
     const/4 v3, 0x0
 
     .line 4071
-    const v4, #android:attr@textSelectHandleWindowStyle#t
+    const v4, 0x10102c8
 
     .line 4070
     invoke-direct {v1, v2, v3, v4}, Landroid/widget/PopupWindow;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
@@ -218,7 +218,7 @@
     move-result-object v1
 
     .line 4082
-    const v2, #android:dimen@text_handle_min_size#t
+    const v2, 0x10500a9
 
     .line 4081
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I

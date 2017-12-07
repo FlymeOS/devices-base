@@ -18233,13 +18233,13 @@
 
     move-object/from16 v0, p0
 
-    move/from16 v1, v20
+    move/from16 v3, v20
 
-    invoke-direct/range {v0 .. v1}, Landroid/view/ViewRootImpl;->isFlymeKeyguardAllowed(I)Z
+    invoke-direct {v0, v3}, Landroid/view/ViewRootImpl;->isFlymeKeyguardAllowed(I)Z
 
     move-result v3
 
-    if-nez v3, :cond_flyme_0
+    if-eqz v3, :cond_flyme_0
 
     monitor-exit p0
 

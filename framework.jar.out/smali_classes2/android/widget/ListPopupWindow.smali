@@ -152,7 +152,7 @@
     .line 179
     const/4 v0, 0x0
 
-    const v1, #android:attr@listPopupWindowStyle#t
+    const v1, 0x10102ff
 
     const/4 v2, 0x0
 
@@ -169,7 +169,7 @@
 
     .prologue
     .line 190
-    const v0, #android:attr@listPopupWindowStyle#t
+    const v0, 0x10102ff
 
     const/4 v1, 0x0
 
@@ -340,9 +340,9 @@
 
     invoke-virtual {v1, v4}, Landroid/widget/PopupWindow;->setInputMethodMode(I)V
 
-    .line 216
     invoke-direct/range {p0 .. p0}, Landroid/widget/ListPopupWindow;->initFlymeExtraFields()V
 
+    .line 216
     return-void
 .end method
 

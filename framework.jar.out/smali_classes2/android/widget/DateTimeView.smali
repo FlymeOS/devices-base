@@ -299,7 +299,7 @@
     move-result-object v0
 
     .line 317
-    const v1, #android:string@now_string_shortest#t
+    const v1, 0x104036b
 
     .line 316
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
@@ -407,7 +407,7 @@
     if-eqz v1, :cond_3
 
     .line 242
-    const v10, #android:plurals@duration_minutes_shortest#t
+    const v10, 0x1140007
 
     .line 241
     :goto_1
@@ -478,7 +478,7 @@
     .end local v4    # "millisIncrease":J
     .end local v8    # "result":Ljava/lang/String;
     :cond_3
-    const v10, #android:plurals@duration_minutes_shortest_future#t
+    const v10, 0x114000b
 
     goto :goto_1
 
@@ -511,7 +511,7 @@
     if-eqz v1, :cond_5
 
     .line 250
-    const v10, #android:plurals@duration_hours_shortest#t
+    const v10, 0x1140008
 
     .line 249
     :goto_4
@@ -548,7 +548,7 @@
     .end local v4    # "millisIncrease":J
     .end local v8    # "result":Ljava/lang/String;
     :cond_5
-    const v10, #android:plurals@duration_hours_shortest_future#t
+    const v10, 0x114000c
 
     goto :goto_4
 
@@ -597,7 +597,7 @@
     if-eqz v1, :cond_8
 
     .line 260
-    const v10, #android:plurals@duration_days_shortest#t
+    const v10, 0x1140009
 
     .line 259
     :goto_5
@@ -650,7 +650,7 @@
     .end local v4    # "millisIncrease":J
     .end local v8    # "result":Ljava/lang/String;
     :cond_8
-    const v10, #android:plurals@duration_days_shortest_future#t
+    const v10, 0x114000d
 
     goto :goto_5
 
@@ -687,7 +687,7 @@
     if-eqz v1, :cond_b
 
     .line 274
-    const v10, #android:plurals@duration_years_shortest#t
+    const v10, 0x114000a
 
     .line 273
     :goto_6
@@ -724,7 +724,7 @@
     .end local v4    # "millisIncrease":J
     .end local v8    # "result":Ljava/lang/String;
     :cond_b
-    const v10, #android:plurals@duration_years_shortest_future#t
+    const v10, 0x114000e
 
     goto :goto_6
 
@@ -955,7 +955,7 @@
     if-eqz v1, :cond_3
 
     .line 352
-    const v8, #android:plurals@duration_minutes_relative#t
+    const v8, 0x114000f
 
     .line 351
     :goto_2
@@ -987,7 +987,7 @@
     .line 354
     .end local v6    # "result":Ljava/lang/String;
     :cond_3
-    const v8, #android:plurals@duration_minutes_relative_future#t
+    const v8, 0x1140013
 
     goto :goto_2
 
@@ -1020,7 +1020,7 @@
     if-eqz v1, :cond_5
 
     .line 361
-    const v8, #android:plurals@duration_hours_relative#t
+    const v8, 0x1140010
 
     .line 360
     :goto_3
@@ -1052,7 +1052,7 @@
     .line 363
     .end local v6    # "result":Ljava/lang/String;
     :cond_5
-    const v8, #android:plurals@duration_hours_relative_future#t
+    const v8, 0x1140014
 
     goto :goto_3
 
@@ -1101,7 +1101,7 @@
     if-eqz v1, :cond_7
 
     .line 372
-    const v8, #android:plurals@duration_days_relative#t
+    const v8, 0x1140011
 
     .line 371
     :goto_4
@@ -1133,7 +1133,7 @@
     .line 374
     .end local v6    # "result":Ljava/lang/String;
     :cond_7
-    const v8, #android:plurals@duration_days_relative_future#t
+    const v8, 0x1140015
 
     goto :goto_4
 
@@ -1160,7 +1160,7 @@
     if-eqz v1, :cond_9
 
     .line 382
-    const v8, #android:plurals@duration_years_relative#t
+    const v8, 0x1140012
 
     .line 381
     :goto_5
@@ -1192,7 +1192,7 @@
     .line 384
     .end local v6    # "result":Ljava/lang/String;
     :cond_9
-    const v8, #android:plurals@duration_years_relative_future#t
+    const v8, 0x1140016
 
     goto :goto_5
 .end method

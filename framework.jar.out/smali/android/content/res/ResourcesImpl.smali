@@ -2763,10 +2763,9 @@
 
     if-gt v4, v5, :cond_0
 
-    .line 537
-
     invoke-static/range {p1 .. p2}, Landroid/content/res/ResourcesImpl$FlymeInjector;->overlayFlymeThemeColor(Landroid/content/res/Resources;Landroid/util/TypedValue;)V
 
+    .line 537
     const/4 v6, 0x1
 
     .line 538
@@ -3438,6 +3437,10 @@
     .end annotation
 
     .prologue
+    .line 298
+    const/4 v2, 0x1
+
+    invoke-virtual {p0, p1, p2, v2}, Landroid/content/res/ResourcesImpl;->getValue(ILandroid/util/TypedValue;Z)V
 
     invoke-static/range {p0 .. p2}, Landroid/content/res/ResourcesImpl$FlymeInjector;->openFlymeThemeRawResource(Landroid/content/res/ResourcesImpl;ILandroid/util/TypedValue;)Ljava/io/InputStream;
 
@@ -3448,11 +3451,6 @@
     return-object v0
 
     :cond_flyme_0
-
-    .line 298
-    const/4 v2, 0x1
-
-    invoke-virtual {p0, p1, p2, v2}, Landroid/content/res/ResourcesImpl;->getValue(ILandroid/util/TypedValue;Z)V
 
     .line 300
     :try_start_0
@@ -4224,10 +4222,9 @@
 
     invoke-virtual {v2, v0}, Landroid/content/res/ConfigurationBoundResourceCache;->onConfigurationChange(I)V
 
-    .line 431
-
     invoke-direct/range {p0 .. p0}, Landroid/content/res/ResourcesImpl;->clearCachesByFlymeChange()V
 
+    .line 431
     invoke-virtual/range {p0 .. p0}, Landroid/content/res/ResourcesImpl;->flushLayoutCache()V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0

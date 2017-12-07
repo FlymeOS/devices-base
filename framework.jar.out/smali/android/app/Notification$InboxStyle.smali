@@ -63,10 +63,9 @@
 
     iput-object v0, p0, Landroid/app/Notification$InboxStyle;->mTexts:Ljava/util/ArrayList;
 
-    .line 5129
-
     invoke-static/range {p0 .. p0}, Landroid/app/Notification$InboxStyle$FlymeInjector;->initFlymeExtFields(Landroid/app/Notification$InboxStyle;)V
 
+    .line 5129
     return-void
 .end method
 
@@ -92,10 +91,9 @@
     .line 5137
     invoke-virtual {p0, p1}, Landroid/app/Notification$InboxStyle;->setBuilder(Landroid/app/Notification$Builder;)V
 
-    .line 5136
-
     invoke-static/range {p0 .. p0}, Landroid/app/Notification$InboxStyle$FlymeInjector;->initFlymeExtFields(Landroid/app/Notification$InboxStyle;)V
 
+    .line 5136
     return-void
 .end method
 
@@ -190,7 +188,7 @@
     .line 5251
     .end local v1    # "hasProgress":Z
     :cond_2
-    const v0, #android:dimen@notification_content_picture_margin#t
+    const v0, 0x1050045
 
     goto :goto_1
 .end method
@@ -228,10 +226,9 @@
 
     invoke-virtual {p1, v2, v1}, Landroid/os/Bundle;->putCharSequenceArray(Ljava/lang/String;[Ljava/lang/CharSequence;)V
 
-    .line 5168
-
     invoke-static/range {p0 .. p1}, Landroid/app/Notification$InboxStyle$FlymeInjector;->addFlymeExtras(Landroid/app/Notification$InboxStyle;Landroid/os/Bundle;)V
 
+    .line 5168
     return-void
 .end method
 
@@ -249,10 +246,9 @@
 
     invoke-virtual {v0, v1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 5162
-
     invoke-static/range {p0 .. p0}, Landroid/app/Notification$InboxStyle$FlymeInjector;->addFlymeLine(Landroid/app/Notification$InboxStyle;)V
 
+    .line 5162
     return-object p0
 .end method
 
@@ -361,7 +357,7 @@
     move-result-object v4
 
     .line 5211
-    const v5, #android:dimen@notification_inbox_item_top_padding#t
+    const v5, 0x105007c
 
     .line 5210
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
@@ -500,7 +496,7 @@
     move-result-object v4
 
     .line 5237
-    const v5, #android:dimen@notification_text_margin_top#t
+    const v5, 0x105007b
 
     .line 5236
     invoke-virtual {v4, v5}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
@@ -523,13 +519,13 @@
 
     :array_0
     .array-data 4
-        #android:id@inbox_text0#t
-        #android:id@inbox_text1#t
-        #android:id@inbox_text2#t
-        #android:id@inbox_text3#t
-        #android:id@inbox_text4#t
-        #android:id@inbox_text5#t
-        #android:id@inbox_text6#t
+        0x10203bd
+        0x10203be
+        0x10203bf
+        0x10203c0
+        0x10203c1
+        0x10203c2
+        0x10203c3
     .end array-data
 .end method
 

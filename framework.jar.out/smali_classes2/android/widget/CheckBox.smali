@@ -29,7 +29,7 @@
 
     .prologue
     .line 62
-    const v0, #android:attr@checkboxStyle#t
+    const v0, 0x101006c
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/CheckBox;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 

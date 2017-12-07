@@ -329,7 +329,7 @@
     const/4 v5, 0x5
 
     .line 168
-    const v7, #android:id@statusBarBackground#t
+    const v7, 0x102002f
 
     .line 169
     const/16 v8, 0x400
@@ -358,7 +358,7 @@
     const/4 v5, 0x3
 
     .line 174
-    const v7, #android:id@navigationBarBackground#t
+    const v7, 0x1020030
 
     .line 175
     const/4 v8, 0x0
@@ -497,7 +497,7 @@
     iput p2, p0, Lcom/android/internal/policy/DecorView;->mFeatureId:I
 
     .line 239
-    const v0, #android:interpolator@linear_out_slow_in#t
+    const v0, 0x10c000e
 
     .line 238
     invoke-static {p1, v0}, Landroid/view/animation/AnimationUtils;->loadInterpolator(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
@@ -507,7 +507,7 @@
     iput-object v0, p0, Lcom/android/internal/policy/DecorView;->mShowInterpolator:Landroid/view/animation/Interpolator;
 
     .line 241
-    const v0, #android:interpolator@fast_out_linear_in#t
+    const v0, 0x10c000f
 
     .line 240
     invoke-static {p1, v0}, Landroid/view/animation/AnimationUtils;->loadInterpolator(Landroid/content/Context;I)Landroid/view/animation/Interpolator;
@@ -522,7 +522,7 @@
     move-result-object v0
 
     .line 244
-    const v1, #android:integer@dock_enter_exit_duration#t
+    const v1, 0x10e00ce
 
     .line 243
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
@@ -543,7 +543,7 @@
     move-result-object v0
 
     .line 246
-    const v1, #android:bool@config_forceWindowDrawsStatusBarBackground#t
+    const v1, 0x11200b0
 
     .line 245
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
@@ -575,7 +575,7 @@
     move-result-object v0
 
     .line 249
-    const v1, #android:color@system_bar_background_semi_transparent#t
+    const v1, 0x1060074
 
     const/4 v2, 0x0
 
@@ -601,7 +601,7 @@
     move-result-object v0
 
     .line 258
-    const v1, #android:dimen@resize_shadow_size#t
+    const v1, 0x10500c2
 
     .line 257
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
@@ -624,7 +624,6 @@
 
     .line 245
     :cond_1
-
     :cond_flyme_0
 
     const/4 v0, 0x0
@@ -1102,7 +1101,7 @@
 
     .line 1607
     .local v2, "baseTheme":Landroid/content/res/Resources$Theme;
-    const v7, #android:attr@actionBarTheme#t
+    const v7, 0x1010431
 
     invoke-virtual {v2, v7, v5, v8}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
 
@@ -1159,7 +1158,7 @@
     new-instance v7, Landroid/widget/PopupWindow;
 
     .line 1623
-    const v10, #android:^attr-private@actionModePopupWindowStyle#t
+    const v10, 0x116001e
 
     .line 1622
     invoke-direct {v7, v0, v11, v10}, Landroid/widget/PopupWindow;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
@@ -1195,7 +1194,7 @@
     move-result-object v7
 
     .line 1630
-    const v10, #android:attr@actionBarSize#t
+    const v10, 0x10102eb
 
     .line 1629
     invoke-virtual {v7, v10, v5, v8}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
@@ -1253,7 +1252,7 @@
     .end local v2    # "baseTheme":Landroid/content/res/Resources$Theme;
     .end local v5    # "outValue":Landroid/util/TypedValue;
     :cond_3
-    const v7, #android:id@action_mode_bar_stub#t
+    const v7, 0x10203ef
 
     invoke-virtual {p0, v7}, Lcom/android/internal/policy/DecorView;->findViewById(I)Landroid/view/View;
 
@@ -2061,7 +2060,7 @@
     move-result-object p1
 
     .line 1892
-    const v2, #android:layout@decor_caption#t
+    const v2, 0x109004e
 
     .line 1893
     const/4 v3, 0x0
@@ -2093,7 +2092,7 @@
     move-result-object v0
 
     .line 2097
-    const v1, #android:color@resize_shadow_start_color#t
+    const v1, 0x1060075
 
     const/4 v2, 0x0
 
@@ -2111,7 +2110,7 @@
     move-result-object v0
 
     .line 2099
-    const v1, #android:color@resize_shadow_end_color#t
+    const v1, 0x1060076
 
     const/4 v2, 0x0
 
@@ -2484,7 +2483,7 @@
     move-result-object v0
 
     .line 1849
-    const v1, #android:drawable@decor_caption_title_focused#t
+    const v1, 0x1080255
 
     .line 1848
     invoke-virtual {v0, v1}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;
@@ -2577,27 +2576,27 @@
 
     .prologue
     .line 1937
-    const v0, #android:id@maximize_window#t
+    const v0, 0x1020364
 
     invoke-virtual {p1, v0}, Lcom/android/internal/widget/DecorCaptionView;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     .line 1938
-    const v1, #android:drawable@decor_maximize_button_dark#t
+    const v1, 0x1080259
 
     .line 1937
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
 
     .line 1939
-    const v0, #android:id@close_window#t
+    const v0, 0x1020365
 
     invoke-virtual {p1, v0}, Lcom/android/internal/widget/DecorCaptionView;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     .line 1940
-    const v1, #android:drawable@decor_close_button_dark#t
+    const v1, 0x1080257
 
     .line 1939
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
@@ -2634,7 +2633,7 @@
 
     move-result-object v2
 
-    const v3, #android:attr@colorPrimary#t
+    const v3, 0x1010433
 
     const/4 v4, 0x1
 
@@ -2894,27 +2893,27 @@
 
     .prologue
     .line 1930
-    const v0, #android:id@maximize_window#t
+    const v0, 0x1020364
 
     invoke-virtual {p1, v0}, Lcom/android/internal/widget/DecorCaptionView;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     .line 1931
-    const v1, #android:drawable@decor_maximize_button_light#t
+    const v1, 0x108025a
 
     .line 1930
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
 
     .line 1932
-    const v0, #android:id@close_window#t
+    const v0, 0x1020365
 
     invoke-virtual {p1, v0}, Lcom/android/internal/widget/DecorCaptionView;->findViewById(I)Landroid/view/View;
 
     move-result-object v0
 
     .line 1933
-    const v1, #android:drawable@decor_close_button_light#t
+    const v1, 0x1080258
 
     .line 1932
     invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundResource(I)V
@@ -4258,7 +4257,7 @@
     iget-object v3, p0, Lcom/android/internal/policy/DecorView;->mContext:Landroid/content/Context;
 
     .line 1351
-    const v4, #android:color@input_method_navigation_guard#t
+    const v4, 0x1060032
 
     .line 1350
     invoke-virtual {v3, v4}, Landroid/content/Context;->getColor(I)I
@@ -4461,7 +4460,7 @@
     iget-object v9, p0, Lcom/android/internal/policy/DecorView;->mContext:Landroid/content/Context;
 
     .line 1289
-    const v10, #android:color@input_method_navigation_guard#t
+    const v10, 0x1060032
 
     .line 1288
     invoke-virtual {v9, v10}, Landroid/content/Context;->getColor(I)I

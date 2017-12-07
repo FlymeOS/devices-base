@@ -839,10 +839,9 @@
 
     iput v0, p0, Landroid/content/Intent;->mContentUserHint:I
 
-    .line 4793
-
     invoke-static/range {p0 .. p0}, Landroid/content/Intent$FlymeInjector;->createFlymeIntent(Landroid/content/Intent;)V
 
+    .line 4793
     return-void
 .end method
 
@@ -868,10 +867,9 @@
 
     iput v0, p0, Landroid/content/Intent;->mContentUserHint:I
 
-    .line 4900
-
     invoke-static/range {p0 .. p0}, Landroid/content/Intent$FlymeInjector;->createFlymeIntent(Landroid/content/Intent;)V
 
+    .line 4900
     new-instance v0, Landroid/content/ComponentName;
 
     invoke-direct {v0, p1, p2}, Landroid/content/ComponentName;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
@@ -12213,10 +12211,9 @@
 
     iput-object v2, p0, Landroid/content/Intent;->mExtras:Landroid/os/Bundle;
 
-    .line 8705
-
     invoke-static/range {p0 .. p1}, Landroid/content/Intent$FlymeInjector;->readIntentExt(Landroid/content/Intent;Landroid/os/Parcel;)V
 
+    .line 8705
     return-void
 .end method
 
@@ -14384,10 +14381,9 @@
 
     invoke-virtual {p1, v2}, Landroid/os/Parcel;->writeBundle(Landroid/os/Bundle;)V
 
-    .line 8648
-
     invoke-static/range {p0 .. p1}, Landroid/content/Intent$FlymeInjector;->writeIntentExt(Landroid/content/Intent;Landroid/os/Parcel;)V
 
+    .line 8648
     return-void
 
     .line 8677

@@ -283,10 +283,9 @@
     .line 122
     invoke-direct {p0, v1}, Landroid/content/res/AssetManager;->init(Z)V
 
-    .line 115
-
     invoke-direct/range {p0 .. p0}, Landroid/content/res/AssetManager;->addFlymeAssetPath()V
 
+    .line 115
     return-void
 .end method
 

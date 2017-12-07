@@ -72,6 +72,20 @@
 
 .field private mFlymeSelectToBottom:Z
 
+.field private mIsFlymeBeginDragSelect:Z
+
+.field private mIsFlymeCheckBoxAnim:Z
+
+.field private mIsFlymeDividerInside:Z
+
+.field private mIsFlymeOutOfDragRegion:Z
+
+.field private mIsFlymeOutOfListContent:Z
+
+.field protected mLastDownSelectPosition:I
+
+.field protected mLastUpSelectPosition:I
+
 .field private mAreAllItemsSelectable:Z
 
 .field private final mArrowScrollFocusResult:Landroid/widget/ListView$ArrowScrollFocusResult;
@@ -145,7 +159,7 @@
 
     .prologue
     .line 150
-    const v0, #android:attr@listViewStyle#t
+    const v0, 0x1010074
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/ListView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
@@ -243,7 +257,7 @@
     .line 165
     new-instance v6, Landroid/widget/ArrayAdapter;
 
-    const v7, #android:layout@simple_list_item_1#t
+    const v7, 0x1090003
 
     invoke-direct {v6, p1, v7, v3}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;I[Ljava/lang/Object;)V
 
@@ -334,6 +348,8 @@
 
     .line 197
     invoke-virtual {v0}, Landroid/content/res/TypedArray;->recycle()V
+
+    invoke-direct/range {p0 .. p4}, Landroid/widget/ListView;->initFlymeExtraFields(Landroid/content/Context;Landroid/util/AttributeSet;II)V
 
     .line 157
     return-void
@@ -8506,6 +8522,7 @@
 
     :cond_flyme_0
 
+    .line 3529
     invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
     .line 3524
@@ -12674,10 +12691,9 @@
     :cond_1
     invoke-super {p0, p1, p2, p3, p4}, Landroid/widget/AbsListView;->onSizeChanged(IIII)V
 
-    .line 1169
-
     invoke-direct/range {p0 .. p0}, Landroid/widget/ListView;->onFlymeSizeChanged()V
 
+    .line 1169
     return-void
 .end method
 
@@ -12910,7 +12926,7 @@
     nop
 
     :pswitch_data_0
-    .packed-switch #android:id@accessibilityActionScrollToPosition#t
+    .packed-switch 0x1020037
         :pswitch_0
     .end packed-switch
 .end method

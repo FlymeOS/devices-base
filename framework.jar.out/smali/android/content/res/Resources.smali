@@ -123,10 +123,9 @@
 
     iput-object v2, p0, Landroid/content/res/Resources;->mResourcesImpl:Landroid/content/res/ResourcesImpl;
 
-    .line 234
-
     invoke-static/range {p0 .. p0}, Landroid/content/res/Resources$FlymeInjector;->initFlymeThemeResource(Landroid/content/res/Resources;)V
 
+    .line 234
     return-void
 .end method
 
@@ -406,16 +405,16 @@
 
     .prologue
     .line 142
-    const v2, #android:style@Theme#t
+    const v2, 0x1030005
 
     .line 143
-    const v3, #android:style@Theme.Holo#t
+    const v3, 0x103006b
 
     .line 144
-    const v4, #android:style@Theme.DeviceDefault#t
+    const v4, 0x1030128
 
     .line 145
-    const v5, #android:style@Theme.DeviceDefault.Light.DarkActionBar#t
+    const v5, 0x103013f
 
     move v0, p0
 
@@ -783,8 +782,9 @@
 
     .line 921
     .local v2, "value":Landroid/util/TypedValue;
+    :try_start_0
+    iget-object v1, p0, Landroid/content/res/Resources;->mResourcesImpl:Landroid/content/res/ResourcesImpl;
 
-    :try_start_flyme_0
     invoke-static/range {p0 .. p1}, Landroid/content/res/Resources$FlymeInjector;->isFlymeThemeColor(Landroid/content/res/Resources;I)Z
 
     move-result v0
@@ -792,8 +792,6 @@
     if-eqz v0, :cond_flyme_0
 
     invoke-static/range {p0 .. p1}, Landroid/content/res/Resources$FlymeInjector;->getFlymeThemeColorValue(Landroid/content/res/Resources;I)I
-    :try_end_flyme_0
-    .catchall {:try_start_flyme_0 .. :try_end_flyme_0} :catchall_flyme_0
 
     move-result v0
 
@@ -802,9 +800,6 @@
     return v0
 
     :cond_flyme_0
-
-    :try_start_0
-    iget-object v1, p0, Landroid/content/res/Resources;->mResourcesImpl:Landroid/content/res/ResourcesImpl;
 
     .line 922
     .local v1, "impl":Landroid/content/res/ResourcesImpl;
@@ -908,9 +903,6 @@
     .line 933
     .end local v1    # "impl":Landroid/content/res/ResourcesImpl;
     :catchall_0
-
-    :catchall_flyme_0
-
     move-exception v3
 
     .line 934

@@ -910,10 +910,9 @@
     .line 1771
     iput v2, p0, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 1768
-
     invoke-static/range {p0 .. p0}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->initFlymeExtraFields(Landroid/view/WindowManager$LayoutParams;)V
 
+    .line 1768
     return-void
 .end method
 
@@ -999,10 +998,9 @@
     .line 1777
     iput v2, p0, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 1774
-
     invoke-static/range {p0 ..p0}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->initFlymeExtraFields(Landroid/view/WindowManager$LayoutParams;)V
 
+    .line 1774
     return-void
 .end method
 
@@ -1092,10 +1090,9 @@
     .line 1784
     iput v2, p0, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 1780
-
     invoke-static/range {p0 ..p0}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->initFlymeExtraFields(Landroid/view/WindowManager$LayoutParams;)V
 
+    .line 1780
     return-void
 .end method
 
@@ -1186,10 +1183,9 @@
     .line 1791
     iput p3, p0, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 1787
-
     invoke-static/range {p0 ..p0}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->initFlymeExtraFields(Landroid/view/WindowManager$LayoutParams;)V
 
+    .line 1787
     return-void
 .end method
 
@@ -1282,10 +1278,9 @@
     .line 1798
     iput p5, p0, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 1794
-
     invoke-static/range {p0 ..p0}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->initFlymeExtraFields(Landroid/view/WindowManager$LayoutParams;)V
 
+    .line 1794
     return-void
 .end method
 
@@ -1386,10 +1381,9 @@
     .line 1808
     iput p7, p0, Landroid/view/WindowManager$LayoutParams;->format:I
 
-    .line 1802
-
     invoke-static/range {p0 ..p0}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->initFlymeExtraFields(Landroid/view/WindowManager$LayoutParams;)V
 
+    .line 1802
     return-void
 .end method
 
@@ -1773,10 +1767,9 @@
 
     iput-wide v0, p0, Landroid/view/WindowManager$LayoutParams;->hideTimeoutMilliseconds:J
 
-    .line 1917
-
     invoke-static/range {p0 .. p1}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->readFromParcel(Landroid/view/WindowManager$LayoutParams;Landroid/os/Parcel;)V
 
+    .line 1917
     return-void
 
     :cond_0
@@ -2564,12 +2557,11 @@
 
     iput-wide v2, p0, Landroid/view/WindowManager$LayoutParams;->hideTimeoutMilliseconds:J
 
-    .line 2180
-
     invoke-static {p0, p1, v0}, Landroid/view/WindowManager$LayoutParams$FlymeInjector;->copyFrom(Landroid/view/WindowManager$LayoutParams;Landroid/view/WindowManager$LayoutParams;I)I
 
     move-result v0
 
+    .line 2180
     return v0
 .end method
 

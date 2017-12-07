@@ -727,7 +727,7 @@
 
     .line 2953
     :cond_1
-    const v0, #android:id@progress_circular#t
+    const v0, 0x10203f2
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/PhoneWindow;->findViewById(I)Landroid/view/View;
 
@@ -878,7 +878,7 @@
 
     .line 2967
     :cond_1
-    const v0, #android:id@progress_horizontal#t
+    const v0, 0x10203f3
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/PhoneWindow;->findViewById(I)Landroid/view/View;
 
@@ -965,7 +965,7 @@
 
     .line 2935
     :cond_1
-    const v0, #android:id@left_icon#t
+    const v0, 0x1020042
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/PhoneWindow;->findViewById(I)Landroid/view/View;
 
@@ -1140,7 +1140,7 @@
 
     .line 2981
     :cond_1
-    const v0, #android:id@right_icon#t
+    const v0, 0x1020044
 
     invoke-virtual {p0, v0}, Lcom/android/internal/policy/PhoneWindow;->findViewById(I)Landroid/view/View;
 
@@ -1186,7 +1186,7 @@
     .local v1, "transition":Landroid/transition/Transition;
     if-eq v2, v4, :cond_1
 
-    const/high16 v3, #android:transition@no_transition#i
+    const/high16 v3, 0x10f0000
 
     if-eq v2, v3, :cond_1
 
@@ -1285,7 +1285,7 @@
 
     move-result-object v2
 
-    const v3, #android:anim@fade_out#t
+    const v3, 0x10a0001
 
     invoke-static {v2, v3}, Landroid/view/animation/AnimationUtils;->loadAnimation(Landroid/content/Context;I)Landroid/view/animation/Animation;
 
@@ -1428,7 +1428,7 @@
     iget-object v7, p0, Lcom/android/internal/policy/PhoneWindow;->mDecor:Lcom/android/internal/policy/DecorView;
 
     .line 2634
-    const v8, #android:id@decor_content_parent#t
+    const v8, 0x10203f4
 
     .line 2633
     invoke-virtual {v7, v8}, Lcom/android/internal/policy/DecorView;->findViewById(I)Landroid/view/View;
@@ -1978,7 +1978,7 @@
     .end local v3    # "localFeatures":I
     .end local v4    # "st":Lcom/android/internal/policy/PhoneWindow$PanelFeatureState;
     :cond_14
-    const v7, #android:id@title#t
+    const v7, 0x1020016
 
     invoke-virtual {p0, v7}, Lcom/android/internal/policy/PhoneWindow;->findViewById(I)Landroid/view/View;
 
@@ -2003,7 +2003,7 @@
     if-eqz v7, :cond_16
 
     .line 2679
-    const v7, #android:id@title_container#t
+    const v7, 0x1020045
 
     invoke-virtual {p0, v7}, Lcom/android/internal/policy/PhoneWindow;->findViewById(I)Landroid/view/View;
 
@@ -5461,7 +5461,7 @@
     move-result-object v20
 
     .line 2397
-    const v21, #android:bool@target_honeycomb_needs_options_menu#t
+    const v21, 0x1120008
 
     .line 2396
     invoke-virtual/range {v20 .. v21}, Landroid/content/res/Resources;->getBoolean(I)Z
@@ -6063,7 +6063,7 @@
     if-eqz v20, :cond_2d
 
     .line 2497
-    const v10, #android:layout@screen_swipe_dismiss#t
+    const v10, 0x10900d1
 
     .line 2498
     .local v10, "layoutResource":I
@@ -6105,7 +6105,7 @@
     invoke-virtual {v0, v1, v10}, Lcom/android/internal/policy/DecorView;->onResourcesLoaded(Landroid/view/LayoutInflater;I)V
 
     .line 2557
-    const v20, #android:id@content#t
+    const v20, 0x1020002
 
     move-object/from16 v0, p0
 
@@ -6262,7 +6262,7 @@
     move-result-object v20
 
     .line 2503
-    const v21, #android:^attr-private@dialogTitleIconsDecorLayout#t
+    const v21, 0x1160029
 
     const/16 v22, 0x1
 
@@ -6295,7 +6295,7 @@
     .line 2506
     .end local v10    # "layoutResource":I
     :cond_2e
-    const v10, #android:layout@screen_title_icons#t
+    const v10, 0x10900d3
 
     .restart local v10    # "layoutResource":I
     goto :goto_9
@@ -6315,7 +6315,7 @@
     if-nez v20, :cond_30
 
     .line 2515
-    const v10, #android:layout@screen_progress#t
+    const v10, 0x10900ce
 
     .line 2512
     .restart local v10    # "layoutResource":I
@@ -6355,7 +6355,7 @@
     move-result-object v20
 
     .line 2523
-    const v21, #android:^attr-private@dialogCustomTitleDecorLayout#t
+    const v21, 0x116002a
 
     const/16 v22, 0x1
 
@@ -6388,7 +6388,7 @@
     .line 2526
     .end local v10    # "layoutResource":I
     :cond_31
-    const v10, #android:layout@screen_custom_title#t
+    const v10, 0x10900cd
 
     .restart local v10    # "layoutResource":I
     goto :goto_a
@@ -6425,7 +6425,7 @@
     move-result-object v20
 
     .line 2536
-    const v21, #android:^attr-private@dialogTitleDecorLayout#t
+    const v21, 0x116002b
 
     const/16 v22, 0x1
 
@@ -6458,7 +6458,7 @@
     const/16 v20, 0x30
 
     .line 2541
-    const v21, #android:layout@screen_action_bar#t
+    const v21, 0x10900cc
 
     .line 2539
     move/from16 v0, v20
@@ -6475,7 +6475,7 @@
     .line 2543
     .end local v10    # "layoutResource":I
     :cond_34
-    const v10, #android:layout@screen_title#t
+    const v10, 0x10900d2
 
     .restart local v10    # "layoutResource":I
     goto/16 :goto_8
@@ -6490,7 +6490,7 @@
     if-eqz v20, :cond_36
 
     .line 2547
-    const v10, #android:layout@screen_simple_overlay_action_mode#t
+    const v10, 0x10900d0
 
     .restart local v10    # "layoutResource":I
     goto/16 :goto_8
@@ -6498,7 +6498,7 @@
     .line 2550
     .end local v10    # "layoutResource":I
     :cond_36
-    const v10, #android:layout@screen_simple#t
+    const v10, 0x10900cf
 
     .restart local v10    # "layoutResource":I
     goto/16 :goto_8
@@ -7382,7 +7382,7 @@
     .param p1, "st"    # Lcom/android/internal/policy/PhoneWindow$PanelFeatureState;
 
     .prologue
-    const v10, #android:attr@actionBarWidgetTheme#t
+    const v10, 0x1010397
 
     const/4 v9, 0x0
 
@@ -7424,7 +7424,7 @@
 
     .line 1294
     .local v0, "baseTheme":Landroid/content/res/Resources$Theme;
-    const v6, #android:attr@actionBarTheme#t
+    const v6, 0x1010431
 
     invoke-virtual {v0, v6, v4, v8}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
 
@@ -7877,7 +7877,7 @@
     if-ne p1, v1, :cond_1
 
     .line 1583
-    const v1, #android:id@title_container#t
+    const v1, 0x1020045
 
     invoke-virtual {p0, v1}, Lcom/android/internal/policy/PhoneWindow;->findViewById(I)Landroid/view/View;
 

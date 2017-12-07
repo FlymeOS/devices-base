@@ -308,7 +308,7 @@
     new-array v0, v0, [I
 
     .line 199
-    const v1, #android:attr@state_above_anchor#t
+    const v1, 0x10100aa
 
     const/4 v2, 0x0
 
@@ -372,7 +372,7 @@
 
     .prologue
     .line 254
-    const v0, #android:attr@popupWindowStyle#t
+    const v0, 0x1010076
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/PopupWindow;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
@@ -560,7 +560,7 @@
 
     .line 286
     .local v1, "animStyle":I
-    const v5, #android:style@Animation.PopupWindow#t
+    const v5, 0x10302f4
 
     if-ne v1, v5, :cond_0
 
@@ -616,10 +616,9 @@
     .line 309
     invoke-virtual {p0, v2}, Landroid/widget/PopupWindow;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
-    .line 271
-
     invoke-direct/range {p0 .. p0}, Landroid/widget/PopupWindow;->initFlymeExtraFields()V
 
+    .line 271
     return-void
 
     .line 289
@@ -826,10 +825,9 @@
     .line 386
     invoke-virtual {p0, p4}, Landroid/widget/PopupWindow;->setFocusable(Z)V
 
-    .line 377
-
     invoke-direct/range {p0 .. p0}, Landroid/widget/PopupWindow;->initFlymeExtraFields()V
 
+    .line 377
     return-void
 .end method
 
@@ -926,7 +924,7 @@
     if-eqz v0, :cond_0
 
     .line 1501
-    const v0, #android:style@Animation.DropDownUp#t
+    const v0, 0x10302ec
 
     .line 1500
     :goto_0
@@ -934,7 +932,7 @@
 
     .line 1502
     :cond_0
-    const v0, #android:style@Animation.DropDownDown#t
+    const v0, 0x10302eb
 
     goto :goto_0
 
@@ -2051,7 +2049,7 @@
     .line 456
     if-eqz p1, :cond_1
 
-    const/high16 v3, #android:transition@no_transition#i
+    const/high16 v3, 0x10f0000
 
     if-eq p1, v3, :cond_1
 

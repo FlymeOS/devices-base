@@ -109,7 +109,7 @@
 
     move-result-object v0
 
-    const v1, #android:bool@config_nightDisplayAvailable#t
+    const v1, 0x1120040
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -252,7 +252,7 @@
     move-result-object v1
 
     .line 136
-    const v2, #android:integer@config_defaultNightDisplayAutoMode#t
+    const v2, 0x10e004c
 
     .line 135
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getInteger(I)I
@@ -339,7 +339,7 @@
     move-result-object v1
 
     .line 215
-    const v2, #android:integer@config_defaultNightDisplayCustomEndTime#t
+    const v2, 0x10e004e
 
     .line 214
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getInteger(I)I
@@ -390,7 +390,7 @@
     move-result-object v1
 
     .line 181
-    const v2, #android:integer@config_defaultNightDisplayCustomStartTime#t
+    const v2, 0x10e004d
 
     .line 180
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getInteger(I)I

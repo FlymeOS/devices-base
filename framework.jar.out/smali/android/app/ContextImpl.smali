@@ -352,11 +352,11 @@
 
     move-result-object v14
 
-    .line 2074
-
     :goto_flyme_0
+
     invoke-direct {p0, v14}, Landroid/app/ContextImpl;->setFlymeThemeResource(Landroid/content/res/Resources;)V
 
+    .line 2074
     :cond_5
     :goto_4
     iput-object v14, p0, Landroid/app/ContextImpl;->mResources:Landroid/content/res/Resources;

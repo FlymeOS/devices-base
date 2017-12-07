@@ -67,6 +67,8 @@
     .line 3122
     :cond_0
 
+    iget-object v3, p0, Landroid/widget/AbsListView$PerformClick;->this$0:Landroid/widget/AbsListView;
+
     invoke-virtual/range {v3 .. v3}, Landroid/widget/AbsListView;->mzPerformClick()Z
 
     move-result v3

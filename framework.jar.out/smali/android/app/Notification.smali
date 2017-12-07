@@ -511,10 +511,9 @@
     .line 1550
     iput v2, p0, Landroid/app/Notification;->priority:I
 
-    .line 1546
-
     invoke-static/range {p0 .. p0}, Landroid/app/Notification$FlymeInjector;->initFlymeExtFields(Landroid/app/Notification;)V
 
+    .line 1546
     return-void
 .end method
 
@@ -568,10 +567,9 @@
 
     iput-wide v0, p0, Landroid/app/Notification;->creationTime:J
 
-    .line 1582
-
     invoke-static/range {p0 .. p0}, Landroid/app/Notification$FlymeInjector;->initFlymeExtFields(Landroid/app/Notification;)V
 
+    .line 1582
     return-void
 .end method
 
@@ -1323,10 +1321,9 @@
 
     iput v1, p0, Landroid/app/Notification;->color:I
 
-    .line 1602
-
     invoke-static/range {p0 .. p1}, Landroid/app/Notification$FlymeInjector;->readFromParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;)V
 
+    .line 1602
     return-void
 .end method
 
@@ -1986,10 +1983,9 @@
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1909
-
     invoke-static/range {p0 .. p2}, Landroid/app/Notification$FlymeInjector;->writeToParcelFlyme(Landroid/app/Notification;Landroid/os/Parcel;I)V
 
+    .line 1909
     return-void
 
     .line 1922

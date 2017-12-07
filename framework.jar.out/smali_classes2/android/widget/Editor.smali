@@ -843,7 +843,7 @@
     move-result-object v1
 
     .line 735
-    const v2, #android:dimen@textview_error_popup_default_width#t
+    const v2, 0x105006b
 
     .line 734
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimensionPixelSize(I)I
@@ -3252,7 +3252,7 @@
     move-result-object v5
 
     .line 2351
-    const v6, #android:layout@text_drag_thumbnail#t
+    const v6, 0x10900ed
 
     .line 2350
     invoke-static {v5, v6, v9}, Landroid/view/View;->inflate(Landroid/content/Context;ILandroid/view/ViewGroup;)Landroid/view/View;
@@ -5169,7 +5169,7 @@
     const/4 v2, 0x0
 
     .line 2296
-    invoke-static {p0}, Landroid/widget/Editor$FlymeInjector;->isFlymeCursorVisible(Landroid/widget/Editor;)Z
+    invoke-static/range {p0 .. p0}, Landroid/widget/Editor$FlymeInjector;->isFlymeCursorVisible(Landroid/widget/Editor;)Z
 
     move-result v3
 
@@ -5627,7 +5627,7 @@
 
     .line 454
     .local v1, "inflater":Landroid/view/LayoutInflater;
-    const v4, #android:layout@textview_hint#t
+    const v4, 0x10900f8
 
     .line 453
     invoke-virtual {v1, v4, v5}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
@@ -7881,7 +7881,7 @@
     const/16 v9, 0x9
 
     .line 2510
-    const v10, #android:string@replace#t
+    const v10, 0x1040374
 
     .line 2509
     invoke-interface {p1, v7, v8, v9, v10}, Landroid/view/ContextMenu;->addSubMenu(IIII)Landroid/view/SubMenu;
@@ -7942,12 +7942,12 @@
     :cond_7
     const/4 v7, 0x0
 
-    const v8, #android:id@undo#t
+    const v8, 0x1020032
 
     const/4 v9, 0x1
 
     .line 2526
-    const v10, #android:string@undo#t
+    const v10, 0x1040376
 
     .line 2525
     invoke-interface {p1, v7, v8, v9, v10}, Landroid/view/ContextMenu;->add(IIII)Landroid/view/MenuItem;
@@ -7983,12 +7983,12 @@
     .line 2530
     const/4 v7, 0x0
 
-    const v8, #android:id@redo#t
+    const v8, 0x1020033
 
     const/4 v9, 0x2
 
     .line 2531
-    const v10, #android:string@redo#t
+    const v10, 0x1040377
 
     .line 2530
     invoke-interface {p1, v7, v8, v9, v10}, Landroid/view/ContextMenu;->add(IIII)Landroid/view/MenuItem;
@@ -8016,12 +8016,12 @@
     .line 2535
     const/4 v7, 0x0
 
-    const v8, #android:id@cut#t
+    const v8, 0x1020020
 
     const/4 v9, 0x3
 
     .line 2536
-    const v10, #android:string@cut#t
+    const v10, 0x1040003
 
     .line 2535
     invoke-interface {p1, v7, v8, v9, v10}, Landroid/view/ContextMenu;->add(IIII)Landroid/view/MenuItem;
@@ -8057,12 +8057,12 @@
     .line 2540
     const/4 v7, 0x0
 
-    const v8, #android:id@copy#t
+    const v8, 0x1020021
 
     const/4 v9, 0x4
 
     .line 2541
-    const v10, #android:string@copy#t
+    const v10, 0x1040001
 
     .line 2540
     invoke-interface {p1, v7, v8, v9, v10}, Landroid/view/ContextMenu;->add(IIII)Landroid/view/MenuItem;
@@ -8098,12 +8098,12 @@
     .line 2545
     const/4 v7, 0x0
 
-    const v8, #android:id@paste#t
+    const v8, 0x1020022
 
     const/4 v9, 0x5
 
     .line 2546
-    const v10, #android:string@paste#t
+    const v10, 0x104000b
 
     .line 2545
     invoke-interface {p1, v7, v8, v9, v10}, Landroid/view/ContextMenu;->add(IIII)Landroid/view/MenuItem;
@@ -8139,12 +8139,12 @@
     .line 2550
     const/4 v7, 0x0
 
-    const v8, #android:id@paste#t
+    const v8, 0x1020022
 
     const/4 v9, 0x6
 
     .line 2551
-    const v10, #android:string@paste_as_plain_text#t
+    const v10, 0x1040373
 
     .line 2550
     invoke-interface {p1, v7, v8, v9, v10}, Landroid/view/ContextMenu;->add(IIII)Landroid/view/MenuItem;
@@ -8172,12 +8172,12 @@
     .line 2554
     const/4 v7, 0x0
 
-    const v8, #android:id@shareText#t
+    const v8, 0x1020035
 
     const/4 v9, 0x7
 
     .line 2555
-    const v10, #android:string@share#t
+    const v10, 0x10404a0
 
     .line 2554
     invoke-interface {p1, v7, v8, v9, v10}, Landroid/view/ContextMenu;->add(IIII)Landroid/view/MenuItem;
@@ -8205,12 +8205,12 @@
     .line 2558
     const/4 v7, 0x0
 
-    const v8, #android:id@selectAll#t
+    const v8, 0x102001f
 
     const/16 v9, 0x8
 
     .line 2559
-    const v10, #android:string@selectAll#t
+    const v10, 0x104000d
 
     .line 2558
     invoke-interface {p1, v7, v8, v9, v10}, Landroid/view/ContextMenu;->add(IIII)Landroid/view/MenuItem;
@@ -8456,6 +8456,7 @@
 
     if-eqz v4, :cond_flyme_0
 
+    .line 1650
     invoke-direct {p0, p1, p5}, Landroid/widget/Editor;->drawCursor(Landroid/graphics/Canvas;I)V
 
     :cond_flyme_0

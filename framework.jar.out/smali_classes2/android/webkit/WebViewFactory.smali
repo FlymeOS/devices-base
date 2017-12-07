@@ -653,9 +653,7 @@
 
     .line 191
     :cond_2
-
     :goto_flyme_0
-
     :try_start_2
     invoke-static {}, Landroid/os/StrictMode;->allowThreadDiskReads()Landroid/os/StrictMode$ThreadPolicy;
 

@@ -8066,10 +8066,9 @@
 
     iput v6, p1, Landroid/graphics/Rect;->bottom:I
 
-    .line 14786
-
     invoke-direct/range {p0 .. p1}, Landroid/view/View;->setFlymeScrollBarBounds(Landroid/graphics/Rect;)V
 
+    .line 14786
     return-void
 
     .line 14787
@@ -8724,7 +8723,7 @@
     .line 5162
     iget-object v0, p0, Landroid/view/View;->mContext:Landroid/content/Context;
 
-    const v1, #android:drawable@scroll_indicator_material#t
+    const v1, 0x108065f
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
@@ -26237,7 +26236,7 @@
     move-result-object v1
 
     .line 21447
-    const v2, #android:attr@listPreferredItemHeight#t
+    const v2, 0x101004d
 
     const/4 v3, 0x1
 
@@ -36764,22 +36763,22 @@
 
     .line 9595
     :cond_1
-    const v8, #android:id@accessibilityActionScrollUp#t
+    const v8, 0x1020038
 
     if-eq p1, v8, :cond_0
 
     .line 9596
-    const v8, #android:id@accessibilityActionScrollLeft#t
+    const v8, 0x1020039
 
     if-eq p1, v8, :cond_0
 
     .line 9597
-    const v8, #android:id@accessibilityActionScrollDown#t
+    const v8, 0x102003a
 
     if-eq p1, v8, :cond_0
 
     .line 9598
-    const v8, #android:id@accessibilityActionScrollRight#t
+    const v8, 0x102003b
 
     if-eq p1, v8, :cond_0
 

@@ -79,7 +79,7 @@
 
     .prologue
     .line 74
-    const v4, #android:attr@popupMenuStyle#t
+    const v4, 0x1010300
 
     const/4 v5, 0x0
 

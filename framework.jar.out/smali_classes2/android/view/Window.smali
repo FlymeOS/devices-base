@@ -64,7 +64,7 @@
 
 .field public static final FEATURE_SWIPE_TO_DISMISS:I = 0xb
 
-.field public static final ID_ANDROID_CONTENT:I = #android:id@content#t
+.field public static final ID_ANDROID_CONTENT:I = 0x1020002
 
 .field public static final NAVIGATION_BAR_BACKGROUND_TRANSITION_NAME:Ljava/lang/String; = "android:navigation:background"
 
@@ -262,7 +262,7 @@
 
     .line 1624
     .local v1, "res":Landroid/content/res/Resources;
-    const v2, #android:bool@config_defaultWindowFeatureOptionsPanel#t
+    const v2, 0x11200a0
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -275,7 +275,7 @@
 
     .line 1628
     :cond_0
-    const v2, #android:bool@config_defaultWindowFeatureContextMenu#t
+    const v2, 0x11200a1
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getBoolean(I)Z
 

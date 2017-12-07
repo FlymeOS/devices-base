@@ -125,10 +125,9 @@
 
     iput-object v0, p0, Landroid/app/AlertDialog;->mAlert:Lcom/android/internal/app/AlertController;
 
-    .line 199
-
     invoke-static/range {p0 .. p0}, Landroid/app/AlertDialog$FlymeInjector;->setIsThemeDeviceDefaultLight(Landroid/app/AlertDialog;)V
 
+    .line 199
     return-void
 
     .line 200
@@ -177,7 +176,7 @@
     if-ne p1, v3, :cond_0
 
     .line 209
-    const v1, #android:style@Theme.Dialog.Alert#t
+    const v1, 0x103047a
 
     return v1
 
@@ -188,7 +187,7 @@
     if-ne p1, v1, :cond_1
 
     .line 211
-    const v1, #android:style@Theme.Holo.Dialog.Alert#t
+    const v1, 0x1030483
 
     return v1
 
@@ -199,7 +198,7 @@
     if-ne p1, v1, :cond_2
 
     .line 213
-    const v1, #android:style@Theme.Holo.Light.Dialog.Alert#t
+    const v1, 0x1030484
 
     return v1
 
@@ -210,7 +209,7 @@
     if-ne p1, v1, :cond_3
 
     .line 215
-    const v1, #android:style@Theme.DeviceDefault.Dialog.Alert#t
+    const v1, 0x10302d1
 
     return v1
 
@@ -221,7 +220,7 @@
     if-ne p1, v1, :cond_4
 
     .line 217
-    const v1, #android:style@Theme.DeviceDefault.Light.Dialog.Alert#t
+    const v1, 0x10302d2
 
     return v1
 
@@ -246,7 +245,7 @@
 
     move-result-object v1
 
-    const v2, #android:attr@alertDialogTheme#t
+    const v2, 0x1010309
 
     invoke-virtual {v1, v2, v0, v3}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
 
@@ -300,10 +299,9 @@
 
     invoke-virtual {v0}, Lcom/android/internal/app/AlertController;->installContent()V
 
-    .line 421
-
     invoke-direct/range {p0 .. p0}, Landroid/app/AlertDialog;->applyFlymeStyle()V
 
+    .line 421
     return-void
 .end method
 

@@ -241,7 +241,7 @@
     move-result-object v3
 
     .line 5161
-    const v4, #android:id@selection_start_handle#t
+    const v4, 0x1020058
 
     .line 5162
     const/4 v5, 0x0
@@ -275,7 +275,7 @@
     move-result-object v3
 
     .line 5166
-    const v4, #android:id@selection_end_handle#t
+    const v4, 0x1020059
 
     .line 5167
     const/4 v5, 0x1

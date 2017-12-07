@@ -245,10 +245,8 @@
 
     .line 1138
     .end local v0    # "cl":Ljava/lang/ClassLoader;
-
-    :cond_flyme_0
-
     :cond_4
+    :cond_flyme_0
     invoke-virtual {v5}, Landroid/content/BroadcastReceiver;->getPendingResult()Landroid/content/BroadcastReceiver$PendingResult;
 
     move-result-object v6

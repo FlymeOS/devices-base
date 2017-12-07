@@ -235,7 +235,7 @@
     if-eqz v0, :cond_0
 
     .line 2361
-    const v0, #android:drawable@ic_corp_icon_badge#t
+    const v0, 0x108032a
 
     return v0
 
@@ -2957,7 +2957,7 @@
     move-result-object v0
 
     .line 1099
-    const v1, #android:drawable@sym_def_app_icon#t
+    const v1, 0x1080093
 
     .line 1098
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
@@ -3032,10 +3032,8 @@
     return-object v0
 
     .line 1027
-
-    :cond_flyme_0
-
     :cond_0
+    :cond_flyme_0
     if-nez p3, :cond_1
 
     .line 1029
@@ -4041,7 +4039,7 @@
 
     .prologue
     .line 1181
-    const v1, #android:drawable@ic_corp_badge#t
+    const v1, 0x1080326
 
     .line 1180
     invoke-direct {p0, v1, p3}, Landroid/app/ApplicationPackageManager;->getDrawableForDensity(II)Landroid/graphics/drawable/Drawable;
@@ -6126,7 +6124,7 @@
 
     .prologue
     .line 1207
-    const v0, #android:drawable@ic_corp_badge#t
+    const v0, 0x1080326
 
     invoke-direct {p0, p1, v0, p2}, Landroid/app/ApplicationPackageManager;->getManagedProfileIconForDensity(Landroid/os/UserHandle;II)Landroid/graphics/drawable/Drawable;
 
@@ -6142,7 +6140,7 @@
 
     .prologue
     .line 1214
-    const v0, #android:drawable@ic_corp_badge_no_background#t
+    const v0, 0x1080327
 
     .line 1213
     invoke-direct {p0, p1, v0, p2}, Landroid/app/ApplicationPackageManager;->getManagedProfileIconForDensity(Landroid/os/UserHandle;II)Landroid/graphics/drawable/Drawable;
@@ -6257,7 +6255,7 @@
 
     aput-object p1, v1, v2
 
-    const v2, #android:string@managed_profile_label_badge#t
+    const v2, 0x10405b7
 
     .line 1234
     invoke-virtual {v0, v2, v1}, Landroid/content/res/Resources;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
@@ -6850,7 +6848,7 @@
     move-result-object v0
 
     .line 297
-    const v1, #android:bool@config_permissionReviewRequired#t
+    const v1, 0x11200bc
 
     .line 296
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z

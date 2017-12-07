@@ -764,10 +764,9 @@
     :goto_0
     invoke-virtual {v0, p1}, Landroid/widget/CompoundButton;->setChecked(Z)V
 
-    .line 179
-
     invoke-direct/range {p0 .. p0}, Lcom/android/internal/view/menu/ListMenuItemView;->setFlymeTextColor()V
 
+    .line 179
     return-void
 
     .line 188

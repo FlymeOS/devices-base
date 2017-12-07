@@ -49,23 +49,23 @@
 
 .field private static final EMS:I = 0x1
 
-.field static final ID_COPY:I = #android:id@copy#t
+.field static final ID_COPY:I = 0x1020021
 
-.field static final ID_CUT:I = #android:id@cut#t
+.field static final ID_CUT:I = 0x1020020
 
-.field static final ID_PASTE:I = #android:id@paste#t
+.field static final ID_PASTE:I = 0x1020022
 
-.field static final ID_PASTE_AS_PLAIN_TEXT:I = #android:id@pasteAsPlainText#t
+.field static final ID_PASTE_AS_PLAIN_TEXT:I = 0x1020031
 
-.field static final ID_REDO:I = #android:id@redo#t
+.field static final ID_REDO:I = 0x1020033
 
-.field static final ID_REPLACE:I = #android:id@replaceText#t
+.field static final ID_REPLACE:I = 0x1020034
 
-.field static final ID_SELECT_ALL:I = #android:id@selectAll#t
+.field static final ID_SELECT_ALL:I = 0x102001f
 
-.field static final ID_SHARE:I = #android:id@shareText#t
+.field static final ID_SHARE:I = 0x1020035
 
-.field static final ID_UNDO:I = #android:id@undo#t
+.field static final ID_UNDO:I = 0x1020032
 
 .field private static final KEY_DOWN_HANDLED_BY_KEY_LISTENER:I = 0x1
 
@@ -530,7 +530,7 @@
 
     new-array v0, v0, [I
 
-    const v1, #android:attr@state_multiline#t
+    const v1, 0x101034d
 
     aput v1, v0, v2
 
@@ -568,7 +568,7 @@
 
     .prologue
     .line 700
-    const v0, #android:attr@textViewStyle#t
+    const v0, 0x1010084
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
@@ -6110,7 +6110,7 @@
     if-eqz v3, :cond_2
 
     .line 6240
-    const v3, #android:id@cut#t
+    const v3, 0x1020020
 
     invoke-virtual {p0, v3}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -6136,7 +6136,7 @@
     if-eqz v3, :cond_2
 
     .line 6248
-    const v3, #android:id@copy#t
+    const v3, 0x1020021
 
     invoke-virtual {p0, v3}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -6162,7 +6162,7 @@
     if-eqz v3, :cond_2
 
     .line 6256
-    const v3, #android:id@paste#t
+    const v3, 0x1020022
 
     invoke-virtual {p0, v3}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -20446,7 +20446,7 @@
     .line 5646
     aget v4, v0, v1
 
-    const v5, #android:attr@state_pressed#t
+    const v5, 0x10100a7
 
     if-ne v4, v5, :cond_1
 
@@ -22605,7 +22605,7 @@
 
     move-result-object v5
 
-    const v6, #android:string@share#t
+    const v6, 0x10404a0
 
     invoke-virtual {v5, v6}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -22935,7 +22935,7 @@
     if-eqz v0, :cond_0
 
     .line 8754
-    const v0, #android:id@selectAll#t
+    const v0, 0x102001f
 
     invoke-virtual {p0, v0}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -22952,7 +22952,7 @@
     if-eqz v0, :cond_0
 
     .line 8759
-    const v0, #android:id@undo#t
+    const v0, 0x1020032
 
     invoke-virtual {p0, v0}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -22969,7 +22969,7 @@
     if-eqz v0, :cond_0
 
     .line 8764
-    const v0, #android:id@cut#t
+    const v0, 0x1020020
 
     invoke-virtual {p0, v0}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -22986,7 +22986,7 @@
     if-eqz v0, :cond_0
 
     .line 8769
-    const v0, #android:id@copy#t
+    const v0, 0x1020021
 
     invoke-virtual {p0, v0}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -23003,7 +23003,7 @@
     if-eqz v0, :cond_0
 
     .line 8774
-    const v0, #android:id@paste#t
+    const v0, 0x1020022
 
     invoke-virtual {p0, v0}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -23035,7 +23035,7 @@
     if-eqz v0, :cond_0
 
     .line 8788
-    const v0, #android:id@pasteAsPlainText#t
+    const v0, 0x1020031
 
     invoke-virtual {p0, v0}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -23052,7 +23052,7 @@
     if-eqz v0, :cond_0
 
     .line 8783
-    const v0, #android:id@redo#t
+    const v0, 0x1020033
 
     invoke-virtual {p0, v0}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -25911,8 +25911,6 @@
     :cond_0
     sparse-switch p1, :sswitch_data_0
 
-    .line 9400
-
     invoke-static/range {p0 .. p1}, Landroid/widget/TextView$FlymeInjector;->mzOnTextContextMenuItem(Landroid/widget/TextView;I)Z
 
     move-result v4
@@ -25925,6 +25923,7 @@
 
     :cond_flyme_0
 
+    .line 9400
     return v7
 
     .line 9357
@@ -26039,15 +26038,15 @@
     .line 9355
     :sswitch_data_0
     .sparse-switch
-        #android:id@selectAll#t -> :sswitch_0
-        #android:id@cut#t -> :sswitch_5
-        #android:id@copy#t -> :sswitch_6
-        #android:id@paste#t -> :sswitch_3
-        #android:id@pasteAsPlainText#t -> :sswitch_4
-        #android:id@undo#t -> :sswitch_1
-        #android:id@redo#t -> :sswitch_2
-        #android:id@replaceText#t -> :sswitch_7
-        #android:id@shareText#t -> :sswitch_8
+        0x102001f -> :sswitch_0
+        0x1020020 -> :sswitch_5
+        0x1020021 -> :sswitch_6
+        0x1020022 -> :sswitch_3
+        0x1020031 -> :sswitch_4
+        0x1020032 -> :sswitch_1
+        0x1020033 -> :sswitch_2
+        0x1020034 -> :sswitch_7
+        0x1020035 -> :sswitch_8
     .end sparse-switch
 .end method
 
@@ -26527,7 +26526,7 @@
     if-eqz v4, :cond_1
 
     .line 9152
-    const v4, #android:id@copy#t
+    const v4, 0x1020021
 
     invoke-virtual {p0, v4}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -26557,7 +26556,7 @@
     if-eqz v4, :cond_2
 
     .line 9159
-    const v4, #android:id@paste#t
+    const v4, 0x1020022
 
     invoke-virtual {p0, v4}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -26587,7 +26586,7 @@
     if-eqz v4, :cond_3
 
     .line 9166
-    const v4, #android:id@cut#t
+    const v4, 0x1020020
 
     invoke-virtual {p0, v4}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -26756,7 +26755,7 @@
     if-eqz v4, :cond_b
 
     .line 9204
-    const v4, #android:id@shareText#t
+    const v4, 0x1020035
 
     invoke-virtual {p0, v4}, Landroid/widget/TextView;->onTextContextMenuItem(I)Z
 
@@ -29404,7 +29403,7 @@
     move-result-object v1
 
     .line 5082
-    const v2, #android:drawable@indicator_input_error#t
+    const v2, 0x108045d
 
     .line 5081
     invoke-virtual {v1, v2}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;

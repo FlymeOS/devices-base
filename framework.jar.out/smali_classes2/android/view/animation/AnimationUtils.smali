@@ -166,7 +166,6 @@
 
     .line 163
     :goto_1
-
     :goto_flyme_0
 
     if-eqz p2, :cond_0
@@ -333,7 +332,6 @@
     .local v1, "depth":I
     :cond_0
     :goto_0
-
     :goto_flyme_0
 
     invoke-interface {p2}, Lorg/xmlpull/v1/XmlPullParser;->next()I

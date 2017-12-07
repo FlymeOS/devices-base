@@ -1483,10 +1483,9 @@
 
     iput v1, p1, Landroid/content/res/Configuration;->densityDpi:I
 
-    .line 1948
-
     invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->readXmlAttrs(Lorg/xmlpull/v1/XmlPullParser;Landroid/content/res/Configuration;)V
 
+    .line 1948
     return-void
 .end method
 
@@ -3139,12 +3138,11 @@
 
     sub-int v4, v7, v8
 
-    .line 1404
-
     invoke-static {p0, p1, v4}, Landroid/content/res/Configuration$FlymeInjector;->compareTo(Landroid/content/res/Configuration;Landroid/content/res/Configuration;I)I
 
     move-result v4
 
+    .line 1404
     return v4
 .end method
 
@@ -3758,12 +3756,11 @@
 
     add-int v0, v1, v2
 
-    .line 1440
-
     invoke-static {p0, v0}, Landroid/content/res/Configuration$FlymeInjector;->hashCode(Landroid/content/res/Configuration;I)I
 
     move-result v0
 
+    .line 1440
     return v0
 .end method
 
@@ -4104,10 +4101,9 @@
 
     iput v3, p0, Landroid/content/res/Configuration;->seq:I
 
-    .line 1290
-
     invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->readFromParcel(Landroid/content/res/Configuration;Landroid/os/Parcel;)V
 
+    .line 1290
     return-void
 
     :cond_1
@@ -4346,10 +4342,9 @@
 
     iput v0, p0, Landroid/content/res/Configuration;->seq:I
 
-    .line 751
-
     invoke-static/range {p0 .. p1}, Landroid/content/res/Configuration$FlymeInjector;->initFlymeExtraFields(Landroid/content/res/Configuration;Landroid/content/res/Configuration;)V
 
+    .line 751
     return-void
 
     .line 755
@@ -4444,10 +4439,9 @@
     .line 939
     iput v1, p0, Landroid/content/res/Configuration;->seq:I
 
-    .line 920
-
     invoke-static/range {p0 .. p0}, Landroid/content/res/Configuration$FlymeInjector;->initFlymeExtraFields(Landroid/content/res/Configuration;)V
 
+    .line 920
     return-void
 .end method
 
@@ -6122,10 +6116,9 @@
 
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 1253
-
     invoke-static/range {p0 .. p2}, Landroid/content/res/Configuration$FlymeInjector;->writeToParcel(Landroid/content/res/Configuration;Landroid/os/Parcel;I)V
 
+    .line 1253
     return-void
 
     .line 1269

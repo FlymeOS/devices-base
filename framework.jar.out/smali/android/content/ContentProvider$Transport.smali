@@ -200,7 +200,7 @@
     .line 502
     :cond_0
 
-    invoke-direct {p0, p1}, Landroid/content/ContentProvider$Transport;->isFlymeAllowedWriteSms(Ljava/lang/String;)I
+    invoke-direct/range {p0 .. p1}, Landroid/content/ContentProvider$Transport;->isFlymeAllowedWriteSms(Ljava/lang/String;)I
 
     move-result v1
 

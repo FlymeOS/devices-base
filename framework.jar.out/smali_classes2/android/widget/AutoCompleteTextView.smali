@@ -133,7 +133,7 @@
 
     .prologue
     .line 154
-    const v0, #android:attr@autoCompleteTextViewStyle#t
+    const v0, 0x101006b
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/AutoCompleteTextView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
@@ -324,7 +324,7 @@
     .local v7, "popupHeight":I
     const/4 v13, 0x1
 
-    const v14, #android:layout@simple_dropdown_hint#t
+    const v14, 0x10900e2
 
     .line 250
     invoke-virtual {v6, v13, v14}, Landroid/content/res/TypedArray;->getResourceId(II)I
@@ -2212,7 +2212,7 @@
     move-result-object v1
 
     .line 335
-    const v2, #android:id@text1#t
+    const v2, 0x1020014
 
     .line 334
     invoke-virtual {v1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;

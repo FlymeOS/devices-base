@@ -244,7 +244,7 @@
 
     new-array v0, v0, [I
 
-    const v1, #android:attr@state_focused#t
+    const v1, 0x101009c
 
     const/4 v2, 0x0
 
@@ -372,14 +372,9 @@
 
     iput-object v0, p0, Landroid/app/Activity;->mExitTransitionListener:Landroid/app/SharedElementCallback;
 
+    invoke-direct/range {p0 .. p0}, Landroid/app/Activity;->initFlymeExtraFields()V
+
     .line 686
-
-    new-instance v0, Landroid/app/Activity$FlymeInjector$TintBarInject;
-
-    invoke-direct {v0, p0}, Landroid/app/Activity$FlymeInjector$TintBarInject;-><init>(Landroid/app/Activity;)V
-
-    iput-object v0, p0, Landroid/app/Activity;->mFlymeTintBarInject:Landroid/app/Activity$FlymeInjector$TintBarInject;
-
     return-void
 .end method
 
@@ -5316,10 +5311,9 @@
     :cond_4
     iput-boolean v4, p0, Landroid/app/Activity;->mCalled:Z
 
-    .line 943
-
     invoke-static/range {p0 .. p0}, Landroid/app/Activity$FlymeInjector;->onCreate(Landroid/app/Activity;)V
 
+    .line 943
     return-void
 
     .line 952
@@ -6203,7 +6197,7 @@
 
     move-result v1
 
-    const v2, #android:id@home#t
+    const v2, 0x102002c
 
     if-ne v1, v2, :cond_4
 
@@ -7068,10 +7062,9 @@
 
     iput-boolean v0, p0, Landroid/app/Activity;->mCalled:Z
 
-    .line 1249
-
     invoke-static/range {p0 .. p0}, Landroid/app/Activity$FlymeInjector;->injectAccessControl(Landroid/app/Activity;)V
 
+    .line 1249
     return-void
 .end method
 
@@ -8678,7 +8671,7 @@
     move-result-object v5
 
     .line 6724
-    const v7, #android:string@ok#t
+    const v7, 0x104000a
 
     .line 6721
     invoke-virtual {v5, v7, v9}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
@@ -12474,6 +12467,19 @@
     invoke-virtual {p1, v0}, Landroid/view/View;->setOnCreateContextMenuListener(Landroid/view/View$OnCreateContextMenuListener;)V
 
     .line 3536
+    return-void
+.end method
+
+.method private initFlymeExtraFields()V
+    .locals 1
+
+    .prologue
+    new-instance v0, Landroid/app/Activity$FlymeInjector$TintBarInject;
+
+    invoke-direct {v0, p0}, Landroid/app/Activity$FlymeInjector$TintBarInject;-><init>(Landroid/app/Activity;)V
+
+    iput-object v0, p0, Landroid/app/Activity;->mFlymeTintBarInject:Landroid/app/Activity$FlymeInjector$TintBarInject;
+
     return-void
 .end method
 

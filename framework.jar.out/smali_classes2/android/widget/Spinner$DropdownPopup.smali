@@ -268,10 +268,9 @@
     :goto_2
     invoke-virtual {p0, v3}, Landroid/widget/Spinner$DropdownPopup;->setHorizontalOffset(I)V
 
-    .line 1191
-
     invoke-direct/range {p0 .. p0}, Landroid/widget/Spinner$DropdownPopup;->setFlymeHorizontalOffset()V
 
+    .line 1191
     return-void
 
     .line 1196

@@ -104,7 +104,7 @@
 
     .prologue
     .line 175
-    const v0, #android:attr@scrollViewStyle#t
+    const v0, 0x1010080
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/ScrollView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
@@ -2171,8 +2171,10 @@
     .param p1, "canvas"    # Landroid/graphics/Canvas;
 
     .prologue
+    .line 1737
+    invoke-super {p0, p1}, Landroid/widget/FrameLayout;->draw(Landroid/graphics/Canvas;)V
 
-    invoke-direct {p0}, Landroid/widget/ScrollView;->isFlymeThemeLight()Z
+    invoke-direct/range {p0 .. p0}, Landroid/widget/ScrollView;->isFlymeThemeLight()Z
 
     move-result v0
 
@@ -2181,9 +2183,6 @@
     return-void
 
     :cond_flyme_0
-
-    .line 1737
-    invoke-super {p0, p1}, Landroid/widget/FrameLayout;->draw(Landroid/graphics/Canvas;)V
 
     .line 1738
     iget-object v7, p0, Landroid/widget/ScrollView;->mEdgeGlowTop:Landroid/widget/EdgeEffect;

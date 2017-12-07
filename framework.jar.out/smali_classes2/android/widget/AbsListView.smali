@@ -864,7 +864,7 @@
 
     .prologue
     .line 817
-    const v0, #android:attr@absListViewStyle#t
+    const v0, 0x101006a
 
     invoke-direct {p0, p1, p2, v0}, Landroid/widget/AbsListView;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
@@ -1621,7 +1621,7 @@
     .line 6032
     iget-object v1, p0, Landroid/widget/AbsListView;->mPopup:Landroid/widget/PopupWindow;
 
-    const v2, #android:style@Animation.TypingFilter#t
+    const v2, 0x10302e9
 
     invoke-virtual {v1, v2}, Landroid/widget/PopupWindow;->setAnimationStyle(I)V
 
@@ -1633,7 +1633,7 @@
     :cond_1
     iget-object v1, p0, Landroid/widget/AbsListView;->mPopup:Landroid/widget/PopupWindow;
 
-    const v2, #android:style@Animation.TypingFilterRestore#t
+    const v2, 0x10302ea
 
     invoke-virtual {v1, v2}, Landroid/widget/PopupWindow;->setAnimationStyle(I)V
 
@@ -2077,7 +2077,7 @@
 
     .line 6042
     .local v0, "layoutInflater":Landroid/view/LayoutInflater;
-    const v1, #android:layout@typing_filter#t
+    const v1, 0x1090100
 
     .line 6041
     invoke-virtual {v0, v1, v2}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
@@ -2207,10 +2207,9 @@
 
     iput v1, p0, Landroid/widget/AbsListView;->mDensityScale:F
 
-    .line 869
-
     invoke-static/range {p0 .. p0}, Landroid/widget/AbsListView$FlymeInjector;->initFlymeExtraFields(Landroid/widget/AbsListView;)V
 
+    .line 869
     return-void
 .end method
 
@@ -6617,7 +6616,7 @@
     move-result-object v0
 
     .line 1661
-    const v1, #android:drawable@list_selector_background#t
+    const v1, 0x1080062
 
     .line 1660
     invoke-virtual {v0, v1}, Landroid/content/Context;->getDrawable(I)Landroid/graphics/drawable/Drawable;
@@ -10406,10 +10405,9 @@
     :cond_6
     invoke-static {v10, v11}, Landroid/os/Trace;->traceEnd(J)V
 
-    .line 2405
-
     invoke-static {p0, p1, v0}, Landroid/widget/AbsListView$FlymeInjector;->setFlymeHoldViewBackground(Landroid/widget/AbsListView;ILandroid/view/View;)V
 
+    .line 2405
     return-object v0
 
     .line 2376
@@ -17009,10 +17007,9 @@
     .line 2797
     invoke-virtual {p0}, Landroid/widget/AbsListView;->updateSelectorState()V
 
-    .line 2784
-
     invoke-static/range {p0 .. p0}, Landroid/widget/AbsListView$FlymeInjector;->setFlymeSelector(Landroid/widget/AbsListView;)V
 
+    .line 2784
     return-void
 .end method
 

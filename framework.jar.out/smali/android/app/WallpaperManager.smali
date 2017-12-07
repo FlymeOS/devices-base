@@ -199,7 +199,7 @@
     .line 1663
     .end local v0    # "cn":Landroid/content/ComponentName;
     :cond_0
-    const v2, #android:string@default_wallpaper_component#t
+    const v2, 0x104003d
 
     invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -426,7 +426,7 @@
 
     .line 1627
     .local v5, "whichProp":Ljava/lang/String;
-    const v0, #android:drawable@default_wallpaper#t
+    const v0, 0x108025b
 
     .line 1629
     .local v0, "defaultResId":I
@@ -1753,7 +1753,7 @@
     iget-object v6, p0, Landroid/app/WallpaperManager;->mContext:Landroid/content/Context;
 
     .line 885
-    const v7, #android:string@config_wallpaperCropperPackage#t
+    const v7, 0x1040070
 
     .line 884
     invoke-virtual {v6, v7}, Landroid/content/Context;->getString(I)Ljava/lang/String;
