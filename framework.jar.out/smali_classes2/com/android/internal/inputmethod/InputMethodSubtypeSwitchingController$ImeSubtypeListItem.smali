@@ -189,6 +189,7 @@
     return v0
 
     :cond_flyme_0
+
     invoke-direct/range {p0 .. p1}, Lcom/android/internal/inputmethod/InputMethodSubtypeSwitchingController$ImeSubtypeListItem;->isFlymeOtherInputMethodInfoId(Lcom/android/internal/inputmethod/InputMethodSubtypeSwitchingController$ImeSubtypeListItem;)Z
 
     move-result v0
