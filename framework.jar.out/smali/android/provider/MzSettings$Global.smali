@@ -109,6 +109,8 @@
 
 .field public static final PRIVATE_MODE_RUNNING:Ljava/lang/String; = "mz_private_mode_running"
 
+.field public static final PRIVATE_MODE_SWTICH_REASON:Ljava/lang/String; = "private_mode_switch_reason"
+
 .field public static final PRIVATE_PACKAGES_LIST:Ljava/lang/String; = "private_pkg_list"
 
 .field public static final RECENTS_LAYOUT_DIRECTION:Ljava/lang/String; = "recents_layout_direction"
@@ -139,7 +141,7 @@
     .locals 0
 
     .prologue
-    .line 710
+    .line 781
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

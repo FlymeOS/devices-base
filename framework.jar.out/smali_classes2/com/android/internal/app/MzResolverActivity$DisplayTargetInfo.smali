@@ -14,10 +14,6 @@
 .end annotation
 
 
-# static fields
-.field private static fieldCloneID:Ljava/lang/reflect/Field;
-
-
 # instance fields
 .field displayIcon:Landroid/graphics/drawable/Drawable;
 
@@ -33,21 +29,8 @@
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 1
-
-    .prologue
-    .line 2479
-    const/4 v0, 0x0
-
-    sput-object v0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->fieldCloneID:Ljava/lang/reflect/Field;
-
-    .line 2471
-    return-void
-.end method
-
 .method constructor <init>(Landroid/content/Context;Landroid/content/pm/ResolveInfo;Ljava/lang/CharSequence;Ljava/lang/CharSequence;Landroid/content/Intent;)V
-    .locals 4
+    .locals 2
     .param p1, "context"    # Landroid/content/Context;
     .param p2, "pri"    # Landroid/content/pm/ResolveInfo;
     .param p3, "pLabel"    # Ljava/lang/CharSequence;
@@ -55,289 +38,215 @@
     .param p5, "pOrigIntent"    # Landroid/content/Intent;
 
     .prologue
-    .line 2482
+    .line 2477
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2484
+    .line 2479
     iput-object p2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
 
-    .line 2485
+    .line 2480
     iput-object p3, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayLabel:Ljava/lang/CharSequence;
 
-    .line 2486
-    const-string/jumbo v2, "zh_CN"
+    .line 2481
+    const-string/jumbo v0, "zh_CN"
 
     invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
 
-    move-result-object v3
+    move-result-object v1
 
-    invoke-virtual {v3}, Ljava/util/Locale;->toString()Ljava/lang/String;
+    invoke-virtual {v1}, Ljava/util/Locale;->toString()Ljava/lang/String;
 
-    move-result-object v3
+    move-result-object v1
 
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 2487
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
-
-    const-string/jumbo v3, "com.tencent.mm"
-
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_3
-
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
-
-    const-string/jumbo v3, "com.tencent.mm.ui.tools.ShareImgUI"
-
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_3
-
-    .line 2488
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    sget v3, Lcom/flyme/internal/R$string;->mz_wechat_friend:I
-
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
-
-    move-result-object v2
-
-    iput-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayLabel:Ljava/lang/CharSequence;
-
-    .line 2495
-    :cond_0
-    :goto_0
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
-
-    const-string/jumbo v3, "com.tencent.mm"
-
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_2
-
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
-
-    const-string/jumbo v3, "com.tencent.mm.ui.tools.ShareToTimeLineUI"
-
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_2
-
-    .line 2496
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object v2
-
-    sget v3, Lcom/flyme/internal/R$drawable;->mz_resolver_ic_pengyouquan:I
-
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
-
-    move-result-object v2
-
-    iput-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayIcon:Landroid/graphics/drawable/Drawable;
-
-    .line 2497
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
-
-    if-eqz v2, :cond_2
-
-    .line 2498
-    const/4 v0, 0x0
-
-    .line 2500
-    .local v0, "cloneID":I
-    :try_start_0
-    sget-object v2, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->fieldCloneID:Ljava/lang/reflect/Field;
-
-    if-nez v2, :cond_1
-
-    .line 2501
-    const-class v2, Landroid/content/pm/ApplicationInfo;
-
-    const-string/jumbo v3, "mCloneID"
-
-    invoke-virtual {v2, v3}, Ljava/lang/Class;->getField(Ljava/lang/String;)Ljava/lang/reflect/Field;
-
-    move-result-object v2
-
-    sput-object v2, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->fieldCloneID:Ljava/lang/reflect/Field;
-
-    .line 2502
-    :cond_1
-    sget-object v2, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->fieldCloneID:Ljava/lang/reflect/Field;
-
-    iget-object v3, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
-
-    iget-object v3, v3, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v3, v3, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
-
-    invoke-virtual {v2, v3}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v2
-
-    check-cast v2, Ljava/lang/Integer;
-
-    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     move-result v0
 
-    .line 2504
-    :goto_1
+    if-eqz v0, :cond_0
+
+    .line 2482
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
+
+    const-string/jumbo v1, "com.tencent.mm"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
     if-eqz v0, :cond_2
 
-    .line 2505
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayIcon:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
 
-    invoke-static {v2}, Landroid/content/res/flymetheme/FlymeThemeHelper;->addMutilLaunchAppMarkToIcon(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/Drawable;
+    iget-object v0, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    move-result-object v2
+    iget-object v0, v0, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
 
-    iput-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayIcon:Landroid/graphics/drawable/Drawable;
+    const-string/jumbo v1, "com.tencent.mm.ui.tools.ShareImgUI"
 
-    .line 2508
-    .end local v0    # "cloneID":I
-    :cond_2
-    iput-object p4, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->extendedInfo:Ljava/lang/CharSequence;
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 2509
-    iput-object p5, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->origIntent:Landroid/content/Intent;
+    move-result v0
+
+    if-eqz v0, :cond_2
 
     .line 2483
-    return-void
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    .line 2489
-    :cond_3
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
+    move-result-object v0
 
-    iget-object v2, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+    sget v1, Lcom/flyme/internal/R$string;->mz_wechat_friend:I
 
-    iget-object v2, v2, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
-    const-string/jumbo v3, "com.tencent.mm"
+    move-result-object v0
 
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_4
-
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
-
-    const-string/jumbo v3, "com.tencent.mm.ui.tools.ShareToTimeLineUI"
-
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_4
+    iput-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayLabel:Ljava/lang/CharSequence;
 
     .line 2490
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    :cond_0
+    :goto_0
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
 
-    move-result-object v2
+    iget-object v0, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    sget v3, Lcom/flyme/internal/R$string;->mz_wechat_timeline:I
+    iget-object v0, v0, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
 
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+    const-string/jumbo v1, "com.tencent.mm"
 
-    move-result-object v2
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    iput-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayLabel:Ljava/lang/CharSequence;
+    move-result v0
 
-    goto/16 :goto_0
+    if-eqz v0, :cond_1
+
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
+
+    const-string/jumbo v1, "com.tencent.mm.ui.tools.ShareToTimeLineUI"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_1
 
     .line 2491
-    :cond_4
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
-
-    const-string/jumbo v3, "com.sina.weibo"
-
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    iget-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
-
-    iget-object v2, v2, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
-
-    const-string/jumbo v3, "com.sina.weibo.composerinde.ComposerDispatchActivity"
-
-    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 2492
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    move-result-object v2
+    move-result-object v0
 
-    sget v3, Lcom/flyme/internal/R$string;->mz_sina_weibo:I
+    sget v1, Lcom/flyme/internal/R$drawable;->mz_resolver_ic_pengyouquan:I
 
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getDrawable(I)Landroid/graphics/drawable/Drawable;
 
-    move-result-object v2
+    move-result-object v0
 
-    iput-object v2, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayLabel:Ljava/lang/CharSequence;
+    iput-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayIcon:Landroid/graphics/drawable/Drawable;
+
+    .line 2494
+    :cond_1
+    iput-object p4, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->extendedInfo:Ljava/lang/CharSequence;
+
+    .line 2495
+    iput-object p5, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->origIntent:Landroid/content/Intent;
+
+    .line 2478
+    return-void
+
+    .line 2484
+    :cond_2
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
+
+    const-string/jumbo v1, "com.tencent.mm"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
+
+    const-string/jumbo v1, "com.tencent.mm.ui.tools.ShareToTimeLineUI"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    .line 2485
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    sget v1, Lcom/flyme/internal/R$string;->mz_wechat_timeline:I
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayLabel:Ljava/lang/CharSequence;
+
+    goto :goto_0
+
+    .line 2486
+    :cond_3
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
+
+    const-string/jumbo v1, "com.sina.weibo"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->ri:Landroid/content/pm/ResolveInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ActivityInfo;->name:Ljava/lang/String;
+
+    const-string/jumbo v1, "com.sina.weibo.composerinde.ComposerDispatchActivity"
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 2487
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    sget v1, Lcom/flyme/internal/R$string;->mz_sina_weibo:I
+
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DisplayTargetInfo;->displayLabel:Ljava/lang/CharSequence;
 
     goto/16 :goto_0
-
-    .line 2503
-    .restart local v0    # "cloneID":I
-    :catch_0
-    move-exception v1
-
-    .local v1, "e":Ljava/lang/Exception;
-    goto :goto_1
 .end method

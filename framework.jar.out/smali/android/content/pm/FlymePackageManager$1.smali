@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Landroid/content/pm/FlymePackageManager;
 
     .prologue
-    .line 248
+    .line 253
     iput-object p1, p0, Landroid/content/pm/FlymePackageManager$1;->this$0:Landroid/content/pm/FlymePackageManager;
 
     invoke-direct {p0}, Landroid/app/PackageInstallObserver;-><init>()V
@@ -44,18 +44,18 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 251
+    .line 256
     invoke-super {p0, p1, p2, p3, p4}, Landroid/app/PackageInstallObserver;->onPackageInstalled(Ljava/lang/String;ILjava/lang/String;Landroid/os/Bundle;)V
 
-    .line 252
+    .line 257
     if-ne p2, v1, :cond_0
 
-    .line 253
+    .line 258
     iget-object v0, p0, Landroid/content/pm/FlymePackageManager$1;->this$0:Landroid/content/pm/FlymePackageManager;
 
     invoke-static {v0, v1}, Landroid/content/pm/FlymePackageManager;->-set0(Landroid/content/pm/FlymePackageManager;I)I
 
-    .line 255
+    .line 260
     :cond_0
     iget-object v0, p0, Landroid/content/pm/FlymePackageManager$1;->this$0:Landroid/content/pm/FlymePackageManager;
 
@@ -65,7 +65,7 @@
 
     monitor-enter v1
 
-    .line 256
+    .line 261
     :try_start_0
     iget-object v0, p0, Landroid/content/pm/FlymePackageManager$1;->this$0:Landroid/content/pm/FlymePackageManager;
 
@@ -79,10 +79,10 @@
 
     monitor-exit v1
 
-    .line 250
+    .line 255
     return-void
 
-    .line 255
+    .line 260
     :catchall_0
     move-exception v0
 
