@@ -27,7 +27,7 @@
     .param p1, "this$1"    # Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     .prologue
-    .line 1920
+    .line 1917
     iput-object p1, p0, Lcom/android/internal/app/MzResolverActivity$DetailListFrag$2;->this$1:Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .param p1, "v"    # Landroid/view/View;
 
     .prologue
-    .line 1923
+    .line 1920
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$DetailListFrag$2;->this$1:Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     invoke-static {v0}, Lcom/android/internal/app/MzResolverActivity$DetailListFrag;->-get0(Lcom/android/internal/app/MzResolverActivity$DetailListFrag;)Lcom/android/internal/app/MzResolverActivity;
@@ -51,6 +51,6 @@
 
     invoke-virtual {v0}, Lcom/android/internal/app/MzResolverActivity;->finish()V
 
-    .line 1922
+    .line 1919
     return-void
 .end method

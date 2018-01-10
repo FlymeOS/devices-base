@@ -27,7 +27,7 @@
     .param p1, "this$1"    # Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;
 
     .prologue
-    .line 2240
+    .line 2237
     iput-object p1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag$2;->this$1:Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -42,11 +42,11 @@
     .param p1, "position"    # I
 
     .prologue
-    .line 2243
+    .line 2240
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag$2;->this$1:Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;
 
     invoke-virtual {v0, p1}, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->drawPoint(I)V
 
-    .line 2242
+    .line 2239
     return-void
 .end method

@@ -27,7 +27,7 @@
     .param p1, "this$1"    # Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     .prologue
-    .line 1908
+    .line 1905
     iput-object p1, p0, Lcom/android/internal/app/MzResolverActivity$DetailListFrag$1;->this$1:Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -42,12 +42,12 @@
     .param p1, "position"    # I
 
     .prologue
-    .line 1912
+    .line 1909
     const/4 v1, 0x2
 
     new-array v0, v1, [I
 
-    .line 1913
+    .line 1910
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$DetailListFrag$1;->this$1:Lcom/android/internal/app/MzResolverActivity$DetailListFrag;
 
     invoke-static {v1}, Lcom/android/internal/app/MzResolverActivity$DetailListFrag;->-get2(Lcom/android/internal/app/MzResolverActivity$DetailListFrag;)I
@@ -68,7 +68,7 @@
 
     aput v1, v0, v2
 
-    .line 1915
+    .line 1912
     .local v0, "padding":[I
     return-object v0
 .end method

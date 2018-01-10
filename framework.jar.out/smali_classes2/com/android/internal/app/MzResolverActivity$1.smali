@@ -24,7 +24,7 @@
     .param p1, "this$0"    # Lcom/android/internal/app/MzResolverActivity;
 
     .prologue
-    .line 167
+    .line 163
     iput-object p1, p0, Lcom/android/internal/app/MzResolverActivity$1;->this$0:Lcom/android/internal/app/MzResolverActivity;
 
     invoke-direct {p0}, Lcom/android/internal/content/PackageMonitor;-><init>()V
@@ -38,7 +38,7 @@
     .locals 1
 
     .prologue
-    .line 169
+    .line 165
     iget-object v0, p0, Lcom/android/internal/app/MzResolverActivity$1;->this$0:Lcom/android/internal/app/MzResolverActivity;
 
     invoke-static {v0}, Lcom/android/internal/app/MzResolverActivity;->-get2(Lcom/android/internal/app/MzResolverActivity;)Lcom/android/internal/app/MzResolverActivity$ResolveGridAdapter;
@@ -47,6 +47,6 @@
 
     invoke-virtual {v0}, Lcom/android/internal/app/MzResolverActivity$ResolveGridAdapter;->handlePackagesChanged()V
 
-    .line 168
+    .line 164
     return-void
 .end method
