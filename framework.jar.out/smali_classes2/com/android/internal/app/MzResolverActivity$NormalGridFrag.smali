@@ -1004,7 +1004,9 @@
     invoke-virtual {v6, v1}, Landroid/widget/GridView;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 
     .line 2223
-    invoke-virtual {v6, v4}, Landroid/widget/GridView;->setLayoutDirection(I)V
+    const/4 v1, 0x3
+
+    invoke-virtual {v6, v1}, Landroid/widget/GridView;->setLayoutDirection(I)V
 
     .line 2224
     iget-object v1, p0, Lcom/android/internal/app/MzResolverActivity$NormalGridFrag;->mPageViews:Ljava/util/ArrayList;

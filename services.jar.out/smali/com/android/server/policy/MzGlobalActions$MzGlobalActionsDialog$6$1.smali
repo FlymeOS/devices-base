@@ -25,7 +25,7 @@
     .param p2, "$anonymous0"    # Ljava/lang/String;
 
     .prologue
-    .line 392
+    .line 420
     iput-object p1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$6$1;->this$2:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$6;
 
     invoke-direct {p0, p2}, Ljava/lang/Thread;-><init>(Ljava/lang/String;)V
@@ -39,7 +39,7 @@
     .locals 3
 
     .prologue
-    .line 396
+    .line 424
     :try_start_0
     invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get5()Landroid/content/Context;
 
@@ -49,22 +49,22 @@
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 394
+    .line 422
     :goto_0
     return-void
 
-    .line 397
+    .line 425
     :catch_0
     move-exception v0
 
-    .line 398
+    .line 426
     .local v0, "e":Ljava/io/IOException;
     const-string/jumbo v1, "MzGlobalActions"
 
-    .line 399
+    .line 427
     const-string/jumbo v2, "Can\'t perform master clear/factory reset"
 
-    .line 398
+    .line 426
     invoke-static {v1, v2, v0}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_0

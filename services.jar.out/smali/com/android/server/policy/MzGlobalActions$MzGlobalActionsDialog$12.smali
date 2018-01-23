@@ -27,7 +27,7 @@
     .param p1, "this$1"    # Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
     .prologue
-    .line 570
+    .line 581
     iput-object p1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$12;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 3
 
     .prologue
-    .line 573
+    .line 584
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$12;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
     iget-object v1, v1, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
@@ -54,7 +54,7 @@
 
     if-ne v1, v2, :cond_0
 
-    .line 574
+    .line 585
     invoke-static {}, Lcom/android/server/policy/MzGlobalActions;->-get5()Landroid/content/Context;
 
     move-result-object v1
@@ -67,18 +67,18 @@
 
     check-cast v0, Landroid/os/PowerManager;
 
-    .line 575
+    .line 586
     .local v0, "pm":Landroid/os/PowerManager;
     const/4 v1, 0x0
 
     invoke-virtual {v0, v1}, Landroid/os/PowerManager;->reboot(Ljava/lang/String;)V
 
-    .line 572
+    .line 583
     .end local v0    # "pm":Landroid/os/PowerManager;
     :goto_0
     return-void
 
-    .line 577
+    .line 588
     :cond_0
     iget-object v1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$12;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 

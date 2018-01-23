@@ -469,18 +469,16 @@
     .locals 3
 
     .prologue
-    .line 210
     new-instance v0, Ljava/io/File;
 
     iget-object v1, p0, Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperObserver;->mWallpaperDir:Ljava/io/File;
 
-    const-string/jumbo v2, "lock_wallpaper"
+    const-string v2, "wallpaper_lock_orig"
 
     invoke-direct {v0, v1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
     iput-object v0, p0, Lcom/android/server/wallpaper/WallpaperManagerService$WallpaperObserver;->mFlymeLockWallpaperFile:Ljava/io/File;
 
-    .line 209
     return-void
 .end method
 

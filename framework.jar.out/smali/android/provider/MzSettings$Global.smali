@@ -41,6 +41,8 @@
 
 .field public static final CHILDREN_SMS_ANTI_COST:Ljava/lang/String; = "children_sms_anti_cost"
 
+.field public static final DEVELOPER_OPTION:Ljava/lang/String; = "mz_developer_option"
+
 .field public static final GUEST_USER_ENABLED:Ljava/lang/String; = "guest_user_enabled"
 
 .field public static final HAPTIC_FEEDBACK_GLOBAL_KEYBOARD_STRENGTH:Ljava/lang/String; = "haptic_feedback_global_keyboard_strength"
@@ -105,6 +107,8 @@
 
 .field public static final PREFIX_DIALING_NUMBER:Ljava/lang/String; = "prefix_dialing_number"
 
+.field public static final PRIVATE_ASSOCIATE_FLYME_ACCOUNT:Ljava/lang/String; = "mz_private_associate_flyme_account"
+
 .field public static final PRIVATE_BROWSER_MODE_ENABLE:Ljava/lang/String; = "mz_private_browser_mode"
 
 .field public static final PRIVATE_CAMERA_MODE_ENABLE:Ljava/lang/String; = "mz_private_camera_mode"
@@ -112,6 +116,8 @@
 .field public static final PRIVATE_MODE_ENABLE:Ljava/lang/String; = "mz_private_mode"
 
 .field public static final PRIVATE_MODE_RUNNING:Ljava/lang/String; = "mz_private_mode_running"
+
+.field public static final PRIVATE_MODE_SWTICH_REASON:Ljava/lang/String; = "private_mode_switch_reason"
 
 .field public static final PRIVATE_PACKAGES_LIST:Ljava/lang/String; = "private_pkg_list"
 
@@ -145,7 +151,7 @@
     .locals 0
 
     .prologue
-    .line 725
+    .line 805
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

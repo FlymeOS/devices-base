@@ -12,6 +12,20 @@
 
 
 # instance fields
+.field private keyguardActivitylist:Ljava/util/HashMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/HashMap",
+            "<",
+            "Ljava/lang/String;",
+            "Landroid/util/ArraySet",
+            "<",
+            "Landroid/content/ComponentName;",
+            ">;>;"
+        }
+    .end annotation
+.end field
+
 .field mContext:Landroid/content/Context;
 
 .field mInstaller:Lcom/android/server/pm/Installer;
@@ -76,61 +90,68 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 44
+    .line 46
     invoke-direct {p0}, Landroid/content/pm/IFlymePackageManager$Stub;-><init>()V
 
-    .line 35
+    .line 36
     iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mContext:Landroid/content/Context;
 
-    .line 36
+    .line 37
     iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
-    .line 37
-    iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInstaller:Lcom/android/server/pm/Installer;
-
     .line 38
-    new-instance v0, Ljava/util/ArrayList;
-
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInterceptPackage:Ljava/util/List;
+    iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInstaller:Lcom/android/server/pm/Installer;
 
     .line 39
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->startFromInteractive:Ljava/util/List;
+    iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInterceptPackage:Ljava/util/List;
 
     .line 40
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
+    iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->startFromInteractive:Ljava/util/List;
 
     .line 41
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
+
+    .line 42
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->privacyBlock:Z
 
-    .line 42
+    .line 43
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->recordKeyguardPackage:Ljava/util/HashMap;
 
-    .line 45
-    iput-object p1, p0, Lcom/android/server/pm/FlymePackageManagerService;->mContext:Landroid/content/Context;
+    .line 44
+    new-instance v0, Ljava/util/HashMap;
 
-    .line 46
-    iput-object p2, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    iput-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->keyguardActivitylist:Ljava/util/HashMap;
 
     .line 47
+    iput-object p1, p0, Lcom/android/server/pm/FlymePackageManagerService;->mContext:Landroid/content/Context;
+
+    .line 48
+    iput-object p2, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
+
+    .line 49
     iput-object p3, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInstaller:Lcom/android/server/pm/Installer;
 
-    .line 44
+    .line 46
     return-void
 .end method
 
@@ -144,7 +165,7 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 52
+    .line 53
     iget-object v3, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
     invoke-static {}, Landroid/os/Binder;->getCallingUid()I
@@ -155,21 +176,21 @@
 
     move-result-object v2
 
-    .line 53
+    .line 54
     .local v2, "pkgName":Ljava/lang/String;
     if-nez v2, :cond_0
 
-    .line 54
+    .line 55
     const-string/jumbo v3, "FPMS"
 
     const-string/jumbo v4, "Calling package is null"
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 55
+    .line 56
     return v6
 
-    .line 57
+    .line 58
     :cond_0
     iget-object v3, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
@@ -177,7 +198,7 @@
 
     move-result-object v1
 
-    .line 58
+    .line 59
     .local v1, "info":Landroid/content/pm/ApplicationInfo;
     if-eqz v1, :cond_1
 
@@ -193,7 +214,7 @@
 
     if-ltz v3, :cond_1
 
-    .line 60
+    .line 61
     :try_start_0
     iget-object v3, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInstaller:Lcom/android/server/pm/Installer;
 
@@ -201,16 +222,16 @@
     :try_end_0
     .catch Lcom/android/internal/os/InstallerConnection$InstallerException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 61
+    .line 62
     const/4 v3, 0x1
 
     return v3
 
-    .line 62
+    .line 63
     :catch_0
     move-exception v0
 
-    .line 63
+    .line 64
     .local v0, "e":Lcom/android/internal/os/InstallerConnection$InstallerException;
     const-string/jumbo v3, "FPMS"
 
@@ -238,10 +259,10 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 64
+    .line 65
     return v6
 
-    .line 67
+    .line 68
     .end local v0    # "e":Lcom/android/internal/os/InstallerConnection$InstallerException;
     :cond_1
     const-string/jumbo v3, "FPMS"
@@ -250,7 +271,7 @@
 
     invoke-static {v3, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 68
+    .line 69
     return v6
 .end method
 
@@ -260,10 +281,10 @@
     .param p2, "state"    # Z
 
     .prologue
-    .line 99
+    .line 100
     if-eqz p2, :cond_1
 
-    .line 100
+    .line 101
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInterceptPackage:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
@@ -272,12 +293,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 101
+    .line 102
     const/4 v0, 0x1
 
     return v0
 
-    .line 103
+    .line 104
     :cond_0
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInterceptPackage:Ljava/util/List;
 
@@ -287,7 +308,7 @@
 
     return v0
 
-    .line 105
+    .line 106
     :cond_1
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInterceptPackage:Ljava/util/List;
 
@@ -304,10 +325,10 @@
     .param p2, "state"    # Z
 
     .prologue
-    .line 163
+    .line 164
     if-eqz p2, :cond_1
 
-    .line 164
+    .line 165
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
@@ -316,12 +337,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 165
+    .line 166
     const/4 v0, 0x1
 
     return v0
 
-    .line 167
+    .line 168
     :cond_0
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
 
@@ -331,7 +352,7 @@
 
     return v0
 
-    .line 169
+    .line 170
     :cond_1
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
 
@@ -348,10 +369,10 @@
     .param p2, "state"    # Z
 
     .prologue
-    .line 110
+    .line 111
     if-eqz p2, :cond_1
 
-    .line 111
+    .line 112
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->startFromInteractive:Ljava/util/List;
 
     invoke-interface {v0, p1}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
@@ -360,12 +381,12 @@
 
     if-eqz v0, :cond_0
 
-    .line 112
+    .line 113
     const/4 v0, 0x1
 
     return v0
 
-    .line 114
+    .line 115
     :cond_0
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->startFromInteractive:Ljava/util/List;
 
@@ -375,7 +396,7 @@
 
     return v0
 
-    .line 116
+    .line 117
     :cond_1
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->startFromInteractive:Ljava/util/List;
 
@@ -399,7 +420,7 @@
     .end annotation
 
     .prologue
-    .line 93
+    .line 94
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInterceptPackage:Ljava/util/List;
 
     return-object v0
@@ -418,7 +439,7 @@
     .end annotation
 
     .prologue
-    .line 84
+    .line 85
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
     invoke-virtual {v0}, Lcom/android/server/pm/PackageManagerService;->getInternalAppList()Ljava/util/List;
@@ -434,10 +455,10 @@
     .param p2, "level"    # I
 
     .prologue
-    .line 215
+    .line 216
     if-eqz p1, :cond_0
 
-    .line 216
+    .line 217
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->recordKeyguardPackage:Ljava/util/HashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
@@ -446,7 +467,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 217
+    .line 218
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->recordKeyguardPackage:Ljava/util/HashMap;
 
     invoke-virtual {v0, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -461,12 +482,12 @@
 
     if-ne v0, p2, :cond_0
 
-    .line 218
+    .line 219
     const/4 v0, 0x1
 
     return v0
 
-    .line 222
+    .line 223
     :cond_0
     const/4 v0, 0x0
 
@@ -486,7 +507,7 @@
     .end annotation
 
     .prologue
-    .line 147
+    .line 148
     iget-object v2, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
 
     invoke-interface {v2}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
@@ -507,7 +528,7 @@
 
     check-cast v0, Ljava/lang/String;
 
-    .line 148
+    .line 149
     .local v0, "pkg":Ljava/lang/String;
     const-string/jumbo v2, "FlymePackageManager"
 
@@ -533,7 +554,7 @@
 
     goto :goto_0
 
-    .line 150
+    .line 151
     .end local v0    # "pkg":Ljava/lang/String;
     :cond_0
     iget-object v2, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
@@ -554,7 +575,7 @@
     .end annotation
 
     .prologue
-    .line 120
+    .line 121
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->startFromInteractive:Ljava/util/List;
 
     return-object v0
@@ -565,7 +586,7 @@
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 88
+    .line 89
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
     invoke-virtual {v0, p1}, Lcom/android/server/pm/PackageManagerService;->getPackageActivateState(Ljava/lang/String;)Z
@@ -581,7 +602,7 @@
     .param p2, "flags"    # I
 
     .prologue
-    .line 80
+    .line 81
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
     invoke-virtual {v0, p1, p2}, Lcom/android/server/pm/PackageManagerService;->getPackageInfoForVersion(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
@@ -595,8 +616,111 @@
     .locals 1
 
     .prologue
-    .line 130
+    .line 131
     iget-boolean v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->privacyBlock:Z
+
+    return v0
+.end method
+
+.method public getSystemAppPath(Ljava/lang/String;I)Ljava/lang/String;
+    .locals 1
+    .param p1, "pkg"    # Ljava/lang/String;
+    .param p2, "userid"    # I
+
+    .prologue
+    .line 243
+    const/4 v0, 0x0
+
+    return-object v0
+.end method
+
+.method public getSystemAppRecord(I)Ljava/util/List;
+    .locals 1
+    .param p1, "userid"    # I
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)",
+            "Ljava/util/List",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 232
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    .line 233
+    .local v0, "finalresult":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
+    return-object v0
+.end method
+
+.method public getkeyguarActivitylist()Ljava/util/List;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List",
+            "<",
+            "Landroid/content/ComponentName;",
+            ">;"
+        }
+    .end annotation
+
+    .prologue
+    .line 268
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    .line 269
+    .local v0, "componentNames":Ljava/util/List;, "Ljava/util/List<Landroid/content/ComponentName;>;"
+    return-object v0
+.end method
+
+.method public getkeyguardBlackForSystem()Ljava/util/HashMap;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/HashMap",
+            "<",
+            "Ljava/lang/String;",
+            "Landroid/util/ArraySet",
+            "<",
+            "Landroid/content/ComponentName;",
+            ">;>;"
+        }
+    .end annotation
+
+    .prologue
+    .line 276
+    iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->keyguardActivitylist:Ljava/util/HashMap;
+
+    return-object v0
+.end method
+
+.method public isMzApp(Ljava/lang/String;)Z
+    .locals 1
+    .param p1, "pkg"    # Ljava/lang/String;
+
+    .prologue
+    .line 253
+    const/4 v0, 0x0
+
+    return v0
+.end method
+
+.method public isWhiltList(Landroid/content/ComponentName;)Z
+    .locals 1
+    .param p1, "componentName"    # Landroid/content/ComponentName;
+
+    .prologue
+    .line 283
+    const/4 v0, 0x0
 
     return v0
 .end method
@@ -606,12 +730,12 @@
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 76
+    .line 77
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
     invoke-virtual {v0, p1}, Lcom/android/server/pm/PackageManagerService;->resetVersion(Ljava/lang/String;)V
 
-    .line 75
+    .line 76
     return-void
 .end method
 
@@ -628,11 +752,11 @@
     .end annotation
 
     .prologue
-    .line 96
+    .line 97
     .local p1, "packageSet":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     iput-object p1, p0, Lcom/android/server/pm/FlymePackageManagerService;->mInterceptPackage:Ljava/util/List;
 
-    .line 95
+    .line 96
     return-void
 .end method
 
@@ -643,27 +767,27 @@
     .param p3, "level"    # I
 
     .prologue
-    .line 197
+    .line 198
     if-eqz p1, :cond_3
 
-    .line 198
+    .line 199
     const/4 v0, 0x1
 
     if-ne p3, v0, :cond_0
 
-    .line 199
+    .line 200
     invoke-virtual {p0, p1, p2}, Lcom/android/server/pm/FlymePackageManagerService;->changeInterceptPackage(Ljava/lang/String;Z)Z
 
-    .line 201
+    .line 202
     :cond_0
     const/4 v0, 0x2
 
     if-ne p3, v0, :cond_1
 
-    .line 202
+    .line 203
     if-eqz p2, :cond_2
 
-    .line 203
+    .line 204
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->recordKeyguardPackage:Ljava/util/HashMap;
 
     invoke-static {p3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
@@ -672,12 +796,12 @@
 
     invoke-virtual {v0, p1, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 196
+    .line 197
     :cond_1
     :goto_0
     return-void
 
-    .line 205
+    .line 206
     :cond_2
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->recordKeyguardPackage:Ljava/util/HashMap;
 
@@ -685,13 +809,13 @@
 
     goto :goto_0
 
-    .line 209
+    .line 210
     :cond_3
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->recordKeyguardPackage:Ljava/util/HashMap;
 
     invoke-virtual {v0}, Ljava/util/HashMap;->clear()V
 
-    .line 210
+    .line 211
     const-string/jumbo v0, "FlymePackageManager"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -736,24 +860,24 @@
     .end annotation
 
     .prologue
-    .line 154
+    .line 155
     .local p1, "packageSet":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     if-eqz p1, :cond_0
 
-    .line 155
+    .line 156
     iput-object p1, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
 
-    .line 153
+    .line 154
     :goto_0
     return-void
 
-    .line 157
+    .line 158
     :cond_0
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
 
     invoke-interface {v0}, Ljava/util/List;->clear()V
 
-    .line 158
+    .line 159
     const-string/jumbo v0, "FlymePackageManager"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -793,10 +917,10 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 134
+    .line 135
     if-eqz p2, :cond_0
 
-    .line 136
+    .line 137
     :try_start_0
     new-instance v1, Lcom/android/server/pm/FlymePackageManagerService$Death;
 
@@ -808,12 +932,12 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 142
+    .line 143
     :cond_0
     :goto_0
     iput-boolean p1, p0, Lcom/android/server/pm/FlymePackageManagerService;->privacyBlock:Z
 
-    .line 143
+    .line 144
     const-string/jumbo v1, "FlymePackageManage"
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -836,18 +960,18 @@
 
     invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 133
+    .line 134
     return-void
 
-    .line 137
+    .line 138
     :catch_0
     move-exception v0
 
-    .line 138
+    .line 139
     .local v0, "e":Landroid/os/RemoteException;
     iput-boolean v3, p0, Lcom/android/server/pm/FlymePackageManagerService;->privacyBlock:Z
 
-    .line 139
+    .line 140
     iget-object v1, p0, Lcom/android/server/pm/FlymePackageManagerService;->mayForbitPackage:Ljava/util/List;
 
     invoke-interface {v1}, Ljava/util/List;->clear()V
@@ -855,16 +979,26 @@
     goto :goto_0
 .end method
 
+.method public setkeyguardActivitylist(Landroid/content/ComponentName;Z)V
+    .locals 0
+    .param p1, "componment"    # Landroid/content/ComponentName;
+    .param p2, "shouldClear"    # Z
+
+    .prologue
+    .line 261
+    return-void
+.end method
+
 .method public syncPackageState()V
     .locals 1
 
     .prologue
-    .line 125
+    .line 126
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
     invoke-static {v0}, Lcom/android/server/pm/PackageManagerService$FlymePackageManagerServiceInjector;->initFlymeDefaultOpService(Lcom/android/server/pm/PackageManagerService;)V
 
-    .line 124
+    .line 125
     return-void
 .end method
 
@@ -873,11 +1007,11 @@
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 72
+    .line 73
     iget-object v0, p0, Lcom/android/server/pm/FlymePackageManagerService;->mPms:Lcom/android/server/pm/PackageManagerService;
 
     invoke-virtual {v0, p1}, Lcom/android/server/pm/PackageManagerService;->updatePermissions(Ljava/lang/String;)V
 
-    .line 71
+    .line 72
     return-void
 .end method

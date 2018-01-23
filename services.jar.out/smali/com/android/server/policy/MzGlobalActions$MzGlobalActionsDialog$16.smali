@@ -27,7 +27,7 @@
     .param p1, "this$1"    # Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
     .prologue
-    .line 799
+    .line 809
     iput-object p1, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$16;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -42,7 +42,7 @@
     .param p1, "animator"    # Landroid/animation/Animator;
 
     .prologue
-    .line 811
+    .line 821
     return-void
 .end method
 
@@ -51,7 +51,7 @@
     .param p1, "animator"    # Landroid/animation/Animator;
 
     .prologue
-    .line 807
+    .line 817
     iget-object v0, p0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog$16;->this$1:Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;
 
     iget-object v0, v0, Lcom/android/server/policy/MzGlobalActions$MzGlobalActionsDialog;->this$0:Lcom/android/server/policy/MzGlobalActions;
@@ -64,7 +64,7 @@
 
     invoke-virtual {v0, v1, v2}, Lcom/android/server/policy/FlymeConfirmPasswordView;->setLayerType(ILandroid/graphics/Paint;)V
 
-    .line 806
+    .line 816
     return-void
 .end method
 
@@ -73,7 +73,7 @@
     .param p1, "animator"    # Landroid/animation/Animator;
 
     .prologue
-    .line 816
+    .line 826
     return-void
 .end method
 
@@ -82,6 +82,6 @@
     .param p1, "animator"    # Landroid/animation/Animator;
 
     .prologue
-    .line 801
+    .line 811
     return-void
 .end method
