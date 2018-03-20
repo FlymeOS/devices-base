@@ -164,7 +164,7 @@
     :cond_0
     iget-object v1, p0, Lcom/android/server/MzInputMethodManagerService;->mMethodMap:Ljava/util/HashMap;
 
-    const-string/jumbo v2, "com.cootek.smartinputv5/com.cootek.smartinput5.TouchPalIME"
+    const-string/jumbo v2, "com.emoji.keyboard.touchpal/com.cootek.smartinput5.TouchPalIME"
 
     invoke-virtual {v1, v2}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 

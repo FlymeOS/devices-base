@@ -27,7 +27,7 @@
     .param p1, "this$2"    # Landroid/app/Activity$FlymeInjector$TintBarInject;
 
     .prologue
-    .line 7446
+    .line 7440
     iput-object p1, p0, Landroid/app/Activity$FlymeInjector$TintBarInject$1;->this$2:Landroid/app/Activity$FlymeInjector$TintBarInject;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -41,7 +41,7 @@
     .locals 2
 
     .prologue
-    .line 7449
+    .line 7443
     iget-object v0, p0, Landroid/app/Activity$FlymeInjector$TintBarInject$1;->this$2:Landroid/app/Activity$FlymeInjector$TintBarInject;
 
     iget-object v1, p0, Landroid/app/Activity$FlymeInjector$TintBarInject$1;->this$2:Landroid/app/Activity$FlymeInjector$TintBarInject;
@@ -52,6 +52,6 @@
 
     invoke-static {v0, v1}, Landroid/app/Activity$FlymeInjector$TintBarInject;->-wrap3(Landroid/app/Activity$FlymeInjector$TintBarInject;I)V
 
-    .line 7448
+    .line 7442
     return-void
 .end method

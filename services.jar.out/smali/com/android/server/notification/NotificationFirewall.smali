@@ -16,7 +16,7 @@
 .method public abstract initialize(Landroid/content/Context;Landroid/os/Looper;)V
 .end method
 
-.method public abstract interceptNotification(Landroid/service/notification/StatusBarNotification;ZZZ)Z
+.method public abstract interceptNotification(Landroid/service/notification/StatusBarNotification;ZZZ)I
 .end method
 
 .method public abstract offsetScore(Lmeizu/notification/RankingDaily;J)F

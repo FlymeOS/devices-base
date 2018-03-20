@@ -230,6 +230,10 @@
     .line 309
     iput-object v0, p0, Landroid/view/Window;->mWindowAttributes:Landroid/view/WindowManager$LayoutParams;
 
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Landroid/view/Window;->mFlymeAutoStatusBarIcon:Z
+
     .line 663
     iput-object p1, p0, Landroid/view/Window;->mContext:Landroid/content/Context;
 
@@ -2885,4 +2889,64 @@
 
     :cond_0
     return v1
+.end method
+
+.method public setForcedNavigationBarColor(Z)V
+    .locals 0
+    .param p1, "forcedNavigationBarColor"    # Z
+
+    .prologue
+    return-void
+.end method
+
+.method public setNavigationBarIconColor(Z)V
+    .locals 4
+    .param p1, "darkIcon"    # Z
+
+    .prologue
+    invoke-virtual {p0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+
+    move-result-object v3
+
+    iget v2, v3, Landroid/view/WindowManager$LayoutParams;->meizuFlags:I
+
+    .local v2, "oldFlags":I
+    move v1, v2
+
+    .local v1, "newFlags":I
+    if-eqz p1, :cond_1
+
+    or-int/lit16 v1, v2, 0x100
+
+    :goto_0
+    if-eq v2, v1, :cond_0
+
+    invoke-virtual {p0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+
+    move-result-object v0
+
+    .local v0, "layoutParams":Landroid/view/WindowManager$LayoutParams;
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->meizuFlags:I
+
+    invoke-virtual {p0, v0}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
+
+    .end local v0    # "layoutParams":Landroid/view/WindowManager$LayoutParams;
+    :cond_0
+    return-void
+
+    :cond_1
+    and-int/lit16 v1, v2, -0x101
+
+    goto :goto_0
+.end method
+
+.method public setNavigationBarIconColor(ZZ)V
+    .locals 0
+    .param p1, "darkIcon"    # Z
+    .param p2, "force"    # Z
+
+    .prologue
+    invoke-virtual {p0, p1}, Landroid/view/Window;->setNavigationBarIconColor(Z)V
+
+    return-void
 .end method

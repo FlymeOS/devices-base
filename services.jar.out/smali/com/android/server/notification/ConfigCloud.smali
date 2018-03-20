@@ -68,7 +68,7 @@
     sput-object v0, Lcom/android/server/notification/ConfigCloud;->TAG:Ljava/lang/String;
 
     .line 36
-    const/4 v0, 0x7
+    const/16 v0, 0x9
 
     new-array v0, v0, [Ljava/lang/String;
 
@@ -112,6 +112,18 @@
     const-string/jumbo v1, "com.facebook.orca"
 
     const/4 v2, 0x6
+
+    aput-object v1, v0, v2
+
+    const-string/jumbo v1, "com.android.mms"
+
+    const/4 v2, 0x7
+
+    aput-object v1, v0, v2
+
+    const-string/jumbo v1, "com.android.email"
+
+    const/16 v2, 0x8
 
     aput-object v1, v0, v2
 

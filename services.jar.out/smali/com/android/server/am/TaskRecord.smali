@@ -3675,7 +3675,7 @@
 
     move-result v2
 
-    if-eqz v2, :cond_3
+    if-eqz v2, :cond_4
 
     .line 768
     iget v2, p2, Lcom/android/server/am/ActivityRecord;->mActivityType:I
@@ -3730,13 +3730,11 @@
 
     move-result v0
 
-    .line 782
     .local v0, "size":I
-    if-ne p1, v0, :cond_1
+    if-ne p1, v0, :cond_2
 
-    if-lez v0, :cond_1
+    if-lez v0, :cond_2
 
-    .line 783
     iget-object v2, p0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
 
     add-int/lit8 v3, v0, -0x1
@@ -3747,44 +3745,41 @@
 
     check-cast v1, Lcom/android/server/am/ActivityRecord;
 
-    .line 784
     .local v1, "top":Lcom/android/server/am/ActivityRecord;
     iget-boolean v2, v1, Lcom/android/server/am/ActivityRecord;->mTaskOverlay:Z
 
     if-eqz v2, :cond_1
 
-    .line 787
     add-int/lit8 p1, p1, -0x1
 
-    .line 791
-    .end local v1    # "top":Lcom/android/server/am/ActivityRecord;
     :cond_1
+    invoke-direct {p0, p1, p2}, Lcom/android/server/am/TaskRecord;->updateFlymeActivityRecordIndex(ILcom/android/server/am/ActivityRecord;)I
+
+    move-result p1
+
+    .end local v1    # "top":Lcom/android/server/am/ActivityRecord;
+    :cond_2
     iget-object v2, p0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
 
     invoke-virtual {v2, p1, p2}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
 
-    .line 792
     invoke-virtual {p0}, Lcom/android/server/am/TaskRecord;->updateEffectiveIntent()V
 
-    .line 793
     invoke-virtual {p2}, Lcom/android/server/am/ActivityRecord;->isPersistable()Z
 
     move-result v2
 
-    if-eqz v2, :cond_2
+    if-eqz v2, :cond_3
 
-    .line 794
     iget-object v2, p0, Lcom/android/server/am/TaskRecord;->mService:Lcom/android/server/am/ActivityManagerService;
 
     invoke-virtual {v2, p0, v4}, Lcom/android/server/am/ActivityManagerService;->notifyTaskPersisterLocked(Lcom/android/server/am/TaskRecord;Z)V
 
-    .line 760
-    :cond_2
+    :cond_3
     return-void
 
-    .line 777
     .end local v0    # "size":I
-    :cond_3
+    :cond_4
     iget v2, p0, Lcom/android/server/am/TaskRecord;->taskType:I
 
     iput v2, p2, Lcom/android/server/am/ActivityRecord;->mActivityType:I
@@ -8427,4 +8422,48 @@
 
     .line 1829
     return-object v1
+.end method
+
+.method private updateFlymeActivityRecordIndex(ILcom/android/server/am/ActivityRecord;)I
+    .locals 4
+    .param p1, "index"    # I
+    .param p2, "r"    # Lcom/android/server/am/ActivityRecord;
+
+    .prologue
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
+
+    invoke-virtual {v2}, Ljava/util/ArrayList;->size()I
+
+    move-result v0
+
+    .local v0, "size":I
+    iget-object v2, p0, Lcom/android/server/am/TaskRecord;->mActivities:Ljava/util/ArrayList;
+
+    add-int/lit8 v3, v0, -0x1
+
+    invoke-virtual {v2, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/server/am/ActivityRecord;
+
+    .local v1, "top":Lcom/android/server/am/ActivityRecord;
+    iget-boolean v2, v1, Lcom/android/server/am/ActivityRecord;->mTaskOverlay:Z
+
+    if-nez v2, :cond_0
+
+    invoke-virtual {v1}, Lcom/android/server/am/ActivityRecord;->isAccessApplication()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    iget-object v2, p2, Lcom/android/server/am/ActivityRecord;->resultTo:Lcom/android/server/am/ActivityRecord;
+
+    if-eq v2, v1, :cond_0
+
+    add-int/lit8 p1, p1, -0x1
+
+    :cond_0
+    return p1
 .end method

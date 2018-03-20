@@ -22,7 +22,7 @@
 
 .field public static final ID_IME_DEFAULT_INDIA:Ljava/lang/String; = "com.syntellia.fleksy.keyboard/.Fleksy"
 
-.field public static final ID_IME_INTL:Ljava/lang/String; = "com.cootek.smartinputv5/com.cootek.smartinput5.TouchPalIME"
+.field public static final ID_IME_INTL:Ljava/lang/String; = "com.emoji.keyboard.touchpal/com.cootek.smartinput5.TouchPalIME"
 
 .field public static final ID_IME_MEIZU:Ljava/lang/String; = "com.meizu.flyme.input/com.meizu.input.MzInputService"
 

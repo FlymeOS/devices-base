@@ -26,13 +26,8 @@
 
 
 # instance fields
-.field mFlymeAccessControlManager:Lmeizu/security/AccessControlManager;
 
 .field mFlymePackageManagerService:Lcom/android/server/pm/FlymePackageManagerService;
-
-.field mFlymeRealPm:Lcom/android/server/pm/PackageManagerService;
-
-.field mIsIntercepted:Z
 
 .field private mAddingToTask:Z
 
@@ -2460,6 +2455,9 @@
     .end local v2    # "top":Lcom/android/server/am/ActivityRecord;
     :cond_4
     :goto_7
+
+    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityStarter$FlymeInjector;->setFlymeAccessApplication(Lcom/android/server/am/ActivityStarter;)V
+
     iget v3, p0, Lcom/android/server/am/ActivityStarter;->mLaunchFlags:I
 
     const/high16 v4, 0x1000000
@@ -2485,6 +2483,7 @@
 
     .line 1336
     :cond_5
+    :cond_flyme_0
     :goto_9
     iput p5, p0, Lcom/android/server/am/ActivityStarter;->mStartFlags:I
 
@@ -2643,6 +2642,12 @@
 
     .line 1332
     :cond_12
+    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityStarter$FlymeInjector;->isFlymeAccessApplication(Lcom/android/server/am/ActivityStarter;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_flyme_0
+
     sget-object v3, Lcom/android/server/am/ActivityStarter;->TAG:Ljava/lang/String;
 
     new-instance v4, Ljava/lang/StringBuilder;
@@ -3069,6 +3074,10 @@
 
     iput-object v0, p0, Lcom/android/server/am/ActivityStarter;->mTargetStack:Lcom/android/server/am/ActivityStack;
 
+    iget-boolean v0, p0, Lcom/android/server/am/ActivityStarter;->mAvoidMoveToFront:Z
+
+    if-nez v0, :cond_flyme_0
+
     .line 1817
     iget-object v5, p0, Lcom/android/server/am/ActivityStarter;->mTargetStack:Lcom/android/server/am/ActivityStack;
 
@@ -3087,6 +3096,8 @@
 
     .line 1817
     invoke-virtual/range {v5 .. v10}, Lcom/android/server/am/ActivityStack;->moveTaskToFrontLocked(Lcom/android/server/am/TaskRecord;ZLandroid/app/ActivityOptions;Lcom/android/server/am/AppTimeTracker;Ljava/lang/String;)V
+
+    :cond_flyme_0
 
     .line 1822
     iget-object v0, p0, Lcom/android/server/am/ActivityStarter;->mInTask:Lcom/android/server/am/TaskRecord;
@@ -4779,6 +4790,12 @@
     :goto_3
     if-eqz v11, :cond_11
 
+    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityStarter$FlymeInjector;->isFlymeAccessApplication(Lcom/android/server/am/ActivityStarter;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_flyme_0
+
     .line 1132
     move-object/from16 v0, v16
 
@@ -4894,6 +4911,7 @@
 
     .line 1155
     :cond_11
+    :cond_flyme_0
     const/4 v12, 0x0
 
     .line 1156
@@ -8166,29 +8184,6 @@
     .line 474
     .end local p4    # "resolvedType":Ljava/lang/String;
     :cond_1f
-
-    move-object/from16 v0, p0
-
-    move-object/from16 v1, p2
-
-    move-object/from16 v2, p5
-
-    move/from16 v3, p13
-
-    invoke-static {v0, v1, v2, v3}, Lcom/android/server/am/ActivityStarter$FlymeInjector;->interceptForAccessControl(Lcom/android/server/am/ActivityStarter;Landroid/content/Intent;Landroid/content/pm/ActivityInfo;I)Landroid/content/pm/ActivityInfo;
-
-    move-result-object p5
-
-    invoke-static/range {p0 .. p0}, Lcom/android/server/am/ActivityStarter$FlymeInjector;->isIntercepted(Lcom/android/server/am/ActivityStarter;)Z
-
-    move-result v5
-
-    if-eqz v5, :cond_flyme_0
-
-    const/16 p23, 0x0
-
-    :cond_flyme_0
-
     new-instance v22, Lcom/android/server/am/ActivityRecord;
 
     move-object/from16 v0, p0
@@ -8751,17 +8746,7 @@
 
     move-object/from16 v3, v32
 
-    invoke-static {v0, v1, v2, v3}, Lcom/android/server/am/ActivityStarter$FlymeInjector;->changeMayInterceptPackage(Lcom/android/server/am/ActivityStarter;ILjava/lang/String;Landroid/content/pm/ActivityInfo;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_flyme_0
-
-    const/4 v4, 0x0
-
-    return v4
-
-    :cond_flyme_0
+    invoke-static {v0, v1, v2, v3}, Lcom/android/server/am/ActivityStarter$FlymeInjector;->changeMayInterceptPackage(Lcom/android/server/am/ActivityStarter;ILjava/lang/String;Landroid/content/pm/ActivityInfo;)V
 
     invoke-static/range {p15 .. p15}, Landroid/app/ActivityOptions;->fromBundle(Landroid/os/Bundle;)Landroid/app/ActivityOptions;
 
@@ -10186,14 +10171,40 @@
     return-object v0
 .end method
 
-.method setPackageManager(Lcom/android/server/pm/PackageManagerService;)V
-    .locals 0
-    .param p1, "pm"    # Lcom/android/server/pm/PackageManagerService;
+.method flymeGetFieldStartActivity()Lcom/android/server/am/ActivityRecord;
+    .locals 1
 
     .prologue
-    .line 2122
-    iput-object p1, p0, Lcom/android/server/am/ActivityStarter;->mFlymeRealPm:Lcom/android/server/pm/PackageManagerService;
+    iget-object v0, p0, Lcom/android/server/am/ActivityStarter;->mStartActivity:Lcom/android/server/am/ActivityRecord;
 
-    .line 2121
+    return-object v0
+.end method
+
+.method flymeGetFieldWindowManager()Lcom/android/server/wm/WindowManagerService;
+    .locals 1
+
+    .prologue
+    iget-object v0, p0, Lcom/android/server/am/ActivityStarter;->mWindowManager:Lcom/android/server/wm/WindowManagerService;
+
+    return-object v0
+.end method
+
+.method flymeSetFieldAvoidMoveToFront(Z)V
+    .locals 0
+    .param p1, "value"    # Z
+
+    .prologue
+    iput-boolean p1, p0, Lcom/android/server/am/ActivityStarter;->mAvoidMoveToFront:Z
+
+    return-void
+.end method
+
+.method flymeSetFieldDoResume(Z)V
+    .locals 0
+    .param p1, "value"    # Z
+
+    .prologue
+    iput-boolean p1, p0, Lcom/android/server/am/ActivityStarter;->mDoResume:Z
+
     return-void
 .end method

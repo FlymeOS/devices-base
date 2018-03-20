@@ -9221,3 +9221,68 @@
     :cond_1
     return-object v3
 .end method
+
+.method public clearIconCache(Ljava/lang/String;)V
+    .locals 4
+    .param p1, "appPkgName"    # Ljava/lang/String;
+
+    .prologue
+    sget-object v3, Landroid/app/ApplicationPackageManager;->sSync:Ljava/lang/Object;
+
+    monitor-enter v3
+
+    :try_start_0
+    sget-object v2, Landroid/app/ApplicationPackageManager;->sIconCache:Landroid/util/ArrayMap;
+
+    invoke-virtual {v2}, Landroid/util/ArrayMap;->size()I
+
+    move-result v2
+
+    add-int/lit8 v0, v2, -0x1
+
+    .local v0, "i":I
+    :goto_0
+    if-ltz v0, :cond_1
+
+    sget-object v2, Landroid/app/ApplicationPackageManager;->sIconCache:Landroid/util/ArrayMap;
+
+    invoke-virtual {v2, v0}, Landroid/util/ArrayMap;->keyAt(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Landroid/app/ApplicationPackageManager$ResourceName;
+
+    .local v1, "nm":Landroid/app/ApplicationPackageManager$ResourceName;
+    iget-object v2, v1, Landroid/app/ApplicationPackageManager$ResourceName;->packageName:Ljava/lang/String;
+
+    invoke-virtual {v2, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v2
+
+    if-eqz v2, :cond_0
+
+    sget-object v2, Landroid/app/ApplicationPackageManager;->sIconCache:Landroid/util/ArrayMap;
+
+    invoke-virtual {v2, v0}, Landroid/util/ArrayMap;->removeAt(I)Ljava/lang/Object;
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    :cond_0
+    add-int/lit8 v0, v0, -0x1
+
+    goto :goto_0
+
+    .end local v1    # "nm":Landroid/app/ApplicationPackageManager$ResourceName;
+    :cond_1
+    monitor-exit v3
+
+    return-void
+
+    .end local v0    # "i":I
+    :catchall_0
+    move-exception v2
+
+    monitor-exit v3
+
+    throw v2
+.end method

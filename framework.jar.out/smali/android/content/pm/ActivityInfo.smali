@@ -9,7 +9,6 @@
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Landroid/content/pm/ActivityInfo$FlymeInjector;,
         Landroid/content/pm/ActivityInfo$1;,
         Landroid/content/pm/ActivityInfo$WindowLayout;
     }
@@ -181,9 +180,6 @@
 
 
 # instance fields
-
-.field public mFlymeActivityInfo:Landroid/content/ActivityInfoExt;
-
 .field public configChanges:I
 
 .field public documentLaunchMode:I
@@ -289,8 +285,6 @@
     const/4 v0, 0x0
 
     iput v0, p0, Landroid/content/pm/ActivityInfo;->uiOptions:I
-
-    invoke-static/range {p0 .. p0}, Landroid/content/pm/ActivityInfo$FlymeInjector;->createFlymeActivityInfo(Landroid/content/pm/ActivityInfo;)V
 
     .line 783
     return-void
@@ -403,8 +397,6 @@
     iget-object v0, p1, Landroid/content/pm/ActivityInfo;->requestedVrComponent:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/content/pm/ActivityInfo;->requestedVrComponent:Ljava/lang/String;
-
-    invoke-static/range {p0 .. p1}, Landroid/content/pm/ActivityInfo$FlymeInjector;->copyFromActivityInfo(Landroid/content/pm/ActivityInfo;Landroid/content/pm/ActivityInfo;)V
 
     .line 786
     return-void
@@ -568,8 +560,6 @@
     move-result-object v0
 
     iput-object v0, p0, Landroid/content/pm/ActivityInfo;->requestedVrComponent:Ljava/lang/String;
-
-    invoke-static/range {p0 .. p1}, Landroid/content/pm/ActivityInfo$FlymeInjector;->readFromParcel(Landroid/content/pm/ActivityInfo;Landroid/os/Parcel;)V
 
     .line 966
     return-void
@@ -1810,8 +1800,6 @@
     iget-object v0, p0, Landroid/content/pm/ActivityInfo;->requestedVrComponent:Ljava/lang/String;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
-
-    invoke-static/range {p0 .. p1}, Landroid/content/pm/ActivityInfo$FlymeInjector;->writeToParcel(Landroid/content/pm/ActivityInfo;Landroid/os/Parcel;)V
 
     .line 923
     return-void

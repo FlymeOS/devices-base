@@ -1474,6 +1474,8 @@
 
     .line 313
     .local v5, "copy":Landroid/app/Notification;
+    invoke-direct {p0, v5}, Landroid/app/NotificationManager;->fixedFlymeFontColor(Landroid/app/Notification;)V
+
     :try_start_0
     iget-object v2, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
 
@@ -1813,4 +1815,16 @@
     move-result-object v2
 
     throw v2
+.end method
+
+.method private fixedFlymeFontColor(Landroid/app/Notification;)V
+    .locals 1
+    .param p1, "copy"    # Landroid/app/Notification;
+
+    .prologue
+    iget-object v0, p0, Landroid/app/NotificationManager;->mContext:Landroid/content/Context;
+
+    invoke-static {p1, v0}, Landroid/app/Notification$Builder;->fixedFontColor(Landroid/app/Notification;Landroid/content/Context;)V
+
+    return-void
 .end method

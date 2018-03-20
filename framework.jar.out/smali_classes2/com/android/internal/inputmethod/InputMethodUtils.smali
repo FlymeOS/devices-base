@@ -3795,7 +3795,7 @@
     move-result-object v0
 
     .local v0, "id":Ljava/lang/String;
-    const-string/jumbo v3, "com.cootek.smartinputv5/com.cootek.smartinput5.TouchPalIME"
+    const-string v3, "com.emoji.keyboard.touchpal/com.cootek.smartinput5.TouchPalIME"
 
     invoke-static {v0, v3}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
 

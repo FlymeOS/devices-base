@@ -32,7 +32,7 @@
     .param p1, "this$0"    # Landroid/app/ActivityThread;
 
     .prologue
-    .line 1361
+    .line 1357
     iput-object p1, p0, Landroid/app/ActivityThread$FlymeApplicationThread;->this$0:Landroid/app/ActivityThread;
 
     const/4 v0, 0x0
@@ -49,29 +49,29 @@
     .param p3, "value"    # I
 
     .prologue
-    .line 1412
+    .line 1408
     new-instance v0, Landroid/app/ActivityThread$FlymeInjector$ScrollActivityData;
 
     invoke-direct {v0}, Landroid/app/ActivityThread$FlymeInjector$ScrollActivityData;-><init>()V
 
-    .line 1413
+    .line 1409
     .local v0, "data":Landroid/app/ActivityThread$FlymeInjector$ScrollActivityData;
     iput-object p1, v0, Landroid/app/ActivityThread$FlymeInjector$ScrollActivityData;->token:Landroid/os/IBinder;
 
-    .line 1414
+    .line 1410
     iput-object p2, v0, Landroid/app/ActivityThread$FlymeInjector$ScrollActivityData;->event:[Landroid/view/MotionEvent;
 
-    .line 1415
+    .line 1411
     iput p3, v0, Landroid/app/ActivityThread$FlymeInjector$ScrollActivityData;->value:I
 
-    .line 1416
+    .line 1412
     iget-object v1, p0, Landroid/app/ActivityThread$FlymeApplicationThread;->this$0:Landroid/app/ActivityThread;
 
     const/16 v2, 0xcc
 
     invoke-virtual {v1, v2, v0}, Landroid/app/ActivityThread;->invokeMethodSendMessage(ILjava/lang/Object;)V
 
-    .line 1411
+    .line 1407
     return-void
 .end method
 
@@ -85,7 +85,7 @@
     .end annotation
 
     .prologue
-    .line 1406
+    .line 1402
     iget-object v0, p0, Landroid/app/ActivityThread$FlymeApplicationThread;->this$0:Landroid/app/ActivityThread;
 
     const/16 v1, 0xcb
@@ -94,7 +94,7 @@
 
     invoke-virtual {v0, v1, v2, p1}, Landroid/app/ActivityThread;->invokeMethodSendMessage(ILjava/lang/Object;I)V
 
-    .line 1405
+    .line 1401
     return-void
 .end method
 
@@ -115,45 +115,45 @@
     .prologue
     const/4 v7, 0x1
 
-    .line 1369
+    .line 1365
     packed-switch p1, :pswitch_data_0
 
-    .line 1401
+    .line 1397
     invoke-super {p0, p1, p2, p3, p4}, Landroid/app/ActivityThread$ApplicationThread;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v6
 
     return v6
 
-    .line 1372
+    .line 1368
     :pswitch_0
     const-string/jumbo v6, "android.app.FlymeExtIApplicationThread"
 
     invoke-virtual {p2, v6}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1373
+    .line 1369
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v3
 
-    .line 1374
+    .line 1370
     .local v3, "level":I
     invoke-direct {p0, v3}, Landroid/app/ActivityThread$FlymeApplicationThread;->scheduleShrinkMemory(I)V
 
-    .line 1375
+    .line 1371
     return v7
 
-    .line 1381
+    .line 1377
     .end local v3    # "level":I
     :pswitch_1
     const-string/jumbo v6, "android.app.FlymeExtIApplicationThread"
 
     invoke-virtual {p2, v6}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 1382
+    .line 1378
     const/4 v4, 0x0
 
-    .line 1383
+    .line 1379
     .local v4, "token":Landroid/os/IBinder;
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
@@ -161,30 +161,30 @@
 
     if-lez v6, :cond_0
 
-    .line 1384
+    .line 1380
     invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v4
 
-    .line 1386
+    .line 1382
     .end local v4    # "token":Landroid/os/IBinder;
     :cond_0
     invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
-    .line 1387
+    .line 1383
     .local v1, "eventLength":I
     const/4 v0, 0x0
 
-    .line 1388
+    .line 1384
     .local v0, "event":[Landroid/view/MotionEvent;
     if-lez v1, :cond_1
 
-    .line 1389
+    .line 1385
     new-array v0, v1, [Landroid/view/MotionEvent;
 
-    .line 1390
+    .line 1386
     .local v0, "event":[Landroid/view/MotionEvent;
     const/4 v2, 0x0
 
@@ -192,7 +192,7 @@
     :goto_0
     if-ge v2, v1, :cond_1
 
-    .line 1391
+    .line 1387
     sget-object v6, Landroid/view/MotionEvent;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v6, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -203,12 +203,12 @@
 
     aput-object v6, v0, v2
 
-    .line 1390
+    .line 1386
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 1394
+    .line 1390
     .end local v0    # "event":[Landroid/view/MotionEvent;
     .end local v2    # "i":I
     :cond_1
@@ -216,14 +216,14 @@
 
     move-result v5
 
-    .line 1395
+    .line 1391
     .local v5, "value":I
     invoke-direct {p0, v4, v0, v5}, Landroid/app/ActivityThread$FlymeApplicationThread;->scheduleScrollActivity(Landroid/os/IBinder;[Landroid/view/MotionEvent;I)V
 
-    .line 1396
+    .line 1392
     return v7
 
-    .line 1369
+    .line 1365
     nop
 
     :pswitch_data_0

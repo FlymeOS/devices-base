@@ -54,6 +54,8 @@
 
 .field public static final HEADS_UP_REQUESTED:I = 0x2
 
+.field public static final EXTRA_MAYBE_ALWAYS_FULLSCREEN:Ljava/lang/String; = "flyme.maybeAlwaysFullscreen"
+
 .field public static final AUDIO_ATTRIBUTES_DEFAULT:Landroid/media/AudioAttributes;
 
 .field public static final CATEGORY_ALARM:Ljava/lang/String; = "alarm"

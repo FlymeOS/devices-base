@@ -20,6 +20,8 @@
 
 .field public static final MEIZU_DATASAVE_MODE_CHANGED:Ljava/lang/String; = "flyme.permission.send.MEIZU_DATASAVE_MODE_CHANGED"
 
+.field public static final HIDE_NON_SYSTEM_OVERLAY_WINDOWS:Ljava/lang/String; = "android.permission.HIDE_NON_SYSTEM_OVERLAY_WINDOWS"
+
 .field public static final ACCESS_CACHE_FILESYSTEM:Ljava/lang/String; = "android.permission.ACCESS_CACHE_FILESYSTEM"
 
 .field public static final ACCESS_CHECKIN_PROPERTIES:Ljava/lang/String; = "android.permission.ACCESS_CHECKIN_PROPERTIES"

@@ -27,13 +27,13 @@
     .param p1, "pwm"    # Lcom/android/server/policy/PhoneWindowManager;
 
     .prologue
-    .line 8565
+    .line 8614
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 8566
+    .line 8615
     iput-object p1, p0, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector$FlymeHideBootMessage;->mPwm:Lcom/android/server/policy/PhoneWindowManager;
 
-    .line 8565
+    .line 8614
     return-void
 .end method
 
@@ -45,7 +45,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 8571
+    .line 8620
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector$FlymeHideBootMessage;->mPwm:Lcom/android/server/policy/PhoneWindowManager;
 
     iget-object v1, v1, Lcom/android/server/policy/PhoneWindowManager;->mContext:Landroid/content/Context;
@@ -58,7 +58,7 @@
 
     check-cast v0, Landroid/view/WindowManager;
 
-    .line 8572
+    .line 8621
     .local v0, "wm":Landroid/view/WindowManager;
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector$FlymeHideBootMessage;->mPwm:Lcom/android/server/policy/PhoneWindowManager;
 
@@ -66,34 +66,34 @@
 
     if-eqz v1, :cond_0
 
-    .line 8573
+    .line 8622
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector$FlymeHideBootMessage;->mPwm:Lcom/android/server/policy/PhoneWindowManager;
 
     iget-object v1, v1, Lcom/android/server/policy/PhoneWindowManager;->mFlymeBootLayout:Landroid/view/View;
 
     invoke-interface {v0, v1}, Landroid/view/WindowManager;->removeView(Landroid/view/View;)V
 
-    .line 8574
+    .line 8623
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector$FlymeHideBootMessage;->mPwm:Lcom/android/server/policy/PhoneWindowManager;
 
     iput-object v3, v1, Lcom/android/server/policy/PhoneWindowManager;->mFlymeBootLayout:Landroid/view/View;
 
-    .line 8576
+    .line 8625
     :cond_0
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector$FlymeHideBootMessage;->mPwm:Lcom/android/server/policy/PhoneWindowManager;
 
     iput-object v3, v1, Lcom/android/server/policy/PhoneWindowManager;->mFlymeBootMsgBar:Landroid/widget/ProgressBar;
 
-    .line 8577
+    .line 8626
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector$FlymeHideBootMessage;->mPwm:Lcom/android/server/policy/PhoneWindowManager;
 
     iput-object v3, v1, Lcom/android/server/policy/PhoneWindowManager;->mFlymeBootMsgTitle:Landroid/widget/TextView;
 
-    .line 8578
+    .line 8627
     iget-object v1, p0, Lcom/android/server/policy/PhoneWindowManager$FlymeInjector$FlymeHideBootMessage;->mPwm:Lcom/android/server/policy/PhoneWindowManager;
 
     iput-object v3, v1, Lcom/android/server/policy/PhoneWindowManager;->mFlymeBootMsgText:Landroid/widget/TextView;
 
-    .line 8570
+    .line 8619
     return-void
 .end method

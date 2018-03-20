@@ -6718,3 +6718,220 @@
 
     return-object p0
 .end method
+
+.method private static clearTextsColor(Landroid/widget/RemoteViews;Landroid/content/Context;)Z
+    .locals 6
+    .param p0, "remoteViews"    # Landroid/widget/RemoteViews;
+    .param p1, "context"    # Landroid/content/Context;
+
+    .prologue
+    const/4 v5, 0x1
+
+    const/4 v4, 0x0
+
+    if-eqz p0, :cond_2
+
+    invoke-virtual {p0}, Landroid/widget/RemoteViews;->getLayoutId()I
+
+    move-result v0
+
+    .local v0, "layoutId":I
+    if-eqz v0, :cond_1
+
+    :try_start_0
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v3
+
+    invoke-virtual {v3, v0}, Landroid/content/res/Resources;->getResourcePackageName(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    .local v1, "packageName":Ljava/lang/String;
+    const-string v3, "android"
+
+    invoke-virtual {v3, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    const-string v3, "flyme"
+
+    invoke-virtual {v3, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v3
+
+    if-eqz v3, :cond_1
+
+    :cond_0
+    invoke-virtual {p0}, Landroid/widget/RemoteViews;->clearTextsColor()V
+    :try_end_0
+    .catch Ljava/lang/Throwable; {:try_start_0 .. :try_end_0} :catch_0
+
+    return v5
+
+    .end local v1    # "packageName":Ljava/lang/String;
+    :catch_0
+    move-exception v2
+
+    :cond_1
+    return v4
+
+    .end local v0    # "layoutId":I
+    :cond_2
+    return v5
+.end method
+
+.method static fixedFontColor(Landroid/app/Notification;Landroid/content/Context;)V
+    .locals 8
+    .param p0, "n"    # Landroid/app/Notification;
+    .param p1, "context"    # Landroid/content/Context;
+
+    .prologue
+    const/4 v6, 0x0
+
+    const/4 v5, 0x0
+
+    iput v5, p0, Landroid/app/Notification;->color:I
+
+    iget-object v7, p0, Landroid/app/Notification;->contentView:Landroid/widget/RemoteViews;
+
+    invoke-static {v7, p1}, Landroid/app/Notification$Builder;->clearTextsColor(Landroid/widget/RemoteViews;Landroid/content/Context;)Z
+
+    move-result v0
+
+    .local v0, "clear":Z
+    if-eqz v0, :cond_1
+
+    iget-object v7, p0, Landroid/app/Notification;->bigContentView:Landroid/widget/RemoteViews;
+
+    invoke-static {v7, p1}, Landroid/app/Notification$Builder;->clearTextsColor(Landroid/widget/RemoteViews;Landroid/content/Context;)Z
+
+    move-result v0
+
+    :goto_0
+    if-eqz v0, :cond_2
+
+    iget-object v5, p0, Landroid/app/Notification;->headsUpContentView:Landroid/widget/RemoteViews;
+
+    invoke-static {v5, p1}, Landroid/app/Notification$Builder;->clearTextsColor(Landroid/widget/RemoteViews;Landroid/content/Context;)Z
+
+    move-result v0
+
+    :goto_1
+    if-eqz v0, :cond_3
+
+    iget-object v5, p0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    invoke-virtual {v5}, Landroid/os/Bundle;->keySet()Ljava/util/Set;
+
+    move-result-object v5
+
+    invoke-interface {v5}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v3
+
+    .local v3, "key$iterator":Ljava/util/Iterator;
+    :cond_0
+    :goto_2
+    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_3
+
+    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Ljava/lang/String;
+
+    .local v2, "key":Ljava/lang/String;
+    iget-object v5, p0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    invoke-virtual {v5, v2}, Landroid/os/Bundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    .local v4, "v":Ljava/lang/Object;
+    instance-of v5, v4, Landroid/text/Spanned;
+
+    if-eqz v5, :cond_0
+
+    iget-object v5, p0, Landroid/app/Notification;->extras:Landroid/os/Bundle;
+
+    invoke-virtual {v4}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v7
+
+    invoke-virtual {v5, v2, v7}, Landroid/os/Bundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+
+    goto :goto_2
+
+    .end local v2    # "key":Ljava/lang/String;
+    .end local v3    # "key$iterator":Ljava/util/Iterator;
+    .end local v4    # "v":Ljava/lang/Object;
+    :cond_1
+    move v0, v5
+
+    goto :goto_0
+
+    :cond_2
+    move v0, v5
+
+    goto :goto_1
+
+    :cond_3
+    iget-object v5, p0, Landroid/app/Notification;->actions:[Landroid/app/Notification$Action;
+
+    if-eqz v5, :cond_5
+
+    const/4 v1, 0x0
+
+    .local v1, "i":I
+    :goto_3
+    iget-object v5, p0, Landroid/app/Notification;->actions:[Landroid/app/Notification$Action;
+
+    array-length v5, v5
+
+    if-ge v1, v5, :cond_5
+
+    iget-object v5, p0, Landroid/app/Notification;->actions:[Landroid/app/Notification$Action;
+
+    aget-object v7, v5, v1
+
+    iget-object v5, p0, Landroid/app/Notification;->actions:[Landroid/app/Notification$Action;
+
+    aget-object v5, v5, v1
+
+    iget-object v5, v5, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
+
+    if-eqz v5, :cond_4
+
+    iget-object v5, p0, Landroid/app/Notification;->actions:[Landroid/app/Notification$Action;
+
+    aget-object v5, v5, v1
+
+    iget-object v5, v5, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
+
+    invoke-interface {v5}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
+
+    move-result-object v5
+
+    :goto_4
+    iput-object v5, v7, Landroid/app/Notification$Action;->title:Ljava/lang/CharSequence;
+
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_3
+
+    :cond_4
+    move-object v5, v6
+
+    goto :goto_4
+
+    .end local v1    # "i":I
+    :cond_5
+    return-void
+.end method
